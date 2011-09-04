@@ -9,6 +9,8 @@ gem 'sqlite3'
 
 gem 'json'
 
+gem 'redis'
+gem 'fastercsv'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -18,6 +20,11 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
+group :test do
+  gem 'rspec'
+  gem 'rspec-rails'
+end
 
 # Use unicorn as the web server
 # gem 'unicorn'

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  ticker_id: 1
+  shares: 1
+  purchase_price: 9.99
+  investment: 9.99
+
+two:
+  ticker_id: 1
+  shares: 1
+  purchase_price: 9.99
+  investment: 9.99

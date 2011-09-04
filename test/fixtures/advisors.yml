@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  crd_num: MyString
+  sec_num: MyString
+  name: MyString
+  legal_name: MyString
+  address1: MyString
+  address2: MyString
+  address_city: MyString
+  address_state: MyString
+  address_postal: MyString
+  phone: MyString
+  fax: MyString
+  url: MyString
+  reg_status: MyString
+  reg_date: 2011-09-02 16:41:35
+
+two:
+  crd_num: MyString
+  sec_num: MyString
+  name: MyString
+  legal_name: MyString
+  address1: MyString
+  address2: MyString
+  address_city: MyString
+  address_state: MyString
+  address_postal: MyString
+  phone: MyString
+  fax: MyString
+  url: MyString
+  reg_status: MyString
+  reg_date: 2011-09-02 16:41:35

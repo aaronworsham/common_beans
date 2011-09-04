@@ -1,0 +1,14 @@
+<%= render_backbone_templates %>
+
+<%= form_for Holding.new, :url => '#' do |f| %>
+  <%= f.label :shares %>
+  <%= f.text_field :shares %>
+  <%= f.label :ticker %>
+  <%= f.text_field :ticker %>
+  <%= link_to 'Submit', "#", :class => 'click' %>
+<% end %>
+
+<%= content_for :on_ready do %>
+  var holding = new Holding;
+  var view = new HoldingView({model:holding});
+<% end %>
