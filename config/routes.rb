@@ -4,6 +4,8 @@ CommonBeans::Application.routes.draw do
 
   resources :trackers
   resources :messages
+  resources :buys
+  resources :sells
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -5,11 +5,12 @@ class Sell < Holding
   def notify_everyone
     MessageEveryone.new(
       :text     => standard_message,
-      :type     => 'sell'
+      :action   => 'sold',
+      :user     => user.screename
     ).save
   end
 
   def standard_message
-    "Has bought #{shares} shares of #{ticker.symbol}"
+    "#{shares} shares of #{ticker.symbol}"
   end
 end

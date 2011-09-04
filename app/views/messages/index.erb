@@ -1,9 +1,9 @@
 <table>
   <% @messages.each do |m| %>
     <tr>
+      <td><%= m["user"]%></td>
+      <td><%= m["action"]%></td>
       <td><%= m["text"]%></td>
-      <td><%= m["date"]%></td>
-      <td><%= m["type"]%></td>
     </tr>
   <% end %>
 </table>

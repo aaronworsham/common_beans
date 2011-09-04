@@ -1,6 +1,16 @@
 <%= render_backbone_templates %>
 
-<%= form_for Holding.new, :url => '#' do |f| %>
+Buy Shares
+<%= form_for Buy.new, :url => '#' do |f| %>
+  <%= f.label :shares %>
+  <%= f.text_field :shares %>
+  <%= f.label :ticker %>
+  <%= f.text_field :ticker %>
+  <%= link_to 'Submit', "#", :class => 'click' %>
+<% end %>
+
+Sell Shares
+<%= form_for Sell.new, :url => '#' do |f| %>
   <%= f.label :shares %>
   <%= f.text_field :shares %>
   <%= f.label :ticker %>
@@ -9,6 +19,8 @@
 <% end %>
 
 <%= content_for :on_ready do %>
-  var holding = new Holding;
-  var view = new HoldingView({model:holding});
+  var buy = new Buy;
+  var buy_view = new BuyView({model:buy});
+  var sell = new Sell;
+  var sell_view = new SellView({model:sell});
 <% end %>

@@ -3,7 +3,8 @@ class Message
 
   def initialize(options)
     @text = options[:text]
-    @type = options[:type]
+    @action = options[:action]
+    @user = options[:user]
     @date = Time.now
   end
 
