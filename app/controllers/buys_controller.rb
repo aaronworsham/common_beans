@@ -3,7 +3,7 @@ class BuysController < ApplicationController
   respond_to :html, :json
 
   def create
-    @buy = Buy.create(params[:content].merge(:user => current_user))
+    @buy = Buy.create(params[:buy].merge(:user => current_user))
     respond_with(@buy) 
   end
 

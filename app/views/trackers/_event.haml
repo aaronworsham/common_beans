@@ -1,0 +1,9 @@
+%tr
+  %td= event.days_since_holding_purchase
+  %td= event.action_word[0].capitalize
+  %td= event.shares
+  %td= number_to_currency event.price
+  %td= number_to_currency event.investment
+  %td= number_to_currency event.return_on_investment
+  %td= event.date_of_event.to_s(:short)
+  %td

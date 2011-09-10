@@ -1,0 +1,18 @@
+%tr#holding{:data_holding_name => holding.ticker.name, :data_holding_id => holding.id}
+  %td.holding_name{:colspan => 7}="#{holding.ticker.symbol} - #{holding.ticker.name}"
+  %td.holding_buy_sell
+    %button.buy_button{:rel => 'facebox', :data_ticker_id => holding.ticker.id, :data_holding_id => holding.id}= "Bought #{holding.ticker.symbol} Shares"
+    %button.sell_button{:rel => 'facebox', :data_ticker_id => holding.ticker.id, :data_holding_id => holding.id}= "Sold #{holding.ticker.symbol} Shares"
+%tr
+  %td Day 1
+  %td B
+  %td=holding.starting_shares
+  %td=number_to_currency holding.starting_price
+  %td=number_to_currency holding.starting_investment
+  %td=number_to_currency holding.net_return
+  %td=holding.date_of_purchase.to_s(:short)
+  %td
+
+= render :partial => "event", :collection => holding.events
+  
+

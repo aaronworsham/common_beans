@@ -1,0 +1,10 @@
+= render_backbone_templates
+
+= render :partial => "profile", :collection => @profiles
+
+
+= content_for :on_ready do 
+  var buy = new Buy;
+  var buy_view = new BuyView({model:buy});
+  var sell = new Sell;
+  var sell_view = new SellView({model:sell});

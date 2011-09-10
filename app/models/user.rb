@@ -1,7 +1,10 @@
 class User < ActiveRecord::Base
   has_many :groups
   has_many :clubs
+  has_many :profiles
   has_many :holdings
+  has_many :buys
+  has_many :sells
 
 
   def follow!(user)
@@ -51,6 +54,9 @@ class User < ActiveRecord::Base
   # helper method to generate redis keys
   def redis_key(str)
     "user:#{self.id}:#{str}"
+  end
+  def events
+    (self.buys + self.sells).sort_by(&:created_at)
   end
 
 end

@@ -1,0 +1,4 @@
+#add-profile-form{:style => 'display:none;'}
+  = simple_form_for(Profile.new, :url => 'profiles') do |f|
+    = f.input :name 
+    = link_to 'Create', '#', :class => 'create_link'

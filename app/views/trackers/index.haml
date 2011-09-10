@@ -1,0 +1,18 @@
+
+#profile-buttons
+  %button{:id => 'add-profile'}Add Profile
+
+#profile-content
+
+= render :partial => "buy_holding"
+= render :partial => "sell_holding"
+= render :partial => "add_profile"
+= render :partial => "add_holding"
+
+= content_for :on_ready do
+  window.tv = new TrackerView
+  !="Profiles.reset(#{@profiles.to_json});"
+  !="Holdings.reset(#{@holdings.to_json});"
+  !="StockEvents.reset(#{@events.to_json});"
+
+  

@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110902205327) do
+ActiveRecord::Schema.define(:version => 20110909213725) do
 
   create_table "advisors", :force => true do |t|
     t.string   "crd_num"
@@ -29,6 +30,18 @@ ActiveRecord::Schema.define(:version => 20110902205327) do
     t.datetime "reg_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "buys", :force => true do |t|
+    t.integer  "ticker_id"
+    t.integer  "holding_id"
+    t.integer  "user_id"
+    t.integer  "shares"
+    t.decimal  "price",         :precision => 15, :scale => 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.decimal  "investment",    :precision => 15, :scale => 2
+    t.datetime "date_of_event"
   end
 
   create_table "club_memberships", :force => true do |t|
@@ -69,12 +82,17 @@ ActiveRecord::Schema.define(:version => 20110902205327) do
 
   create_table "holdings", :force => true do |t|
     t.integer  "ticker_id"
-    t.integer  "shares"
-    t.decimal  "purchase_price", :precision => 15, :scale => 2
-    t.decimal  "investment",     :precision => 15, :scale => 2
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "profile_id"
+    t.integer  "starting_shares"
+    t.decimal  "starting_price"
+    t.decimal  "starting_investment"
+    t.datetime "date_of_purchase"
+    t.integer  "net_shares"
+    t.decimal  "net_investment"
+    t.decimal  "net_return"
   end
 
   create_table "profiles", :force => true do |t|
@@ -83,6 +101,18 @@ ActiveRecord::Schema.define(:version => 20110902205327) do
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "sells", :force => true do |t|
+    t.integer  "ticker_id"
+    t.integer  "shares"
+    t.integer  "holding_id"
+    t.integer  "user_id"
+    t.decimal  "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.decimal  "return_on_investment"
+    t.datetime "date_of_event"
   end
 
   create_table "ticker_eods", :force => true do |t|
