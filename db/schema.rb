@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110909213725) do
+ActiveRecord::Schema.define(:version => 20110915230636) do
 
   create_table "advisors", :force => true do |t|
     t.string   "crd_num"
@@ -59,6 +59,20 @@ ActiveRecord::Schema.define(:version => 20110909213725) do
     t.datetime "updated_at"
   end
 
+  create_table "events", :force => true do |t|
+    t.integer  "ticker_id"
+    t.integer  "shares"
+    t.integer  "holding_id"
+    t.string   "type"
+    t.integer  "user_id"
+    t.datetime "date_of_event"
+    t.decimal  "return_on_investment"
+    t.decimal  "investment",           :precision => 15, :scale => 2
+    t.decimal  "price",                :precision => 15, :scale => 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "exchanges", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -85,7 +99,7 @@ ActiveRecord::Schema.define(:version => 20110909213725) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.integer  "profile_id"
+    t.integer  "portfolio_id"
     t.integer  "starting_shares"
     t.decimal  "starting_price"
     t.decimal  "starting_investment"
@@ -93,6 +107,14 @@ ActiveRecord::Schema.define(:version => 20110909213725) do
     t.integer  "net_shares"
     t.decimal  "net_investment"
     t.decimal  "net_return"
+  end
+
+  create_table "portfolios", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.string   "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "profiles", :force => true do |t|
@@ -135,9 +157,16 @@ ActiveRecord::Schema.define(:version => 20110909213725) do
 
   create_table "users", :force => true do |t|
     t.string   "email"
-    t.string   "screename"
+    t.string   "screen_name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "uid"
+    t.string   "provider"
+    t.string   "image_url"
+    t.string   "location"
+    t.text     "description"
+    t.text     "urls"
+    t.string   "name"
   end
 
 end

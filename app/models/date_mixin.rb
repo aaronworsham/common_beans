@@ -10,9 +10,9 @@ module DateMixin
   def humanize_seconds(sec)
     if sec > 31536000
       year, sec = seconds_to_years(sec)
-      "Year #{year} Day #{seconds_to_days(sec)}"
+      "Year #{year} Day #{seconds_to_days(sec) + 1}"
     else
-      "Day #{seconds_to_days(sec)}"
+      "Day #{seconds_to_days(sec) + 1}"
     end
   end
 end

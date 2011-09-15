@@ -1,3 +1,21 @@
-// Place all the styles related to the profiles controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#profile 
+  table{
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 12px;
+    margin: 5px;
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+    td.holding_name {
+      background: #e3efe7;
+      font-size: 14px;
+    }
+    td.holding_buy_sell {
+      width:250px;
+      background: #e3efe7;
+    }
+  ul
+  {
+    list-style:none;
+  }
+}

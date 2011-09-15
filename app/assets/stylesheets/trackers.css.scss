@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#profile-content table{
+#portfolio-content table{
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
 	font-size: 12px;
 	margin: 5px;
@@ -19,16 +19,16 @@
   }
 }
 
-#profile-content table th {
+#portfolio-content table th {
 	font-size: 13px;
 	font-weight: normal;
 	padding: 8px;
-	background: #165e16;
+	background: #53a514;
 	border-top: 4px solid #c2eac2;
 	border-bottom: 1px solid #fff;
 	color: #fff;
 }
-#profile-content table td {
+#portfolio-content table td {
 	padding: 8px;
 	background: #f0f7f2; 
 	border-bottom: 1px solid #fff;
@@ -36,12 +36,22 @@
 	border-top: 1px solid transparent;
 }
 
-#profile-content table tr:hover td
+#portfolio-content table tr:hover td
 {
 	background: #d0dafd;
 	color: #339;
 }
-td.holding_buy_sell button
+td.holding_buy_sell .remove-holding
+{
+  float: right;
+}
+
+tr .remove-portfolio
+{
+  float: right;
+}
+
+tr .remove-event
 {
   float: right;
 }
@@ -75,6 +85,11 @@ td.holding_buy_sell button
   }
 
 
+}
+
+#message ul
+{
+  list-style:none;
 }
 
 

@@ -6,9 +6,19 @@ CommonBeans::Application.routes.draw do
   resources :messages
   resources :buys
   resources :sells
-  resources :profiles
+  resources :portfolios
   resources :holdings
   resources :events
+  resources :pages
+  resources :sessions
+  resource :dashboard, :controller => 'Dashboard'
+
+
+  match "/auth/:provider/callback" => "sessions#create"
+  match "/signout" => "sessions#destroy", :as => :signout
+  match "/profiles/public/:screen_name" => "users#public"
+  root :to => 'pages#index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

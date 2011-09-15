@@ -1,11 +1,16 @@
-class Message
+class Message 
+  include ActiveModel::Validations
+  include ActiveModel::Conversion
+  extend ActiveModel::Naming
   
 
   def initialize(options)
     @text = options[:text]
     @action = options[:action]
-    @user = options[:user]
+    @user_screen_name = options[:user].screen_name
+    @user_image_url = options[:user].image_url
     @date = Time.now
+    @id = SecureRandom.uuid
   end
 
 
@@ -20,6 +25,14 @@ class Message
 
   def redis_queue_key
     "message:#{@queue}"
+  end
+
+  def self.jsonify(data)
+    if data.respond_to?('join')
+      "[#{data.join(',')}]"
+    else
+      "[#{data}]"
+    end
   end
 
 end

@@ -1,4 +1,4 @@
-class Sell< ActiveRecord::Base 
+class Sell< Event
 
   include DateMixin
   belongs_to :user
@@ -13,12 +13,13 @@ class Sell< ActiveRecord::Base
 
   before_create :populate_return
   after_create :update_holding, :notify_everyone
+  after_destroy :reset_holding
 
   def notify_everyone
     MessageEveryone.new(
       :text     => standard_message,
       :action   => 'sold',
-      :user     => user.screename
+      :user     => self.user
     ).save
   end
 
@@ -37,6 +38,9 @@ class Sell< ActiveRecord::Base
   def update_holding
     self.holding.update_net_values_for_sell(self)
   end
+  def reset_holding
+    self.holding.reset_values_for_sell(self)
+  end
 
   def return_on_investment
     self.shares * self.price
@@ -54,6 +58,7 @@ class Sell< ActiveRecord::Base
     result["action"] = self.class.name
     result["action_letter"] = self.action_word[0].capitalize
     result["investment"] = 0
+    result["relative_day"] = days_since_holding_purchase
     result
   end
 end

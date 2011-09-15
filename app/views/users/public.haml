@@ -1,0 +1,15 @@
+#profile
+  = image_tag @user.image_url
+  %table
+    %tr
+      %td Name
+      %td=@user.name
+    %tr
+      %td Screen Name
+      %td=@user.screen_name
+    %tr
+      %td Location
+      %td=@user.location
+    %tr
+      %td Description
+      %td=@user.description

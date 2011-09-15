@@ -1,0 +1,4 @@
+#add-portfolio-form{:style => 'display:none;'}
+  = simple_form_for(Portfolio.new, :url => '#') do |f|
+    = f.input :name 
+    = link_to 'Create', '#', :class => 'create_link'

@@ -19,6 +19,9 @@ gem 'factory_girl_rails'
 gem 'facebox-rails'
 gem 'faker'
 gem 'ejs'
+gem 'omniauth'
+gem "ruby-debug19", "~> 0.11.5"
+gem "linecache19", "~> 0.5.12"
 
 # Gems used only for assets and not required
 # in production environments by default.

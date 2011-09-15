@@ -1,5 +1,5 @@
 #sell-shares{:style => 'display:none;'}
-  = simple_form_for(Sell.new, :url => 'sells') do |f|
+  = simple_form_for(Event.new, :url => '#') do |f|
     = f.input :shares 
     = f.input :price
     = f.input :date_of_event

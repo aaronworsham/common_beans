@@ -15,4 +15,9 @@ class HoldingsController < ApplicationController
     @holding = Holding.create(params[:holding].merge(:user => current_user))
     respond_with(@holding)
   end
+  def destroy
+    @holding = Holding.find_by_id params[:id]
+    @holding.destroy
+    respond_with(@holding)
+  end
 end

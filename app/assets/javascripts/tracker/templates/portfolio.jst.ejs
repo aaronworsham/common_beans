@@ -1,0 +1,17 @@
+<table id='portfolio-holding-<%= id %>'>
+  <thead>
+    <tr>
+      <th scope="col"><%= name %></th>
+      <th scope="col">Buy/Sell</th>
+      <th scope="col">Shares</th>
+      <th scope="col">Price</th>
+      <th scope="col">Investment</th>
+      <th scope="col">Return</th>
+      <th scope="col">Date</th>
+      <th scope="col">
+        <button class="add-holding" data-portfolio-id="<%= id %>" rel="facebox">Add Holding</button>
+        <img src="/images/delete_icon.png" class="remove-portfolio" data-portfolio-id="<%= id %>" rel="facebox"/>
+      </th>
+    </tr>
+  </thead>
+</table>

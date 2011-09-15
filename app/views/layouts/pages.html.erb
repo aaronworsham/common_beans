@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CommonBeans</title>
+  <%= stylesheet_link_tag    "pages" %>
+  <%= javascript_include_tag "pages" %>
+  <%= csrf_meta_tags %>
+
+</head>
+<body>
+  <%=render "layouts/header" %>
+  <%= yield %>
+  <%=render "layouts/footer" %>
+</body>
+</html>

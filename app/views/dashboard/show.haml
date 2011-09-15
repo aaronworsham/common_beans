@@ -1,0 +1,31 @@
+= content_for :on_ready do
+  - if @portfolio
+    !="Portfolios.add(#{@portfolio.to_json});"
+  !="Holdings.reset(#{@holdings.to_json});"
+  !="Messages.reset(#{@messages});"
+
+
+.container_16
+  #portfolio-glance
+    - if @portfolio.blank?
+      = render 'empty_portfolio'
+
+.container_16
+  #messages
+    %ul
+      %li
+        %a{:href=>"#tabs-1"}Friends
+      %li
+        %a{:href=>"#tabs-2"}Following
+      %li
+        %a{:href=>"#tabs-3"}Groups
+    #tabs-1
+      %table
+   
+    #tabs-2
+      %table
+
+    #tabs-3
+      %table
+
+ 

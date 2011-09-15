@@ -1,5 +1,5 @@
 #add-holding-form{:style => 'display:none;'}
-  = simple_form_for(Holding.new, :url => 'holdings') do |f|
+  = simple_form_for(Holding.new, :url => '#') do |f|
     = f.input :ticker, :as => :select, :collection => Ticker.all
     = f.input :starting_shares
     = f.input :starting_price
