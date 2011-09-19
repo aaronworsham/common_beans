@@ -14,7 +14,7 @@ class window.MessageView extends Backbone.View
   render: ->
     elem = $(@el).append(@template(@model.toJSON()));
     $(elem).hide();
-    $("#tabs-1 table").append(elem);
+    $("#tab-everyone table").append(elem);
     $(elem).fadeIn("slow");
 
 

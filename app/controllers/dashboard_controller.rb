@@ -5,5 +5,6 @@ class DashboardController < ApplicationController
     @portfolio = current_user.portfolios.first
     @holdings = @portfolio.try('holdings') || []
     @messages = MessageEveryone.head
+    @messages_everyone_count = MessageEveryone.head_count
   end
 end
