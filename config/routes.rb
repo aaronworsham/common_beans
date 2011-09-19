@@ -11,12 +11,15 @@ CommonBeans::Application.routes.draw do
   resources :events
   resources :pages
   resources :sessions
+  resources :friends
+  resources :profiles
   resource :dashboard, :controller => 'Dashboard'
+  resource :social, :controller => 'Social'
 
 
   match "/auth/:provider/callback" => "sessions#create"
   match "/signout" => "sessions#destroy", :as => :signout
-  match "/profiles/public/:screen_name" => "users#public"
+  match "/profiles/public/:screen_name" => "profiles#public", :as => :public_profile
   root :to => 'pages#index'
 
   # The priority is based upon order of creation:

@@ -61,4 +61,9 @@ class Sell< Event
     result["relative_day"] = days_since_holding_purchase
     result
   end
+
+  def total_gain
+    self.return - self.todays_value
+  end
+
 end

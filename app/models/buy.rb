@@ -63,5 +63,8 @@ class Buy< Event
     result
   end
 
-  
+  def total_gain
+    todays_value - self.investment
+  end
+
 end

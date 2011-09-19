@@ -10,14 +10,16 @@
       .grid_11
         
         <!--start:menu grid -->
-        
+        .nav
+          = render 'layouts/nav'
+
         <!--start:menu top-menu -->
         .login
           - if current_user
             = "Hi #{current_user.screen_name}"
             = link_to "Sign Out", signout_path
           - else
-            = render "layouts/nav"
+            = render "layouts/login"
       .clear
       .grid_16
         .subtitle

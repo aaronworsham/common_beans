@@ -4,7 +4,6 @@
 //= require backbone
 //= require backbone_patching
 //= require date_formatter
-//= require_tree ./tracker/templates
-//= require_tree ./tracker
+//= require_tree ./profile/templates
+//= require_tree ./profile
 //= require logo
-

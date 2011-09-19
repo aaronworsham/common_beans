@@ -6,4 +6,9 @@ class Ticker < ActiveRecord::Base
     "<a target='_blank' href='http://finance.yahoo.com/q?s=#{self.symbol}'>#{self.name}(#{self.symbol})</a>"
   end 
 
+  def todays_close
+    50.0
+    # TickerEod.new.close
+  end
+
 end

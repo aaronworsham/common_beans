@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CommonBeans</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "profile_start" %>
+  <%= csrf_meta_tags %>
+  <script type ='text/javascript' charset = 'utf-8'>
+    $(document).ready(function() {
+      <%= yield :on_ready %>
+    })
+  </script>
+</head>
+<body>
+  <%=render "layouts/header" %>
+  <div id='Content'>
+    <%= yield %>
+  </div>
+  <%=render "layouts/footer" %>
+</body>
+</html>
+

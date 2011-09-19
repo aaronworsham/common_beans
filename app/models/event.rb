@@ -10,6 +10,13 @@ class Event < ActiveRecord::Base
     result["relative_day"] = days_since_holding_purchase
     result
   end
- 
+
+  def todays_price
+    self.ticker.todays_close
+  end
+
+  def todays_value
+    self.shares * self.todays_price
+  end
 
 end

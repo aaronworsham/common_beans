@@ -71,4 +71,20 @@ class Holding < ActiveRecord::Base
     result
   end
 
+  def todays_price
+    self.ticker.todays_close
+  end
+
+  def todays_value
+    self.net_shares * self.todays_price
+  end
+
+  def total_gain
+    self.todays_value + self.net_return - self.net_investment
+  end
+
+  def price_delta
+    self.todays_price - self.starting_price
+  end
+
 end

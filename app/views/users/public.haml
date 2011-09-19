@@ -2,6 +2,9 @@
   = image_tag @user.image_url
   %table
     %tr
+      %td{:colspan=>2}
+        = link_to "Follow", "#", :class=> 'follow-user'
+    %tr
       %td Name
       %td=@user.name
     %tr
