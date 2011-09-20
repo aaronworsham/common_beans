@@ -15,13 +15,13 @@ namespace :cb do
       end
     end
     desc 'Import Tickers'
-    task :tickers do
+    task :tickers => :environment do
       import_exchange(
-        :exchange => Exchange.find_by_name('NYSE'),
+        :exchange => Exchange.find_or_create_by_name('NYSE'),
         :filename => 'db/data/NYSE.csv'
       )
       import_exchange(
-        :exchange => Exchange.find_by_name('NASDAQ'),
+        :exchange => Exchange.find_or_create_by_name('NASDAQ'),
         :filename => 'db/data/NASDAQ.csv'
       )
     end

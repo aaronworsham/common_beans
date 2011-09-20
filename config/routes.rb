@@ -13,6 +13,9 @@ CommonBeans::Application.routes.draw do
   resources :sessions
   resources :friends
   resources :profiles
+  resources :tickers do
+    get :autocomplete_ticker_name, :on => :collection
+  end
   resource :dashboard, :controller => 'Dashboard'
   resource :social, :controller => 'Social'
 

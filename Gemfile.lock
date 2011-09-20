@@ -140,6 +140,8 @@ GEM
       activesupport (= 3.1.0)
       bundler (~> 1.0)
       railties (= 3.1.0)
+    rails3-jquery-autocomplete (0.9.1)
+      rails (~> 3.0)
     railties (3.1.0)
       actionpack (= 3.1.0)
       activesupport (= 3.1.0)
@@ -219,6 +221,7 @@ DEPENDENCIES
   linecache19 (~> 0.5.12)
   omniauth
   rails (= 3.1.0)
+  rails3-jquery-autocomplete
   rake (= 0.9.2)
   redis
   rspec

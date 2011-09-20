@@ -7,6 +7,8 @@ class TrackersController < ApplicationController
     @holdings = current_user.holdings
     @events = current_user.events
     @buy = Buy.new
-    @sell = Sell.new  end
+    @sell = Sell.new  
+    @tickers = Ticker.all.map{|x| "#{x.symbol} #{x.name}"}
+  end
 
 end

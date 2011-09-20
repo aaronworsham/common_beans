@@ -8,6 +8,8 @@ class Holding < ActiveRecord::Base
   has_many :sells 
   has_many :events, :dependent => :destroy
 
+  validates_presence_of :ticker_id
+
   after_create :notify_everyone
   before_create :populate_net_values
 

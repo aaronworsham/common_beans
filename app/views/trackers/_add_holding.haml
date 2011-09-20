@@ -1,6 +1,14 @@
+- content_for :on_ready do
+  != "window.tickerList = #{@tickers.to_s};"
+  $( "#facebox #holding_ticker" ).autocomplete({
+  source: window.tickerList
+  });
+
 #add-holding-form{:style => 'display:none;'}
   = simple_form_for(Holding.new, :url => '#') do |f|
-    = f.input :ticker, :as => :select, :collection => Ticker.all
+    -# = f.input :ticker, :as => :select, :collection => Ticker.all, :label_method => Proc.new{|x| "(#{x.symbol}) #{x.name}"}
+    = f.input :ticker, :url => autocomplete_ticker_name_tickers_path, :as => :autocomplete, :input_html => {"data-id-element" => "#facebox #holding_ticker_id"}
+    = f.input :ticker_id, :as => :hidden
     = f.input :starting_shares
     = f.input :starting_price
     = f.input :date_of_purchase

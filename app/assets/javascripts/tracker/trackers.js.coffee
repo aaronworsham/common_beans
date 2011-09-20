@@ -68,7 +68,7 @@ class window.FaceboxAddHoldingView extends Backbone.View
     return {
         authenticity_token: this.$("input[name=authenticity_token]").val(),
         holding: {
-          ticker_id: this.$("#holding_ticker").val(),
+          ticker_id: this.$("#holding_ticker_id").val(),
           starting_shares: this.$("#holding_starting_shares").val(),
           starting_price: this.$("#holding_starting_price").val(),
           'date_of_purchase(1i)': this.$("#holding_date_of_purchase_1i").val(),
@@ -175,5 +175,8 @@ $ ->
       }
     );
   );
+
+
+
 
 

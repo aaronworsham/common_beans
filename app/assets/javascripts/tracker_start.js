@@ -1,5 +1,6 @@
 //= require jquery
 //= require jquery-ui
+//= require autocomplete-rails
 //= require jquery.facebox
 //= require backbone
 //= require backbone_patching
