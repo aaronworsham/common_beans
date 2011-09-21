@@ -12,6 +12,7 @@ class Holding < ActiveRecord::Base
 
   after_create :notify_everyone
   before_create :populate_net_values
+  attr_accessor :ticker_name, :ticker_symbol
 
    def notify_everyone
     MessageEveryone.new(
@@ -70,11 +71,39 @@ class Holding < ActiveRecord::Base
     result["ticker_name"] = self.ticker.name
     result["ticker_symbol"] = self.ticker.symbol
     result["relative_day"] = self.days_since_holding_purchase
+    result["todays_value"] = self.todays_value
+    result["total_gain"] = self.total_gain
+    result["todays_price"] = self.todays_price
+    result["price_delta"] = self.price_delta
+    result["day_delta"] = self.day_delta
+    result["week_delta"] = self.week_delta
+    result["month_delta"] = self.month_delta
+    result["year_delta"] = self.year_delta
     result
   end
 
   def todays_price
     self.ticker.todays_close
+  end
+
+  def yesterdays_price
+    self.ticker.todays_close
+
+  end
+
+  def last_weeks_price
+    self.ticker.todays_close
+
+  end
+
+  def last_months_price
+    self.ticker.todays_close
+
+  end
+
+  def last_years_price
+    self.ticker.todays_close
+
   end
 
   def todays_value
@@ -89,4 +118,16 @@ class Holding < ActiveRecord::Base
     self.todays_price - self.starting_price
   end
 
+  def day_delta
+    self.yesterdays_price - self.starting_price
+  end
+  def week_delta
+    self.last_weeks_price - self.starting_price
+  end
+  def month_delta
+    self.last_months_price - self.starting_price
+  end
+  def year_delta
+    self.last_years_price - self.starting_price
+  end
 end
