@@ -1,14 +1,22 @@
+<%= name %>
 <table id='portfolio-holding-<%= id %>'>
   <thead>
-    <tr>
-      <th scope="col"><%= name %></th>
-      <th scope="col">Total Shares</th>
-      <th scope="col">Total Investment</th>
-      <th scope="col">Total Return</th>
-      <th scope="col">Today's Price</th>
-      <th scope="col">Today's Value</th>
+    <tr class='super_head'>
+      <th></th>
+      <th colspan=3>Totals</th>
+      <th colspan=2>Today's</th>
+      <th colspan=3>Gain/Loss</th>
+    </tr>
+    <tr class='sub_head'>
+      <th>Sym</th>
+      <th scope="col">Shares</th>
+      <th scope="col">Investment</th>
+      <th scope="col">Return</th>
+      <th scope="col">Price</th>
+      <th scope="col">Value</th>
       <th scope="col">Total Gain</th>
       <th scope="col">DΔ/WΔ/MΔ/YΔ</th>
+      <th scope="col">Dow/S&P/Sav/Infl</th>
     </tr>
   </thead>
 </table>

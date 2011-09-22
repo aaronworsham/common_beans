@@ -1,13 +1,13 @@
 = content_for :on_ready do
-  - if @portfolio
-    !="Portfolios.add(#{@portfolio.to_json});"
+  - if @portfolios
+    !="Portfolios.add(#{@portfolios.to_json});"
   !="Holdings.reset(#{@holdings.to_json});"
   !="Messages.reset(#{@messages});"
 
 
 .container_16
   #portfolio-glance
-    - if @portfolio.blank?
+    - if @portfolios.empty?
       = render 'empty_portfolio'
 
 .container_16
@@ -16,25 +16,48 @@
       %li
         %a{:href=>"#tab-friends"}="Friends"
       %li
-        %a{:href=>"#tab-following"}="Following"
+        %a{:href=>"#tab-you-follow"}="You Follow"
+      %li
+        %a{:href=>"#tab-follows-you"}="Follow You"
       %li
         %a{:href=>"#tab-groups"}="Groups"
       %li
-        %a{:href=>"#tab-system"}="System"
-      %li
         %a{:href=>"#tab-everyone"}="Everyone(#{@messages_everyone_count})"
+      %li
+        %a{:href=>"#tab-news"}="News"
+      %li
+        %a{:href=>"#tab-system"}="System"
     #tab-friends
+      - @friends.each do |f|
+        = link_to image_tag(f.image_url, :size => '25x25', :alt => f.screen_name), public_profile_path(f.screen_name)
+      %br
+      = text_area :friend, :message, :placeholder => 'Message all Friends', :cols => 100, :rows => 3
       %table
+
    
-    #tab-following
+    #tab-you-follow
+      - @following.each do |f|
+        = image_tag(f.image_url, :size => '25x25', :alt => f.screen_name)
       %table
+    #tab-follows-you
+      - @following.each do |f|
+        = image_tag(f.image_url, :size => '25x25', :alt => f.screen_name)
+      %br
+      = text_area :friend, :message, :placeholder => 'Message everyone following you', :cols => 100, :rows => 3
+      %table
+
 
     #tab-groups
       %table
+
+    #tab-news
+      %table
+
 
     #tab-system
       %table
 
     #tab-everyone
+      = text_area :friend, :message, :placeholder => 'Message Everyone', :cols => 100, :rows => 3
       %table
 

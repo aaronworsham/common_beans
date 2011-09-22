@@ -4,60 +4,76 @@
 
 #portfolio-glance{
   cursor:pointer;
-}
+  table {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 12px;
+    margin: 2px;
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+    tr.holding-tr{
+      td{
+        text-align:left;
+        background: #cfeab9;
+        font-size:16px;
+        color:#64b0fc;
+      }
+    }
+    td{
+      text-align: center;
+      padding: 2px;
+      background: #f0f7f2; 
+      border-bottom: 1px solid #fff;
+      color: #014414;
+      border-top: 1px solid transparent;
 
-#portfolio-glance table{
-	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-	font-size: 12px;
-	margin: 5px;
-	width: 100%;
-	text-align: left;
-	border-collapse: collapse;
-  td.holding_name {
-    background: #e3efe7;
-    font-size: 14px;
+      .holding_name {
+        background: #e3efe7;
+        font-size: 14px;
+      }
+      .holding_buy_sell {
+        width:250px;
+        background: #e3efe7;
+        .remove-holding{
+          float: right;
+        }
+      }
+    }
+    th{
+      text-align:center;
+      font-size: 13px;
+      font-weight: normal;
+      padding: 2px;
+      background: #53a514;
+      border-left:2px solid #a1ea64;
+      border-right:2px solid #a1ea64;
+      border-bottom: 1px solid #fff;
+      color: #fff;
+      .remove-profile{
+        float: right;
+      }
+      .remove-event{
+        float: right;
+      }
+    }
+    tr.super_head{
+      th{
+        text-align:center;
+        border: 2px solid #a1ea64;
+      }
+      th.name{
+        font-size:16px;
+        color:#c2def9;
+        border-bottom:0px;
+      }
+    }
   }
-  td.holding_buy_sell {
-    width:250px;
-    background: #e3efe7;
-  }
-}
-
-#portfolio-glance table th {
-	font-size: 13px;
-	font-weight: normal;
-	padding: 8px;
-	background: #53a514;
-	border-top: 4px solid #c2eac2;
-	border-bottom: 1px solid #fff;
-	color: #fff;
-}
-#portfolio-glance table td {
-	padding: 8px;
-	background: #f0f7f2; 
-	border-bottom: 1px solid #fff;
-	color: #014414;
-	border-top: 1px solid transparent;
 }
 
 #portfolio-glance table tr:hover td
 {
 	background: #d0dafd;
 	color: #339;
-}
-td.holding_buy_sell .remove-holding
-{
-  float: right;
-}
-
-tr .remove-profile
-{
-  float: right;
-}
-
-tr .remove-event
-{
-  float: right;
 }
 
 
@@ -94,6 +110,7 @@ tr .remove-event
 #messages table td{
   padding-right: 30px;
 }
+
 
 
 
