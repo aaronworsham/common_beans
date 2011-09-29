@@ -10,7 +10,6 @@ class window.PortfolioView extends Backbone.View
 
   tagName: "div"
 
-
   initialize: ->
     @model.view = this
     @model.bind('change', @render, this);

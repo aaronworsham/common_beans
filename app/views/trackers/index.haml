@@ -1,7 +1,7 @@
 = content_for :on_ready do
-  !="window.Portfolios.reset(#{@portfolios.to_json});"
-  !="Holdings.reset(#{@holdings.to_json});"
-  !="StockEvents.reset(#{@events.to_json});"
+  !="window.TrackerPortfolios.reset(#{@portfolios.to_json});"
+  !="TrackerHoldings.reset(#{@holdings.to_json});"
+  !="TrackerStockEvents.reset(#{@events.to_json});"
 
 = content_for :templates do
   = template_include_tag 'trackers/holding'
