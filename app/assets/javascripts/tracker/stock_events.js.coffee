@@ -13,7 +13,6 @@ class window.StockEventView extends Backbone.View
 
   tagName: "tr"
 
-  template: JST["tracker/templates/stock_event"]
 
   initialize: ->
     @model.view = this
@@ -21,7 +20,7 @@ class window.StockEventView extends Backbone.View
     @model.bind('destroy', @remove, this);
 
   render: ->
-    elem = $(@el).append(@template(@model.toJSON()));
+    elem = $(@el).append(ich.stock_event_template(@model.toJSON()));
     $(elem).hide();
     $(elem).addClass('event-tr');
     $(elem).attr('data-cid', @model.cid);

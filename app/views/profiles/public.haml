@@ -1,6 +1,9 @@
 - content_for :on_ready do
   = "window.friendId = #{@user.id};"
 
+- content_for :templates do
+  = template_include_tag 'profiles/add_friend'
+
 #profile
   = image_tag @user.image_url
   %table

@@ -16,14 +16,13 @@ class window.HoldingView extends Backbone.View
 
   tagName: "tbody"
 
-  template: JST["tracker/templates/holding"]
 
   initialize: ->
     @model.view = this
     @model.bind('destroy', @remove, this);
 
   render: ->
-    elem = $(@el).append(@template(@model.toJSON()));
+    elem = $(@el).append(ich.holding_template(@model.toJSON()));
     $(elem).hide();
     $("#portfolio-holding-" + @model.get('portfolio_id')).append(elem);
     $(elem).fadeIn("slow");
@@ -35,8 +34,6 @@ class window.HoldingView extends Backbone.View
 
 class window.HoldingTodayView extends Backbone.View
 
-  template: JST["tracker/templates/holding_today"]
-  template_update: JST["tracker/templates/holding_today_update"]
 
   initialize: ->
     @model.today_view = this
@@ -44,7 +41,7 @@ class window.HoldingTodayView extends Backbone.View
     @model.bind('destroy', @remove, this);
 
   render: ->
-    @el = $(@template(@model.toJSON()));
+    @el = $(ich.holding_today_template(@model.toJSON()));
     elem = @el;
     $(elem).hide();
     $("#portfolio-holding-" + @model.get('portfolio_id') + ' tbody').append(elem);
@@ -52,7 +49,7 @@ class window.HoldingTodayView extends Backbone.View
 
   update: ->
     $(@el).fadeOut('slow');
-    $(@el).html($(@template_update(@model.toJSON())));
+    $(@el).html($(ich.holding_today_update_template(@model.toJSON())));
     $(@el).fadeIn("slow");
 
   remove: ->

@@ -5,6 +5,12 @@
   !="Messages.reset(#{@messages});"
 
 
+= content_for :templates do
+  = template_include_tag "dashboard/holding_today"
+  = template_include_tag "dashboard/holding_today_update"
+  = template_include_tag "dashboard/message"
+  = template_include_tag "dashboard/portfolio"
+
 .container_16
   #portfolio-glance
     - if @portfolios.empty?
@@ -60,4 +66,5 @@
     #tab-everyone
       = text_area :friend, :message, :placeholder => 'Message Everyone', :cols => 100, :rows => 3
       %table
+
 

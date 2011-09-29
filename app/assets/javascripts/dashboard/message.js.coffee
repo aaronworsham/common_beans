@@ -6,13 +6,12 @@ class window.Message extends Backbone.Model
 class window.MessageView extends Backbone.View
   tagName: "tr"
 
-  template: JST["dashboard/templates/message"]
 
   initialize: ->
     @model.view = this
 
   render: ->
-    elem = $(@el).append(@template(@model.toJSON()));
+    elem = $(@el).append(ich.message_template(@model.toJSON()));
     $(elem).hide();
     $("#tab-everyone table").append(elem);
     $(elem).fadeIn("slow");

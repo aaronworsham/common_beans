@@ -3,3 +3,4 @@ $ ->
   $('#portfolio-glance').click(->
     window.location = "/trackers"
   );
+

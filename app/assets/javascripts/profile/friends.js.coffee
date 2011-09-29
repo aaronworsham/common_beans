@@ -2,6 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
+
 class window.Friend extends Backbone.Model
   urlRoot : "/friends"
 
@@ -10,15 +11,13 @@ class window.FriendView extends Backbone.View
 
   tagName: "div"
 
-  template: JST["tracker/templates/add_friend"]
-
   initialize: ->
     @model.view = this
     @model.bind('change', @render, this);
     @model.bind('destroy', @remove, this);
     
   render: ->
-    elem = $(@el).append(@template(@model.toJSON()));
+    elem = $(@el).append(ich.add_friend_template(@model.toJSON()));
     $(elem).hide();
     $('#friend-content').append(elem);
     $(elem).fadeIn("slow");

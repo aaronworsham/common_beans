@@ -3,6 +3,13 @@
   !="Holdings.reset(#{@holdings.to_json});"
   !="StockEvents.reset(#{@events.to_json});"
 
+= content_for :templates do
+  = template_include_tag 'trackers/holding'
+  = template_include_tag 'trackers/holding_today'
+  = template_include_tag 'trackers/holding_today_update'
+  = template_include_tag 'trackers/stock_event'
+  = template_include_tag 'trackers/portfolio'
+
 #portfolio-buttons
   %button{:id => 'add-portfolio'}Add portfolio
 

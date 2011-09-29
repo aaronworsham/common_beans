@@ -19,10 +19,13 @@ gem 'factory_girl_rails'
 gem 'facebox-rails'
 gem 'faker'
 gem 'ejs'
+gem 'jasmine'
 gem 'omniauth'
 gem "ruby-debug19", "~> 0.11.5"
 gem "linecache19", "~> 0.5.12"
 gem "rails3-jquery-autocomplete"
+gem 'mustache'
+gem "stache", "~> 0.0.2"
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -35,9 +38,23 @@ end
 gem 'jquery-rails'
 
 group :test do
-  gem 'rspec'
-  gem 'rspec-rails'
-  
+  gem 'rspec',       "~> 2.6.0"
+  gem 'rspec-rails', "~> 2.6.1"
+  gem 'timecop'
+  gem 'mocha'
+  gem 'factory_girl'
+  gem 'populator'
+  gem 'jasmine'
+  gem 'capybara'
+  gem 'headless'
+  gem 'shoulda'
+  gem 'launchy'
+  gem 'faker'
+  gem 'timecop'
+  gem 'guard'
+  gem 'guard-coffeescript'
+
+
 end
 
 # Use unicorn as the web server

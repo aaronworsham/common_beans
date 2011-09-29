@@ -10,7 +10,6 @@ class window.PortfolioView extends Backbone.View
 
   tagName: "div"
 
-  template: JST["dashboard/templates/portfolio"]
 
   initialize: ->
     @model.view = this
@@ -18,7 +17,7 @@ class window.PortfolioView extends Backbone.View
     @model.bind('destroy', @remove, this);
     
   render: ->
-    elem = $(@el).append(@template(@model.toJSON()));
+    elem = $(@el).append(ich.portfolio_template(@model.toJSON()));
     $(elem).hide();
     $('#portfolio-glance').append(elem);
     $(elem).fadeIn("slow");

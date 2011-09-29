@@ -5,6 +5,7 @@
 //= require backbone_patching
 //= require date_formatter
 //= require currency_formatter
+//= require ICanHaz
 //=require_tree ./dashboard/templates
 //=require_tree ./dashboard
 //= require logo
