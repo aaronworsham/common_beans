@@ -1,9 +1,0 @@
-//= require jquery
-//= require jquery-ui
-//= require jquery.facebox
-//= require backbone
-//= require backbone_patching
-//= require date_formatter
-//= require_tree ./profile/templates
-//= require_tree ./profile
-//= require logo
