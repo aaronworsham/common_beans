@@ -1,7 +1,5 @@
 class window.DashboardMessageCollection extends Backbone.Collection
-
-
-  model: Message
+  model: MessageModel
 
   initialize: ->
     @bind('add', @addOneView, this);
@@ -21,7 +19,7 @@ window.Messages.bind('reset', (messages)->
 );
 
 class window.PortfolioCollection extends Backbone.Collection
-  model: DashboardPortfolio
+  model: PortfolioModel
 
   initialize: ->
     @bind('add', @addOneView, this);
@@ -41,7 +39,7 @@ window.DashboardPortfolios.bind('reset', (portfolios)->
 
 
 class window.DashboardHoldingCollection extends Backbone.Collection
-  model: Holding
+  model: HoldingModel
   initialize: ->
     @bind('add', @addOneView, this);
 

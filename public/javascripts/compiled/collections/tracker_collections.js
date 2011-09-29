@@ -15,7 +15,7 @@
     function TrackerHoldingCollection() {
       TrackerHoldingCollection.__super__.constructor.apply(this, arguments);
     }
-    TrackerHoldingCollection.prototype.model = TrackerHolding;
+    TrackerHoldingCollection.prototype.model = HoldingModel;
     TrackerHoldingCollection.prototype.initialize = function() {
       return this.bind('add', this.addOneView, this);
     };
@@ -43,7 +43,7 @@
     function TrackerPortfolioCollection() {
       TrackerPortfolioCollection.__super__.constructor.apply(this, arguments);
     }
-    TrackerPortfolioCollection.prototype.model = TrackerPortfolio;
+    TrackerPortfolioCollection.prototype.model = PortfolioModel;
     TrackerPortfolioCollection.prototype.initialize = function() {
       return this.bind('add', this.addOneView, this);
     };
@@ -67,7 +67,7 @@
     function TrackerStockEventCollection() {
       TrackerStockEventCollection.__super__.constructor.apply(this, arguments);
     }
-    TrackerStockEventCollection.prototype.model = TrackerStockEvent;
+    TrackerStockEventCollection.prototype.model = StockEventModel;
     TrackerStockEventCollection.prototype.initialize = function() {
       return this.bind('add', this.addOneView, this);
     };

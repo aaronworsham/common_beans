@@ -1,15 +1,9 @@
 ###
-= require jquery
-= require jquery-ui
-= require autocomplete-rails
-= require jquery.facebox
-= require backbone
-= require ICanHaz
-= require date_formatter
+= require application
 = require models/tracker_models
 = require views/tracker_views
 = require collections/tracker_collections
-= require logo
+
 ###
 
 
@@ -26,7 +20,7 @@ $ ->
     holding_id = $(this).attr('data_holding_id');
 
     submit_form = ->
-      event = new TrackerStockEvent({holding_id:holding_id});
+      event = new StockEventModel({holding_id:holding_id});
       event.urlRoot = url_root
       view = new TrackerFaceboxEventSharesView({model:event});
       view.submit();
@@ -44,20 +38,17 @@ $ ->
   );
 
 
-
-
-
   $('button#add-portfolio').click((e) ->
     e.stopPropagation();
     $.facebox({div:'#add-portfolio-form'});
     $('#facebox .create_link').click( ->
-      portfolio = new TrackerPortfolio;
+      portfolio = new PortfolioModel;
       view = new TrackerFaceboxAddPortfolioView({model:portfolio});
       view.submit();
       $(document).trigger('close.facebox')
     );
     $('#facebox form').submit( ->
-      portfolio = new TrackerPortfolio;
+      portfolio = new PortfolioModel;
       view = new TrackerFaceboxAddPortfolioView({model:portfolio});
       view.submit();
       $(document).trigger('close.facebox')

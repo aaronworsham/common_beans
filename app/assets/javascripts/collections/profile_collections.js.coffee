@@ -1,6 +1,6 @@
 
 class window.ProfileFriendCollection extends Backbone.Collection
-  model: Friend
+  model: FriendModel
 
   initialize: ->
     @bind('add', @addOneView, this);

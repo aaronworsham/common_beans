@@ -1,14 +1,8 @@
 ###
-= require jquery
-= require jquery-ui
-= require jquery.facebox
-= require backbone
-= require backbone_patching
-= require date_formatter
+= require application
 = require models/profile_models
 = require views/profile_views
 = require collections/profile_collections
-= require logo
 ###
 
 $ ->

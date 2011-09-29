@@ -12,7 +12,7 @@
     function DashboardMessageCollection() {
       DashboardMessageCollection.__super__.constructor.apply(this, arguments);
     }
-    DashboardMessageCollection.prototype.model = Message;
+    DashboardMessageCollection.prototype.model = MessageModel;
     DashboardMessageCollection.prototype.initialize = function() {
       return this.bind('add', this.addOneView, this);
     };
@@ -36,7 +36,7 @@
     function PortfolioCollection() {
       PortfolioCollection.__super__.constructor.apply(this, arguments);
     }
-    PortfolioCollection.prototype.model = DashboardPortfolio;
+    PortfolioCollection.prototype.model = PortfolioModel;
     PortfolioCollection.prototype.initialize = function() {
       return this.bind('add', this.addOneView, this);
     };
@@ -60,7 +60,7 @@
     function DashboardHoldingCollection() {
       DashboardHoldingCollection.__super__.constructor.apply(this, arguments);
     }
-    DashboardHoldingCollection.prototype.model = Holding;
+    DashboardHoldingCollection.prototype.model = HoldingModel;
     DashboardHoldingCollection.prototype.initialize = function() {
       return this.bind('add', this.addOneView, this);
     };

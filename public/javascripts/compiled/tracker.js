@@ -1,16 +1,10 @@
 (function() {
   /*
-  = require jquery
-  = require jquery-ui
-  = require autocomplete-rails
-  = require jquery.facebox
-  = require backbone
-  = require ICanHaz
-  = require date_formatter
+  = require application
   = require models/tracker_models
   = require views/tracker_views
   = require collections/tracker_collections
-  = require logo
+  
   */  $(function() {
     $('button.buy_button[rel*=facebox], button.sell_button[rel*=facebox]').live('click', function(e) {
       var holding_id, submit_form, url_root;
@@ -26,7 +20,7 @@
       holding_id = $(this).attr('data_holding_id');
       submit_form = function() {
         var event, view;
-        event = new TrackerStockEvent({
+        event = new StockEventModel({
           holding_id: holding_id
         });
         event.urlRoot = url_root;
@@ -51,7 +45,7 @@
       });
       $('#facebox .create_link').click(function() {
         var portfolio, view;
-        portfolio = new TrackerPortfolio;
+        portfolio = new PortfolioModel;
         view = new TrackerFaceboxAddPortfolioView({
           model: portfolio
         });
@@ -60,7 +54,7 @@
       });
       $('#facebox form').submit(function() {
         var portfolio, view;
-        portfolio = new TrackerPortfolio;
+        portfolio = new PortfolioModel;
         view = new TrackerFaceboxAddPortfolioView({
           model: portfolio
         });

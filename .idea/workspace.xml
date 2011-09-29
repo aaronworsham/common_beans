@@ -2,32 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="868981f8-151c-47ab-b287-5f8e4d7cf48c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/collections/dashboard_collections.js.coffee" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/collections/profile_collections.js.coffee" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/dashboard.js.coffee" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/models/dashboard_models.js.coffee" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/models/profile_models.js.coffee" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/profile,js.coffee" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/social.js.coffee" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/dashboard_views.js.coffee" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/profile_views.js.coffee" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/javascripts/dashboard/dashboard.js.coffee" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/javascripts/dashboard/holdings.js.coffee" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/javascripts/dashboard/message.js.coffee" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/javascripts/dashboard/portfolios.js.coffee" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/javascripts/dashboard_start.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/javascripts/profile/friends.js.coffee" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/javascripts/profile/profiles.js.coffee" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/javascripts/profile_start.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/javascripts/social/social.js.coffee" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/javascripts/social_start.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/javascripts/compiled/dashboard/portfolios.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/javascripts/compiled/tracker/holdings.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/javascripts/compiled/tracker/portfolios.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/javascripts/compiled/tracker/stock_events.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/javascripts/compiled/tracker/trackers.js" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js.coffee" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/models/cb_models.js.coffee" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/javascripts/application.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/javascripts/logo.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/javascripts/models/dashboard_models.js.coffee" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/javascripts/models/profile_models.js.coffee" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/javascripts/models/tracker_models.js.coffee" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/javascripts/compiled/profile/friends.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/javascripts/compiled/profile/profiles.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/javascripts/compiled/social/social.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/javascripts/jasmine_examples/Player.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/javascripts/jasmine_examples/Song.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/compiled/profile,js" afterPath="$PROJECT_DIR$/public/javascripts/compiled/profile,js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/dashboard.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/dashboard.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/collections/dashboard_collections.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/collections/dashboard_collections.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/collections/profile_collections.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/collections/profile_collections.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/collections/tracker_collections.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/collections/tracker_collections.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/profile,js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/profile,js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/social.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/social.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/tracker.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/tracker.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/compiled/collections/dashboard_collections.js" afterPath="$PROJECT_DIR$/public/javascripts/compiled/collections/dashboard_collections.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/compiled/collections/profile_collections.js" afterPath="$PROJECT_DIR$/public/javascripts/compiled/collections/profile_collections.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/compiled/collections/tracker_collections.js" afterPath="$PROJECT_DIR$/public/javascripts/compiled/collections/tracker_collections.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/compiled/models/dashboard_models.js" afterPath="$PROJECT_DIR$/public/javascripts/compiled/models/dashboard_models.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/compiled/models/profile_models.js" afterPath="$PROJECT_DIR$/public/javascripts/compiled/models/profile_models.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/compiled/models/tracker_models.js" afterPath="$PROJECT_DIR$/public/javascripts/compiled/models/tracker_models.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/compiled/social.js" afterPath="$PROJECT_DIR$/public/javascripts/compiled/social.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/compiled/tracker.js" afterPath="$PROJECT_DIR$/public/javascripts/compiled/tracker.js" />
     </list>
     <ignored path="common_beans.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -54,46 +56,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="dashboard.js.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/dashboard.js.coffee">
+      <file leaf-file-name="tracker.js.coffee" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/tracker.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="0" selection-start="213" selection-end="322" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="profile,js.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/profile,js.coffee">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="0" selection-start="138" selection-end="241" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="social.js.coffee" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/social.js.coffee">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="36" selection-start="313" selection-end="313" vertical-scroll-proportion="0.3178808">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dashboard_models.js.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/models/dashboard_models.js.coffee">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="0" selection-start="2" selection-end="2" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dashboard_collections.js.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/collections/dashboard_collections.js.coffee">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="17" selection-start="389" selection-end="389" vertical-scroll-proportion="0.0">
+            <state line="38" column="0" selection-start="856" selection-end="856" vertical-scroll-proportion="0.8628193">
               <folding />
             </state>
           </provider>
@@ -113,22 +79,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/assets/javascripts/dashboard/portfolios.js.coffee" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/dashboard/holdings.js.coffee" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/dashboard/dashboard.js.coffee" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/views/dashboard_views.js.coffee" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/models/dashboard_models.js.coffee" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/collections/dashboard_collections.js.coffee" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/dashboard.js.coffee" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/profile/profiles.js.coffee" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/profile_start.js" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/models/profile_models.js.coffee" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/views/profile_views.js.coffee" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/profile/friends.js.coffee" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/collections/profile_collections.js.coffee" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/profile,js.coffee" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/social/social.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/logo.js" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/application.js.coffee" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/social.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/profile,js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/models/dashboard_models.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/models/profile_models.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/models/tracker_models.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/models/cb_models.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/collections/dashboard_collections.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/collections/profile_collections.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/collections/tracker_collections.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/tracker.js.coffee" />
       </list>
     </option>
   </component>
@@ -194,7 +160,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
+              <option name="myItemId" value="spec" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -208,29 +174,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common_beans" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common_beans" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
+              <option name="myItemId" value="spec" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -361,6 +305,84 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="javascripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="common_beans" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="common_beans" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="javascripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="common_beans" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="common_beans" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="javascripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="common_beans" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="common_beans" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="javascripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="collections" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -885,14 +907,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1916" height="1178" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299411" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32780847" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296501" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15479378" sideWeight="0.32688767" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18907338" sideWeight="0.0" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18907338" sideWeight="0.0" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32872927" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="1134" y="463" width="1276" height="268" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296501" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -948,56 +970,44 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/models/tracker_models.js.coffee">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="20" selection-start="255" selection-end="255" vertical-scroll-proportion="0.27246925">
+        <state line="15" column="58" selection-start="227" selection-end="227" vertical-scroll-proportion="0.34058657">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/autocomplete-rails.js">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/social.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="120" selection-start="604" selection-end="604" vertical-scroll-proportion="0.3448276">
+        <state line="4" column="40" selection-start="126" selection-end="126" vertical-scroll-proportion="0.090823084">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/currency_formatter.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/trackers/index.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="12" selection-start="152" selection-end="152" vertical-scroll-proportion="0.06811731">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/tracker.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/profile,js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="37" selection-start="142" selection-end="142" vertical-scroll-proportion="0.1171875">
+        <state line="4" column="41" selection-start="129" selection-end="129" vertical-scroll-proportion="0.090823084">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/tracker.js.coffee">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/dashboard.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="157" selection-end="260" vertical-scroll-proportion="0.0">
+        <state line="9" column="0" selection-start="213" selection-end="322" vertical-scroll-proportion="0.20435195">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/models/dashboard_models.js.coffee">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/dashboard_views.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="2" selection-end="2" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/collections/dashboard_collections.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="17" selection-start="389" selection-end="389" vertical-scroll-proportion="0.0">
+        <state line="39" column="0" selection-start="812" selection-end="812" vertical-scroll-proportion="0.88552505">
           <folding />
         </state>
       </provider>
@@ -1009,44 +1019,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/models/profile_models.js.coffee">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/tracker_views.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="21" selection-start="74" selection-end="74" vertical-scroll-proportion="0.06943105">
+        <state line="11" column="33" selection-start="213" selection-end="213" vertical-scroll-proportion="0.24976349">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/models/cb_models.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="0" selection-start="278" selection-end="278" vertical-scroll-proportion="0.3178808">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/compiled/models/dashboard_models.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/javascripts/portfolio_spec.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="19" selection-start="227" selection-end="227" vertical-scroll-proportion="0.13623463">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/collections/tracker_collections.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="39" selection-start="382" selection-end="382" vertical-scroll-proportion="0.4087039">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/collections/profile_collections.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="21" selection-start="376" selection-end="376" vertical-scroll-proportion="0.39344263">
+        <state line="12" column="24" selection-start="222" selection-end="222" vertical-scroll-proportion="0.27246925">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/dashboard_views.js.coffee">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/collections/dashboard_collections.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="1" selection-end="1" vertical-scroll-proportion="0.022705771">
+        <state line="4" column="25" selection-start="133" selection-end="133" vertical-scroll-proportion="0.090823084">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/dashboard.js.coffee">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/tracker.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="213" selection-end="322" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/profile,js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="138" selection-end="241" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/social.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="36" selection-start="313" selection-end="313" vertical-scroll-proportion="0.3178808">
+        <state line="38" column="0" selection-start="856" selection-end="856" vertical-scroll-proportion="0.8628193">
           <folding />
         </state>
       </provider>

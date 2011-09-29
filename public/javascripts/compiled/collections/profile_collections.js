@@ -12,7 +12,7 @@
     function ProfileFriendCollection() {
       ProfileFriendCollection.__super__.constructor.apply(this, arguments);
     }
-    ProfileFriendCollection.prototype.model = Friend;
+    ProfileFriendCollection.prototype.model = FriendModel;
     ProfileFriendCollection.prototype.initialize = function() {
       return this.bind('add', this.addOneView, this);
     };
