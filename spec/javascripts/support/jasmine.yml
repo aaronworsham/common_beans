@@ -16,7 +16,11 @@ src_files:
   - backbone.js
   - jasmine-jquery.js
   - mock-ajax.js
-  - '**/*.js'
+  - compiled/models/*.js
+  - compiled/views/*.js
+  - compiled/collections/*.js
+  - compiled/*.js
+  - '*.js'
 
 
 
@@ -46,6 +50,7 @@ stylesheets:
 #
 helpers:
   - helpers/**/*.js
+  - helpers/*.js
 
 # spec_files
 #
@@ -58,6 +63,8 @@ helpers:
 #   - **/*[sS]pec.js
 #
 spec_files:
+  - fixtures.js
+  - test_responses.js
   - '**/*[sS]pec.js'
   - '**/*_spec.js'
 

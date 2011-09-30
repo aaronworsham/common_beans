@@ -6,4 +6,12 @@ beforeEach(function() {
           && player.isPlaying;
     }
   })
+
+
+
+});
+
+
+afterEach(function() {
+  this.server.restore();
 });

@@ -1,6 +1,6 @@
 ###
 = require application
-= require models/tracker_models
+= require models/cb_models
 = require views/tracker_views
 = require collections/tracker_collections
 

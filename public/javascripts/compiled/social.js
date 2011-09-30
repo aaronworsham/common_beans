@@ -1,7 +1,7 @@
 (function() {
   /*
   = require application
-  = require models/social_models
+  = require models/cb_models
   = require views/social_views
   = require collections/social_collections
   */  $(function() {

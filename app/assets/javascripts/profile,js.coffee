@@ -1,6 +1,6 @@
 ###
 = require application
-= require models/profile_models
+= require models/cb_models
 = require views/profile_views
 = require collections/profile_collections
 ###
