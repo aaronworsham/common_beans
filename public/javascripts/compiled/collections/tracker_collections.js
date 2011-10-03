@@ -17,7 +17,7 @@
     }
     TrackerHoldingCollection.prototype.model = HoldingModel;
     TrackerHoldingCollection.prototype.initialize = function() {
-      return this.bind('add', this.addOneView, this);
+      return this.bind('add', this.addOneView);
     };
     TrackerHoldingCollection.prototype.addOneView = function(h) {
       var view, view_today;
@@ -45,7 +45,14 @@
     }
     TrackerPortfolioCollection.prototype.model = PortfolioModel;
     TrackerPortfolioCollection.prototype.initialize = function() {
-      return this.bind('add', this.addOneView, this);
+      this.bind('add', function(portfolio) {
+        return this.addOneView(portfolio);
+      });
+      return this.bind('reset', function(portfolios) {
+        return portfolios.each(function(p) {
+          return portfolios.addOneView(p);
+        });
+      });
     };
     TrackerPortfolioCollection.prototype.addOneView = function(p) {
       var view;
@@ -57,11 +64,6 @@
     return TrackerPortfolioCollection;
   })();
   window.TrackerPortfolios = new TrackerPortfolioCollection;
-  window.TrackerPortfolios.bind('reset', function(portfolios) {
-    return portfolios.each(function(p) {
-      return portfolios.addOneView(p);
-    });
-  });
   window.TrackerStockEventCollection = (function() {
     __extends(TrackerStockEventCollection, Backbone.Collection);
     function TrackerStockEventCollection() {

@@ -7,7 +7,7 @@ Tracker Collections
 class window.TrackerHoldingCollection extends Backbone.Collection
   model: HoldingModel
   initialize: ->
-    @bind('add', @addOneView, this);
+    @bind('add', @addOneView);
 
   addOneView: (h)->
     view = new TrackerHoldingView({model:h});
@@ -28,18 +28,21 @@ class window.TrackerPortfolioCollection extends Backbone.Collection
    model: PortfolioModel
 
    initialize: ->
-     @bind('add', @addOneView, this);
+     @bind('add', (portfolio)->
+       @addOneView(portfolio)
+     );
+     @bind('reset', (portfolios)->
+       portfolios.each( (p)->
+         portfolios.addOneView(p)
+       );
+     );
 
    addOneView: (p)->
      view = new TrackerPortfolioView({model:p});
      view.render();
 
 window.TrackerPortfolios = new TrackerPortfolioCollection
-window.TrackerPortfolios.bind('reset', (portfolios)->
-     portfolios.each( (p)->
-       portfolios.addOneView(p)
-     );
-);
+
 
 
 

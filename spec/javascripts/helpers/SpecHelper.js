@@ -9,9 +9,13 @@ beforeEach(function() {
 
 
 
+
 });
 
+$(function(){
+  jasmine.getFixtures().fixturesPath = '/jasmine/fixtures';
+  preloadFixtures('tracker_fixtures.html');
+  loadFixtures('tracker_fixtures.html');
+  ich.grabTemplates()
+})
 
-afterEach(function() {
-  this.server.restore();
-});

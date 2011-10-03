@@ -11,16 +11,17 @@
 #   - dist/**/*.js
 #
 src_files:
-  - jquery-1.6.2.min.js
-  - underscore.js
-  - backbone.js
-  - jasmine-jquery.js
-  - mock-ajax.js
+  - jasmine/jquery-1.6.2.min.js
+  - jasmine/jquery-ui-1.8.16.custom.min.js
+  - jasmine/underscore.js
+  - jasmine/backbone.js
+  - jasmine/ICanHaz.js
+  - jasmine/jasmine-jquery-1.3.1.js
+  - jasmine/mock-ajax.js
   - compiled/models/*.js
   - compiled/views/*.js
   - compiled/collections/*.js
   - compiled/*.js
-  - '*.js'
 
 
 
@@ -63,10 +64,8 @@ helpers:
 #   - **/*[sS]pec.js
 #
 spec_files:
-  - fixtures.js
-  - test_responses.js
-  - '**/*[sS]pec.js'
-  - '**/*_spec.js'
+  - 'compiled/*[sS]pec.js'
+  - 'compiled/*_spec.js'
 
 
 # src_dir
@@ -91,4 +90,4 @@ src_dir:  public/javascripts
 # spec_dir: spec/javascripts
 #
 #spec_dir: spec/javascripts
-spec_dir: spec/javascripts/compiled
+spec_dir: spec/javascripts/
