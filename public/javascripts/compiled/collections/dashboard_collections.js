@@ -31,30 +31,32 @@
       return messages.addOneView(m);
     });
   });
-  window.PortfolioCollection = (function() {
-    __extends(PortfolioCollection, Backbone.Collection);
-    function PortfolioCollection() {
-      PortfolioCollection.__super__.constructor.apply(this, arguments);
+  window.DashboardPortfolioCollection = (function() {
+    __extends(DashboardPortfolioCollection, Backbone.Collection);
+    function DashboardPortfolioCollection() {
+      DashboardPortfolioCollection.__super__.constructor.apply(this, arguments);
     }
-    PortfolioCollection.prototype.model = PortfolioModel;
-    PortfolioCollection.prototype.initialize = function() {
-      return this.bind('add', this.addOneView, this);
+    DashboardPortfolioCollection.prototype.model = PortfolioModel;
+    DashboardPortfolioCollection.prototype.initialize = function() {
+      this.bind('add', function(portfolio) {
+        return this.addOneView(portfolio);
+      });
+      return this.bind('reset', function(portfolios) {
+        return portfolios.each(function(p) {
+          return portfolios.addOneView(p);
+        });
+      });
     };
-    PortfolioCollection.prototype.addOneView = function(p) {
+    DashboardPortfolioCollection.prototype.addOneView = function(p) {
       var view;
       view = new DashboardPortfolioView({
         model: p
       });
       return view.render();
     };
-    return PortfolioCollection;
+    return DashboardPortfolioCollection;
   })();
-  window.DashboardPortfolios = new PortfolioCollection;
-  window.DashboardPortfolios.bind('reset', function(portfolios) {
-    return portfolios.each(function(p) {
-      return portfolios.addOneView(p);
-    });
-  });
+  window.DashboardPortfolios = new DashboardPortfolioCollection;
   window.DashboardHoldingCollection = (function() {
     __extends(DashboardHoldingCollection, Backbone.Collection);
     function DashboardHoldingCollection() {
@@ -62,14 +64,21 @@
     }
     DashboardHoldingCollection.prototype.model = HoldingModel;
     DashboardHoldingCollection.prototype.initialize = function() {
-      return this.bind('add', this.addOneView, this);
+      this.bind('add', function(holding) {
+        return this.addOneView(holding);
+      });
+      return this.bind('reset', function(holdings) {
+        return holdings.each(function(h) {
+          return holdings.addOneView(h);
+        });
+      });
     };
     DashboardHoldingCollection.prototype.addOneView = function(h) {
       var view, view_today;
       view = new DashboardHoldingView({
         model: h
       });
-      view_today = new DashboardHoldingTodayView({
+      view_today = new DashbaordHoldingTodayView({
         model: h
       });
       view.render();
@@ -78,9 +87,4 @@
     return DashboardHoldingCollection;
   })();
   window.DashboardHoldings = new DashboardHoldingCollection;
-  window.DashboardHoldings.bind('reset', function(holdings) {
-    return holdings.each(function(h) {
-      return holdings.addOneView(h);
-    });
-  });
 }).call(this);

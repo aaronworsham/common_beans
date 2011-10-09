@@ -2,6 +2,7 @@ class Event < ActiveRecord::Base
   belongs_to :user
   belongs_to :holding
   belongs_to :ticker
+  belongs_to :dow_index_eod
 
   def as_json(options={})
     result = super(options)

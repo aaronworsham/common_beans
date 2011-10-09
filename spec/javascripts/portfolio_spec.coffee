@@ -61,6 +61,32 @@ describe 'Portfolio Collections', ->
       TrackerPortfolios.add(portfolio)
       expect(TrackerPortfolios.addOneView).toHaveBeenCalled();
 
+  describe 'for Dashboard', ->
+
+    beforeEach ->
+      @portfolios = new DashboardPortfolioCollection
+
+
+    it 'should be able to add a portfolio model', ->
+      expect(@portfolios.length).toEqual(0)
+      @portfolios.add(@portfolio)
+      expect(@portfolios.length).toEqual(1)
+
+    it 'should have a DashboardPortfolios object', ->
+      expect(DashboardPortfolios).toBeDefined()
+
+    it 'should call addOneView on reset', ->
+      spyOn(DashboardPortfolios, 'addOneView')
+      DashboardPortfolios.reset({name:'bob'})
+      expect(DashboardPortfolios.length).toBe(1)
+      expect(DashboardPortfolios.addOneView).toHaveBeenCalled();
+
+    it 'should call addOneView on add of new portfolio', ->
+      spyOn(DashboardPortfolios, 'addOneView').andCallThrough()
+      portfolio = new PortfolioModel({id:1,name:'test'})
+      DashboardPortfolios.add(portfolio)
+      expect(DashboardPortfolios.addOneView).toHaveBeenCalled();
+
 
 
 

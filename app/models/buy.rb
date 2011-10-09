@@ -4,6 +4,7 @@ class Buy< Event
   belongs_to :user
   belongs_to :holding
   belongs_to :ticker
+  belongs_to :dow_index_eod
 
   validates_presence_of :holding
   validates_presence_of :user
@@ -65,6 +66,14 @@ class Buy< Event
 
   def total_gain
     todays_value - self.investment
+  end
+
+  def dow_delta
+    DowIndex.investment_delta(
+      :starting_investment => self.investment,
+      :todays_value => self.todays_value,
+      :dow_eod => self.dow_index_eod
+    )
   end
 
 end

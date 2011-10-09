@@ -4,22 +4,32 @@ class Holding < ActiveRecord::Base
   belongs_to :user
   belongs_to :ticker
   belongs_to :portfolio
-  has_many :buys 
+  belongs_to :dow_index_eod
+  has_many :buys
   has_many :sells 
   has_many :events, :dependent => :destroy
 
-  validates_presence_of :ticker_id
+  validates_presence_of :ticker_id, :message => 'Must select a ticker'
+  validates_presence_of :starting_shares
+  validates_presence_of :starting_price
+
 
   after_create :notify_everyone
+  after_create :link_to_dow_eod
   before_create :populate_net_values
   attr_accessor :ticker_name, :ticker_symbol
 
-   def notify_everyone
+  def notify_everyone
     MessageEveryone.new(
       :text           => standard_message,
       :action         => 'added a holding in',
       :user           => self.user
     ).save
+  end
+
+  def link_to_dow_eod
+    eod = DowIndexEod.find_by_closed_on(self.date_of_purchase.to_date.to_s(:db))
+    self.update_attribute(:dow_index_eod, eod)
   end
 
   def standard_message
@@ -129,5 +139,15 @@ class Holding < ActiveRecord::Base
   end
   def year_delta
     self.last_years_price - self.starting_price
+  end
+
+  def dow_delta
+    holding_dow_delta = DowIndex.investment_delta(
+      :starting_investment => self.starting_investment,
+      :todays_value => self.todays_value,
+      :dow_eod => self.dow_index_eod
+    )
+    sum_buy_deltas = self.buys.inject(0){|sum, b| sum + b.dow_delta}
+    return holding_dow_delta + sum_buy_deltas
   end
 end

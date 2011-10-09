@@ -63,7 +63,7 @@ class Sell< Event
   end
 
   def total_gain
-    self.return - self.todays_value
+    self.return_on_investment - self.todays_value
   end
 
 end

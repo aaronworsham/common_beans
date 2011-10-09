@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110915230636) do
+ActiveRecord::Schema.define(:version => 20111005225230) do
 
   create_table "advisors", :force => true do |t|
     t.string   "crd_num"
@@ -59,6 +59,14 @@ ActiveRecord::Schema.define(:version => 20110915230636) do
     t.datetime "updated_at"
   end
 
+  create_table "dow_index_eods", :force => true do |t|
+    t.decimal  "close",      :precision => 8, :scale => 2
+    t.float    "net_change"
+    t.date     "closed_on"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "events", :force => true do |t|
     t.integer  "ticker_id"
     t.integer  "shares"
@@ -71,6 +79,7 @@ ActiveRecord::Schema.define(:version => 20110915230636) do
     t.decimal  "price",                :precision => 15, :scale => 2
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "dow_index_eod_id"
   end
 
   create_table "exchanges", :force => true do |t|
@@ -107,6 +116,7 @@ ActiveRecord::Schema.define(:version => 20110915230636) do
     t.integer  "net_shares"
     t.decimal  "net_investment"
     t.decimal  "net_return"
+    t.integer  "dow_index_eod_id"
   end
 
   create_table "portfolios", :force => true do |t|
@@ -145,6 +155,7 @@ ActiveRecord::Schema.define(:version => 20110915230636) do
     t.decimal  "open"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "closed_on"
   end
 
   create_table "tickers", :force => true do |t|

@@ -1,0 +1,9 @@
+1:
+  id: 1
+  symbol: GOOG
+  name: Google
+
+2:
+  id: 2
+  symbol: AAPL
+  name: Apple

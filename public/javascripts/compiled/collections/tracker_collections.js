@@ -17,7 +17,14 @@
     }
     TrackerHoldingCollection.prototype.model = HoldingModel;
     TrackerHoldingCollection.prototype.initialize = function() {
-      return this.bind('add', this.addOneView);
+      this.bind('add', function(holding) {
+        return this.addOneView(holding);
+      });
+      return this.bind('reset', function(holdings) {
+        return holdings.each(function(h) {
+          return holdings.addOneView(h);
+        });
+      });
     };
     TrackerHoldingCollection.prototype.addOneView = function(h) {
       var view, view_today;
@@ -33,11 +40,6 @@
     return TrackerHoldingCollection;
   })();
   window.TrackerHoldings = new TrackerHoldingCollection;
-  window.TrackerHoldings.bind('reset', function(holdings) {
-    return holdings.each(function(h) {
-      return holdings.addOneView(h);
-    });
-  });
   window.TrackerPortfolioCollection = (function() {
     __extends(TrackerPortfolioCollection, Backbone.Collection);
     function TrackerPortfolioCollection() {

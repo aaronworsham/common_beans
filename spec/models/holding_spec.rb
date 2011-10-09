@@ -30,8 +30,8 @@ describe Holding do
       end
 
       it 'should up the return to 1000' do
-        sell.return.should == (sell.shares * sell.price)
-        sell.return.should === 1000.0
+        sell.return_on_investment.should == (sell.shares * sell.price)
+        sell.return_on_investment.should === 1000.0
         holding.net_return.should === 1000.0
         holding.net_return.should == (sell.shares * sell.price)
       end
@@ -88,5 +88,51 @@ describe Holding do
       end
     end
 
+  end
+
+  describe "builds an Index" do
+    context 'Dow' do
+      fixtures :dow_index_eods
+      fixtures :tickers
+      fixtures :ticker_eods
+      before(:each) do
+        @holding = Factory  :holding,
+                            :ticker => Ticker.first, #google
+                            :date_of_purchase => '2011/02/01',
+                            :starting_shares => 500,
+                            :starting_price => 611.04,
+                            :dow_index_eod => DowIndexEod.first
+      end
+
+      it 'should have a Dow Index EOD assigned on create' do
+        @holding.reload
+        @holding.dow_index_eod.should be
+      end
+
+      it 'should have a starting investment of 305520' do
+        @holding.starting_investment.should == 305520.0
+      end
+
+      it 'has an dow investment delta 35140.77' do
+        @holding.dow_delta.to_f.round(2).should == -18029.23
+      end
+
+      context 'with buy' do
+        before(:each) do
+          @buy = Factory  :buy,
+                          :ticker => Ticker.first, #google
+                          :holding => @holding,
+                          :date_of_event => '03/01/2011',
+                          :price => 600.76,
+                          :shares => 100,
+                          :dow_index_eod => DowIndexEod.all[2]
+        end
+
+        it 'should have an dow investment delta of 29823.44' do
+          @holding.dow_delta.to_f.round(2).should == 29823.44
+        end
+
+      end
+    end
   end
 end

@@ -1,16 +1,17 @@
+FactoryGirl.define do
+  sequence :symbol do |n|
+    "ABC#{n}"
+  end
+end
 
-Factory.define :ticker do |f|
+FactoryGirl.define do |f|
+  factory :ticker do
+    symbol
+    name Faker::Name.name
+    association :exchange
+    after_create{|ticker| TickerEod.create(:ticker => ticker, :close => 100, :closed_on => Date.today)}
+  end
 
-  f.symbol {
-      letters = %Q(ABCDEFJHIJKLMNOPQRSTUVWXYZ)
-      symbol = []
-      rand(4).times do |x|
-        symbol << letters[rand(26)]
-      end
-      symbol.join
-  }
-  f.name Faker::Name.name
-  f.association :exchange
 end
 
 

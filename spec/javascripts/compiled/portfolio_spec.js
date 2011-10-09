@@ -43,7 +43,7 @@
     });
   });
   describe('Portfolio Collections', function() {
-    return describe('for Tracker', function() {
+    describe('for Tracker', function() {
       beforeEach(function() {
         return this.portfolios = new TrackerPortfolioCollection;
       });
@@ -72,6 +72,37 @@
         });
         TrackerPortfolios.add(portfolio);
         return expect(TrackerPortfolios.addOneView).toHaveBeenCalled();
+      });
+    });
+    return describe('for Dashboard', function() {
+      beforeEach(function() {
+        return this.portfolios = new DashboardPortfolioCollection;
+      });
+      it('should be able to add a portfolio model', function() {
+        expect(this.portfolios.length).toEqual(0);
+        this.portfolios.add(this.portfolio);
+        return expect(this.portfolios.length).toEqual(1);
+      });
+      it('should have a DashboardPortfolios object', function() {
+        return expect(DashboardPortfolios).toBeDefined();
+      });
+      it('should call addOneView on reset', function() {
+        spyOn(DashboardPortfolios, 'addOneView');
+        DashboardPortfolios.reset({
+          name: 'bob'
+        });
+        expect(DashboardPortfolios.length).toBe(1);
+        return expect(DashboardPortfolios.addOneView).toHaveBeenCalled();
+      });
+      return it('should call addOneView on add of new portfolio', function() {
+        var portfolio;
+        spyOn(DashboardPortfolios, 'addOneView').andCallThrough();
+        portfolio = new PortfolioModel({
+          id: 1,
+          name: 'test'
+        });
+        DashboardPortfolios.add(portfolio);
+        return expect(DashboardPortfolios.addOneView).toHaveBeenCalled();
       });
     });
   });

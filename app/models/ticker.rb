@@ -1,5 +1,6 @@
 class Ticker < ActiveRecord::Base
   has_many :holdings
+  has_many :ticker_eods
   belongs_to :exchange
 
   validates_presence_of :name
@@ -12,7 +13,54 @@ class Ticker < ActiveRecord::Base
   end 
 
   def todays_close
-    TickerEod.new.close
+    if self.ticker_eods.present?
+      ticker_eods.last.close
+    elsif resource
+      eod = self.resource.last_eod
+      TickerEod.create(
+        :ticker => self,
+        :high => eod.high.to_f,
+        :low =>  eod.low.to_f,
+        :open => eod.open.to_f,
+        :close => eod.close.to_f,
+        :closed_on => Date.parse(eod.closed_on)
+      ).close
+    else
+      0
+    end
   end
+
+  def local_eod_by_date(date)
+    self.ticker_eods.where("closed_on = ?", date.to_s(:db))
+  end
+
+  def close_for_date(date)
+    if local_eod_by_date(date).present?
+      local_eod_by_date(date).first.close
+    elsif ticker_eod_resource(date)
+      eod = ticker_eod_resource(date)
+      TickerEod.create(
+        :ticker => self,
+        :high => eod.high.to_f,
+        :low =>  eod.low.to_f,
+        :open => eod.open.to_f,
+        :close => eod.close.to_f,
+        :closed_on => Date.parse(eod.closed_on)
+      ).close
+    else
+      0
+    end
+  end
+
+  def resource
+    @resource ||= TickerResource.find(self.symbol, :params => {:exchange_id => self.exchange.name} )
+  end
+
+  def ticker_eod_resource(date)
+    @eod_resource ||= TickerEodResource.find(date, :params => {:exchange_id => self.exchange.name, :ticker_id => self.symbol})
+  rescue ActiveResource::ResourceNotFound => e
+    return nil
+  end
+
 
 end

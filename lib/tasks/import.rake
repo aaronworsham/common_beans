@@ -25,5 +25,17 @@ namespace :cb do
         :filename => 'db/data/NASDAQ.csv'
       )
     end
+    desc 'Import Dow Index EOD'
+    task :dow => :environment do
+      import_from_csv(
+        :filename => 'db/data/DJI.csv'
+      ) do |map|
+        DowIndexEod.create(
+          :close        => map[:close],
+          :net_change   => map[:net_change],
+          :closed_on    => map[:date]
+        )
+      end
+    end
   end
 end
