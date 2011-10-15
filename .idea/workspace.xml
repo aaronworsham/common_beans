@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="868981f8-151c-47ab-b287-5f8e4d7cf48c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/common_beans.iml" afterPath="$PROJECT_DIR$/.idea/common_beans.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/ticker.rb" afterPath="$PROJECT_DIR$/app/models/ticker.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/ticker_current.rb" afterPath="$PROJECT_DIR$/app/models/ticker_current.rb" />
     </list>
     <ignored path="common_beans.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,7 +42,7 @@
       <file leaf-file-name="Gemfile" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Gemfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="0" selection-start="237" selection-end="237" vertical-scroll-proportion="0.045411542">
+            <state line="25" column="11" selection-start="464" selection-end="464" vertical-scroll-proportion="0.3178808">
               <folding />
             </state>
           </provider>
@@ -1017,7 +1014,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Gemfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="237" selection-end="237" vertical-scroll-proportion="0.045411542">
+        <state line="25" column="11" selection-start="464" selection-end="464" vertical-scroll-proportion="0.3178808">
           <folding />
         </state>
       </provider>
