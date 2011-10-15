@@ -11,7 +11,6 @@ gem 'haml'
 gem 'json'
 gem 'jquery-rails'
 gem 'simple_form'
-
 gem 'redis'
 gem 'fastercsv'
 gem 'factory_girl'
@@ -21,8 +20,6 @@ gem 'faker'
 gem 'ejs'
 gem 'jasmine'
 gem 'omniauth'
-gem "ruby-debug19", "~> 0.11.5"
-gem "linecache19", "~> 0.5.12"
 gem "rails3-jquery-autocomplete"
 gem 'mustache'
 gem "stache", "~> 0.0.2"
@@ -37,6 +34,11 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
+group :development do
+  gem "ruby-debug19", "~> 0.11.5"
+  gem "linecache19", "~> 0.5.12"
+end
 
 group :test do
   gem 'rspec',       "~> 2.6.0"

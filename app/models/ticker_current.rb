@@ -28,7 +28,7 @@ class TickerCurrent < Valuable
   end
 
 
-  def ping_tracker
+  def self.ping_tracker
     self.resource.yahoo_quote.attributes
   end
 

@@ -10,24 +10,11 @@ class Ticker < ActiveRecord::Base
 
   def yahoo_link
     "<a target='_blank' href='http://finance.yahoo.com/q?s=#{self.symbol}'>#{self.name}(#{self.symbol})</a>"
-  end 
+  end
+
 
   def todays_close
-    if self.ticker_eods.present?
-      ticker_eods.last.close
-    elsif resource
-      eod = self.resource.last_eod
-      TickerEod.create(
-        :ticker => self,
-        :high => eod.high.to_f,
-        :low =>  eod.low.to_f,
-        :open => eod.open.to_f,
-        :close => eod.close.to_f,
-        :closed_on => Date.parse(eod.closed_on)
-      ).close
-    else
-      0
-    end
+    current.lastTrade
   end
 
   def local_eod_by_date(date)
@@ -52,15 +39,18 @@ class Ticker < ActiveRecord::Base
     end
   end
 
-  def resource
-    @resource ||= TickerResource.find(self.symbol, :params => {:exchange_id => self.exchange.name} )
-  end
+
 
   def ticker_eod_resource(date)
     @eod_resource ||= TickerEodResource.find(date, :params => {:exchange_id => self.exchange.name, :ticker_id => self.symbol})
   rescue ActiveResource::ResourceNotFound => e
     return nil
   end
+
+  def current
+    @current ||= TickerCurrent.create(self)
+  end
+
 
 
 end
