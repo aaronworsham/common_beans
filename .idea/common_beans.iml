@@ -29,6 +29,7 @@
     <orderEntry type="library" scope="PROVIDED" name="headless (v0.2.2, RVM: ruby-1.9.2-p290 [cb]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="capybara (v1.1.1, RVM: ruby-1.9.2-p290 [cb]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="hike (v1.2.1, RVM: ruby-1.9.2-p290 [cb]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="yahoofinance (v1.2.2, RVM: ruby-1.9.2-p290 [cb]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="stache (v0.0.3, RVM: ruby-1.9.2-p290 [cb]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="diff-lcs (v1.1.3, RVM: ruby-1.9.2-p290 [cb]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ruby_core_source (v0.1.5, RVM: ruby-1.9.2-p290 [cb]) [gem]" level="application" />
@@ -56,6 +57,7 @@
     <orderEntry type="library" scope="PROVIDED" name="polyglot (v0.3.2, RVM: ruby-1.9.2-p290 [cb]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="oa-openid (v0.3.0, RVM: ruby-1.9.2-p290 [cb]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="populator (v1.0.0, RVM: ruby-1.9.2-p290 [cb]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="stocktracker (v0.0.1, RVM: ruby-1.9.2-p290 [cb]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="XMLCanonicalizer (v1.0.1, RVM: ruby-1.9.2-p290 [cb]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="redis (v2.2.2, RVM: ruby-1.9.2-p290 [cb]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="oa-more (v0.3.0, RVM: ruby-1.9.2-p290 [cb]) [gem]" level="application" />
