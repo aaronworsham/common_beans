@@ -6,10 +6,9 @@
 = require date_formatter
 = require currency_formatter
 = require ICanHaz
-= require models/dashboard_models
+= require models/cb_models
 = require views/dashboard_views
 = require collections/dashboard_collections
-= require logo
 ###
 
 
