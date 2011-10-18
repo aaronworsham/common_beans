@@ -18,14 +18,14 @@ gem 'factory_girl_rails'
 gem 'facebox-rails'
 gem 'faker'
 gem 'ejs'
-gem 'jasmine'
+gem 'jasmine', "1.1.0"
 gem 'omniauth'
 gem "rails3-jquery-autocomplete"
 gem 'mustache'
 gem "stache", "~> 0.0.2"
 gem "valuable"
 gem 'mysql2'
-gem 'stocktracker'
+gem 'stocktracker', '0.0.3'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -49,7 +49,7 @@ group :test do
   gem 'mocha'
   gem 'factory_girl'
   gem 'populator'
-  gem 'jasmine'
+  gem 'jasmine', '1.1.0'
   gem 'capybara'
   gem 'headless'
   gem 'shoulda'

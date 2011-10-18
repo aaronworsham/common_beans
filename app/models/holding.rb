@@ -98,7 +98,6 @@ class Holding < ActiveRecord::Base
 
   def yesterdays_price
     self.ticker.todays_close
-
   end
 
   def last_weeks_price

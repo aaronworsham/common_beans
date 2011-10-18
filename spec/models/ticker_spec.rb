@@ -8,10 +8,25 @@ describe Ticker do
   end
 
   it ' todays close price should be $10' do
-    @ticker.todays_close.should == 20.0
+    @ticker.todays_close.should > 0
   end
 
-  it 'should have two eods' do
-    @ticker.ticker_eods.count.should == 2
+  context :past_quote do
+
+    before(:each) do
+      @eod_num = TickerEod.count
+      @close = @ticker.close_for_date('01/10/2010')
+    end
+
+    it ' will create an EOD for past quote ' do
+      @eod_num.should == (TickerEod.count - 1)
+    end
+
+    it ' will have a close cost of 525.62' do
+      @close.should == 525.62
+    end
+
   end
+
+
 end

@@ -63,14 +63,14 @@ $ ->
     portfolio = TrackerPortfolios.get($(this).attr('data-portfolio-id'))
     $.facebox({div:'#add-holding-form'});
     $('#facebox .create_link').click( ->
-      holding = new TrackerHolding({portfolio_id:portfolio.id});
+      holding = new HoldingModel({portfolio_id:portfolio.id});
       view = new TrackerFaceboxAddHoldingView({model:holding});
       view.submit();
       $(document).trigger('close.facebox')
     );
 
     $('#facebox form').submit( ->
-      holding = new TrackerHolding({portfolio_id:portfolio.id});
+      holding = new HoldingModel({portfolio_id:portfolio.id});
       view = new TrackerFaceboxAddHoldingView({model:holding});
       view.submit();
       $(document).trigger('close.facebox')

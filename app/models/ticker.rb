@@ -14,41 +14,36 @@ class Ticker < ActiveRecord::Base
 
 
   def todays_close
-    current.lastTrade
+    current_quote.results[:last_trade]
   end
 
   def local_eod_by_date(date)
     self.ticker_eods.where("closed_on = ?", date.to_s(:db))
   end
 
-  def close_for_date(date)
+  def close_for_date(date_str)
+    date = Date.parse(date_str)
     if local_eod_by_date(date).present?
       local_eod_by_date(date).first.close
-    elsif ticker_eod_resource(date)
-      eod = ticker_eod_resource(date)
+    else
+      eod = past_quote(date).results
       TickerEod.create(
         :ticker => self,
-        :high => eod.high.to_f,
-        :low =>  eod.low.to_f,
-        :open => eod.open.to_f,
-        :close => eod.close.to_f,
-        :closed_on => Date.parse(eod.closed_on)
+        :high => eod[:high],
+        :low =>  eod[:low],
+        :open => eod[:open],
+        :close => eod[:close],
+        :closed_on => date
       ).close
-    else
-      0
     end
   end
 
-
-
-  def ticker_eod_resource(date)
-    @eod_resource ||= TickerEodResource.find(date, :params => {:exchange_id => self.exchange.name, :ticker_id => self.symbol})
-  rescue ActiveResource::ResourceNotFound => e
-    return nil
+  def current_quote
+    @current_quote ||= StockTracker::CurrentQuote.new(self.symbol)
   end
 
-  def current
-    @current ||= TickerCurrent.create(self)
+  def past_quote(date)
+    @past_quote ||= StockTracker::PastQuote.new(self.symbol, date)
   end
 
 
