@@ -8,6 +8,7 @@ class Ticker < ActiveRecord::Base
   validates_uniqueness_of :symbol
 
 
+
   def yahoo_link
     "<a target='_blank' href='http://finance.yahoo.com/q?s=#{self.symbol}'>#{self.name}(#{self.symbol})</a>"
   end

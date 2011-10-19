@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="868981f8-151c-47ab-b287-5f8e4d7cf48c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/common_beans.iml" afterPath="$PROJECT_DIR$/.idea/common_beans.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/holding.rb" afterPath="$PROJECT_DIR$/app/models/holding.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/ticker.rb" afterPath="$PROJECT_DIR$/app/models/ticker.rb" />
     </list>
     <ignored path="common_beans.iws" />
@@ -46,7 +41,7 @@
       <file leaf-file-name="ticker.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/models/ticker.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="12" selection-start="435" selection-end="435" vertical-scroll-proportion="0.43140966">
+            <state line="10" column="2" selection-start="201" selection-end="201" vertical-scroll-proportion="0.20435195">
               <folding />
             </state>
           </provider>
@@ -1192,7 +1187,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/ticker.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="12" selection-start="435" selection-end="435" vertical-scroll-proportion="0.43140966">
+        <state line="10" column="2" selection-start="201" selection-end="201" vertical-scroll-proportion="0.20435195">
           <folding />
         </state>
       </provider>
