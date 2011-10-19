@@ -17,6 +17,22 @@ class Ticker < ActiveRecord::Base
     current_quote.results[:last_trade]
   end
 
+  def yesterdays_close
+    past_quote(1.day.ago.to_date).results[:close]
+  end
+
+  def last_weeks_close
+    past_quote(1.week.ago.to_date).results[:close]
+  end
+
+  def last_months_close
+    past_quote(1.month.ago.to_date).results[:close]
+  end
+
+  def last_years_close
+    past_quote(1.year.ago.to_date).results[:close]
+  end
+
   def local_eod_by_date(date)
     self.ticker_eods.where("closed_on = ?", date.to_s(:db))
   end
@@ -39,11 +55,11 @@ class Ticker < ActiveRecord::Base
   end
 
   def current_quote
-    @current_quote ||= StockTracker::CurrentQuote.new(self.symbol)
+    StockTracker::CurrentQuote.new(self.symbol)
   end
 
   def past_quote(date)
-    @past_quote ||= StockTracker::PastQuote.new(self.symbol, date)
+    StockTracker::PastQuote.new(self.symbol, date)
   end
 
 

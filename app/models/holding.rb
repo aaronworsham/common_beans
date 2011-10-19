@@ -97,21 +97,21 @@ class Holding < ActiveRecord::Base
   end
 
   def yesterdays_price
-    self.ticker.todays_close
+    self.ticker.yesterdays_close
   end
 
   def last_weeks_price
-    self.ticker.todays_close
+    self.ticker.last_weeks_close
 
   end
 
   def last_months_price
-    self.ticker.todays_close
+    self.ticker.last_months_close
 
   end
 
   def last_years_price
-    self.ticker.todays_close
+    self.ticker.last_years_close
 
   end
 
