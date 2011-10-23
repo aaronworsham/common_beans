@@ -56,9 +56,7 @@ class window.DashboardHoldingCollection extends Backbone.Collection
 
   addOneView: (h)->
     view = new DashboardHoldingView({model:h});
-    view_today = new DashbaordHoldingTodayView({model:h});
     view.render();
-    view_today.render();
 
 
 

@@ -47,13 +47,13 @@ class Holding < ActiveRecord::Base
   def update_net_values_for_buy(buy)
     self.update_attributes(
       :net_shares => self.net_shares + buy.shares,
-      :net_investment => self.net_investment + buy.investment,
+      :net_investment => self.net_investment + buy.investment
     )
   end
   def reset_values_for_buy(buy)
     self.update_attributes(
       :net_shares => self.net_shares - buy.shares,
-      :net_investment => self.net_investment - buy.investment,
+      :net_investment => self.net_investment - buy.investment
     )
   end
 
@@ -87,13 +87,18 @@ class Holding < ActiveRecord::Base
     result["price_delta"] = self.price_delta
     result["day_delta"] = self.day_delta
     result["week_delta"] = self.week_delta
-    result["month_delta"] = self.month_delta
-    result["year_delta"] = self.year_delta
+    result["one_month_delta"] = self.one_month_delta
+    result["three_month_delta"] = self.three_month_delta
+    result["six_month_delta"] = self.six_month_delta
+    result["nine_month_delta"] = self.nine_month_delta
+    result["one_year_delta"] = self.one_year_delta
+    result["two_year_delta"] = self.two_year_delta
+    result["three_year_delta"] = self.three_year_delta
     result
   end
 
   def todays_price
-    self.ticker.todays_close
+    @todays_price ||= self.ticker.todays_close
   end
 
   def yesterdays_price
@@ -105,18 +110,36 @@ class Holding < ActiveRecord::Base
 
   end
 
-  def last_months_price
-    self.ticker.last_months_close
-
+  def one_month_price
+    self.ticker.one_month_close
   end
 
-  def last_years_price
-    self.ticker.last_years_close
+  def three_month_price
+    self.ticker.three_month_close
+  end
 
+  def six_month_price
+    self.ticker.six_month_close
+  end
+
+  def nine_month_price
+    self.ticker.nine_month_close
+  end
+
+  def one_year_price
+    self.ticker.one_year_close
+  end
+
+  def two_year_price
+    self.ticker.two_year_close
+  end
+
+  def three_year_price
+    self.ticker.three_year_close
   end
 
   def todays_value
-    self.net_shares * self.todays_price
+    (self.net_shares * self.todays_price).round
   end
 
   def total_gain
@@ -128,16 +151,33 @@ class Holding < ActiveRecord::Base
   end
 
   def day_delta
-    self.yesterdays_price - self.starting_price
+    (self.todays_price - self.yesterdays_price).round
   end
   def week_delta
-    self.last_weeks_price - self.starting_price
+    (self.todays_price - self.last_weeks_price).round
   end
-  def month_delta
-    self.last_months_price - self.starting_price
+  def one_month_delta
+    (self.todays_price - self.one_month_price).round
   end
-  def year_delta
-    self.last_years_price - self.starting_price
+  def three_month_delta
+    (self.todays_price - self.three_month_price).round
+  end
+  def six_month_delta
+    (self.todays_price - self.six_month_price).round
+  end
+
+  def nine_month_delta
+    (self.todays_price - self.nine_month_price).round
+  end
+
+  def one_year_delta
+    (self.todays_price - self.one_year_price).round
+  end
+  def two_year_delta
+    (self.todays_price - self.two_year_price).round
+  end
+  def three_year_delta
+    (self.todays_price - self.three_year_price).round
   end
 
   def dow_delta

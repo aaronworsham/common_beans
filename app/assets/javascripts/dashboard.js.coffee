@@ -6,10 +6,12 @@
 = require date_formatter
 = require currency_formatter
 = require ICanHaz
+= require highcharts
 = require models/cb_models
 = require views/dashboard_views
 = require collections/dashboard_collections
 ###
+
 
 
 
@@ -18,5 +20,7 @@ $ ->
   $('#portfolio-glance').click(->
     window.location = "/trackers"
   );
+
+
 
 

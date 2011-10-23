@@ -1,7 +1,8 @@
 = content_for :on_ready do
   - if @portfolios
-    !="Portfolios.add(#{@portfolios.to_json});"
-  !="Holdings.reset(#{@holdings.to_json});"
+    !="DashboardPortfolios.add(#{@portfolios.to_json});"
+  - if @holdings
+    !="DashboardHoldings.add(#{@holdings.to_json});"
   !="Messages.reset(#{@messages});"
 
 
@@ -15,6 +16,7 @@
   #portfolio-glance
     - if @portfolios.empty?
       = render 'empty_portfolio'
+
 
 .container_16
   #messages

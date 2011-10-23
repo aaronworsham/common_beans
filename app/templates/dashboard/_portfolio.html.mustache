@@ -1,4 +1,4 @@
-{{ name }}
+<h3>{{ name }}</h3>
 <table id='portfolio-holding-{{ id }}'>
   <thead>
     <tr class='super_head'>
@@ -15,8 +15,9 @@
       <th scope="col">Price</th>
       <th scope="col">Value</th>
       <th scope="col">Total Gain</th>
-      <th scope="col">DΔ/WΔ/MΔ/YΔ</th>
+      <th scope="col">DΔ/WΔ/1MΔ/3MΔ/6MΔ/9MΔ/1YΔ/2YΔ/3YΔ</th>
       <th scope="col">Dow/S&P/Sav/Infl</th>
     </tr>
   </thead>
 </table>
+<div id='chart{{ id }}'></div>

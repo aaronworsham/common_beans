@@ -19,27 +19,49 @@ class Ticker < ActiveRecord::Base
   end
 
   def yesterdays_close
-    past_quote(1.day.ago.to_date).results[:close]
+    close_for_date(1.day.ago.to_date)
   end
 
   def last_weeks_close
-    past_quote(1.week.ago.to_date).results[:close]
+    close_for_date(1.week.ago.to_date)
   end
 
-  def last_months_close
-    past_quote(1.month.ago.to_date).results[:close]
+  def one_month_close
+    close_for_date(1.month.ago.to_date)
   end
 
-  def last_years_close
-    past_quote(1.year.ago.to_date).results[:close]
+  def three_month_close
+    close_for_date(3.month.ago.to_date)
   end
+
+  def six_month_close
+    close_for_date(6.month.ago.to_date)
+  end
+
+  def nine_month_close
+    close_for_date(9.month.ago.to_date)
+  end
+
+  def one_year_close
+    close_for_date(1.year.ago.to_date)
+  end
+
+  def two_year_close
+    close_for_date(2.year.ago.to_date)
+  end
+
+  def three_year_close
+    close_for_date(3.year.ago.to_date)
+  end
+
+
 
   def local_eod_by_date(date)
     self.ticker_eods.where("closed_on = ?", date.to_s(:db))
   end
 
-  def close_for_date(date_str)
-    date = Date.parse(date_str)
+  def close_for_date(date)
+    raise 'Date must be a Ruby Date Object' unless date.is_a?(Date)
     if local_eod_by_date(date).present?
       local_eod_by_date(date).first.close
     else
@@ -60,7 +82,12 @@ class Ticker < ActiveRecord::Base
   end
 
   def past_quote(date)
-    StockTracker::PastQuote.new(self.symbol, date)
+    raise 'Date must be a Ruby Date Object' unless date.is_a?(Date)
+    quote = StockTracker::PastQuote.new(self.symbol, date)
+    if quote.results.nil?
+      quote = past_quote(date - 1)
+    end
+    quote
   end
 
 
