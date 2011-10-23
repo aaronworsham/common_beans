@@ -2,75 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="868981f8-151c-47ab-b287-5f8e4d7cf48c" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/application-51dd158a2c93010af0ec7102ba4d25d3.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/application-51dd158a2c93010af0ec7102ba4d25d3.css.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/application-a2c54aaba9e03f9ab0bed311dbc0eb04.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/application-a2c54aaba9e03f9ab0bed311dbc0eb04.js.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/application-ba1c5b555f39e99112a8faec62679ffd.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/application-ba1c5b555f39e99112a8faec62679ffd.css.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/application-e0cc3baae4bee22e3a79699d495610b3.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/application-e0cc3baae4bee22e3a79699d495610b3.js.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/application.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/application.css.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/application.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/application.js.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/dashboard-16d729f1137a466f73f2f6631fb96e3f.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/dashboard-16d729f1137a466f73f2f6631fb96e3f.js.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/dashboard-50ad7e7e90bf2f18d41cfb4f5fa473a0.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/dashboard-50ad7e7e90bf2f18d41cfb4f5fa473a0.css.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/dashboard-5130b72a9fa386f9c5cb5ec780a2320b.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/dashboard-5130b72a9fa386f9c5cb5ec780a2320b.js.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/dashboard-f6149a43802cf7ba8925a9ca806121ed.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/dashboard-f6149a43802cf7ba8925a9ca806121ed.css.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/dashboard.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/dashboard.css.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/dashboard.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/dashboard.js.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/facebox/closelabel-d3fcc37135b684a579abdf03e0f6719e.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/facebox/closelabel-f6fbafd3ede927af4062d521fa6c3f52.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/facebox/closelabel.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/facebox/loading-5ae83368e141f2f810257d693983cbc5.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/facebox/loading-c77a8b7bfb4230ce5ee044c1a6392c99.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/facebox/loading.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/manifest.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/pages-4919908d2495f28d9c8a27063e4bc7e6.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/pages-4919908d2495f28d9c8a27063e4bc7e6.css.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/pages-9b32fc8642b343ab113cf96f5ff6ea3d.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/pages-9b32fc8642b343ab113cf96f5ff6ea3d.css.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/pages.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/pages.css.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/rails-dd352fc2630e5f9aa5685ef1d7fe5997.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/rails-e4b51606cd77fda2615e7439907bfc92.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/rails.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/social-1c9609bc58b1e77c196de29021583379.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/social-1c9609bc58b1e77c196de29021583379.css.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/social-613608b702f8b448c9193f9bfa879da1.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/social-613608b702f8b448c9193f9bfa879da1.css.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/social-9c11f47e5a610e5f9e1d126a56a06c71.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/social-9c11f47e5a610e5f9e1d126a56a06c71.js.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/social-c82923d62a14bac474da200ca88ff5fe.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/social-c82923d62a14bac474da200ca88ff5fe.js.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/social.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/social.css.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/social.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/social.js.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/tracker-23b944a1d0a6fe46c52c8b8166d973e7.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/tracker-23b944a1d0a6fe46c52c8b8166d973e7.js.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/tracker-b875a4c272f343c6a86c5a004ff2f072.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/tracker-b875a4c272f343c6a86c5a004ff2f072.js.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/tracker.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/tracker.js.gz" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/common_beans.iml" afterPath="$PROJECT_DIR$/.idea/common_beans.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/collections/dashboard_collections.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/collections/dashboard_collections.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/dashboard.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/dashboard.js.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/dashboard_views.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/dashboard_views.js.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/holding.rb" afterPath="$PROJECT_DIR$/app/models/holding.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/portfolio.rb" afterPath="$PROJECT_DIR$/app/models/portfolio.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/ticker.rb" afterPath="$PROJECT_DIR$/app/models/ticker.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/dashboard/_holding_today.html.mustache" afterPath="$PROJECT_DIR$/app/templates/dashboard/_holding_today.html.mustache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/dashboard/_portfolio.html.mustache" afterPath="$PROJECT_DIR$/app/templates/dashboard/_portfolio.html.mustache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/dashboard/show.haml" afterPath="$PROJECT_DIR$/app/views/dashboard/show.haml" />
     </list>
     <ignored path="common_beans.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -109,7 +44,7 @@
       <file leaf-file-name="holding.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/holding.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="144" column="16" selection-start="3603" selection-end="3613" vertical-scroll-proportion="0.0">
+            <state line="209" column="26" selection-start="5262" selection-end="5262" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -118,7 +53,7 @@
       <file leaf-file-name="portfolio.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/portfolio.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="22" selection-start="403" selection-end="403" vertical-scroll-proportion="0.0">
+            <state line="12" column="29" selection-start="515" selection-end="515" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -127,7 +62,7 @@
       <file leaf-file-name="dashboard_views.js.coffee" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/dashboard_views.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="101" column="0" selection-start="2736" selection-end="2736" vertical-scroll-proportion="0.32883316">
+            <state line="38" column="35" selection-start="940" selection-end="940" vertical-scroll-proportion="0.32883316">
               <folding />
             </state>
           </provider>
@@ -154,7 +89,7 @@
       <file leaf-file-name="_holding_today.html.mustache" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/templates/dashboard/_holding_today.html.mustache">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="184" selection-start="424" selection-end="424" vertical-scroll-proportion="0.0">
+            <state line="11" column="105" selection-start="511" selection-end="511" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -202,11 +137,11 @@
         <option value="$PROJECT_DIR$/app/assets/javascripts/dashboard.js.coffee" />
         <option value="$PROJECT_DIR$/app/views/dashboard/show.haml" />
         <option value="$PROJECT_DIR$/app/models/ticker.rb" />
-        <option value="$PROJECT_DIR$/app/templates/dashboard/_holding_today.html.mustache" />
-        <option value="$PROJECT_DIR$/app/models/holding.rb" />
-        <option value="$PROJECT_DIR$/app/models/portfolio.rb" />
         <option value="$PROJECT_DIR$/app/templates/dashboard/_portfolio.html.mustache" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/collections/dashboard_collections.js.coffee" />
+        <option value="$PROJECT_DIR$/app/models/holding.rb" />
+        <option value="$PROJECT_DIR$/app/models/portfolio.rb" />
+        <option value="$PROJECT_DIR$/app/templates/dashboard/_holding_today.html.mustache" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/views/dashboard_views.js.coffee" />
       </list>
     </option>
@@ -1165,30 +1100,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/holding.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="144" column="16" selection-start="3603" selection-end="3613" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/dashboard.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
         <state line="23" column="0" selection-start="421" selection-end="421" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/dashboard/_holding_today.html.mustache">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="184" selection-start="424" selection-end="424" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/portfolio.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="22" selection-start="403" selection-end="403" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1207,9 +1121,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/holding.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="209" column="26" selection-start="5262" selection-end="5262" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/portfolio.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="29" selection-start="515" selection-end="515" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/dashboard/_holding_today.html.mustache">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="105" selection-start="511" selection-end="511" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/dashboard_views.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="101" column="0" selection-start="2736" selection-end="2736" vertical-scroll-proportion="0.32883316">
+        <state line="38" column="35" selection-start="940" selection-end="940" vertical-scroll-proportion="0.32883316">
           <folding />
         </state>
       </provider>

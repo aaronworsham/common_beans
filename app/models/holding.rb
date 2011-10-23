@@ -85,15 +85,15 @@ class Holding < ActiveRecord::Base
     result["total_gain"] = self.total_gain
     result["todays_price"] = self.todays_price
     result["price_delta"] = self.price_delta
-    result["day_delta"] = self.day_delta
-    result["week_delta"] = self.week_delta
-    result["one_month_delta"] = self.one_month_delta
-    result["three_month_delta"] = self.three_month_delta
-    result["six_month_delta"] = self.six_month_delta
-    result["nine_month_delta"] = self.nine_month_delta
-    result["one_year_delta"] = self.one_year_delta
-    result["two_year_delta"] = self.two_year_delta
-    result["three_year_delta"] = self.three_year_delta
+    result["day_delta_price"] = self.day_delta_price
+    result["week_delta_price"] = self.week_delta_price
+    result["one_month_delta_price"] = self.one_month_delta_price
+    result["three_month_delta_price"] = self.three_month_delta_price
+    result["six_month_delta_price"] = self.six_month_delta_price
+    result["nine_month_delta_price"] = self.nine_month_delta_price
+    result["one_year_delta_price"] = self.one_year_delta_price
+    result["two_year_delta_price"] = self.two_year_delta_price
+    result["three_year_delta_price"] = self.three_year_delta_price
     result
   end
 
@@ -150,34 +150,64 @@ class Holding < ActiveRecord::Base
     self.todays_price - self.starting_price
   end
 
-  def day_delta
+  def day_delta_price
     (self.todays_price - self.yesterdays_price).round
   end
-  def week_delta
+  def week_delta_price
     (self.todays_price - self.last_weeks_price).round
   end
-  def one_month_delta
+  def one_month_delta_price
     (self.todays_price - self.one_month_price).round
   end
-  def three_month_delta
+  def three_month_delta_price
     (self.todays_price - self.three_month_price).round
   end
-  def six_month_delta
+  def six_month_delta_price
     (self.todays_price - self.six_month_price).round
   end
 
-  def nine_month_delta
+  def nine_month_delta_price
     (self.todays_price - self.nine_month_price).round
   end
 
-  def one_year_delta
+  def one_year_delta_price
     (self.todays_price - self.one_year_price).round
   end
-  def two_year_delta
+  def two_year_delta_price
     (self.todays_price - self.two_year_price).round
   end
-  def three_year_delta
+  def three_year_delta_price
     (self.todays_price - self.three_year_price).round
+  end
+
+  def day_delta_value
+    day_delta_price * net_shares
+  end
+  def week_delta_value
+    week_delta_price * net_shares
+  end
+  def one_month_delta_value
+    one_month_delta_price * net_shares
+  end
+  def three_month_delta_value
+    three_month_delta_price * net_shares
+  end
+  def six_month_delta_value
+    six_month_delta_price * net_shares
+  end
+
+  def nine_month_delta_value
+    nine_month_delta_price * net_shares
+  end
+
+  def one_year_delta_value
+    one_year_delta_price * net_shares
+  end
+  def two_year_delta_value
+    two_year_delta_price * net_shares
+  end
+  def three_year_delta_value
+    three_year_delta_price * net_shares
   end
 
   def dow_delta
