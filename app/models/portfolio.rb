@@ -2,57 +2,46 @@ class Portfolio < ActiveRecord::Base
   has_many :holdings, :dependent => :destroy
   belongs_to :user
 
-  def as_json(options={})
-    result = super(options)
-    result["total_value"] = self.total_value
-    result["total_gain"] = self.total_gain
-    result["day_delta_value"] = self.day_delta_value
-    result["week_delta_value"] = self.week_delta_value
-    result["one_month_delta_value"] = self.one_month_delta_value
-    result["three_month_delta_value"] = self.three_month_delta_value
-    result["six_month_delta_value"] = self.six_month_delta_value
-    result["nine_month_delta_value"] = self.nine_month_delta_value
-    result["one_year_delta_value"] = self.one_year_delta_value
-    result["two_year_delta_value"] = self.two_year_delta_value
-    result["three_year_delta_value"] = self.three_year_delta_value
-    result
-  end
+  EOD = %w(day week one_month three_month six_month nine_month one_year two_year three_year)
+  METHODS = %w( price price_gain_to_today price_gain_delta price_gain_percent_delta
+                    value value_gain_to_today value_gain_delta value_gain_percent_delta)
 
   def cached_holdings
     @holdings ||= self.holdings
   end
 
   def total_value
-    @todays_value ||= cached_holdings.inject(0){|s, h| s + h.todays_value}
+    sum_holding_value("todays_value")
   end
+
   def total_gain
-    @todays_gain ||= cached_holdings.inject(0){|s, h| s + h.total_gain}
+    sum_holding_value("total_gain")
   end
-  def day_delta_value
-    @day_delta_value ||= cached_holdings.inject(0){|s, h| s + h.day_delta_value}
+
+
+  EOD.each do |eod|
+    METHODS.each do |sum|
+      method = "#{eod}_#{sum}"
+      define_method(method) do
+        sum_holding_value(method)
+      end
+    end
   end
-  def week_delta_value
-    @week_delta_value ||= cached_holdings.inject(0){|s, h| s + h.week_delta_value}
+
+  def sum_holding_value(method)
+    cached_holdings.inject(0){|s, h| s + h.send(method)}
   end
-  def one_month_delta_value
-    @one_month_delta_value ||= cached_holdings.inject(0){|s, h| s + h.one_month_delta_value}
-  end
-  def three_month_delta_value
-    @three_month_delta_value ||= cached_holdings.inject(0){|s, h| s + h.three_month_delta_value}
-  end
-  def six_month_delta_value
-    @six_month_delta_value ||= cached_holdings.inject(0){|s, h| s + h.six_month_delta_value}
-  end
-  def nine_month_delta_value
-    @nine_month_delta_value ||= cached_holdings.inject(0){|s, h| s + h.nine_month_delta_value}
-  end
-  def one_year_delta_value
-    @one_year_delta_value ||= cached_holdings.inject(0){|s, h| s + h.one_year_delta_value}
-  end
-  def two_year_delta_value
-    @two_year_delta_value ||= cached_holdings.inject(0){|s, h| s + h.two_year_delta_value}
-  end
-  def three_year_delta_value
-    @three_year_delta_value ||= cached_holdings.inject(0){|s, h| s + h.three_year_delta_value}
+
+  def as_json(options={})
+    result = super(options)
+    result["total_value"] = self.total_value
+    result["total_gain"] = self.total_gain
+    EOD.each do |x|
+      METHODS.each do |sum|
+        method = "#{x}_#{sum}"
+        result[method] = self.send(method)
+      end
+    end
+    result
   end
 end

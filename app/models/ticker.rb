@@ -18,11 +18,11 @@ class Ticker < ActiveRecord::Base
     current_quote.results[:last_trade]
   end
 
-  def yesterdays_close
+  def day_close
     close_for_date(1.day.ago.to_date)
   end
 
-  def last_weeks_close
+  def week_close
     close_for_date(1.week.ago.to_date)
   end
 

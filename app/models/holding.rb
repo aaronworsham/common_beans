@@ -19,6 +19,10 @@ class Holding < ActiveRecord::Base
   before_create :populate_net_values
   attr_accessor :ticker_name, :ticker_symbol
 
+
+  EOD = %w(day week one_month three_month six_month nine_month one_year two_year three_year)
+
+
   def notify_everyone
     MessageEveryone.new(
       :text           => standard_message,
@@ -76,66 +80,10 @@ class Holding < ActiveRecord::Base
     humanize_seconds(Time.now - self.date_of_purchase) 
   end
 
-  def as_json(options={})
-    result = super(options)
-    result["ticker_name"] = self.ticker.name
-    result["ticker_symbol"] = self.ticker.symbol
-    result["relative_day"] = self.days_since_holding_purchase
-    result["todays_value"] = self.todays_value
-    result["total_gain"] = self.total_gain
-    result["todays_price"] = self.todays_price
-    result["price_delta"] = self.price_delta
-    result["day_delta_price"] = self.day_delta_price
-    result["week_delta_price"] = self.week_delta_price
-    result["one_month_delta_price"] = self.one_month_delta_price
-    result["three_month_delta_price"] = self.three_month_delta_price
-    result["six_month_delta_price"] = self.six_month_delta_price
-    result["nine_month_delta_price"] = self.nine_month_delta_price
-    result["one_year_delta_price"] = self.one_year_delta_price
-    result["two_year_delta_price"] = self.two_year_delta_price
-    result["three_year_delta_price"] = self.three_year_delta_price
-    result
-  end
+
 
   def todays_price
     @todays_price ||= self.ticker.todays_close
-  end
-
-  def yesterdays_price
-    self.ticker.yesterdays_close
-  end
-
-  def last_weeks_price
-    self.ticker.last_weeks_close
-
-  end
-
-  def one_month_price
-    self.ticker.one_month_close
-  end
-
-  def three_month_price
-    self.ticker.three_month_close
-  end
-
-  def six_month_price
-    self.ticker.six_month_close
-  end
-
-  def nine_month_price
-    self.ticker.nine_month_close
-  end
-
-  def one_year_price
-    self.ticker.one_year_close
-  end
-
-  def two_year_price
-    self.ticker.two_year_close
-  end
-
-  def three_year_price
-    self.ticker.three_year_close
   end
 
   def todays_value
@@ -146,68 +94,92 @@ class Holding < ActiveRecord::Base
     self.todays_value + self.net_return - self.net_investment
   end
 
-  def price_delta
+  def total_price_delta
     self.todays_price - self.starting_price
   end
 
-  def day_delta_price
-    (self.todays_price - self.yesterdays_price).round
-  end
-  def week_delta_price
-    (self.todays_price - self.last_weeks_price).round
-  end
-  def one_month_delta_price
-    (self.todays_price - self.one_month_price).round
-  end
-  def three_month_delta_price
-    (self.todays_price - self.three_month_price).round
-  end
-  def six_month_delta_price
-    (self.todays_price - self.six_month_price).round
+
+  EOD.each_with_index do |pre, i|
+    #######  Past Price
+    define_method("#{pre}_price") do
+      self.ticker.send("#{pre}_close")
+    end
+
+    #####  Past Price Gain to today
+    define_method("#{pre}_price_gain_to_today") do
+      (self.todays_price - self.send("#{pre}_price")).round(2)
+    end
+
+    ###### Past Price Delta Gain
+    define_method("#{pre}_price_gain_delta") do
+      if EOD[i + 1]
+        (self.send("#{pre}_price") - self.send("#{EOD[i + 1]}_price")).round(2)
+      else
+        0.0
+      end
+    end
+
+    ###### Past Price percent Delta Gain
+    define_method("#{pre}_price_gain_percent_delta") do
+      if EOD[i + 1]
+        new_value = self.send("#{pre}_price")
+        old_value = self.send("#{EOD[i + 1]}_price")
+        (((new_value - old_value)/new_value)*100).round(2)
+      else
+        0.0
+      end
+    end
+
+    ##### Past Value
+    define_method("#{pre}_value") do
+      self.send("#{pre}_price") * net_shares
+    end
+
+    #####  Past Value Gain to today
+    define_method("#{pre}_value_gain_to_today") do
+      (self.todays_value - self.send("#{pre}_value")).round(2)
+    end
+
+    ###### Past Value Delta Gain
+    define_method("#{pre}_value_gain_delta") do
+      if EOD[i + 1]
+        (self.send("#{pre}_value") - self.send("#{EOD[i + 1]}_value")).round(2)
+      else
+        0.0
+      end
+    end
+
+    ###### Past Value percent Delta Gain
+    define_method("#{pre}_value_gain_percent_delta") do
+      if EOD[i + 1]
+        new_value = self.send("#{pre}_value")
+        old_value = self.send("#{EOD[i + 1]}_value")
+        (((new_value - old_value)/new_value)*100).round(2)
+      else
+        0.0
+      end
+    end
   end
 
-  def nine_month_delta_price
-    (self.todays_price - self.nine_month_price).round
-  end
 
-  def one_year_delta_price
-    (self.todays_price - self.one_year_price).round
-  end
-  def two_year_delta_price
-    (self.todays_price - self.two_year_price).round
-  end
-  def three_year_delta_price
-    (self.todays_price - self.three_year_price).round
-  end
+  def as_json(options={})
+    result = super(options)
+    result["ticker_name"] = self.ticker.name
+    result["ticker_symbol"] = self.ticker.symbol
+    result["relative_day"] = self.days_since_holding_purchase
+    result["todays_value"] = self.todays_value
+    result["total_gain"] = self.total_gain
+    result["todays_price"] = self.todays_price
+    result["total_price_delta"] = self.total_price_delta
+    EOD.each do |x|
+      %w( price price_gain_to_today price_gain_delta price_gain_percent_delta
+          value value_gain_to_today value_gain_delta price_gain_percent_delta).each do |method|
+        str = "#{x}_#{method}"
+        result[str] = self.send(str)
 
-  def day_delta_value
-    day_delta_price * net_shares
-  end
-  def week_delta_value
-    week_delta_price * net_shares
-  end
-  def one_month_delta_value
-    one_month_delta_price * net_shares
-  end
-  def three_month_delta_value
-    three_month_delta_price * net_shares
-  end
-  def six_month_delta_value
-    six_month_delta_price * net_shares
-  end
-
-  def nine_month_delta_value
-    nine_month_delta_price * net_shares
-  end
-
-  def one_year_delta_value
-    one_year_delta_price * net_shares
-  end
-  def two_year_delta_value
-    two_year_delta_price * net_shares
-  end
-  def three_year_delta_value
-    three_year_delta_price * net_shares
+      end
+    end
+    result
   end
 
   def dow_delta
