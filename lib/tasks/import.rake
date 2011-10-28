@@ -25,6 +25,19 @@ namespace :cb do
         :filename => 'db/data/NASDAQ.csv'
       )
     end
+
+    desc 'Import Index symbols'
+    task :index_symbols => :environment do
+      import_from_csv(
+        :filename => 'db/data/INDEX.csv'
+      ) do |map|
+        Index.create(
+          :name         => map[:name],
+          :symbol       => map[:symbol],
+          :yahoo_symbol => map[:yahoo_symbol]
+        )
+      end
+    end
     desc 'Import Dow Index EOD'
     task :dow => :environment do
       import_from_csv(

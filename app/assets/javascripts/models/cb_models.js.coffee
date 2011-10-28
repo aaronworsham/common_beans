@@ -17,3 +17,9 @@ class window.FriendModel extends Backbone.Model
 
 class window.StockEventModel extends Backbone.Model
   urlRoot : "/events"
+
+class window.IndexModel extends Backbone.Model
+  urlRoot : "/indices"
+
+class window.TickerModel extends Backbone.Model
+  urlRoot : "/tickers"

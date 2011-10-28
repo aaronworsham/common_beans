@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111005225230) do
+ActiveRecord::Schema.define(:version => 20111027205544) do
 
   create_table "advisors", :force => true do |t|
     t.string   "crd_num"
@@ -117,6 +117,26 @@ ActiveRecord::Schema.define(:version => 20111005225230) do
     t.decimal  "net_investment"
     t.decimal  "net_return"
     t.integer  "dow_index_eod_id"
+  end
+
+  create_table "index_eods", :force => true do |t|
+    t.integer  "index_id"
+    t.decimal  "close"
+    t.decimal  "high"
+    t.decimal  "low"
+    t.decimal  "open"
+    t.date     "closed_on"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "indices", :force => true do |t|
+    t.string   "symbol"
+    t.string   "yahoo_symbol"
+    t.string   "name"
+    t.integer  "exchange_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "portfolios", :force => true do |t|

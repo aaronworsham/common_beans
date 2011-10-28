@@ -1,8 +1,11 @@
 = content_for :on_ready do
+  - if @dji_index
+    !="window.DJI = new IndexModel(#{@dji_index.to_json});"
   - if @portfolios
     !="DashboardPortfolios.add(#{@portfolios.to_json});"
   - if @holdings
     !="DashboardHoldings.add(#{@holdings.to_json});"
+
   !="Messages.reset(#{@messages});"
 
 
