@@ -1,26 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="868981f8-151c-47ab-b287-5f8e4d7cf48c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/quotable.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.rakeTasks" afterPath="$PROJECT_DIR$/.idea/.rakeTasks" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/common_beans.iml" afterPath="$PROJECT_DIR$/.idea/common_beans.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/dashboard.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/dashboard.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/models/cb_models.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/models/cb_models.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/dashboard_views.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/dashboard_views.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/dashboard_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/dashboard_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/tickers_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/tickers_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/ticker.rb" afterPath="$PROJECT_DIR$/app/models/ticker.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/dashboard/_holding_today.html.mustache" afterPath="$PROJECT_DIR$/app/templates/dashboard/_holding_today.html.mustache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/dashboard/_portfolio.html.mustache" afterPath="$PROJECT_DIR$/app/templates/dashboard/_portfolio.html.mustache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/dashboard/show.haml" afterPath="$PROJECT_DIR$/app/views/dashboard/show.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/tasks/import.rake" afterPath="$PROJECT_DIR$/lib/tasks/import.rake" />
-    </list>
+    <list default="true" id="868981f8-151c-47ab-b287-5f8e4d7cf48c" name="Default" comment="" />
     <ignored path="common_beans.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -67,7 +48,7 @@
       <file leaf-file-name="dashboard_views.js.coffee" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/dashboard_views.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="85" column="21" selection-start="2867" selection-end="2867" vertical-scroll-proportion="0.6991321">
+            <state line="72" column="29" selection-start="2601" selection-end="2601" vertical-scroll-proportion="0.39826423">
               <folding />
             </state>
           </provider>
@@ -1228,7 +1209,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/dashboard_views.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="21" selection-start="2867" selection-end="2867" vertical-scroll-proportion="0.6991321">
+        <state line="72" column="29" selection-start="2601" selection-end="2601" vertical-scroll-proportion="0.39826423">
           <folding />
         </state>
       </provider>
