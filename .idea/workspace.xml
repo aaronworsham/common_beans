@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="868981f8-151c-47ab-b287-5f8e4d7cf48c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/common_beans.iml" afterPath="$PROJECT_DIR$/.idea/common_beans.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
-    </list>
+    <list default="true" id="868981f8-151c-47ab-b287-5f8e4d7cf48c" name="Default" comment="" />
     <ignored path="common_beans.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,7 +27,88 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="dashboard_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="show.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/dashboard/show.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="14" selection-start="59" selection-end="59" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dashboard.js.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/dashboard.js.coffee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="0" selection-start="421" selection-end="421" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dashboard_views.js.coffee" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/dashboard_views.js.coffee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="72" column="29" selection-start="2601" selection-end="2601" vertical-scroll-proportion="0.39826423">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="portfolio.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/portfolio.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="6" selection-start="397" selection-end="397" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_portfolio.html.mustache" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/templates/dashboard/_portfolio.html.mustache">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="58" selection-start="583" selection-end="583" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="holding.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/holding.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="101" column="2" selection-start="2432" selection-end="2463" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/index.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="33" column="0" selection-start="654" selection-end="654" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="quotable.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/quotable.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="46" column="2" selection-start="856" selection-end="856" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dashboard_collections.js.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/collections/dashboard_collections.js.coffee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="16" selection-start="161" selection-end="162" vertical-scroll-proportion="-5.5384617">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dashboard_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/dashboard_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state line="13" column="40" selection-start="402" selection-end="402" vertical-scroll-proportion="0.37780714">
@@ -1101,7 +1178,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/dashboard_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="40" selection-start="402" selection-end="402" vertical-scroll-proportion="0.37780714">
+        <state line="72" column="29" selection-start="2601" selection-end="2601" vertical-scroll-proportion="0.39826423">
           <folding />
         </state>
       </provider>
