@@ -11,26 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111027205544) do
-
-  create_table "advisors", :force => true do |t|
-    t.string   "crd_num"
-    t.string   "sec_num"
-    t.string   "name"
-    t.string   "legal_name"
-    t.string   "address1"
-    t.string   "address2"
-    t.string   "address_city"
-    t.string   "address_state"
-    t.string   "address_postal"
-    t.string   "phone"
-    t.string   "fax"
-    t.string   "url"
-    t.string   "reg_status"
-    t.datetime "reg_date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(:version => 20111031164915) do
 
   create_table "buys", :force => true do |t|
     t.integer  "ticker_id"

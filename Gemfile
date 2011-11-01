@@ -71,3 +71,5 @@ end
 # To use debugger
 # gem 'ruby-debug'
 
+
+# gem 'investment_advisors', :path => "../investment_advisors"
