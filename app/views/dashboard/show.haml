@@ -44,16 +44,6 @@
       %br
       = text_area :friend, :message, :placeholder => 'Message all Friends', :cols => 100, :rows => 3
       %table
-
-   
-    #tab-you-follow
-      - @following.each do |f|
-        = image_tag(f.image_url, :size => '25x25', :alt => f.screen_name)
-      %table
-    #tab-follows-you
-      - @following.each do |f|
-        = image_tag(f.image_url, :size => '25x25', :alt => f.screen_name)
-      %br
       = text_area :friend, :message, :placeholder => 'Message everyone following you', :cols => 100, :rows => 3
       %table
 

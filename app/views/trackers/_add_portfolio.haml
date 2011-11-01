@@ -1,4 +1,5 @@
 #add-portfolio-form{:style => 'display:none;'}
   = simple_form_for(Portfolio.new, :url => '#') do |f|
-    = f.input :name 
+    = f.input :name
+    = f.input :min_trust_level, :as => :select, :collection => min_trust_level_select, :label => 'Minimum TRUST level'
     = link_to 'Create', '#', :class => 'create_link'

@@ -8,6 +8,5 @@ class DashboardController < ApplicationController
     @messages = MessageEveryone.head
     @messages_everyone_count = MessageEveryone.head_count
     @friends = current_user.friends
-    @following = current_user.following
   end
 end

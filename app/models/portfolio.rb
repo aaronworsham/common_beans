@@ -34,6 +34,7 @@ class Portfolio < ActiveRecord::Base
 
   def as_json(options={})
     result = super(options)
+    result["trust"] = self.min_trust_level
     result["total_value"] = self.total_value
     result["total_gain"] = self.total_gain
     EOD.each do |x|

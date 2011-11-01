@@ -140,6 +140,7 @@ class window.TrackerFaceboxAddPortfolioView extends Backbone.View
         authenticity_token: this.$("input[name=authenticity_token]").val(),
         portfolio: {
           name: this.$("#portfolio_name").val(),
+          min_trust_level: this.$("#portfolio_min_trust_level").val(),
         }
       }
 
