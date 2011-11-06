@@ -13,7 +13,7 @@ CommonBeans::Application.routes.draw do
   resources :events
   resources :pages
   resources :sessions
-  resources :friends
+  resource  :trust, :controller => 'Trust'
   resources :profiles
   resources :tickers do
     get :autocomplete_ticker_name, :on => :collection
@@ -25,7 +25,7 @@ CommonBeans::Application.routes.draw do
 
   match "/auth/:provider/callback" => "sessions#create"
   match "/signout" => "sessions#destroy", :as => :signout
-  match "/profiles/public/:screen_name" => "profiles#public", :as => :public_profile
+  match "/profiles/public/:screen_name" => "profiles#show", :as => :public_profile
   root :to => 'pages#index'
 
   # The priority is based upon order of creation:

@@ -1,9 +1,20 @@
 #profile
   = image_tag @user.image_url
   %table
-    %tr
-      %td{:colspan=>2}
-        = link_to "Follow", "#", :class=> 'follow_user'
+    - if current_user.trusting?(@user)
+      %tr
+        %td Currently Trusting:
+        %td= current_user.get_clearance(@user)
+    - else
+      %tr
+        %td Trust as:
+        %td{:class=> 'trust_user', :data_user_id => @user.id, :data_level => '2'}= "Colleague"
+      %tr
+        %td
+        %td{:class=> 'trust_user', :data_user_id => @user.id, :data_level => '3'}= "Friend"
+      %tr
+        %td
+        %td{:class=> 'trust_user', :data_user_id => @user.id, :data_level => '4'}= "Family"
     %tr
       %td Name
       %td=@user.name

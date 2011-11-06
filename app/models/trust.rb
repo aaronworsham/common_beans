@@ -1,0 +1,115 @@
+module Trust
+
+  MAX_TRUST_LEVEL = 5
+
+  def trust!(user, level)
+    $redis.multi do
+      $redis.sadd(self.redis_key(:trusting), user.id)
+      $redis.sadd(user.redis_key(:trusted_by), self.id)
+    end
+    self.set_clearance(user, level)
+  end
+
+  # distrust a user
+  def distrust!(user)
+    $redis.multi do
+      $redis.srem(self.redis_key(:trusting), user.id)
+      $redis.srem(user.redis_key(:trusted_by), self.id)
+    end
+    self.clear_user_trust_level(user)
+  end
+
+  # users that self follows
+  def trusting
+    user_ids = $redis.smembers(self.redis_key(:trusting))
+    User.where(:id => user_ids)
+  end
+
+  # users that follow self
+  def trusted_by
+    user_ids = $redis.smembers(self.redis_key(:trusted_by))
+    User.where(:id => user_ids)
+  end
+
+  # users who follow and are being followed by self
+  def friends
+    user_ids = $redis.sinter(self.redis_key(:trusting), self.redis_key(:trusted_by))
+    User.where(:id => user_ids)
+  end
+
+  # does the user follow self
+  def trusted_by?(user)
+    $redis.sismember(self.redis_key(:trusted_by), user.id)
+  end
+
+  # does self follow user
+  def trusting?(user)
+    return true if user === self
+    $redis.sismember(self.redis_key(:trusting), user.id)
+  end
+
+  # number of followers
+  def trusted_by_count
+    $redis.scard(self.redis_key(:trusted_by))
+  end
+
+  # number of users being followed
+  def trusting_count
+    $redis.scard(self.redis_key(:trusting))
+  end
+
+
+  #clearance
+
+
+  def has_clearance?(user, level)
+    return false unless self.trusting?(user)
+    return false unless valid_trust_level(level)
+    return false if level == 0
+    (level..MAX_TRUST_LEVEL).each do |x|
+      return true if try_trust_level(user, x)
+    end
+    false
+  end
+
+  def set_clearance(user, level)
+    return nil unless valid_trust_level(level)
+    clear_user_trust_level(user)
+    set_trust_level(user, level)
+  end
+
+  def get_clearance(user)
+    return false unless self.trusting?(user)
+    return MAX_TRUST_LEVEL if user === self
+    (0..MAX_TRUST_LEVEL).each do |x|
+      return x if try_trust_level(user, x)
+    end
+    0
+  end
+
+
+  private
+
+
+  def clear_user_trust_level(user)
+    (0..MAX_TRUST_LEVEL).each do |x|
+      $redis.srem(self.redis_key("trust:level:#{x}"), user.id)
+    end
+  end
+
+  def try_trust_level(user, level)
+    return nil unless valid_trust_level(level)
+    $redis.sismember(self.redis_key("trust:level:#{level}"), user.id)
+  end
+
+  def set_trust_level(user, level)
+    return nil unless valid_trust_level(level)
+    logger.info "TRUST: #{self.screen_name} now trusting #{user.screen_name} at level #{level}"
+    $redis.sadd(self.redis_key("trust:level:#{level}"),user.id)
+  end
+
+  def valid_trust_level(level)
+    return false unless level.is_a?(Integer)
+    (0..MAX_TRUST_LEVEL).include?(level)
+  end
+end

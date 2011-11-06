@@ -1,19 +1,36 @@
 
-class window.ProfileFriendCollection extends Backbone.Collection
-  model: FriendModel
+class window.ProfileTrustCollection extends Backbone.Collection
+  model: TrustModel
 
   initialize: ->
     @bind('add', @addOneView, this);
 
   addOneView: (f)->
-    view = new FriendView({model:f});
+    view = new ProfileTrustView({model:f});
+    view.render();
+
+class window.ProfileTrustedByCollection extends Backbone.Collection
+  model: TrustModel
+
+  initialize: ->
+    @bind('add', @addOneView, this);
+
+  addOneView: (f)->
+    view = new ProfileTrustedByView({model:f});
     view.render();
 
 
 
-window.ProfileFriends = new ProfileFriendCollection
-window.ProfileFriends.bind('reset', (friends)->
-    friends.each( (f)->
-      friends.addOneView(f)
+window.ProfileTrusts = new ProfileTrustCollection
+window.ProfileTrusts.bind('reset', (trusts)->
+    trusts.each( (f)->
+      trusts.addOneView(f)
+    );
+);
+
+window.ProfileTrustedBy = new ProfileTrustedByCollection
+window.ProfileTrusts.bind('reset', (trusts)->
+    trusts.each( (f)->
+      trusts.addOneView(f)
     );
 );

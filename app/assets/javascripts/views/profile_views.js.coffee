@@ -1,19 +1,35 @@
-class window.ProfileFriendView extends Backbone.View
+class window.ProfileTrustView extends Backbone.View
 
-  tagName: "div"
+  tagName: "tr"
 
-  initialize: ->
-    @model.view = this
-    @model.bind('change', @render, this);
-    @model.bind('destroy', @remove, this);
+  submit: =>
+    @model.save(this.serialize());
+
+  serialize: =>
+    return {
+      authenticity_token: $("meta[name='csrf-token']").attr('content')
+    }
 
   render: ->
-    elem = $(@el).append(ich.add_friend_template(@model.toJSON()));
+    elem = $(@el).append(ich.trust_template(@model.toJSON()));
     $(elem).hide();
-    $('#friend-content').append(elem);
+    $(".trust_table").append(elem);
     $(elem).fadeIn("slow");
 
-  remove: ->
-    $(@el).fadeOut("slow", ->
-      $(this).remove();
-    );
+class window.ProfileTrustedByView extends Backbone.View
+
+  tagName: "tr"
+
+  submit: =>
+    @model.save(this.serialize());
+
+  serialize: =>
+    return {
+      authenticity_token: $("meta[name='csrf-token']").attr('content')
+    }
+
+  render: ->
+    elem = $(@el).append(ich.trusted_by_template(@model.toJSON()));
+    $(elem).hide();
+    $(".trusted_by_table").append(elem);
+    $(elem).fadeIn("slow");

@@ -1,0 +1,16 @@
+= content_for :on_ready do
+  - if @trusting
+    !="ProfileTrusts.add(#{@trusting.to_json});"
+  - if @trusted_by
+    !="ProfileTrustedBy.add(#{@trusted_by.to_json});"
+
+
+= content_for :templates do
+  = template_include_tag "trust/trust"
+  = template_include_tag "trust/trusted_by"
+
+Trusting
+%table{:class => 'trust_table'}
+
+Trusted By
+%table{:class => 'trusted_by_table'}

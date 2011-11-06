@@ -3,8 +3,9 @@
 <head>
   <title>CommonBeans</title>
   <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "profile_start" %>
+  <%= javascript_include_tag "profile" %>
   <%= csrf_meta_tags %>
+  <%= yield :templates %>
   <script type ='text/javascript' charset = 'utf-8'>
     $(document).ready(function() {
       <%= yield :on_ready %>

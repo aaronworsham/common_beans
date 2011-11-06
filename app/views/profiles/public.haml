@@ -1,15 +1,6 @@
-- content_for :on_ready do
-  = "window.friendId = #{@user.id};"
-
-- content_for :templates do
-  = template_include_tag 'profiles/add_friend'
-
 #profile
   = image_tag @user.image_url
   %table
-    %tr
-      %td{:colspan=>2}
-        = link_to "Follow", "#", :class=> 'follow-user'
     %tr
       %td Name
       %td=@user.name
@@ -22,3 +13,4 @@
     %tr
       %td Description
       %td=@user.description
+

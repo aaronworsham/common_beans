@@ -23,3 +23,6 @@ class window.IndexModel extends Backbone.Model
 
 class window.TickerModel extends Backbone.Model
   urlRoot : "/tickers"
+
+class window.TrustModel extends Backbone.Model
+  urlRoot : "/trust"
