@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
 
   include Trust
 
+  has_many :group_portfolios
   has_many :groups
   has_many :clubs
   has_many :portfolios

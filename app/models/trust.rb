@@ -42,10 +42,18 @@ module Trust
     $redis.sismember(self.redis_key(:trusted_by), user.id)
   end
 
-  # does self follow user
-  def trusting?(user)
+  # does self trust user
+  def trust?(user)
     return true if user === self
     $redis.sismember(self.redis_key(:trusting), user.id)
+  end
+
+  def distrust?(user)
+    !trust?(user)
+  end
+
+  def mutual_trust?(user)
+    trust?(user) and trusted_by?(user)
   end
 
   # number of followers
@@ -63,7 +71,7 @@ module Trust
 
 
   def has_clearance?(user, level)
-    return false unless self.trusting?(user)
+    return false unless self.trust?(user)
     return false unless valid_trust_level(level)
     return false if level == 0
     (level..MAX_TRUST_LEVEL).each do |x|
@@ -79,7 +87,7 @@ module Trust
   end
 
   def get_clearance(user)
-    return false unless self.trusting?(user)
+    return false unless self.trust?(user)
     return MAX_TRUST_LEVEL if user === self
     (0..MAX_TRUST_LEVEL).each do |x|
       return x if try_trust_level(user, x)

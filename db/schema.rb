@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111031164915) do
+ActiveRecord::Schema.define(:version => 20111113155310) do
 
   create_table "buys", :force => true do |t|
     t.integer  "ticker_id"
@@ -23,13 +23,6 @@ ActiveRecord::Schema.define(:version => 20111031164915) do
     t.datetime "updated_at"
     t.decimal  "investment",    :precision => 15, :scale => 2
     t.datetime "date_of_event"
-  end
-
-  create_table "club_memberships", :force => true do |t|
-    t.integer  "club_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "clubs", :force => true do |t|
@@ -69,17 +62,14 @@ ActiveRecord::Schema.define(:version => 20111031164915) do
     t.datetime "updated_at"
   end
 
-  create_table "group_memberships", :force => true do |t|
-    t.integer  "group_id"
+  create_table "group_portfolios", :force => true do |t|
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "groups", :force => true do |t|
-    t.string   "name"
-    t.integer  "owner_id"
+    t.integer  "portfolio_id"
+    t.integer  "founder_group_id"
     t.string   "type"
+    t.string   "state"
+    t.decimal  "investment",       :precision => 9, :scale => 2
+    t.float    "ownership"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
