@@ -39,6 +39,7 @@ module Trust
 
   # does the user follow self
   def trusted_by?(user)
+    return true if user === self
     $redis.sismember(self.redis_key(:trusted_by), user.id)
   end
 

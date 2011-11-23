@@ -8,13 +8,18 @@ describe Group do
     @group = Group.new(@founder, @founder_group_portfolio)
   end
 
+  after(:each) do
+    $redis.flushdb
+  end
+
   context :add_user_and_portfolio  do
 
     context :distruted_user do
       it 'will fail to add distruted user' do
         @portfolio_count = GroupPortfolio.count
-        @member = Factory :user
-        lambda{@group.add_user_and_portfolio(@member)}.should raise_error(GroupError::UserNotTrusted)
+        member = Factory :user
+        portfolio = Factory :portfolio
+        lambda{@group.add_user_and_portfolio(member, portfolio)}.should raise_error(GroupError::UserNotTrusted)
       end
 
     end
@@ -23,9 +28,10 @@ describe Group do
       before(:each) do
         @portfolio_count = GroupPortfolio.count
         @member = Factory :user
+        @portfolio = Factory :portfolio
         @founder.trust!(@member, 5)
         @member.trust!(@founder, 5)
-        @portfolio = @group.add_user_and_portfolio(@member)
+        @portfolio = @group.add_user_and_portfolio(@member, @portfolio)
       end
 
       it 'will return members' do
@@ -46,14 +52,6 @@ describe Group do
         @group.member_portfolio?(@portfolio).should be_true
       end
 
-      it 'will have created a Group Portfolio' do
-        GroupPortfolio.count.should == @portfolio_count + 1
-      end
-
-      it 'will assign the new group portfolio to member' do
-        @member.group_portfolios.last.should == @portfolio
-      end
-
       it 'removes the user and portfolio' do
         @group.remove_user_and_portfolio(@member, @portfolio)
         @group.member?(@member).should be_false
@@ -63,7 +61,8 @@ describe Group do
 
       context :already_member do
         it 'will fail when already member' do
-          lambda{@group.add_user_and_portfolio(@member)}.should raise_error(GroupError::UserAlreadyMember)
+          portfolio = Factory :portfolio
+          lambda{@group.add_user_and_portfolio(@member, portfolio)}.should raise_error(GroupError::UserAlreadyMember)
         end
       end
 
@@ -83,6 +82,7 @@ describe Group do
               @group.send("add_member", user)
             end
           }.should raise_error(GroupError::GroupMaxMemberCount)
+          @group.member_count.should == 5
         end
       end
     end

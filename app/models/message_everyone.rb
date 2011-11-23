@@ -1,17 +1,24 @@
 class MessageEveryone < Message
 
-  def self.head
-    jsonify($redis.lrange("message:everyone",0, 20))
-  end
-
-  def self.head_count
-    $redis.lrange("message:everyone",0, 20).size
-  end
 
   def initialize(options)
-    @queue = "everyone"
     super
   end
 
+  def queue
+    self.class.queue
+  end
+
+  def self.queue
+    "everyone"
+  end
+
+  def reader
+    MessageReader.new(self.queue)
+  end
+
+  def self.reader
+    MessageReader.new(self.queue)
+  end
 
 end

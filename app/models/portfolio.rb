@@ -1,5 +1,6 @@
 class Portfolio < ActiveRecord::Base
   has_many :holdings, :dependent => :destroy
+  has_many :group_portfolios, :dependent => :destroy
   belongs_to :user
 
   EOD = %w(day week one_month three_month six_month nine_month one_year two_year three_year)

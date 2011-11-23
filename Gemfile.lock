@@ -3,6 +3,8 @@ GEM
   specs:
     XMLCanonicalizer (1.0.1)
       log4r (>= 1.0.4)
+    aasm (2.3.1)
+      activerecord
     actionmailer (3.1.1)
       actionpack (= 3.1.1)
       mail (~> 2.3.0)
@@ -266,6 +268,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aasm
   capybara
   coffee-rails (~> 3.1.0)
   ejs

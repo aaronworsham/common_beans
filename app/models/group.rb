@@ -7,9 +7,8 @@ class Group
     @founder = founder
   end
 
-  def add_user_and_portfolio(user)
+  def add_user_and_portfolio(user, portfolio)
     add_member(user)
-    portfolio = create_group_portfolio(user)
     add_member_portfolio(portfolio)
     portfolio
   end
@@ -39,6 +38,10 @@ class Group
 
   def member_count
     $redis.scard(redis_key(:members))
+  end
+
+  def portfolio_count
+    $redis.scard(redis_key(:member_portfolios))
   end
 
 
@@ -72,13 +75,7 @@ class Group
     destroy_group_portfolio(member_portfolio)
     $redis.srem(redis_key(:member_portfolios), member_portfolio.id)
   end
-  
 
-  def create_group_portfolio(user)
-    GroupPortfolio.create(  :user => user,
-                            :founder_group => @member_portfolio
-    )
-  end
 
   def destroy_group_portfolio(portfolio)
     portfolio.destroy

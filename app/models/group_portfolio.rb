@@ -1,28 +1,99 @@
 class GroupPortfolio < ActiveRecord::Base
+
+  include AASM
+
   belongs_to  :user
   belongs_to  :portfolio
   belongs_to  :founder_group,
               :class_name => 'GroupPortfolio'
 
 
-  def founder
-    founder_group.user
+  delegate :members,:member_count,:member_portfolios, :to => :group
+
+  aasm_column :current_state
+
+  aasm_initial_state :pending
+
+  aasm_state :pending
+  aasm_state :active
+
+  aasm_event :activate do
+    transitions :to => :active, :from => [:pending]
   end
 
-  def founder_portfolio
-    if member_portfolio?
-      founder_group.portfolio
+
+  validates_presence_of :founder_group_id, :on => :create, :unless => Proc.new {|gp| gp.is_lead?}
+  validates_presence_of :user_id
+  validates_presence_of :portfolio_id
+
+  after_create do |gp|
+    gp.activate! if self.pending? and self.is_lead?
+  end
+
+  def is_member?
+    !is_lead?
+  end
+
+  def founder
+    if self.is_lead?
+      self.user
     else
-      portfolio
+      self.founder_group.user
     end
   end
 
-  def member_portfolio?
-    founder_group.present?
+  def founder_portfolio
+    if self.is_lead?
+      self.portfolio
+    else
+      self.founder_group.portfolio
+    end
   end
 
-  def lead_portfolio?
-    founder_group.empty?
+  def group
+    if is_lead?
+      Group.new(user, self)
+    else
+      Group.new(user, founder_group)
+    end
+  end
+
+  def add_self
+    self.group.add_user_and_portfolio(self.user, self)
+  end
+
+  def add_member(user)
+    portfolio = self.class.create(
+      :user => user,
+      :founder_group => self
+    )
+    self.group.add_user_and_portfolio(user, portfolio)
+  end
+
+  def remove_self
+    self.group.remove_user_and_portfolio(self.user, self.portfolio)
+  end
+
+  def remove_member(user, portfolio)
+    self.group.remove_user_and_portfolio(user, portfolio)
+  end
+
+  def group_reader
+    MessageGroup.reader(self.founder_portfolio.id)
+  end
+
+  def group_messages
+    group_reader.read(20)
+  end
+
+
+  def create_group_message(txt)
+    MessageGroup.new(
+      :text => txt,
+      :action => 'test',
+      :user => self.user,
+      :group => self.founder_portfolio
+    ).save
   end
 
 end

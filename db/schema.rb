@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111113155310) do
+ActiveRecord::Schema.define(:version => 20111121213859) do
 
   create_table "buys", :force => true do |t|
     t.integer  "ticker_id"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20111113155310) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "dow_index_eod_id"
+    t.string   "current_state"
   end
 
   create_table "exchanges", :force => true do |t|
@@ -72,6 +73,8 @@ ActiveRecord::Schema.define(:version => 20111113155310) do
     t.float    "ownership"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "current_state"
+    t.boolean  "is_lead",                                        :default => false
   end
 
   create_table "holdings", :force => true do |t|
@@ -88,6 +91,7 @@ ActiveRecord::Schema.define(:version => 20111113155310) do
     t.decimal  "net_investment"
     t.decimal  "net_return"
     t.integer  "dow_index_eod_id"
+    t.string   "current_state"
   end
 
   create_table "index_eods", :force => true do |t|
@@ -117,6 +121,7 @@ ActiveRecord::Schema.define(:version => 20111113155310) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "min_trust_level"
+    t.string   "current_state"
   end
 
   create_table "profiles", :force => true do |t|
@@ -170,6 +175,7 @@ ActiveRecord::Schema.define(:version => 20111113155310) do
     t.text     "description"
     t.text     "urls"
     t.string   "name"
+    t.string   "current_state"
   end
 
 end
