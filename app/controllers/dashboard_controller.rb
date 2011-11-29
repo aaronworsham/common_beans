@@ -5,8 +5,8 @@ class DashboardController < ApplicationController
     @portfolios = current_user.portfolios
     @holdings = current_user.holdings
     @dji_index = Index.find_by_symbol('DJI')
-    @messages = MessageEveryone.head
-    @messages_everyone_count = MessageEveryone.head_count
+    @messages = MessageEveryone.reader.read
+    @messages_everyone_count = MessageEveryone.reader.count
     @friends = current_user.friends
   end
 end

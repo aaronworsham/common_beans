@@ -1,7 +1,7 @@
 #profile
   = image_tag @user.image_url
   %table
-    - if current_user.trusting?(@user)
+    - if current_user.trust?(@user)
       %tr
         %td Currently Trusting:
         %td= current_user.get_clearance(@user)
