@@ -1,6 +1,7 @@
 class TrackersController < ApplicationController
   respond_to :html, :json
   before_filter :login_required
+  before_filter :setup_messages
   layout 'tracker'
   def index
     @portfolios = current_user.portfolios

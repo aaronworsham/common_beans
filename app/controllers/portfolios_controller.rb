@@ -1,4 +1,6 @@
 class PortfoliosController < ApplicationController
+
+
   respond_to :html, :json
 
   def index

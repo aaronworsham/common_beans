@@ -1,22 +1,4 @@
-class window.DashboardMessageCollection extends Backbone.Collection
-  model: MessageModel
 
-  initialize: ->
-    @bind('add', @addOneView, this);
-
-  addOneView: (p)->
-    view = new DashboardMessageView({model:p});
-    view.render();
-
-
-
-
-window.Messages = new DashboardMessageCollection
-window.Messages.bind('reset', (messages)->
-    messages.each( (m)->
-      messages.addOneView(m)
-    );
-);
 
 class window.DashboardPortfolioCollection extends Backbone.Collection
   model: PortfolioModel

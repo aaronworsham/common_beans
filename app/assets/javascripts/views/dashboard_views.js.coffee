@@ -1,16 +1,5 @@
 
-class window.DashboardMessageView extends Backbone.View
-  tagName: "tr"
 
-
-  initialize: ->
-    @model.view = this
-
-  render: ->
-    elem = $(@el).append(ich.message_template(@model.toJSON()));
-    $(elem).hide();
-    $("#tab-everyone table").append(elem);
-    $(elem).fadeIn("slow");
 
 class window.DashboardPortfolioView extends Backbone.View
 

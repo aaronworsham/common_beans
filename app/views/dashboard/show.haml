@@ -6,7 +6,7 @@
   - if @holdings
     !="DashboardHoldings.add(#{@holdings.to_json});"
 
-  !="Messages.reset(#{@messages});"
+
 
 
 = content_for :templates do
@@ -22,44 +22,3 @@
 
 
 .container_16
-  #messages
-    %ul
-      %li
-        %a{:href=>"#tab-friends"}="Friends"
-      %li
-        %a{:href=>"#tab-you-follow"}="You Follow"
-      %li
-        %a{:href=>"#tab-follows-you"}="Follow You"
-      %li
-        %a{:href=>"#tab-groups"}="Groups"
-      %li
-        %a{:href=>"#tab-everyone"}="Everyone(#{@messages_everyone_count})"
-      %li
-        %a{:href=>"#tab-news"}="News"
-      %li
-        %a{:href=>"#tab-system"}="System"
-    #tab-friends
-      - @friends.each do |f|
-        = link_to image_tag(f.image_url, :size => '25x25', :alt => f.screen_name), public_profile_path(f.screen_name)
-      %br
-      = text_area :friend, :message, :placeholder => 'Message all Friends', :cols => 100, :rows => 3
-      %table
-      = text_area :friend, :message, :placeholder => 'Message everyone following you', :cols => 100, :rows => 3
-      %table
-
-
-    #tab-groups
-      %table
-
-    #tab-news
-      %table
-
-
-    #tab-system
-      %table
-
-    #tab-everyone
-      = text_area :friend, :message, :placeholder => 'Message Everyone', :cols => 100, :rows => 3
-      %table
-
-

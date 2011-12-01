@@ -1,1 +1,26 @@
 
+#message_bar
+  %ul
+    %li
+      %a{:href=>"#tab-friends"}="Friends(#{@friend_messages.size})"
+
+    %li
+      %a{:href=>"#tab-groups"}="Groups(#{@group_messages.size})"
+    %li
+      %a{:href=>"#tab-everyone"}="Everyone(#{@everyone_messages.size})"
+
+  = link_to "Close Message Bar", "#", :id => 'message_close_btn'
+
+
+  #tab-friends
+    .messages
+      %table
+
+  #tab-groups
+    .messages
+      %table
+  #tab-everyone
+    .messages
+      %table
+
+
