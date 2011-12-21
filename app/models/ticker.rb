@@ -2,7 +2,7 @@ class Ticker < ActiveRecord::Base
 
   include Quotable
 
-  has_many :holdings
+  has_many :stock_holdings
   has_many :ticker_eods
   belongs_to :exchange
 

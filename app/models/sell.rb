@@ -2,7 +2,7 @@ class Sell< Event
 
   include DateMixin
   belongs_to :user
-  belongs_to :holding
+  belongs_to :stock_holding
   belongs_to :ticker
 
   validates_presence_of :holding

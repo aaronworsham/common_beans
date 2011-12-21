@@ -1,3 +1,3 @@
 class DowIndexEod < ActiveRecord::Base
-  has_many :holdings
+  has_many :stock_holdings
 end

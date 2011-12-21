@@ -1,5 +1,5 @@
 class Portfolio < ActiveRecord::Base
-  has_many :holdings, :dependent => :destroy
+  has_many :stock_holdings, :dependent => :destroy
   has_many :group_portfolios, :dependent => :destroy
   belongs_to :user
 

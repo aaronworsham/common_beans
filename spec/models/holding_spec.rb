@@ -1,5 +1,5 @@
 require File.join(File.dirname(__FILE__), '..', 'spec_helper')
-describe Holding do
+describe StockHolding do
 
   context :populate_data do
     let(:holding){ Factory :holding, :starting_shares => 1000, :starting_price => 10 }

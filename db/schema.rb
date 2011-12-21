@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111209181617) do
+ActiveRecord::Schema.define(:version => 20111221024513) do
 
   create_table "buys", :force => true do |t|
     t.integer  "ticker_id"
@@ -23,6 +23,13 @@ ActiveRecord::Schema.define(:version => 20111209181617) do
     t.datetime "updated_at"
     t.decimal  "investment",    :precision => 15, :scale => 2
     t.datetime "date_of_event"
+  end
+
+  create_table "club_memberships", :force => true do |t|
+    t.integer  "club_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "clubs", :force => true do |t|
@@ -63,6 +70,26 @@ ActiveRecord::Schema.define(:version => 20111209181617) do
     t.datetime "updated_at"
   end
 
+  create_table "fund_holdings", :force => true do |t|
+    t.decimal  "starting_units"
+    t.decimal  "starting_investment"
+    t.decimal  "net_investment"
+    t.decimal  "net_units"
+    t.integer  "user_id"
+    t.integer  "portfolio_id"
+    t.integer  "fund_ticker_id"
+    t.string   "current_state"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "group_memberships", :force => true do |t|
+    t.integer  "group_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "group_portfolios", :force => true do |t|
     t.integer  "user_id"
     t.integer  "portfolio_id"
@@ -78,21 +105,12 @@ ActiveRecord::Schema.define(:version => 20111209181617) do
     t.string   "name"
   end
 
-  create_table "holdings", :force => true do |t|
-    t.integer  "ticker_id"
+  create_table "groups", :force => true do |t|
+    t.string   "name"
+    t.integer  "owner_id"
+    t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
-    t.integer  "portfolio_id"
-    t.integer  "starting_shares"
-    t.decimal  "starting_price"
-    t.decimal  "starting_investment"
-    t.datetime "date_of_purchase"
-    t.integer  "net_shares"
-    t.decimal  "net_investment"
-    t.decimal  "net_return"
-    t.integer  "dow_index_eod_id"
-    t.string   "current_state"
   end
 
   create_table "index_eods", :force => true do |t|
@@ -111,6 +129,18 @@ ActiveRecord::Schema.define(:version => 20111209181617) do
     t.string   "yahoo_symbol"
     t.string   "name"
     t.integer  "exchange_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "investment_spans", :force => true do |t|
+    t.date     "start_date"
+    t.date     "end_date"
+    t.decimal  "opening_balance"
+    t.decimal  "closing_balance"
+    t.decimal  "units"
+    t.integer  "user_id"
+    t.integer  "fund_holding_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -144,6 +174,9 @@ ActiveRecord::Schema.define(:version => 20111209181617) do
     t.decimal  "return_on_investment"
     t.datetime "date_of_event"
   end
+
+# Could not dump table "stock_holdings" because of following StandardError
+#   Unknown type 'stock_ticker_id' for column 'ticker_id'
 
   create_table "ticker_eods", :force => true do |t|
     t.integer  "ticker_id"

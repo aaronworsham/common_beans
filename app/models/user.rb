@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   has_many :group_portfolios, :dependent => :destroy
   has_many :portfolios,       :dependent => :destroy
-  has_many :holdings,         :dependent => :destroy
+  has_many :stock_holdings,         :dependent => :destroy
   has_many :buys,             :dependent => :destroy
   has_many :sells,            :dependent => :destroy
   has_many :events,           :dependent => :destroy

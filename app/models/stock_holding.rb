@@ -1,12 +1,13 @@
-class Holding < ActiveRecord::Base
+class StockHolding < ActiveRecord::Base
 
   include DateMixin
   belongs_to :user
-  belongs_to :ticker
+  belongs_to :stock_ticker
   belongs_to :portfolio
   belongs_to :dow_index_eod
   has_many :buys
-  has_many :sells 
+  has_many :sells
+
   has_many :events, :dependent => :destroy
 
   validates_presence_of :ticker_id, :message => 'Must select a ticker'
@@ -37,7 +38,7 @@ class Holding < ActiveRecord::Base
   end
 
   def standard_message
-    self.ticker.yahoo_link
+
   end 
 
 
