@@ -1,0 +1,3 @@
+class StockTicker < Ticker
+
+end

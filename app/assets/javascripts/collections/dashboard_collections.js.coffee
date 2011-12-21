@@ -15,8 +15,9 @@ class window.DashboardPortfolioCollection extends Backbone.Collection
 
 
   addOneView: (p)->
-    view = new DashboardPortfolioView({model:p});
-    view.render();
+    new DashboardPortfolioView({model:p}).render();
+    new HotlistPortfolioView({model:p}).render();
+
 
 
 

@@ -7,7 +7,8 @@
  *= require trackers
  *= require jquery.facebox
  *= require jquery-ui-1.8.16.custom
- *= require_tree . 
+ *= require 1140.css
+ *= require_tree .
 */
 
 body {

@@ -2,11 +2,28 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#menu
+{
+ width: 300px;
+ z-index:2;
+ position: fixed;
+ bottom:0;
+ right:0;
+}
+
+#menu ul
+{
+  padding-right: 20px;
+  padding-bottom: 30px;
+
+
+}
+
 #message_bar
 {
+  z-index:1;
   overflow: auto;
   width: 100%;
-  z-index:1;
   position:fixed;
   bottom:0;
   ul
@@ -17,7 +34,6 @@
 
 #message_bar .messages
 {
-
   display:none;
   background: white;
   width: '100%';

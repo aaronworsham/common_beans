@@ -44,6 +44,7 @@ class Portfolio < ActiveRecord::Base
         result[method] = self.send(method)
       end
     end
+    result['holding_ids'] = self.holdings.map{|x| x.id}
     result
   end
 end

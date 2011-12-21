@@ -8,6 +8,23 @@
 = require date_formatter
 ###
 
+class HotList
+  currentId : 0
+  select : (id, title, warmlist, callback) ->
+    console.log(id);
+    @.currentId = id;
+    $('.warmlist').hide();
+    $(warmlist)
+      .find('h3')
+        .text(title)
+      .end()
+      .find('.add-holding')
+        .attr('data-portfolio-id', id)
+      .end()
+      .slideDown('slow');
+    callback.call();
+hotlistMenu = new HotList
+
 $ ->
   $('#main-logo').click( ->
     window.location = "/"
@@ -26,16 +43,37 @@ $ ->
 
   });
 
+
   $('#message_close_btn').click( ->
       $('#message_bar .messages').hide();
       $('#message_close_btn').hide();
       $('#message_bar').animate({
-        height: '50px',
+        height: '65px',
         }, 500
 
       );
 
   );
+
+  $('#portfolios-hotlist li.selectable').live("click", ->
+    id = $(@).attr('data-id');
+    title = $(@).attr('data-label');
+    hotlistMenu.select(id, title, '#warmlist-portfolios', ()->
+      $('.portfolio-content').hide()
+      $('.portfolio-content#'+title).show();
+    );
+  );
+  $('#groups-hotlist li.selectable').live("click", ->
+    id = $(@).attr('data-id');
+    title = $(@).attr('data-label');
+    hotlistMenu.select(id, title, '#warmlist-groups')
+  );
+  $('#friends-hotlist li.selectable').live("click", ->
+    id = $(@).attr('data-id');
+    title = $(@).attr('data-label');
+    hotlistMenu.select(id, title, '#warmlist-friends')
+  );
+
 
 fetchMessages = ->
   console.log('getting message');

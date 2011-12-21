@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111121213859) do
+ActiveRecord::Schema.define(:version => 20111209181617) do
 
   create_table "buys", :force => true do |t|
     t.integer  "ticker_id"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(:version => 20111121213859) do
     t.datetime "updated_at"
     t.string   "current_state"
     t.boolean  "is_lead",                                        :default => false
+    t.string   "name"
   end
 
   create_table "holdings", :force => true do |t|
@@ -161,6 +162,7 @@ ActiveRecord::Schema.define(:version => 20111121213859) do
     t.integer  "exchange_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "type"
   end
 
   create_table "users", :force => true do |t|

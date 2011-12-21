@@ -6,7 +6,11 @@ class DashboardController < ApplicationController
     @portfolios = current_user.portfolios
     @holdings = current_user.holdings
     @dji_index = Index.find_by_symbol('DJI')
-
     @friends = current_user.friends
+    @portfolios = current_user.portfolios
+    @holdings = current_user.holdings
+    @events = current_user.events
+    @buy = Buy.new
+    @sell = Sell.new
   end
 end

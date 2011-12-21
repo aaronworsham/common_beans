@@ -18,9 +18,7 @@ class window.TrackerHoldingCollection extends Backbone.Collection
 
   addOneView: (h)->
     view = new TrackerHoldingView({model:h});
-    view_today = new TrackerHoldingTodayView({model:h});
     view.render();
-    view_today.render();
 
 
 window.TrackerHoldings = new TrackerHoldingCollection

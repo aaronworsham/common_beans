@@ -1,8 +1,4 @@
-- content_for :on_ready do
-  != "window.tickerList = #{@tickers.to_s};"
-  $( "#facebox #holding_ticker" ).autocomplete({
-  source: window.tickerList
-  });
+
 
 #add-holding-form{:style => 'display:none;'}
   = simple_form_for(Holding.new, :url => '#') do |f|

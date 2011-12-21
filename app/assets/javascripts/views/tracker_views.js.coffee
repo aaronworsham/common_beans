@@ -12,7 +12,7 @@ class window.TrackerPortfolioView extends Backbone.View
     @model.bind('destroy', @remove, this);
 
   render: ->
-    elem = $(@el).append(ich.portfolio_template(@model.toJSON()));
+    elem = $(@el).append(ich.dashboard_portfolio_template(@model.toJSON()));
     $(elem).hide();
     $('#portfolio-content').append(elem);
     $(elem).fadeIn("slow");
@@ -31,7 +31,7 @@ class window.TrackerHoldingView extends Backbone.View
     @model.bind('destroy', @remove, this);
 
   render: ->
-    elem = $(@el).append(ich.holding_template(@model.toJSON()));
+    elem = $(@el).append(ich.tracker_holding_template(@model.toJSON()));
     $(elem).hide();
     $("#portfolio-holding-" + @model.get('portfolio_id')).append(elem);
     $(elem).fadeIn("slow");
@@ -42,30 +42,7 @@ class window.TrackerHoldingView extends Backbone.View
     );
 
 
-class window.TrackerHoldingTodayView extends Backbone.View
 
-
-  initialize: ->
-    @model.today_view = this
-    @model.bind('change', @update, this);
-    @model.bind('destroy', @remove, this);
-
-  render: ->
-    @el = $(ich.holding_today_template(@model.toJSON()));
-    elem = @el;
-    $(elem).hide();
-    $("#portfolio-holding-" + @model.get('portfolio_id') + ' tbody').append(elem);
-    $(elem).fadeIn("slow");
-
-  update: ->
-    $(@el).fadeOut('slow');
-    $(@el).html($(ich.holding_today_update_template(@model.toJSON())));
-    $(@el).fadeIn("slow");
-
-  remove: ->
-    $(@el).fadeOut("slow", ->
-      $(this).remove();
-    );
 
 class window.TrackerStockEventView extends Backbone.View
 
@@ -131,7 +108,7 @@ class window.TrackerFaceboxAddPortfolioView extends Backbone.View
   submit: =>
     @model.save(this.serialize(),
         { success : (model, resp)->
-          TrackerPortfolios.add(model)
+          DashboardPortfolios.add(model)
         }
     );
 

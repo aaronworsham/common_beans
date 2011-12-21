@@ -44,11 +44,11 @@
       font-size: 13px;
       font-weight: normal;
       padding: 2px;
-      background: #53a514;
-      border-left:2px solid #a1ea64;
-      border-right:2px solid #a1ea64;
-      border-bottom: 1px solid #fff;
-      color: #fff;
+      background: #f0f7f2;
+      border-left:2px solid #d3e5d8;
+      border-right:2px solid #d3e5d8;
+      border-bottom: 1px solid #d3e5d8;
+      color: #777;
       .remove-profile{
         float: right;
       }
@@ -59,7 +59,7 @@
     tr.super_head{
       th{
         text-align:center;
-        border: 2px solid #a1ea64;
+        border: 2px solid #d3e5d8;
       }
       th.name{
         font-size:16px;

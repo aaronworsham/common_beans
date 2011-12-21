@@ -1,0 +1,30 @@
+%ul#portfolios-hotlist.hotlist
+  %li
+    %h3 Portfolios
+
+  %li.add_item Add Portfolio
+
+
+%ul#groups-hotlist.hotlist
+  %li
+    %h3 Groups
+  - if current_user and current_user.group_portfolios.present?
+    = render :partial => 'layouts/group', :collection => current_user.group_portfolios
+    %li.add_item
+      Create a Group
+  - elsif current_user
+    %li.add_item Create a Group
+  - else
+    %li.add_item Create a Group
+
+%ul#friends-hotlist.hotlist
+  %li
+    %h3 Friends
+  - if current_user and current_user.friends.present?
+    = render :partial => 'layouts/friend', :collection => current_user.friends
+    %li.add_item
+      Add a Friend
+  - elsif current_user
+    %li.add_item Add a Friend
+  - else
+    %li.add_item Add a Friend

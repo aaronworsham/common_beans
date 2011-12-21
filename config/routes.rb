@@ -5,6 +5,8 @@ CommonBeans::Application.routes.draw do
   resources :trackers
   resources :indices
   resources :tickers
+  resources :fund_tickers
+  resources :stock_tickers
   resources :messages
   resources :buys
   resources :sells
