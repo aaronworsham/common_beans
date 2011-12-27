@@ -2,8 +2,8 @@ class FundTicker < ActiveRecord::Base
 
   include Quotable
 
-  has_many :stock_holdings
-  has_many :ticker_eods
+  has_many :fund_holdings
+  has_many :fund_ticker_eods
   belongs_to :exchange
 
   validates_presence_of :name
@@ -15,11 +15,11 @@ class FundTicker < ActiveRecord::Base
   end
 
   def local_eod_by_date(date)
-    self.ticker_eods.where("closed_on = ?", date.to_s(:db))
+    self.fund_ticker_eods.where("closed_on = ?", date.to_s(:db))
   end
 
   def create_eod(eod, date)
-    TickerEod.create(
+    FundTickerEod.create(
       :ticker => self,
       :high => eod[:high],
       :low =>  eod[:low],

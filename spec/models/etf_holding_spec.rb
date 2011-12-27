@@ -1,8 +1,8 @@
 require File.join(File.dirname(__FILE__), '..', 'spec_helper')
-describe FundHolding do
+describe EtfHolding do
 
   context :populate_data do
-    let(:holding){ Factory :fund_holding, :starting_units => 1000, :starting_price => 10 }
+    let(:holding){ Factory :etf_holding, :starting_units => 1000, :starting_price => 10 }
     it 'should have the investment populated by default' do
       holding.starting_investment.should == (holding.starting_units * holding.starting_price)
     end
@@ -13,10 +13,10 @@ describe FundHolding do
 
     context :sells do
       let(:sell){
-        Factory :fund_sell,
-                :fund_holding => holding,
+        Factory :etf_sell,
+                :etf_holding => holding,
                 :user => holding.user,
-                :fund_ticker => holding.ticker,
+                :etf_ticker => holding.ticker,
                 :units => 100,
                 :price  => 10
 
@@ -40,10 +40,10 @@ describe FundHolding do
 
     context :buys do
       let(:buy){
-        Factory :fund_buy,
-                :fund_holding => holding,
+        Factory :etf_buy,
+                :etf_holding => holding,
                 :user => holding.user,
-                :fund_ticker => holding.ticker,
+                :etf_ticker => holding.ticker,
                 :units => 100,
                 :price  => 10
 
@@ -66,18 +66,18 @@ describe FundHolding do
     end
 
     context :buy_and_sell do
-      let(:holding){Factory :fund_holding, :starting_units => 2000, :starting_price => 10}
+      let(:holding){Factory :etf_holding, :starting_units => 2000, :starting_price => 10}
       before(:each) do
-        Factory :fund_buy,
-                :fund_holding => holding,
+        Factory :etf_buy,
+                :etf_holding => holding,
                 :user => holding.user,
-                :fund_ticker => holding.ticker,
+                :etf_ticker => holding.ticker,
                 :units => 200,
                 :price  => 10        
-        Factory :fund_sell,
-                :fund_holding => holding,
+        Factory :etf_sell,
+                :etf_holding => holding,
                 :user => holding.user,
-                :fund_ticker => holding.ticker,
+                :etf_ticker => holding.ticker,
                 :units => 300,
                 :price  => 10
       end

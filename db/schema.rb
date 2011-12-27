@@ -13,6 +13,24 @@
 
 ActiveRecord::Schema.define(:version => 20111226163955) do
 
+  create_table "bond_events", :force => true do |t|
+    t.integer  "bond_ticker_id"
+    t.integer  "quantity"
+    t.integer  "bond_holding_id"
+    t.string   "type"
+    t.integer  "user_id"
+    t.datetime "executed_at"
+    t.decimal  "roi",                :precision => 15, :scale => 2
+    t.decimal  "investment",         :precision => 15, :scale => 2
+    t.decimal  "price",              :precision => 9,  :scale => 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "dow_index_eod_id"
+    t.integer  "sp500_index_eod_id"
+    t.integer  "tbill_index_eod_id"
+    t.string   "current_state"
+  end
+
   create_table "bond_holdings", :force => true do |t|
     t.integer  "bond_ticker_id"
     t.datetime "created_at"
@@ -40,6 +58,24 @@ ActiveRecord::Schema.define(:version => 20111226163955) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "cd_events", :force => true do |t|
+    t.integer  "cd_ticker_id"
+    t.integer  "quantity"
+    t.integer  "cd_holding_id"
+    t.string   "type"
+    t.integer  "user_id"
+    t.datetime "executed_at"
+    t.decimal  "roi",                :precision => 15, :scale => 2
+    t.decimal  "investment",         :precision => 15, :scale => 2
+    t.decimal  "price",              :precision => 9,  :scale => 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "dow_index_eod_id"
+    t.integer  "sp500_index_eod_id"
+    t.integer  "tbill_index_eod_id"
+    t.string   "current_state"
   end
 
   create_table "cd_holdings", :force => true do |t|

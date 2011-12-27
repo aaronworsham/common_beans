@@ -1,14 +1,14 @@
-class StockEvent < ActiveRecord::Base
-  include DateMixin
+class EtfEvent < ActiveRecord::Base
+include DateMixin
 
 
   belongs_to :user
-  belongs_to :stock_holding
-  belongs_to :stock_ticker
+  belongs_to :etf_holding
+  belongs_to :etf_ticker
 
-  validates_presence_of :stock_holding
+  validates_presence_of :etf_holding
   validates_presence_of :user
-  validates_presence_of :shares
+  validates_presence_of :units
   validates_presence_of :price
   validates_presence_of :executed_at
 
@@ -28,21 +28,23 @@ class StockEvent < ActiveRecord::Base
     "bought"
   end
 
+
   def holding
-    @holding ||= stock_holding
+    @holding ||= etf_holding
   end
 
   def holding=(h)
-    self.stock_holding = h
+    self.etf_holding = h
   end
 
   def ticker
-    @ticker ||= stock_ticker
+    @ticker ||= etf_ticker
   end
 
   def ticker=(t)
-    self.stock_ticker = t
+    self.etf_ticker = t
   end
+
 
   def as_json(options={})
     result = super(options)
@@ -58,7 +60,7 @@ class StockEvent < ActiveRecord::Base
 
 
   def todays_price
-    self.stock_ticker.todays_close
+    self.etf_ticker.todays_close
   end
 
   def todays_value

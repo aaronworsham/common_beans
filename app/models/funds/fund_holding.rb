@@ -13,12 +13,15 @@ include DateMixin
 
 
   #after_create :notify_everyone
-  #before_create :populate_net_values
+  before_create :populate_net_values
   attr_accessor :ticker_name, :ticker_symbol
 
 
   EOD = %w(day week one_month three_month six_month nine_month one_year two_year three_year)
 
+  def ticker
+    @ticker ||= fund_ticker
+  end
 
   def notify_everyone
     MessageEveryone.new(
@@ -30,21 +33,21 @@ include DateMixin
 
 
   def populate_net_values
-    self.starting_investment = self.starting_shares * self.starting_price
-    self.net_shares = self.starting_shares
+    self.starting_investment = self.starting_units * self.starting_price
+    self.net_units = self.starting_units
     self.net_investment = self.starting_investment
     self.net_return = 0
   end
 
   def update_net_values_for_buy(buy)
     self.update_attributes(
-      :net_shares => self.net_shares + buy.shares,
+      :net_units => self.net_units + buy.units,
       :net_investment => self.net_investment + buy.investment
     )
   end
   def reset_values_for_buy(buy)
     self.update_attributes(
-      :net_shares => self.net_shares - buy.shares,
+      :net_units => self.net_units - buy.units,
       :net_investment => self.net_investment - buy.investment
     )
   end
@@ -52,20 +55,20 @@ include DateMixin
 
   def update_net_values_for_sell(sell)
     self.update_attributes(
-      :net_shares => self.net_shares - sell.shares,
-      :net_return => self.net_return + sell.return_on_investment
+      :net_units => self.net_units - sell.units,
+      :net_return => self.net_return + sell.roi
     )
   end
   def reset_values_for_sell(sell)
     self.update_attributes(
-      :net_shares => self.net_shares + sell.shares,
-      :net_return => self.net_return - sell.return_on_investment
+      :net_units => self.net_units + sell.units,
+      :net_return => self.net_return - sell.roi
     )
   end
 
 
   def days_since_holding_purchase
-    humanize_seconds(Time.now - self.date_of_purchase)
+    humanize_seconds(Time.now - self.purchased_at)
   end
 
 
@@ -75,7 +78,7 @@ include DateMixin
   end
 
   def todays_value
-    (self.net_shares * self.todays_price).round
+    (self.net_units * self.todays_price).round
   end
 
   def total_gain
@@ -120,7 +123,7 @@ include DateMixin
 
     ##### Past Value
     define_method("#{pre}_value") do
-      self.send("#{pre}_price") * net_shares
+      self.send("#{pre}_price") * net_units
     end
 
     #####  Past Value Gain to today
