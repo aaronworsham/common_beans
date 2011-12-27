@@ -1,5 +1,6 @@
 class Portfolio < ActiveRecord::Base
   has_many :stock_holdings, :dependent => :destroy
+  has_many :fund_holdings, :dependent => :destroy
   has_many :group_portfolios, :dependent => :destroy
   belongs_to :user
 
@@ -8,7 +9,7 @@ class Portfolio < ActiveRecord::Base
                     value value_gain_to_today value_gain_delta value_gain_percent_delta)
 
   def cached_holdings
-    @holdings ||= self.holdings
+    @holdings ||= self.stock_holdings + self.fund_holdings
   end
 
   def total_value
@@ -44,7 +45,7 @@ class Portfolio < ActiveRecord::Base
         result[method] = self.send(method)
       end
     end
-    result['holding_ids'] = self.holdings.map{|x| x.id}
+    result['holding_ids'] = self.cached_holdings.map{|x| x.id}
     result
   end
 end

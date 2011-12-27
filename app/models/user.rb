@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
 
   has_many :group_portfolios, :dependent => :destroy
   has_many :portfolios,       :dependent => :destroy
-  has_many :stock_holdings,         :dependent => :destroy
+  has_many :stock_holdings,   :dependent => :destroy
+  has_many :fund_holdings,    :dependent => :destroy
   has_many :buys,             :dependent => :destroy
   has_many :sells,            :dependent => :destroy
   has_many :events,           :dependent => :destroy
@@ -30,6 +31,10 @@ class User < ActiveRecord::Base
       user.description = provider.description
       user.urls = provider.urls
     end  
+  end
+
+  def holdings
+    stock_holdings + fund_holdings
   end
 
   def friend_reader

@@ -74,7 +74,7 @@ module Quotable
     def close_for_date(date)
       raise 'Date must be a Ruby Date Object' unless date.is_a?(Date)
       if local_eod_by_date(date).present?
-        local_eod_by_date(date).first.close
+        local_eod_by_date(date).close
       else
         create_eod(past_quote(date).results, date)
       end

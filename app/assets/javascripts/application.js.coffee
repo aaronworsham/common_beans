@@ -58,6 +58,10 @@ $ ->
   $('#portfolios-hotlist li.selectable').live("click", ->
     id = $(@).attr('data-id');
     title = $(@).attr('data-label');
+    $('#portfolios-hotlist li.selectable').each((i,v) ->
+      $(v).removeClass('selected');
+    );
+    $(@).addClass('selected');
     hotlistMenu.select(id, title, '#warmlist-portfolios', ()->
       $('.portfolio-content').hide()
       $('.portfolio-content#'+title).show();

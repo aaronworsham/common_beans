@@ -1,31 +1,42 @@
 require File.join(File.dirname(__FILE__), '..', 'spec_helper')
-describe Ticker do
-  fixtures :tickers
-  fixtures :ticker_eods
+describe 'Tickers' do
+  fixtures :stock_tickers
+  fixtures :stock_ticker_eods
 
-  before(:each) do
-    @ticker = Ticker.first
-  end
 
-  it ' todays close price should be $10' do
-    @ticker.todays_close.should > 0
-  end
+  describe StockTicker do
 
-  context :past_quote do
 
     before(:each) do
-      @eod_num = TickerEod.count
-      @close = @ticker.close_for_date('01/10/2010')
+      @ticker = StockTicker.find_by_symbol('GOOG')
+
+
     end
 
-    it ' will create an EOD for past quote ' do
-      @eod_num.should == (TickerEod.count - 1)
+    it ' todays close price should be 633.14 as per mock results' do
+      @ticker.expects(:current_quote).returns(StockTracker::MockCurrentQuote.new('GOOG'))
+      @ticker.todays_close.should == 633.14
     end
 
-    it ' will have a close cost of 525.62' do
-      @close.should == 525.62
-    end
+    context :past_quote do
 
+      before(:each) do
+        @date = Date.parse('01/10/2010')
+        @ticker.local_eod_by_date(@date).try('delete')
+        @ticker.expects(:past_quote).with(@date).returns(StockTracker::MockPastQuote.new('GOOG', Date.today))
+        @eod_num = StockTickerEod.count
+        @close = @ticker.close_for_date(@date)
+      end
+
+      it ' will create an EOD for past quote ' do
+        StockTickerEod.count.should == (@eod_num + 1)
+      end
+
+      it ' will have a close cost of 630.37 per mock results' do
+        @close.to_f.should == 630.37
+      end
+
+    end
   end
 
 

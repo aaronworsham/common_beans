@@ -8,6 +8,7 @@
     text-align: left;
     padding: 2px;
     color: #53a514;
+    list-style: circle;
     h3
     {
       background: #53a514;
@@ -15,8 +16,18 @@
 
     }
 
+
   }
 
+  li.selectable
+  {
+    padding-left: 20px;
+  }
+
+  li.selected
+  {
+    background: red;
+  }
 
 
 

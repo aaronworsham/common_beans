@@ -11,57 +11,113 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111221024513) do
+ActiveRecord::Schema.define(:version => 20111226163955) do
 
-  create_table "buys", :force => true do |t|
-    t.integer  "ticker_id"
-    t.integer  "holding_id"
-    t.integer  "user_id"
-    t.integer  "shares"
-    t.decimal  "price",         :precision => 15, :scale => 2
+  create_table "bond_holdings", :force => true do |t|
+    t.integer  "bond_ticker_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "investment",    :precision => 15, :scale => 2
-    t.datetime "date_of_event"
-  end
-
-  create_table "club_memberships", :force => true do |t|
-    t.integer  "club_id"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "clubs", :force => true do |t|
+    t.integer  "portfolio_id"
+    t.decimal  "coupon",             :precision => 5,  :scale => 2
+    t.datetime "matures_at"
+    t.decimal  "purchase_price",     :precision => 15, :scale => 2
+    t.decimal  "face_value",         :precision => 15, :scale => 2
+    t.decimal  "expected_yield",     :precision => 5,  :scale => 2
+    t.integer  "frequency"
+    t.datetime "purchased_at"
+    t.integer  "quantity"
     t.string   "name"
-    t.integer  "owner_id"
+    t.integer  "dow_index_eod_id"
+    t.integer  "sp500_index_eod_id"
+    t.integer  "tbill_index_eod_id"
+    t.string   "current_state"
     t.string   "type"
+  end
+
+  create_table "bond_tickers", :force => true do |t|
+    t.string   "symbol"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "dow_index_eods", :force => true do |t|
-    t.decimal  "close",      :precision => 8, :scale => 2
-    t.float    "net_change"
-    t.date     "closed_on"
+  create_table "cd_holdings", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "portfolio_id"
+    t.decimal  "coupon",             :precision => 5,  :scale => 2
+    t.datetime "matures_at"
+    t.decimal  "purchase_price",     :precision => 15, :scale => 2
+    t.decimal  "face_value",         :precision => 15, :scale => 2
+    t.decimal  "expected_yield",     :precision => 5,  :scale => 2
+    t.integer  "frequency"
+    t.datetime "purchased_at"
+    t.integer  "quantity"
+    t.string   "name"
+    t.integer  "dow_index_eod_id"
+    t.integer  "sp500_index_eod_id"
+    t.integer  "tbill_index_eod_id"
+    t.string   "current_state"
+    t.string   "type"
   end
 
-  create_table "events", :force => true do |t|
-    t.integer  "ticker_id"
-    t.integer  "shares"
-    t.integer  "holding_id"
+  create_table "etf_events", :force => true do |t|
+    t.integer  "etf_ticker_id"
+    t.integer  "units"
+    t.integer  "etf_holding_id"
     t.string   "type"
     t.integer  "user_id"
-    t.datetime "date_of_event"
-    t.decimal  "return_on_investment"
-    t.decimal  "investment",           :precision => 15, :scale => 2
-    t.decimal  "price",                :precision => 15, :scale => 2
+    t.datetime "executed_at"
+    t.decimal  "roi",                :precision => 15, :scale => 2
+    t.decimal  "investment",         :precision => 15, :scale => 2
+    t.decimal  "price",              :precision => 9,  :scale => 2
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "dow_index_eod_id"
+    t.integer  "sp500_index_eod_id"
+    t.integer  "tbill_index_eod_id"
     t.string   "current_state"
+  end
+
+  create_table "etf_holdings", :force => true do |t|
+    t.integer  "etf_ticker_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "portfolio_id"
+    t.integer  "starting_units"
+    t.decimal  "starting_price",      :precision => 9,  :scale => 2
+    t.decimal  "starting_investment", :precision => 15, :scale => 2
+    t.datetime "purchased_at"
+    t.integer  "net_units"
+    t.decimal  "net_investment",      :precision => 15, :scale => 2
+    t.decimal  "net_return",          :precision => 15, :scale => 2
+    t.integer  "dow_index_eod_id"
+    t.integer  "sp500_index_eod_id"
+    t.integer  "tbill_index_eod_id"
+    t.string   "current_state"
+    t.string   "type"
+  end
+
+  create_table "etf_ticker_eods", :force => true do |t|
+    t.integer  "etf_ticker_id"
+    t.decimal  "close",         :precision => 9, :scale => 2
+    t.decimal  "high",          :precision => 9, :scale => 2
+    t.decimal  "low",           :precision => 9, :scale => 2
+    t.decimal  "open",          :precision => 9, :scale => 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.date     "closed_on"
+  end
+
+  create_table "etf_tickers", :force => true do |t|
+    t.string   "symbol"
+    t.string   "name"
+    t.integer  "exchange_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "exchanges", :force => true do |t|
@@ -70,22 +126,59 @@ ActiveRecord::Schema.define(:version => 20111221024513) do
     t.datetime "updated_at"
   end
 
-  create_table "fund_holdings", :force => true do |t|
-    t.decimal  "starting_units"
-    t.decimal  "starting_investment"
-    t.decimal  "net_investment"
-    t.decimal  "net_units"
-    t.integer  "user_id"
-    t.integer  "portfolio_id"
+  create_table "fund_events", :force => true do |t|
     t.integer  "fund_ticker_id"
-    t.string   "current_state"
+    t.integer  "units"
+    t.integer  "fund_holding_id"
+    t.string   "type"
+    t.integer  "user_id"
+    t.datetime "executed_at"
+    t.decimal  "roi",                :precision => 15, :scale => 2
+    t.decimal  "investment",         :precision => 15, :scale => 2
+    t.decimal  "price",              :precision => 9,  :scale => 2
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "dow_index_eod_id"
+    t.integer  "sp500_index_eod_id"
+    t.integer  "tbill_index_eod_id"
+    t.string   "current_state"
   end
 
-  create_table "group_memberships", :force => true do |t|
-    t.integer  "group_id"
+  create_table "fund_holdings", :force => true do |t|
+    t.integer  "fund_ticker_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "portfolio_id"
+    t.integer  "starting_units"
+    t.decimal  "starting_price",      :precision => 9,  :scale => 2
+    t.decimal  "starting_investment", :precision => 15, :scale => 2
+    t.datetime "purchased_at"
+    t.integer  "net_units"
+    t.decimal  "net_investment",      :precision => 15, :scale => 2
+    t.decimal  "net_return",          :precision => 15, :scale => 2
+    t.integer  "dow_index_eod_id"
+    t.integer  "sp500_index_eod_id"
+    t.integer  "tbill_index_eod_id"
+    t.string   "current_state"
+    t.string   "type"
+  end
+
+  create_table "fund_ticker_eods", :force => true do |t|
+    t.integer  "fund_ticker_id"
+    t.decimal  "close",          :precision => 9, :scale => 2
+    t.decimal  "high",           :precision => 9, :scale => 2
+    t.decimal  "low",            :precision => 9, :scale => 2
+    t.decimal  "open",           :precision => 9, :scale => 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.date     "closed_on"
+  end
+
+  create_table "fund_tickers", :force => true do |t|
+    t.string   "symbol"
+    t.string   "name"
+    t.integer  "exchange_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -96,53 +189,13 @@ ActiveRecord::Schema.define(:version => 20111221024513) do
     t.integer  "founder_group_id"
     t.string   "type"
     t.string   "state"
-    t.decimal  "investment",       :precision => 9, :scale => 2
-    t.float    "ownership"
+    t.decimal  "investment",       :precision => 15, :scale => 2
+    t.decimal  "ownership",        :precision => 5,  :scale => 2
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "current_state"
-    t.boolean  "is_lead",                                        :default => false
+    t.boolean  "lead",                                            :default => false
     t.string   "name"
-  end
-
-  create_table "groups", :force => true do |t|
-    t.string   "name"
-    t.integer  "owner_id"
-    t.string   "type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "index_eods", :force => true do |t|
-    t.integer  "index_id"
-    t.decimal  "close"
-    t.decimal  "high"
-    t.decimal  "low"
-    t.decimal  "open"
-    t.date     "closed_on"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "indices", :force => true do |t|
-    t.string   "symbol"
-    t.string   "yahoo_symbol"
-    t.string   "name"
-    t.integer  "exchange_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "investment_spans", :force => true do |t|
-    t.date     "start_date"
-    t.date     "end_date"
-    t.decimal  "opening_balance"
-    t.decimal  "closing_balance"
-    t.decimal  "units"
-    t.integer  "user_id"
-    t.integer  "fund_holding_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "portfolios", :force => true do |t|
@@ -151,51 +204,65 @@ ActiveRecord::Schema.define(:version => 20111221024513) do
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "min_trust_level"
+    t.integer  "trust_level"
     t.string   "current_state"
   end
 
-  create_table "profiles", :force => true do |t|
-    t.string   "name"
-    t.integer  "user_id"
-    t.string   "type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "sells", :force => true do |t|
-    t.integer  "ticker_id"
+  create_table "stock_events", :force => true do |t|
+    t.integer  "stock_ticker_id"
     t.integer  "shares"
-    t.integer  "holding_id"
+    t.integer  "stock_holding_id"
+    t.string   "type"
     t.integer  "user_id"
-    t.decimal  "price"
+    t.datetime "executed_at"
+    t.decimal  "roi",                :precision => 15, :scale => 2
+    t.decimal  "investment",         :precision => 15, :scale => 2
+    t.decimal  "price",              :precision => 9,  :scale => 2
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "return_on_investment"
-    t.datetime "date_of_event"
+    t.integer  "dow_index_eod_id"
+    t.integer  "sp500_index_eod_id"
+    t.integer  "tbill_index_eod_id"
+    t.string   "current_state"
   end
 
-# Could not dump table "stock_holdings" because of following StandardError
-#   Unknown type 'stock_ticker_id' for column 'ticker_id'
+  create_table "stock_holdings", :force => true do |t|
+    t.integer  "stock_ticker_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "portfolio_id"
+    t.integer  "starting_shares"
+    t.decimal  "starting_price",      :precision => 9,  :scale => 2
+    t.decimal  "starting_investment", :precision => 15, :scale => 2
+    t.datetime "purchased_at"
+    t.integer  "net_shares"
+    t.decimal  "net_investment",      :precision => 15, :scale => 2
+    t.decimal  "net_return",          :precision => 15, :scale => 2
+    t.integer  "dow_index_eod_id"
+    t.integer  "sp500_index_eod_id"
+    t.integer  "tbill_index_eod_id"
+    t.string   "current_state"
+    t.string   "type"
+  end
 
-  create_table "ticker_eods", :force => true do |t|
-    t.integer  "ticker_id"
-    t.decimal  "close"
-    t.decimal  "high"
-    t.decimal  "low"
-    t.decimal  "open"
+  create_table "stock_ticker_eods", :force => true do |t|
+    t.integer  "stock_ticker_id"
+    t.decimal  "close",           :precision => 9, :scale => 2
+    t.decimal  "high",            :precision => 9, :scale => 2
+    t.decimal  "low",             :precision => 9, :scale => 2
+    t.decimal  "open",            :precision => 9, :scale => 2
     t.datetime "created_at"
     t.datetime "updated_at"
     t.date     "closed_on"
   end
 
-  create_table "tickers", :force => true do |t|
+  create_table "stock_tickers", :force => true do |t|
     t.string   "symbol"
     t.string   "name"
     t.integer  "exchange_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "type"
   end
 
   create_table "users", :force => true do |t|

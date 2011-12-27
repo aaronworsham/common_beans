@@ -25,7 +25,7 @@ gem 'mustache'
 gem "stache", "~> 0.0.2"
 gem "valuable"
 gem 'mysql2'
-gem 'stocktracker', '0.0.5'
+gem 'stocktracker', '0.0.6'
 gem 'aasm'
 
 # Gems used only for assets and not required

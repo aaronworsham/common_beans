@@ -1,3 +1,0 @@
-class StockTicker < Ticker
-
-end
