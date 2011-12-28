@@ -1,14 +1,14 @@
-class EtfEvent < ActiveRecord::Base
+class BondEvent < ActiveRecord::Base
 include DateMixin
 
 
   belongs_to :user
-  belongs_to :etf_holding
-  belongs_to :etf_ticker
+  belongs_to :bond_holding
+  belongs_to :bond_ticker
 
-  validates_presence_of :etf_holding
+  validates_presence_of :bond_holding
   validates_presence_of :user
-  validates_presence_of :units
+  validates_presence_of :quantity
   validates_presence_of :price
   validates_presence_of :executed_at
 
@@ -30,19 +30,19 @@ include DateMixin
 
 
   def holding
-    @holding ||= etf_holding
+    @holding ||= bond_holding
   end
 
   def holding=(h)
-    self.etf_holding = h
+    self.bond_holding = h
   end
 
   def ticker
-    @ticker ||= etf_ticker
+    @ticker ||= bond_ticker
   end
 
   def ticker=(t)
-    self.etf_ticker = t
+    self.bond_ticker = t
   end
 
 
@@ -58,13 +58,5 @@ include DateMixin
     humanize_seconds(executed_at - self.holding.purchased_at)
   end
 
-
-  def todays_price
-    self.etf_ticker.todays_close
-  end
-
-  def todays_value
-    self.shares * self.todays_price
-  end
 
 end

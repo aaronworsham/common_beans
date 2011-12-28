@@ -48,5 +48,11 @@ FactoryGirl.define do
     association :etf_ticker
     association :user
   end
+  factory :bond_sell do
+    quantity 1
+    price  1000
+    executed_at {Time.at(Time.local(2000,1,1) + rand * (Time.now.to_f - Time.local(2000,1,1).to_f))}
+    association :user
+  end
 
 end

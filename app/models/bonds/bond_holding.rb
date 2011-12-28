@@ -12,9 +12,9 @@ include DateMixin
   validates_presence_of :face_value
   validates_presence_of :frequency
   validates_presence_of :purchased_at
-  validates_presence_of :quantity
+  validates_presence_of :starting_quantity
 
-
+  before_create :populate_net_values
   attr_accessor :ticker_name, :ticker_symbol
 
 
@@ -30,12 +30,26 @@ include DateMixin
     ).save
   end
 
-  def number_of_coupons
+  def populate_net_values
+    self.net_quantity = self.starting_quantity
+    self.net_investment = (self.purchase_price * self.starting_quantity)
+    self.net_return = 0
+  end
+
+  def num_coupons_from_today
     frequency * (matures_at.year - Date.today.year)
   end
 
+  def num_coupons_from_purchase
+    frequency * (matures_at.year - purchased_at.year)
+  end
+
+  def num_coupons_paid
+    frequency * (Date.today.year - purchased_at.year)
+  end
+
   def value_of_coupon_payments
-    purchase_price * (coupon/frequency)
+    face_value * (coupon/frequency)
   end
 
   def frequency_yield
@@ -43,33 +57,41 @@ include DateMixin
   end
 
   def pv_of_redemption
-    face_value / (1+frequency_yield)**number_of_coupons
+    face_value / (1+frequency_yield)**num_coupons_from_today
   end
 
   def pv_of_interest_payments
-    value_of_coupon_payments * ((1-(1/(1+frequency_yield)**number_of_coupons))/frequency_yield)
+    value_of_coupon_payments * ((1-(1/(1+frequency_yield)**num_coupons_from_today))/frequency_yield)
   end
 
   def present_value
     pv = pv_of_redemption + pv_of_interest_payments
-    pv.round(2) * quantity
+    pv.round(2) * net_quantity
   end
 
   def update_net_values_for_sell(sell)
+    self.update_attributes(
+       :net_quantity  => (self.net_quantity - sell.quantity),
+       :net_return    => (self.net_return + sell.roi)
+    )
   end
   def reset_values_for_sell(sell)
+    self.update_attributes(
+       :net_quantity  => (self.net_quantity + sell.quantity),
+       :net_return    => (self.net_return - sell.roi)
+    )
   end
 
   def days_since_holding_purchase
     humanize_seconds(Time.now - self.purchased_at)
   end
 
-  def todays_value
-    (self.net_units * self.todays_price).round
+  def total_return
+    net_return + (value_of_coupon_payments * num_coupons_paid)
   end
 
   def total_gain
-    self.todays_value + self.net_return - self.net_investment
+    self.present_value + self.total_return - self.net_investment
   end
 
 end

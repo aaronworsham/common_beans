@@ -41,22 +41,22 @@ FactoryGirl.define do
     purchase_price 1000
     matures_at {10.years.from_now}
     expected_yield {0.12}
-    coupon {0.1}
-    frequency {2}
-    quantity {1}
+    coupon 0.1
+    frequency 2
+    starting_quantity 1
     purchased_at {Time.now}
     association :user
     association :portfolio
   end
 
   factory :cd_holding do
-    face_value 10000
+    face_value 1000
     purchase_price 1000
     matures_at {10.years.from_now}
-    expected_yield {0.12}
-    coupon {0.1}
-    frequency {1}
-    quantity {2}
+    expected_yield 0.12
+    coupon 0.1
+    frequency 2
+    starting_quantity 1
     purchased_at {Time.now}
     association :user
     association :portfolio

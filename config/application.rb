@@ -22,6 +22,7 @@ module CommonBeans
       #{config.root}/app/models/stocks
       #{config.root}/app/models/etfs
       #{config.root}/app/models/cert_of_deposit
+      #{config.root}/app/models/multi
     )
 
     # Only load the plugins named here, in the order given (default is alphabetical).

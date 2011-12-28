@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111226163955) do
+ActiveRecord::Schema.define(:version => 20111228202841) do
 
   create_table "bond_events", :force => true do |t|
     t.integer  "bond_ticker_id"
@@ -44,7 +44,10 @@ ActiveRecord::Schema.define(:version => 20111226163955) do
     t.decimal  "expected_yield",     :precision => 5,  :scale => 2
     t.integer  "frequency"
     t.datetime "purchased_at"
-    t.integer  "quantity"
+    t.integer  "net_quantity"
+    t.decimal  "net_investment",     :precision => 15, :scale => 2
+    t.decimal  "net_return",         :precision => 15, :scale => 2
+    t.integer  "starting_quantity"
     t.string   "name"
     t.integer  "dow_index_eod_id"
     t.integer  "sp500_index_eod_id"
@@ -90,7 +93,10 @@ ActiveRecord::Schema.define(:version => 20111226163955) do
     t.decimal  "expected_yield",     :precision => 5,  :scale => 2
     t.integer  "frequency"
     t.datetime "purchased_at"
-    t.integer  "quantity"
+    t.integer  "net_quantity"
+    t.decimal  "net_investment",     :precision => 15, :scale => 2
+    t.decimal  "net_return",         :precision => 15, :scale => 2
+    t.integer  "starting_quantity"
     t.string   "name"
     t.integer  "dow_index_eod_id"
     t.integer  "sp500_index_eod_id"
@@ -232,6 +238,47 @@ ActiveRecord::Schema.define(:version => 20111226163955) do
     t.string   "current_state"
     t.boolean  "lead",                                            :default => false
     t.string   "name"
+  end
+
+  create_table "multi_holding_allocations", :force => true do |t|
+    t.integer  "multi_holding_id"
+    t.integer  "fund_ticker_id"
+    t.decimal  "allocation_percentage", :precision => 5, :scale => 2
+    t.decimal  "contributions",         :precision => 9, :scale => 2
+    t.integer  "estimated_units"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "multi_holdings", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "portfolio_id"
+    t.decimal  "net_investment", :precision => 15, :scale => 2
+    t.decimal  "net_return",     :precision => 15, :scale => 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "multi_statement_allocations", :force => true do |t|
+    t.integer  "multi_holding_id"
+    t.integer  "fund_ticker_id"
+    t.decimal  "allocation_percentage", :precision => 5, :scale => 2
+    t.decimal  "contributions",         :precision => 9, :scale => 2
+    t.integer  "estimated_units"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "multi_statements", :force => true do |t|
+    t.integer  "multi_holding_id"
+    t.date     "started_on"
+    t.date     "ended_on"
+    t.decimal  "starting_balance", :precision => 15, :scale => 2
+    t.decimal  "ending_balance",   :precision => 15, :scale => 2
+    t.decimal  "contributions",    :precision => 9,  :scale => 2
+    t.decimal  "distributions",    :precision => 15, :scale => 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "portfolios", :force => true do |t|
