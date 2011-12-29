@@ -10,12 +10,12 @@ FactoryGirl.define do
   factory :compare_group do
     user { Factory :user }
     portfolio { Factory :portfolio }
-    is_lead true
+    lead true
   end
 
   factory :share_group do
     user { Factory :user }
     portfolio { Factory :portfolio }
-    is_lead true
+    lead true
   end
 end

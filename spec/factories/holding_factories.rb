@@ -62,4 +62,9 @@ FactoryGirl.define do
     association :portfolio
   end
 
+  factory :multi_holding do
+    association :user
+    association :portfolio
+  end
+
 end

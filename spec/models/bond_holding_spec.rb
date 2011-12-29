@@ -80,7 +80,6 @@ describe BondHolding do
       @bond.num_coupons_paid.should == 10
     end
     it "should have a total_return coupons of 500" do
-      p @bond.total_return.to_s
       @bond.total_return.should == 500
     end
   end

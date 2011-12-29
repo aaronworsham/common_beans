@@ -22,20 +22,20 @@ class GroupPortfolio < ActiveRecord::Base
   end
 
 
-  validates_presence_of :founder_group_id, :on => :create, :unless => Proc.new {|gp| gp.is_lead?}
+  validates_presence_of :founder_group_id, :on => :create, :unless => Proc.new {|gp| gp.lead?}
   validates_presence_of :user_id
   validates_presence_of :portfolio_id
 
   after_create do |gp|
-    gp.activate! if self.pending? and self.is_lead?
+    gp.activate! if self.pending? and self.lead?
   end
 
   def is_member?
-    !is_lead?
+    !lead?
   end
 
   def founder
-    if self.is_lead?
+    if self.lead?
       self.user
     else
       self.founder_group.user
@@ -43,7 +43,7 @@ class GroupPortfolio < ActiveRecord::Base
   end
 
   def founder_portfolio
-    if self.is_lead?
+    if self.lead?
       self.portfolio
     else
       self.founder_group.portfolio
@@ -51,7 +51,7 @@ class GroupPortfolio < ActiveRecord::Base
   end
 
   def group
-    if is_lead?
+    if lead?
       Group.new(user, self)
     else
       Group.new(user, founder_group)

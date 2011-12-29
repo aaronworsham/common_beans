@@ -31,8 +31,8 @@ describe GroupPortfolio do
       @member_portfolio = Factory :group_portfolio
     end
     it 'should be a lead group portfolio' do
-      @compare_group.is_lead?.should be_true
-      @share_group.is_lead?.should be_true
+      @compare_group.lead?.should be_true
+      @share_group.lead?.should be_true
     end
 
     it 'should be a active as lead group portfolios' do

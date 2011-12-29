@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111228202841) do
+ActiveRecord::Schema.define(:version => 20111226163955) do
 
   create_table "bond_events", :force => true do |t|
     t.integer  "bond_ticker_id"
@@ -53,7 +53,6 @@ ActiveRecord::Schema.define(:version => 20111228202841) do
     t.integer  "sp500_index_eod_id"
     t.integer  "tbill_index_eod_id"
     t.string   "current_state"
-    t.string   "type"
   end
 
   create_table "bond_tickers", :force => true do |t|
@@ -102,7 +101,6 @@ ActiveRecord::Schema.define(:version => 20111228202841) do
     t.integer  "sp500_index_eod_id"
     t.integer  "tbill_index_eod_id"
     t.string   "current_state"
-    t.string   "type"
   end
 
   create_table "etf_events", :force => true do |t|
@@ -140,7 +138,6 @@ ActiveRecord::Schema.define(:version => 20111228202841) do
     t.integer  "sp500_index_eod_id"
     t.integer  "tbill_index_eod_id"
     t.string   "current_state"
-    t.string   "type"
   end
 
   create_table "etf_ticker_eods", :force => true do |t|
@@ -203,7 +200,6 @@ ActiveRecord::Schema.define(:version => 20111228202841) do
     t.integer  "sp500_index_eod_id"
     t.integer  "tbill_index_eod_id"
     t.string   "current_state"
-    t.string   "type"
   end
 
   create_table "fund_ticker_eods", :force => true do |t|
@@ -243,11 +239,13 @@ ActiveRecord::Schema.define(:version => 20111228202841) do
   create_table "multi_holding_allocations", :force => true do |t|
     t.integer  "multi_holding_id"
     t.integer  "fund_ticker_id"
-    t.decimal  "allocation_percentage", :precision => 5, :scale => 2
-    t.decimal  "contributions",         :precision => 9, :scale => 2
+    t.decimal  "allocation_percentage", :precision => 5,  :scale => 2
+    t.decimal  "contributions",         :precision => 9,  :scale => 2
+    t.decimal  "distributions",         :precision => 15, :scale => 2
     t.integer  "estimated_units"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "current_state"
   end
 
   create_table "multi_holdings", :force => true do |t|
@@ -257,16 +255,19 @@ ActiveRecord::Schema.define(:version => 20111228202841) do
     t.decimal  "net_return",     :precision => 15, :scale => 2
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "current_state"
   end
 
   create_table "multi_statement_allocations", :force => true do |t|
-    t.integer  "multi_holding_id"
+    t.integer  "multi_statement_id"
     t.integer  "fund_ticker_id"
-    t.decimal  "allocation_percentage", :precision => 5, :scale => 2
-    t.decimal  "contributions",         :precision => 9, :scale => 2
+    t.decimal  "allocation_percentage", :precision => 5,  :scale => 2
+    t.decimal  "contributions",         :precision => 9,  :scale => 2
+    t.decimal  "distributions",         :precision => 15, :scale => 2
     t.integer  "estimated_units"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "current_state"
   end
 
   create_table "multi_statements", :force => true do |t|
@@ -279,6 +280,7 @@ ActiveRecord::Schema.define(:version => 20111228202841) do
     t.decimal  "distributions",    :precision => 15, :scale => 2
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "current_state"
   end
 
   create_table "portfolios", :force => true do |t|
@@ -326,7 +328,6 @@ ActiveRecord::Schema.define(:version => 20111228202841) do
     t.integer  "sp500_index_eod_id"
     t.integer  "tbill_index_eod_id"
     t.string   "current_state"
-    t.string   "type"
   end
 
   create_table "stock_ticker_eods", :force => true do |t|
