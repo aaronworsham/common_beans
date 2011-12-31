@@ -239,9 +239,7 @@ ActiveRecord::Schema.define(:version => 20111226163955) do
   create_table "multi_holding_allocations", :force => true do |t|
     t.integer  "multi_holding_id"
     t.integer  "fund_ticker_id"
-    t.decimal  "allocation_percentage", :precision => 5,  :scale => 2
-    t.decimal  "contributions",         :precision => 9,  :scale => 2
-    t.decimal  "distributions",         :precision => 15, :scale => 2
+    t.decimal  "allocation_percentage", :precision => 5, :scale => 2
     t.integer  "estimated_units"
     t.datetime "created_at"
     t.datetime "updated_at"
