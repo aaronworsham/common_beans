@@ -10,6 +10,10 @@ class StockTicker < ActiveRecord::Base
   validates_presence_of :symbol
   validates_uniqueness_of :symbol
 
+  def ticker_eods
+    stock_ticker_eods
+  end
+
   def create_eod(eod, date)
     StockTickerEod.create(
       :stock_ticker => self,

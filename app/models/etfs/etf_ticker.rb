@@ -10,6 +10,9 @@ class EtfTicker < ActiveRecord::Base
   validates_presence_of :symbol
   validates_uniqueness_of :symbol
 
+  def ticker_eods
+    etf_ticker_eods
+  end
 
 
   def create_eod(eod, date)

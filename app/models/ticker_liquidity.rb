@@ -4,7 +4,7 @@ module TickerLiquidity
   end
 
   def local_eod_by_date(date)
-    self.fund_ticker_eods.where("closed_on = ?", date.to_s(:db)).first
+    self.ticker_eods.where("closed_on = ?", date.to_s(:db)).first
   end
 
   def as_json(options={})
