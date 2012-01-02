@@ -20,17 +20,20 @@ class User < ActiveRecord::Base
 
   serialize :urls
   def self.create_with_omniauth(auth)  
-    create! do |user|  
+    create! do |user|
       provider = Provider.new(auth)
       user.provider = provider.source
-      user.uid = provider.uid 
-      user.screen_name = provider.screen_name
-      user.name = provider.name
-      user.image_url =  provider.image_url
-      user.location = provider.location
-      user.description = provider.description
-      user.urls = provider.urls
+      user.uid = provider.uid
+      user.screen_name = auth.info.nickname
+      user.name = auth.info.name
+      user.image_url =  auth.info.image_url
+      user.location = auth.info.location
+      user.description = auth.info.description
+      user.urls = auth.info.urls
     end  
+  rescue => e
+    p 'INSIDE USER CREATE'
+    p e.message
   end
 
   def holdings
