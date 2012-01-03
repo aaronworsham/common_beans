@@ -7,7 +7,7 @@ class DashboardController < ApplicationController
     @portfolios = current_user.portfolios
     @holdings = current_user.holdings
     @events = current_user.events
-    @buy = Buy.new
-    @sell = Sell.new
+    @buy = StockBuy.new
+    @sell = StockSell.new
   end
 end

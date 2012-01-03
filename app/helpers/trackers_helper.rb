@@ -1,5 +1,5 @@
 module TrackersHelper
-  def min_trust_level_select
+  def trust_level_select
     {
       "1 - Public: Anyone can see safe version"    => 1,
       "2 - Private: 'Colleagues' can see safe version plus 'Friends, Family and Advisors'"   => 2,

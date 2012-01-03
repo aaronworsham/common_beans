@@ -31,3 +31,9 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 end
+
+OmniAuth.config.test_mode = true
+OmniAuth.config.mock_auth[:twitter] = {
+    "provider" => 'twitter',
+    "uid" => '12345'
+}

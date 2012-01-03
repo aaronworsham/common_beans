@@ -7,8 +7,8 @@
       = "Select Name or Symbol"
       = f.input :ticker_name, :url => autocomplete_ticker_name_tickers_path, :as => :autocomplete, :input_html => {"data-id-element" => "#facebox #holding_ticker_id"}
       = f.input :ticker_symbol, :url => autocomplete_ticker_symbol_tickers_path, :as => :autocomplete, :input_html => {"data-id-element" => "#facebox #holding_ticker_id"}
-    = f.input :ticker_id, :as => :hidden
+    = f.input :stock_ticker_id, :as => :hidden
     = f.input :starting_shares
     = f.input :starting_price
-    = f.input :date_of_purchase
+    = f.input :purchased_at
     = link_to 'Create', '#', :class => 'create_link'

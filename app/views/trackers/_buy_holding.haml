@@ -1,6 +1,6 @@
 #buy-shares{:style => 'display:none;'}
-  = simple_form_for(Event.new, :url => '#') do |f|
+  = simple_form_for(StockEvent.new, :url => '#') do |f|
     = f.input :shares
     = f.input :price
-    = f.input :date_of_event
+    = f.input :executed_at
     = link_to 'Record', '#', :class => 'record_link'
