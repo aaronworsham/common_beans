@@ -16,6 +16,9 @@ class PortfoliosController < ApplicationController
   def create
     @portfolio = Portfolio.create(params[:portfolio].merge(:user => current_user))
     respond_with(@portfolio)
+  rescue => e
+    p e.message
+    logger e.message
   end
 
   def destroy
