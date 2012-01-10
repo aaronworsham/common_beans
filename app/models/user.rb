@@ -24,12 +24,12 @@ class User < ActiveRecord::Base
       provider = Provider.new(auth)
       user.provider = provider.source
       user.uid = provider.uid
-      user.screen_name = auth.info.nickname
-      user.name = auth.info.name
-      user.image_url =  auth.info.image_url
-      user.location = auth.info.location
-      user.description = auth.info.description
-      user.urls = auth.info.urls
+      user.screen_name = auth['info']['nickname']
+      user.name = auth['info']['name']
+      user.image_url =  auth['info']['image_url']
+      user.location = auth['info']['location']
+      user.description = auth['info']['description']
+      user.urls = auth['info']['urls']
     end  
   rescue => e
     p 'INSIDE USER CREATE'

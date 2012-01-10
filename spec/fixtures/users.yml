@@ -1,0 +1,6 @@
+1:
+  id: 1
+  uid: 12345
+  provider: 'twitter'
+  name: 'test'
+  screen_name: 'test'

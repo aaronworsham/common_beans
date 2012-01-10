@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe "Dashboard" do
-   fixtures :users
    before(:each) do
      visit '/auth/twitter'
    end
@@ -9,7 +8,7 @@ describe "Dashboard" do
 
   it "logs in" do
     visit '/dashboard'
-    page.should have_content("Hi test")
+    page.should have_content("Hi porky")
   end
 
   describe "New Portfolio" do

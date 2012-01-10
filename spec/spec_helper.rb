@@ -34,6 +34,10 @@ end
 
 OmniAuth.config.test_mode = true
 OmniAuth.config.mock_auth[:twitter] = {
-    "provider" => 'twitter',
-    "uid" => '12345'
+    'provider'    =>  'twitter',
+    'uid'         =>  '12345',
+    'info'        => {  'name'       => "Porky Pig",
+                        'nickname'   => "porky",
+                        'urls'       => { :Twitter => "www.twitter.com/porky"}},
+    'credentials' => {  'token' => "bacony-token" }
 }
