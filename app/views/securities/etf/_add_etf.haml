@@ -1,0 +1,6 @@
+
+
+#add-etf-form{:style => 'display:none;'}
+  = simple_form_for(EtfHolding.new, :url => '#') do |f|
+    = f.inputs
+    = link_to 'Create', '#', :class => 'create_link'

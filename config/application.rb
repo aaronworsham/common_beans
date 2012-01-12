@@ -17,12 +17,12 @@ module CommonBeans
 
     # Custom directories with classes and modules you want to be autoloadable.
     config.autoload_paths += %W(
-      #{config.root}/app/models/bonds
-      #{config.root}/app/models/funds
-      #{config.root}/app/models/stocks
-      #{config.root}/app/models/etfs
-      #{config.root}/app/models/cert_of_deposit
-      #{config.root}/app/models/multi
+      #{config.root}/app/models/securities/bonds
+      #{config.root}/app/models/securities/funds
+      #{config.root}/app/models/securities/stocks
+      #{config.root}/app/models/securities/etfs
+      #{config.root}/app/models/securities/cd
+      #{config.root}/app/models/securities/multi
     )
 
     # Only load the plugins named here, in the order given (default is alphabetical).

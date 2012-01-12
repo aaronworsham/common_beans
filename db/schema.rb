@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111226163955) do
+ActiveRecord::Schema.define(:version => 20120109202010) do
 
   create_table "bond_events", :force => true do |t|
     t.integer  "bond_ticker_id"
@@ -102,6 +102,15 @@ ActiveRecord::Schema.define(:version => 20111226163955) do
     t.integer  "tbill_index_eod_id"
     t.string   "current_state"
   end
+
+  create_table "configurables", :force => true do |t|
+    t.string   "name"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "configurables", ["name"], :name => "index_configurables_on_name"
 
   create_table "etf_events", :force => true do |t|
     t.integer  "etf_ticker_id"

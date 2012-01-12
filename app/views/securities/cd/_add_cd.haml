@@ -1,0 +1,6 @@
+
+
+#add-cd-form{:style => 'display:none;'}
+  = simple_form_for(CdHolding.new, :url => '#') do |f|
+    = f.inputs
+    = link_to 'Create', '#', :class => 'create_link '

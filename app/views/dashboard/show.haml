@@ -1,33 +1,17 @@
 = content_for :on_ready do
-  - if @dji_index
-    !="window.DJI = new IndexModel(#{@dji_index.to_json});"
   - if @portfolios
     !="DashboardPortfolios.add(#{@portfolios.to_json});"
-  - if @holdings
-    !="DashboardHoldings.add(#{@holdings.to_json});"
-
   $('#portfolios-hotlist li.selectable').first().trigger('click');
 
 
-
-
-
 = content_for :templates do
-  = template_include_tag "dashboard/holding_today"
-  = template_include_tag "tracker/tracker_holding"
-  = template_include_tag "dashboard/holding_today_update"
   = template_include_tag "dashboard/dashboard_portfolio"
-
-
 
 
 #portfolio-glance
   - if @portfolios.empty?
     = render 'empty_portfolio'
 
-
-
-= render :partial => "trackers/buy_holding"
-= render :partial => "trackers/sell_holding"
-= render :partial => "trackers/add_portfolio"
-= render :partial => "trackers/add_holding"
+- Settings.securities.each do |sec|
+  - ['buy','sell', 'add'].each do |action|
+    = render :partial => "securities/#{sec}/#{action}_#{sec}"

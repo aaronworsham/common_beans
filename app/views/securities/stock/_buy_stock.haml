@@ -1,5 +1,5 @@
-#buy-shares{:style => 'display:none;'}
-  = simple_form_for(StockEvent.new, :url => '#') do |f|
+#buy-stock{:style => 'display:none;'}
+  = simple_form_for(StockBuy.new, :url => '#') do |f|
     = f.input :shares
     = f.input :price
     = f.input :executed_at

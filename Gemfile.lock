@@ -148,6 +148,8 @@ GEM
       railties (= 3.1.1)
     rails3-jquery-autocomplete (1.0.5)
       rails (~> 3.0)
+    rails_config (0.2.5)
+      activesupport (>= 3.0)
     railties (3.1.1)
       actionpack (= 3.1.1)
       activesupport (= 3.1.1)
@@ -252,6 +254,7 @@ DEPENDENCIES
   populator
   rails (= 3.1.1)
   rails3-jquery-autocomplete
+  rails_config
   rake (= 0.9.2)
   redis
   rspec (~> 2.6.0)
