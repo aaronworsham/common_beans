@@ -80,9 +80,7 @@ $ ->
 
 
 fetchMessages = ->
-  console.log('getting message');
   $.getJSON('messages').success( (data) ->
-    console.log('posting messages...');
     $('a[href=#tab-everyone]').text('Everyone('+data.everyone.length+')');
     $('a[href=#tab-friends]').text('Friends('+data.friend.length+')');
     $('a[href=#tab-groups]').text('Groups('+data.group.length+')');
@@ -92,7 +90,6 @@ fetchMessages = ->
     EveryoneMessages.reset(data.everyone);
     FriendMessages.reset(data.friend);
     GroupMessages.reset(data.group);
-    console.log('posted messages');
 
   );
 

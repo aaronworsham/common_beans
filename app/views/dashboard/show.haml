@@ -12,6 +12,8 @@
   - if @portfolios.empty?
     = render 'empty_portfolio'
 
+= render :partial => "portfolios/add_portfolio"
+
 - Settings.securities.each do |sec|
   - ['buy','sell', 'add'].each do |action|
     = render :partial => "securities/#{sec}/#{action}_#{sec}"

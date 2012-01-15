@@ -49,17 +49,17 @@ $ ->
     portfolio = DashboardPortfolios.get($(this).attr('data-portfolio-id'))
     console.log(portfolio);
 
-    $.facebox({div:'#add-holding-form'});
+    $.facebox({div:'#add-stock-form'});
     $('#facebox .create_link').click( ->
-      holding = new HoldingModel({portfolio_id:portfolio.id});
-      view = new TrackerFaceboxAddHoldingView({model:holding});
+      holding = new StockHoldingModel({portfolio_id:portfolio.id});
+      view = new TrackerFaceboxAddStockHoldingView({model:holding});
       view.submit();
       $(document).trigger('close.facebox')
     );
 
     $('#facebox form').submit( ->
-      holding = new HoldingModel({portfolio_id:portfolio.id});
-      view = new TrackerFaceboxAddHoldingView({model:holding});
+      holding = new StockHoldingModel({portfolio_id:portfolio.id});
+      view = new TrackerFaceboxAddStockHoldingView({model:holding});
       view.submit();
       $(document).trigger('close.facebox')
     );

@@ -2,5 +2,4 @@
 
 #add-bond-form{:style => 'display:none;'}
   = simple_form_for(BondHolding.new, :url => '#') do |f|
-    = f.inputs
     = link_to 'Create', '#', :class => 'create_link'

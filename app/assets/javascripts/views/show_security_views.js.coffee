@@ -126,7 +126,7 @@ class window.DashboardPortfolioView extends Backbone.View
       $(this).remove();
     );
 
-class window.DashboardHoldingView extends Backbone.View
+class window.DashboardStockHoldingView extends Backbone.View
 
   tagName: "tbody"
 

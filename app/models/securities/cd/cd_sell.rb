@@ -1,4 +1,4 @@
-class BondSell< BondEvent
+class CdSell< BondEvent
 
   before_create :populate_return
   after_create :update_holding

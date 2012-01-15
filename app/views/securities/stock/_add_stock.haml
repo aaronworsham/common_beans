@@ -4,8 +4,8 @@
   = simple_form_for(StockHolding.new, :url => '#') do |f|
     #autocomplete
       = "Select Name or Symbol"
-      = f.input :ticker_name, :url => autocomplete_ticker_name_tickers_path, :as => :autocomplete, :input_html => {"data-id-element" => "#facebox #holding_ticker_id"}
-      = f.input :ticker_symbol, :url => autocomplete_ticker_symbol_tickers_path, :as => :autocomplete, :input_html => {"data-id-element" => "#facebox #holding_ticker_id"}
+      = f.input :ticker_name, :url => autocomplete_stock_ticker_name_stock_tickers_path, :as => :autocomplete, :input_html => {"data-id-element" => "#facebox #stock_holding_stock_ticker_id"}
+      = f.input :ticker_symbol, :url => autocomplete_stock_ticker_symbol_stock_tickers_path, :as => :autocomplete, :input_html => {"data-id-element" => "#facebox #stock_holding_stock_ticker_id"}
     = f.input :stock_ticker_id, :as => :hidden
     = f.input :starting_shares
     = f.input :starting_price

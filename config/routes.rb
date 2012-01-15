@@ -4,9 +4,7 @@ CommonBeans::Application.routes.draw do
 
   resources :trackers
   resources :indices
-  resources :tickers
   resources :fund_tickers
-  resources :stock_tickers
   resources :messages
   resources :buys
   resources :sells
@@ -17,12 +15,18 @@ CommonBeans::Application.routes.draw do
   resources :sessions
   resource  :trust, :controller => 'Trust'
   resources :profiles
-  resources :tickers do
-    get :autocomplete_ticker_name, :on => :collection
-    get :autocomplete_ticker_symbol, :on => :collection
+  resources :stock_tickers do
+    get :autocomplete_stock_ticker_name, :on => :collection
+    get :autocomplete_stock_ticker_symbol, :on => :collection
   end
   resource :dashboard, :controller => 'dashboard'
   resource :social, :controller => 'Social'
+
+  resources :stock_holdings
+  resources :fund_holdings
+  resources :etf_holdings
+  resources :cd_holdings
+  resources :bond_holdings
 
 
   match "/auth/:provider/callback" => "sessions#create"
