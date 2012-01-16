@@ -115,7 +115,11 @@ include DateMixin
       if EOD[i + 1]
         new_value = self.send("#{pre}_price")
         old_value = self.send("#{EOD[i + 1]}_price")
-        (((new_value - old_value)/new_value)*100).round(2)
+        if old_value > 0
+          (((new_value - old_value)/new_value)*100).round(2)
+        else
+          0.0
+        end
       else
         0.0
       end
@@ -145,7 +149,11 @@ include DateMixin
       if EOD[i + 1]
         new_value = self.send("#{pre}_value")
         old_value = self.send("#{EOD[i + 1]}_value")
-        (((new_value - old_value)/new_value)*100).round(2)
+        if old_value > 0
+          (((new_value - old_value)/new_value)*100).round(2)
+        else
+          0.0
+        end
       else
         0.0
       end

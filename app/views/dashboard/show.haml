@@ -1,10 +1,21 @@
 = content_for :on_ready do
   - if @portfolios
     !="Portfolios.add(#{@portfolios.to_json});"
+  - if @stock_holdings
+    !="StockHoldings.add(#{@stock_holdings.to_json});"
+  - if @fund_holdings
+    !="FundHoldings.add(#{@fund_holdings.to_json});"
+  - if @etf_holdings
+    !="EtfHoldings.add(#{@etf_holdings.to_json});"
+  - if @bond_holdings
+    !="BondHoldings.add(#{@bond_holdings.to_json});"
+  - if @stock_holdings
+    !="CdHoldings.add(#{@cd_holdings.to_json});"
+
   $('#portfolios-hotlist li.selectable').first().trigger('click');
 
 = content_for :templates do
-  = template_include_tag "dashboard/dashboard_portfolio"
+  = template_include_tag "dashboard/portfolio"
   - Settings.securities.each do |sec|
     = template_include_tag "dashboard/securities/#{sec}_holding"
 

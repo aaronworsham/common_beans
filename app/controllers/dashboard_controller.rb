@@ -5,9 +5,10 @@ class DashboardController < ApplicationController
   def show
     @friends = current_user.friends
     @portfolios = current_user.portfolios
-    @holdings = current_user.holdings
-    @events = current_user.events
-    @buy = StockBuy.new
-    @sell = StockSell.new
+    @stock_holdings = current_user.stock_holdings
+    @fund_holdings = current_user.fund_holdings
+    @etf_holdings = current_user.etf_holdings
+    @bond_holdings = current_user.bond_holdings
+    @cd_holdings = current_user.cd_holdings
   end
 end

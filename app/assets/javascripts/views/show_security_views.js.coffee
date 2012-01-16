@@ -10,7 +10,7 @@ class window.PortfolioView extends Backbone.View
     @model.bind('destroy', @remove, this);
 
   render: ->
-    elem = $(@el).append(ich.dashboard_portfolio_template(@model.toJSON()));
+    elem = $(@el).append(ich.portfolio_template(@model.toJSON()));
     $(elem).hide();
     $('#portfolio-glance').append(elem);
     $(elem).fadeIn("slow");
@@ -138,7 +138,7 @@ class window.StockHoldingView extends Backbone.View
   render: ->
     elem = $(@el).append(ich.stock_holding_template(@model.toJSON()));
     $(elem).hide();
-    $("#portfolio-holding-" + @model.get('portfolio_id')).append(elem);
+    $("#portfolio-stock-holding-" + @model.get('portfolio_id')).append(elem);
     $(elem).fadeIn("slow");
 
   remove: ->
@@ -158,7 +158,7 @@ class window.FundHoldingView extends Backbone.View
   render: ->
     elem = $(@el).append(ich.fund_holding_template(@model.toJSON()));
     $(elem).hide();
-    $("#portfolio-holding-" + @model.get('portfolio_id')).append(elem);
+    $("#portfolio-fund-holding-" + @model.get('portfolio_id')).append(elem);
     $(elem).fadeIn("slow");
 
   remove: ->
@@ -178,7 +178,7 @@ class window.EtfHoldingView extends Backbone.View
   render: ->
     elem = $(@el).append(ich.etf_holding_template(@model.toJSON()));
     $(elem).hide();
-    $("#portfolio-holding-" + @model.get('portfolio_id')).append(elem);
+    $("#portfolio-etf-holding-" + @model.get('portfolio_id')).append(elem);
     $(elem).fadeIn("slow");
 
   remove: ->
@@ -199,7 +199,7 @@ class window.BondHoldingView extends Backbone.View
   render: ->
     elem = $(@el).append(ich.bond_holding_template(@model.toJSON()));
     $(elem).hide();
-    $("#portfolio-holding-" + @model.get('portfolio_id')).append(elem);
+    $("#portfolio-bond-holding-" + @model.get('portfolio_id')).append(elem);
     $(elem).fadeIn("slow");
 
   remove: ->
@@ -220,7 +220,7 @@ class window.CdHoldingView extends Backbone.View
   render: ->
     elem = $(@el).append(ich.cd_holding_template(@model.toJSON()));
     $(elem).hide();
-    $("#portfolio-holding-" + @model.get('portfolio_id')).append(elem);
+    $("#portfolio-cd-holding-" + @model.get('portfolio_id')).append(elem);
     $(elem).fadeIn("slow");
 
   remove: ->

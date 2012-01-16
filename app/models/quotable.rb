@@ -78,6 +78,9 @@ module Quotable
       else
         create_eod(past_quote(date).results, date)
       end
+    rescue => e
+      logger.info e.message
+      return 0
     end
   end
 
@@ -92,8 +95,10 @@ module Quotable
       quote = past_quote((date - 1), i - 1 )
     end
     puts "Found it in #{i - 6}"
+    raise "Could not locate Past Quote for #{self.symbol} for #{date}" unless quote.results
     quote
   end
+
 
 
   def as_json(options={})

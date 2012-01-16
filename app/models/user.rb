@@ -6,9 +6,9 @@ class User < ActiveRecord::Base
   has_many :portfolios,       :dependent => :destroy
   has_many :stock_holdings,   :dependent => :destroy
   has_many :fund_holdings,    :dependent => :destroy
-  has_many :buys,             :dependent => :destroy
-  has_many :sells,            :dependent => :destroy
-  has_many :events,           :dependent => :destroy
+  has_many :etf_holdings,    :dependent => :destroy
+  has_many :bond_holdings,    :dependent => :destroy
+  has_many :cd_holdings,    :dependent => :destroy
 
   aasm_column :current_state
 
@@ -34,10 +34,6 @@ class User < ActiveRecord::Base
   rescue => e
     p 'INSIDE USER CREATE'
     p e.message
-  end
-
-  def holdings
-    stock_holdings + fund_holdings
   end
 
   def friend_reader

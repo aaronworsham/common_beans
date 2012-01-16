@@ -15,6 +15,7 @@ class FundTicker < ActiveRecord::Base
   end
 
   def create_eod(eod, date)
+    raise "Missing EOD for #{self.class} #{self.symbol}" unless eod
     FundTickerEod.create(
       :fund_ticker => self,
       :high => eod[:high],
@@ -23,6 +24,8 @@ class FundTicker < ActiveRecord::Base
       :close => eod[:close],
       :closed_on => date
     ).close
+  rescue => e
+    logger.info e.message
   end
 
 end
