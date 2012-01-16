@@ -1,14 +1,13 @@
 ###
 = require application
 = require models/cb_models
-= require views/dashboard_views
+= require views/add_security_views
+= require views/show_security_views
 = require views/messages_views
-= require views/tracker_views
 = require views/hotlist_views
 = require collections/messages_collections
 = require collections/dashboard_collections
 = require collections/hotlist_collections
-= require collections/tracker_collections
 
 ###
 
@@ -46,46 +45,65 @@ $ ->
   );
 
   $('.add-stock').live('click', (e) ->
-    portfolio = DashboardPortfolios.get($(this).attr('data-portfolio-id'))
-    console.log(portfolio);
+    portfolio = Portfolios.get($(this).attr('data-portfolio-id'))
 
     $.facebox({div:'#add-stock-form'});
     $('#facebox .create_link').click( ->
       holding = new StockHoldingModel({portfolio_id:portfolio.id});
-      view = new TrackerFaceboxAddStockHoldingView({model:holding});
+      view = new AddStockHoldingView({model:holding});
       view.submit();
       $(document).trigger('close.facebox')
     );
 
-    $('#facebox form').submit( ->
-      holding = new StockHoldingModel({portfolio_id:portfolio.id});
-      view = new TrackerFaceboxAddStockHoldingView({model:holding});
-      view.submit();
-      $(document).trigger('close.facebox')
-    );
-    return false;
+#    $('#facebox form').submit( ->
+#      holding = new StockHoldingModel({portfolio_id:portfolio.id});
+#      view = new AddStockHoldingView({model:holding});
+#      view.submit();
+#      $(document).trigger('close.facebox')
+#    );
+#    return false;
 
   );
 
   $('.add-fund').live('click', (e) ->
-    portfolio = DashboardPortfolios.get($(this).attr('data-portfolio-id'))
-    console.log(portfolio);
+    portfolio = Portfolios.get($(this).attr('data-portfolio-id'))
 
-    $.facebox({div:'#add-holding-form'});
+    $.facebox({div:'#add-fund-form'});
     $('#facebox .create_link').click( ->
-      holding = new HoldingModel({portfolio_id:portfolio.id});
-      view = new TrackerFaceboxAddHoldingView({model:holding});
+      holding = new FundHoldingModel({portfolio_id:portfolio.id});
+      view = new AddFundHoldingView({model:holding});
       view.submit();
       $(document).trigger('close.facebox')
     );
 
-    $('#facebox form').submit( ->
-      holding = new HoldingModel({portfolio_id:portfolio.id});
-      view = new TrackerFaceboxAddHoldingView({model:holding});
+#    $('#facebox form').submit( ->
+#      holding = new HoldingModel({portfolio_id:portfolio.id});
+#      view = new TrackerFaceboxAddHoldingView({model:holding});
+#      view.submit();
+#      $(document).trigger('close.facebox')
+#    );
+#    return false;
+
+  );
+
+  $('.add-etf').live('click', (e) ->
+    portfolio = Portfolios.get($(this).attr('data-portfolio-id'))
+
+    $.facebox({div:'#add-fund-form'});
+    $('#facebox .create_link').click( ->
+      holding = new EtfHoldingModel({portfolio_id:portfolio.id});
+      view = new AddEtfHoldingView({model:holding});
       view.submit();
       $(document).trigger('close.facebox')
     );
-    return false;
+
+#    $('#facebox form').submit( ->
+#      holding = new HoldingModel({portfolio_id:portfolio.id});
+#      view = new TrackerFaceboxAddHoldingView({model:holding});
+#      view.submit();
+#      $(document).trigger('close.facebox')
+#    );
+#    return false;
 
   );
 
@@ -95,13 +113,13 @@ $ ->
     $.facebox({div:'#add-portfolio-form'});
     $('#facebox .create_link').click( ->
       portfolio = new PortfolioModel;
-      view = new TrackerFaceboxAddPortfolioView({model:portfolio});
+      view = new AddPortfolioView({model:portfolio});
       view.submit();
       $(document).trigger('close.facebox')
     );
     $('#facebox form').submit( ->
       portfolio = new PortfolioModel;
-      view = new TrackerFaceboxAddPortfolioView({model:portfolio});
+      view = new AddPortfolioView({model:portfolio});
       view.submit();
       $(document).trigger('close.facebox')
       return false;
@@ -113,15 +131,15 @@ $ ->
 
 
   $('.remove-portfolio').live('click',  ->
-    p = TrackerPortfolios.get($(this).attr('data-portfolio-id'))
+    p = Portfolios.get($(this).attr('data-portfolio-id'))
     p.destroy();
   );
   $('.remove-holding').live('click',  ->
-    h = TrackerHoldings.get($(this).attr('data-holding-id'))
+    h = StockHoldings.get($(this).attr('data-holding-id'))
     h.destroy();
   );
   $('.remove-event').live('click',  ->
-    e = TrackerStockEvents.get($(this).attr('data-event-id'))
+    e = StockEvents.get($(this).attr('data-event-id'))
     holding = e.holding
     e.destroy(
       { success : (model, resp)->

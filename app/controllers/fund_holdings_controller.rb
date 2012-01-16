@@ -12,7 +12,7 @@ class FundHoldingsController < ApplicationController
   end
 
   def create
-    @holding = FundHolding.create(params[:holding].merge(:user => current_user))
+    @holding = FundHolding.create(params[:fund_holding].merge(:user => current_user))
     respond_with(@holding)
   end
   def destroy

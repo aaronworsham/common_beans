@@ -1,6 +1,6 @@
 
 
-class window.DashboardPortfolioView extends Backbone.View
+class window.PortfolioView extends Backbone.View
 
   tagName: "div"
 
@@ -126,7 +126,7 @@ class window.DashboardPortfolioView extends Backbone.View
       $(this).remove();
     );
 
-class window.DashboardStockHoldingView extends Backbone.View
+class window.StockHoldingView extends Backbone.View
 
   tagName: "tbody"
 
@@ -136,7 +136,89 @@ class window.DashboardStockHoldingView extends Backbone.View
     @model.bind('destroy', @remove, this);
 
   render: ->
-    elem = $(@el).append(ich.holding_today_template(@model.toJSON()));
+    elem = $(@el).append(ich.stock_holding_template(@model.toJSON()));
+    $(elem).hide();
+    $("#portfolio-holding-" + @model.get('portfolio_id')).append(elem);
+    $(elem).fadeIn("slow");
+
+  remove: ->
+    $(@el).fadeOut("slow", ->
+      $(this).remove();
+    );
+
+class window.FundHoldingView extends Backbone.View
+
+  tagName: "tbody"
+
+
+  initialize: ->
+    @model.view = this
+    @model.bind('destroy', @remove, this);
+
+  render: ->
+    elem = $(@el).append(ich.fund_holding_template(@model.toJSON()));
+    $(elem).hide();
+    $("#portfolio-holding-" + @model.get('portfolio_id')).append(elem);
+    $(elem).fadeIn("slow");
+
+  remove: ->
+    $(@el).fadeOut("slow", ->
+      $(this).remove();
+    );
+
+class window.EtfHoldingView extends Backbone.View
+
+  tagName: "tbody"
+
+
+  initialize: ->
+    @model.view = this
+    @model.bind('destroy', @remove, this);
+
+  render: ->
+    elem = $(@el).append(ich.etf_holding_template(@model.toJSON()));
+    $(elem).hide();
+    $("#portfolio-holding-" + @model.get('portfolio_id')).append(elem);
+    $(elem).fadeIn("slow");
+
+  remove: ->
+    $(@el).fadeOut("slow", ->
+      $(this).remove();
+    );
+
+
+class window.BondHoldingView extends Backbone.View
+
+  tagName: "tbody"
+
+
+  initialize: ->
+    @model.view = this
+    @model.bind('destroy', @remove, this);
+
+  render: ->
+    elem = $(@el).append(ich.bond_holding_template(@model.toJSON()));
+    $(elem).hide();
+    $("#portfolio-holding-" + @model.get('portfolio_id')).append(elem);
+    $(elem).fadeIn("slow");
+
+  remove: ->
+    $(@el).fadeOut("slow", ->
+      $(this).remove();
+    );
+
+
+class window.CdHoldingView extends Backbone.View
+
+  tagName: "tbody"
+
+
+  initialize: ->
+    @model.view = this
+    @model.bind('destroy', @remove, this);
+
+  render: ->
+    elem = $(@el).append(ich.cd_holding_template(@model.toJSON()));
     $(elem).hide();
     $("#portfolio-holding-" + @model.get('portfolio_id')).append(elem);
     $(elem).fadeIn("slow");

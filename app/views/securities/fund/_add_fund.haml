@@ -2,4 +2,12 @@
 
 #add-fund-form{:style => 'display:none;'}
   = simple_form_for(FundHolding.new, :url => '#') do |f|
+    #autocomplete
+      = "Select Name or Symbol"
+      = f.input :ticker_name, :url => autocomplete_fund_ticker_name_fund_tickers_path, :as => :autocomplete, :input_html => {"data-id-element" => "#facebox #fund_holding_fund_ticker_id"}
+      = f.input :ticker_symbol, :url => autocomplete_fund_ticker_symbol_fund_tickers_path, :as => :autocomplete, :input_html => {"data-id-element" => "#facebox #fund_holding_fund_ticker_id"}
+    = f.input :fund_ticker_id, :as => :hidden
+    = f.input :starting_units
+    = f.input :starting_price
+    = f.input :purchased_at
     = link_to 'Create', '#', :class => 'create_link'

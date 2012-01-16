@@ -1,11 +1,14 @@
 = content_for :on_ready do
   - if @portfolios
-    !="DashboardPortfolios.add(#{@portfolios.to_json});"
+    !="Portfolios.add(#{@portfolios.to_json});"
   $('#portfolios-hotlist li.selectable').first().trigger('click');
-
 
 = content_for :templates do
   = template_include_tag "dashboard/dashboard_portfolio"
+  - Settings.securities.each do |sec|
+    = template_include_tag "dashboard/securities/#{sec}_holding"
+
+
 
 
 #portfolio-glance

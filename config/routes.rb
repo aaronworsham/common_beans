@@ -19,6 +19,14 @@ CommonBeans::Application.routes.draw do
     get :autocomplete_stock_ticker_name, :on => :collection
     get :autocomplete_stock_ticker_symbol, :on => :collection
   end
+  resources :fund_tickers do
+    get :autocomplete_fund_ticker_name, :on => :collection
+    get :autocomplete_fund_ticker_symbol, :on => :collection
+  end
+  resources :etf_tickers do
+    get :autocomplete_etf_ticker_name, :on => :collection
+    get :autocomplete_etf_ticker_symbol, :on => :collection
+  end
   resource :dashboard, :controller => 'dashboard'
   resource :social, :controller => 'Social'
 

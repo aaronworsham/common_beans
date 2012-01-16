@@ -1,5 +1,13 @@
 
 
 #add-etf-form{:style => 'display:none;'}
-  = simple_form_for(EtfHolding.new, :url => '#') do |f|
+  = simple_form_for(EtfHolding.new, :url => '#') do |f|  
+    #autocomplete
+      = "Select Name or Symbol"
+      = f.input :ticker_name, :url => autocomplete_etf_ticker_name_etf_tickers_path, :as => :autocomplete, :input_html => {"data-id-element" => "#facebox #etf_holding_etf_ticker_id"}
+      = f.input :ticker_symbol, :url => autocomplete_etf_ticker_symbol_etf_tickers_path, :as => :autocomplete, :input_html => {"data-id-element" => "#facebox #etf_holding_etf_ticker_id"}
+    = f.input :etf_ticker_id, :as => :hidden
+    = f.input :starting_units
+    = f.input :starting_price
+    = f.input :purchased_at
     = link_to 'Create', '#', :class => 'create_link'
