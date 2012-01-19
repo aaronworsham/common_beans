@@ -62,8 +62,8 @@ group :test do
   gem 'timecop'
   gem 'guard'
   gem 'guard-coffeescript'
-
-
+  gem 'database_cleaner'
+  gem "ruby-debug19", "~> 0.11.5"
 end
 
 # Use unicorn as the web server

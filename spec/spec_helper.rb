@@ -5,6 +5,8 @@ require 'factory_girl'
 require 'mocha'
 require 'rspec/rails'
 require 'capybara/rails'
+require 'database_cleaner'
+require 'ruby-debug'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -29,7 +31,7 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
 end
 
 OmniAuth.config.test_mode = true
