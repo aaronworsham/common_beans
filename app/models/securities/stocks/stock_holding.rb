@@ -119,7 +119,7 @@ class StockHolding < ActiveRecord::Base
 
     #####  Past Value Gain to today
     define_method("#{pre}_value_gain_to_today") do
-      (self.todays_value - self.send("#{pre}_value")).round(2)
+      (self.todays_value - self.send("#{pre}_calculated_value")).round(2)
     end
 
     #####  Past investment Gain to today

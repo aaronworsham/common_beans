@@ -1,30 +1,92 @@
-1:
-  stock_ticker_id: 1
-  closed_on: '01/03/2011'
-  close: 604.35
+
+#as of 01/23/2012
+
+
+#D7
 2:
   stock_ticker_id: 1
-  closed_on: '02/01/2011'
-  close: 611.04
+  closed_on: '2012-01-16'
+  close: 624.99
+#D30
 3:
   stock_ticker_id: 1
-  closed_on: '03/01/2011'
-  close: 600.76
+  closed_on: '2011-12-24'
+  close: 633.14
+#D180
 4:
   stock_ticker_id: 1
-  closed_on: '10/05/2011'
-  close: 504.70
-
+  closed_on: '2011-07-27'
+  close: 607.22
+#D365
 5:
-  stock_ticker_id: 2
-  closed_on: '01/03/2011'
-  close: 329.57
+  stock_ticker_id: 1
+  closed_on: '2011-01-23'
+  close: 611.83
+#Y2
 6:
-  stock_ticker_id: 2
-  closed_on: '02/01/2011'
-  close: 345.03
+  stock_ticker_id: 1
+  closed_on: '2010-01-23'
+  close: 550.01
+#Y3
 7:
+  stock_ticker_id: 1
+  closed_on: '2009-01-23'
+  close: 324.7
+#Y4
+8:
+  stock_ticker_id: 1
+  closed_on: '2008-01-23'
+  close: 548.62
+#Y5
+9:
+  stock_ticker_id: 1
+  closed_on: '2007-01-23'
+  close: 479.05
+
+
+
+#Apple
+
+
+
+#D7
+11:
   stock_ticker_id: 2
-  closed_on: '10/05/2011'
-  close: 378.25
+  closed_on: '2012-01-16'
+  close: 419.81
+#D30
+12:
+  stock_ticker_id: 2
+  closed_on: '2011-12-24'
+  close: 403.33
+#D180
+13:
+  stock_ticker_id: 2
+  closed_on: '2011-07-27'
+  close: 392.59
+#D365
+14:
+  stock_ticker_id: 2
+  closed_on: '2011-01-23'
+  close: 326.72
+#Y2
+15:
+  stock_ticker_id: 2
+  closed_on: '2010-01-23'
+  close: 197.75
+#Y3
+16:
+  stock_ticker_id: 2
+  closed_on: '2009-01-23'
+  close: 88.36
+#Y4
+17:
+  stock_ticker_id: 2
+  closed_on: '2008-01-23'
+  close: 139.07
+#Y5
+18:
+  stock_ticker_id: 2
+  closed_on: '2007-01-23'
+  close: 85.7
 

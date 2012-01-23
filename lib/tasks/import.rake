@@ -97,29 +97,23 @@ namespace :cb do
         :filename => 'db/data/ETF.csv'
       )
     end
-
-    desc 'Import Index symbols'
-    task :index_symbols => :environment do
+    desc 'Import plans and strategies'
+    task :plans_and_strategies => :environment do
       import_from_csv(
-        :filename => 'db/data/INDEX.csv'
+        :filename => 'db/data/plans.csv',
       ) do |map|
-        Index.create(
-          :name         => map[:name],
-          :symbol       => map[:symbol],
-          :yahoo_symbol => map[:yahoo_symbol]
-        )
+          p 'Creating'
+          PortfolioPlan.create(
+            :name       => map[:name]
+          )
       end
-    end
-    desc 'Import Dow Index EOD'
-    task :dow => :environment do
       import_from_csv(
-        :filename => 'db/data/DJI.csv'
+        :filename => 'db/data/strategies.csv',
       ) do |map|
-        DowIndexEod.create(
-          :close        => map[:close],
-          :net_change   => map[:net_change],
-          :closed_on    => map[:date]
-        )
+          p 'Creating'
+          PortfolioStrategy.create(
+            :name       => map[:name]
+          )
       end
     end
   end

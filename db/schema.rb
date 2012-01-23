@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120122213650) do
+ActiveRecord::Schema.define(:version => 20120123200819) do
 
   create_table "bond_events", :force => true do |t|
     t.integer  "bond_ticker_id"
@@ -345,6 +345,18 @@ ActiveRecord::Schema.define(:version => 20120122213650) do
     t.string   "current_state"
   end
 
+  create_table "portfolio_plans", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "portfolio_strategies", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "portfolios", :force => true do |t|
     t.string   "name"
     t.integer  "user_id"
@@ -353,8 +365,8 @@ ActiveRecord::Schema.define(:version => 20120122213650) do
     t.datetime "updated_at"
     t.integer  "trust_level"
     t.string   "current_state"
-    t.string   "plan"
-    t.string   "strategy"
+    t.string   "portfolio_plan_id"
+    t.string   "portfolio_strategy_id"
     t.float    "d7_value"
     t.float    "d7_gain"
     t.float    "d7_plan_rank"

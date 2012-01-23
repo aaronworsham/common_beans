@@ -13,4 +13,12 @@ class EOD
   def self.points
     POINTS
   end
+
+  def self.point_names
+    POINTS.keys
+  end
+
+  def self.point_dates
+    POINTS.values
+  end
 end
