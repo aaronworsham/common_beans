@@ -16,6 +16,7 @@ class window.ProfileTrustView extends Backbone.View
     $(".trust_table").append(elem);
     $(elem).fadeIn("slow");
 
+
 class window.ProfileTrustedByView extends Backbone.View
 
   tagName: "tr"

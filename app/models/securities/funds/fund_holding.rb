@@ -1,5 +1,6 @@
 class FundHolding < ActiveRecord::Base
-include DateMixin
+
+  include DateMixin
   belongs_to :user
   belongs_to :fund_ticker
   belongs_to :portfolio
@@ -17,7 +18,6 @@ include DateMixin
   attr_accessor :ticker_name, :ticker_symbol
 
 
-  EOD = %w(day week one_month three_month six_month nine_month one_year two_year three_year)
 
   def ticker
     @ticker ||= fund_ticker
@@ -37,6 +37,14 @@ include DateMixin
     self.net_units = self.starting_units
     self.net_investment = self.starting_investment
     self.net_return = 0
+  end
+
+  def populate_eod
+    EOD.points.each do |pre, date|
+      self.send("#{pre}_value=", self.send("#{pre}_calculated_value"))
+      self.send("#{pre}_gain=", self.send("#{pre}_investment_gain_to_today"))
+      self.save
+    end
   end
 
   def update_net_values_for_buy(buy)
@@ -89,45 +97,26 @@ include DateMixin
     self.todays_price - self.starting_price
   end
 
+  def past_units(date)
+    units = net_units
+    fund_buys.each do |buy|
+      units - buy.units if buy.executed_at > date
+    end
+    fund_sells.each do |sell|
+      units + sell.units if sell.executed_at > date
+    end
+    units
+  end
 
-  EOD.each_with_index do |pre, i|
+  EOD.points.each do |pre, date|
     #######  Past Price
     define_method("#{pre}_price") do
-      self.fund_ticker.send("#{pre}_close")
-    end
-
-    #####  Past Price Gain to today
-    define_method("#{pre}_price_gain_to_today") do
-      (self.todays_price - self.send("#{pre}_price")).round(2)
-    end
-
-    ###### Past Price Delta Gain
-    define_method("#{pre}_price_gain_delta") do
-      if EOD[i + 1]
-        (self.send("#{pre}_price") - self.send("#{EOD[i + 1]}_price")).round(2)
-      else
-        0.0
-      end
-    end
-
-    ###### Past Price percent Delta Gain
-    define_method("#{pre}_price_gain_percent_delta") do
-      if EOD[i + 1]
-        new_value = self.send("#{pre}_price")
-        old_value = self.send("#{EOD[i + 1]}_price")
-        if old_value > 0
-          (((new_value - old_value)/new_value)*100).round(2)
-        else
-          0.0
-        end
-      else
-        0.0
-      end
+      self.ticker.send("#{pre}_close")
     end
 
     ##### Past Value
-    define_method("#{pre}_value") do
-      self.send("#{pre}_price") * net_units
+    define_method("#{pre}_calculated_value") do
+      self.send("#{pre}_price") * past_units(date)
     end
 
     #####  Past Value Gain to today
@@ -135,28 +124,14 @@ include DateMixin
       (self.todays_value - self.send("#{pre}_value")).round(2)
     end
 
-    ###### Past Value Delta Gain
-    define_method("#{pre}_value_gain_delta") do
-      if EOD[i + 1]
-        (self.send("#{pre}_value") - self.send("#{EOD[i + 1]}_value")).round(2)
-      else
-        0.0
-      end
+    #####  Past investment Gain to today
+    define_method("#{pre}_investment_gain_to_today") do
+      (self.send("#{pre}_value_gain_to_today") - net_investment).round(2)
     end
 
-    ###### Past Value percent Delta Gain
-    define_method("#{pre}_value_gain_percent_delta") do
-      if EOD[i + 1]
-        new_value = self.send("#{pre}_value")
-        old_value = self.send("#{EOD[i + 1]}_value")
-        if old_value > 0
-          (((new_value - old_value)/new_value)*100).round(2)
-        else
-          0.0
-        end
-      else
-        0.0
-      end
+    #####  Past investment Gain to today
+    define_method("#{pre}_investment_gain_ratio_to_today") do
+      (self.send("#{pre}_investment_gain_to_today")/self.todays_value).round(2)
     end
   end
 
@@ -170,15 +145,8 @@ include DateMixin
     result["total_gain"] = self.total_gain
     result["todays_price"] = self.todays_price
     result["total_price_delta"] = self.total_price_delta
-    EOD.each do |x|
-      %w( price price_gain_to_today price_gain_delta price_gain_percent_delta
-          value value_gain_to_today value_gain_delta price_gain_percent_delta).each do |method|
-        str = "#{x}_#{method}"
-        result[str] = self.send(str)
-
-      end
-    end
     result
   end
+
 
 end

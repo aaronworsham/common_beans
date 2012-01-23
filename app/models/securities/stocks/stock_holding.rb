@@ -17,10 +17,6 @@ class StockHolding < ActiveRecord::Base
   before_create :populate_net_values
   attr_accessor :ticker_name, :ticker_symbol
 
-
-  EOD = %w(day week one_month three_month six_month nine_month one_year two_year three_year)
-
-
   def ticker
     @ticker ||= stock_ticker
   end
@@ -39,6 +35,14 @@ class StockHolding < ActiveRecord::Base
     self.net_shares = self.starting_shares
     self.net_investment = self.starting_investment
     self.net_return = 0
+  end
+
+  def populate_eod
+    EOD.points.each do |pre, date|
+      self.send("#{pre}_value=", self.send("#{pre}_calculated_value"))
+      self.send("#{pre}_gain=", self.send("#{pre}_investment_gain_to_today"))
+      self.save
+    end
   end
 
   def update_net_values_for_buy(buy)
@@ -91,41 +95,26 @@ class StockHolding < ActiveRecord::Base
     self.todays_price - self.starting_price
   end
 
+  def past_shares(date)
+    shares = net_shares
+    stock_buys.each do |buy|
+      shares - buy.shares if buy.executed_at > date
+    end
+    stock_sells.each do |sell|
+      shares + sell.shares if sell.executed_at > date
+    end
+    shares
+  end
 
-  EOD.each_with_index do |pre, i|
+  EOD.points.each do |pre, date|
     #######  Past Price
     define_method("#{pre}_price") do
       self.ticker.send("#{pre}_close")
     end
 
-    #####  Past Price Gain to today
-    define_method("#{pre}_price_gain_to_today") do
-      (self.todays_price - self.send("#{pre}_price")).round(2)
-    end
-
-    ###### Past Price Delta Gain
-    define_method("#{pre}_price_gain_delta") do
-      if EOD[i + 1]
-        (self.send("#{pre}_price") - self.send("#{EOD[i + 1]}_price")).round(2)
-      else
-        0.0
-      end
-    end
-
-    ###### Past Price percent Delta Gain
-    define_method("#{pre}_price_gain_percent_delta") do
-      if EOD[i + 1]
-        new_value = self.send("#{pre}_price")
-        old_value = self.send("#{EOD[i + 1]}_price")
-        (((new_value - old_value)/new_value)*100).round(2)
-      else
-        0.0
-      end
-    end
-
     ##### Past Value
-    define_method("#{pre}_value") do
-      self.send("#{pre}_price") * net_shares
+    define_method("#{pre}_calculated_value") do
+      self.send("#{pre}_price") * past_shares(date)
     end
 
     #####  Past Value Gain to today
@@ -133,24 +122,14 @@ class StockHolding < ActiveRecord::Base
       (self.todays_value - self.send("#{pre}_value")).round(2)
     end
 
-    ###### Past Value Delta Gain
-    define_method("#{pre}_value_gain_delta") do
-      if EOD[i + 1]
-        (self.send("#{pre}_value") - self.send("#{EOD[i + 1]}_value")).round(2)
-      else
-        0.0
-      end
+    #####  Past investment Gain to today
+    define_method("#{pre}_investment_gain_to_today") do
+      (self.send("#{pre}_value_gain_to_today") - net_investment).round(2)
     end
 
-    ###### Past Value percent Delta Gain
-    define_method("#{pre}_value_gain_percent_delta") do
-      if EOD[i + 1]
-        new_value = self.send("#{pre}_value")
-        old_value = self.send("#{EOD[i + 1]}_value")
-        (((new_value - old_value)/new_value)*100).round(2)
-      else
-        0.0
-      end
+    #####  Past investment Gain to today
+    define_method("#{pre}_investment_gain_ratio_to_today") do
+      (self.send("#{pre}_investment_gain_to_today")/self.todays_value).round(2)
     end
   end
 
@@ -164,14 +143,6 @@ class StockHolding < ActiveRecord::Base
     result["total_gain"] = self.total_gain
     result["todays_price"] = self.todays_price
     result["total_price_delta"] = self.total_price_delta
-    EOD.each do |x|
-      %w( price price_gain_to_today price_gain_delta price_gain_percent_delta
-          value value_gain_to_today value_gain_delta price_gain_percent_delta).each do |method|
-        str = "#{x}_#{method}"
-        result[str] = self.send(str)
-
-      end
-    end
     result
   end
 

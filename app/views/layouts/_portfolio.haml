@@ -1,2 +1,19 @@
-%li.selectable{'data-id' => portfolio.id, 'data-label' => portfolio.name}
-  = portfolio.name
+%ul
+  %li.selectable{'data-id' => portfolio.id, 'data-label' => portfolio.name}
+    = portfolio.name
+    100000 as of 5:05 UTC
+    %br
+    Balanced | Trust level 4
+    %table
+      %tr
+        %td 7d
+        %td 30d
+        %td 6mo
+        %td 1yr
+        %td Tot
+      %tr
+        %td +5$
+        %td +509$
+        %td +23K
+        %td +178K
+        %td +196K

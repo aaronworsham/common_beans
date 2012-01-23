@@ -48,6 +48,28 @@ namespace :cb do
         end
       end
     end
+    def import_etf_ticker(options)
+      import_from_csv(
+        :filename => options[:filename],
+        :exchange => options[:exchange]
+      ) do |map|
+        if st = EtfTicker.find_by_symbol(map[:symbol])
+           p 'Updating'
+           st.update_attributes(
+                   :exchange   => map[:exchange],
+                   :name       => map[:name],
+                   :symbol     => map[:symbol]
+           )
+        else
+          p 'Creating'
+          EtfTicker.create(
+            :exchange   => map[:exchange],
+            :name       => map[:name],
+            :symbol     => map[:symbol]
+          )
+        end
+      end
+    end
     desc 'Import Tickers'
     task :tickers => :environment do
       import_stock_ticker(
@@ -61,6 +83,18 @@ namespace :cb do
       import_fund_ticker(
         :exchange => Exchange.find_or_create_by_name('USMF'),
         :filename => 'db/data/USMF.csv'
+      )
+      import_etf_ticker(
+        :exchange => Exchange.find_or_create_by_name('ETF'),
+        :filename => 'db/data/ETF.csv'
+      )
+    end
+
+    desc 'Import ETF Tickers'
+    task :etf_tickers => :environment do
+      import_etf_ticker(
+        :exchange => Exchange.find_or_create_by_name('ETF'),
+        :filename => 'db/data/ETF.csv'
       )
     end
 

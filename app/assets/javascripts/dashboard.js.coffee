@@ -16,6 +16,9 @@
 
 $ ->
 
+  $( ".warmlist" ).tabs();
+  $('.accordion').accordion();
+
   $('button.buy_button[rel*=facebox], button.sell_button[rel*=facebox]').live('click', (e)->
     if e.currentTarget.className == 'buy_button'
       url_root = '/buys';

@@ -21,7 +21,7 @@ class HotList
       .find('.add-holding')
         .attr('data-portfolio-id', id)
       .end()
-      .slideDown('slow');
+      .fadeIn('fast');
     callback.call();
 hotlistMenu = new HotList
 
@@ -64,7 +64,7 @@ $ ->
     $(@).addClass('selected');
     hotlistMenu.select(id, title, '#warmlist-portfolios', ()->
       $('.portfolio-content').hide()
-      $('.portfolio-content#'+title).show();
+      $('#portfolio-content-'+id).fadeIn('fast');
     );
   );
   $('#groups-hotlist li.selectable').live("click", ->

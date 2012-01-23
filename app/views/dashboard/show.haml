@@ -13,6 +13,7 @@
     !="CdHoldings.add(#{@cd_holdings.to_json});"
 
   $('#portfolios-hotlist li.selectable').first().trigger('click');
+  $('.accordion').accordion();
 
 = content_for :templates do
   = template_include_tag "dashboard/portfolio"

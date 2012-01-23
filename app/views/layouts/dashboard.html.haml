@@ -22,10 +22,11 @@
   =render "layouts/header"
   .container
     .row
-      #hotlist.twocol
+      #hotlist
         =render 'layouts/hotlist'
-      #warmlist.twocol
+    .row
+      #warmlist.threecol
         =render 'layouts/warmlist'
-      #content.eightcol.last
+      #content.ninecol.last
         = yield
   =render "layouts/footer"
