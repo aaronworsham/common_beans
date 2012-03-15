@@ -19,30 +19,32 @@ describe 'Tickers' do
       end
 
       context :past_quote do
-
+        before(:each) do
+           @time = Time.local(2012, 1, 23, 0, 0, 0)
+        end
         it 'should have a d7 of 624.99' do
-          @ticker.d7_close.should == 624.99
+          @ticker.close_for_date(@time - 7.days).should == 624.99
         end
         it 'should have a d30 of 633.14' do
-          @ticker.d30_close.should == 633.14
+          @ticker.close_for_date(@time - 30.days).should == 633.14
         end
         it 'should have a d180 of 607.22' do
-          @ticker.d180_close.should == 607.22
+          @ticker.close_for_date(@time - 180.days).should == 607.22
         end
         it 'should have a d365 of 611.83' do
-          @ticker.d365_close.should == 611.83
+          @ticker.close_for_date(@time - 1.year).should == 611.83
         end
         it 'should have a y2 of 550.01' do
-          @ticker.y2_close.should == 550.01
+          @ticker.close_for_date(@time - 2.years).should == 550.01
         end
         it 'should have a y3 of 324.7' do
-          @ticker.y3_close.should == 324.7
+          @ticker.close_for_date(@time - 3.years).should == 324.7
         end
         it 'should have a y4 of 548.62' do
-          @ticker.y4_close.should == 548.62
+          @ticker.close_for_date(@time - 4.years).should == 548.62
         end
         it 'should have a y5 of 479.05' do
-          @ticker.y5_close.should == 479.05
+          @ticker.close_for_date(@time - 5.years).should == 479.05
         end
 
 

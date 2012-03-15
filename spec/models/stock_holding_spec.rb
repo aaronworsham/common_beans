@@ -90,64 +90,65 @@ describe StockHolding do
 
   end
 
-    describe 'past values' do
-      fixtures :stock_tickers
-      fixtures :stock_ticker_eods
-      before(:each) do
-        @ticker = StockTicker.find_by_symbol 'GOOG'
-        @ticker.stubs(:current_price).returns(585.52)
-        @holding = Factory :stock_holding,
-                           :starting_shares => 1000,
-                           :starting_price => 10,
-                           :stock_ticker => @ticker
-        @time = Time.local(2012, 1, 23, 0, 0, 0)
-        @holding.populate_eod(@time)
-        @holding.reload
-      end
-      it 'should have a current_value of 58552.00' do
-        @holding.calculate_value(@time).should == 585520.00
-      end
+  describe 'past values' do
+    fixtures :stock_tickers
+    fixtures :stock_ticker_eods
+    before(:each) do
+      @ticker = StockTicker.find_by_symbol 'GOOG'
+      @ticker.stubs(:current_price).returns(585.52)
+      @holding = Factory :stock_holding,
+                         :starting_shares => 1000,
+                         :starting_price => 10,
+                         :stock_ticker => @ticker
+      @time = Time.local(2012, 1, 23, 0, 0, 0)
+      @holding.populate_eod(@time)
+      @holding.reload
+    end
+    it 'should have a current_value of 58552.00' do
+      @holding.calculate_value(@time).should == 585520.00
+    end
 
-      describe 'd7' do
-        it 'should have a d7 of 624.99' do
-          @holding.d7_close(@time).should == 624.99
-        end
-        it 'should have a d7_calculated_value of 624990.00' do
-          @holding.d7_calculated_value(@time).should == 624990.00
-        end
-        it 'should have a d7_value of 624990.00' do
-          @holding.d7_value.should == 624990.00
-        end
-        it 'should have a d7_calculated_value_gain of -39470.00' do
-          @holding.d7_calculated_value_gain(@time).should == -39470
-        end
-        it 'should have a d7_calculated_investment_gain of -39470.00' do
-          @holding.d7_calculated_investment_gain(@time).should == -49470
-        end
-        it 'should have a d7_calculated_investment_gain_ratio of 8.4%' do
-          @holding.d7_calculated_investment_gain_ratio(@time).should == -0.084
-        end
+    describe 'd7' do
+      it 'should have a d7_close of 624.99' do
+        @holding.d7_close(@time).should == 624.99
       end
-
-      describe 'd30' do
-        it 'should have a d30 of 633.14' do
-          @holding.d30_close(@time).should == 633.14
-        end
-        it 'should have a d30_calculated_value of 633140.00' do
-          @holding.d30_calculated_value(@time).should == 633140.00
-        end
-        it 'should have a d30_value of 633140.00' do
-          @holding.d30_value.should == 633140.00
-        end
-        it 'should have a d7_calculated_value_gain of -39470.00' do
-          @holding.d7_calculated_value_gain(@time).should == -39470
-        end
-        it 'should have a d7_calculated_investment_gain of -39470.00' do
-          @holding.d7_calculated_investment_gain(@time).should == -49470
-        end
+      it 'should have a d7_calculated_value of 624990.00' do
+        @holding.d7_calculated_value(@time).should == 624990.00
       end
+      it 'should have a d7_value of 624990.00' do
+        @holding.d7_value.should == 624990.00
+      end
+      it 'should have a d7_calculated_value_gain of -39470.00' do
+        @holding.d7_calculated_value_gain(@time).should == -39470
+      end
+      it 'should have a d7_calculated_investment_gain of -39470.00' do
+        @holding.d7_calculated_investment_gain(@time).should == -49470
+      end
+      it 'should have a d7_calculated_investment_gain_ratio of 8.4%' do
+        @holding.d7_calculated_investment_gain_ratio(@time).should == -0.084
+      end
+    end
 
 
+    describe 'd30' do
+      it 'should have a d30 of 633.14' do
+        @holding.d30_close(@time).should == 633.14
+      end
+      it 'should have a d30_calculated_value of 633140.00' do
+        @holding.d30_calculated_value(@time).should == 633140.00
+      end
+      it 'should have a d30_value of 633140.00' do
+        @holding.d30_value.should == 633140.00
+      end
+      it 'should have a d7_calculated_value_gain of -39470.00' do
+        @holding.d7_calculated_value_gain(@time).should == -39470
+      end
+      it 'should have a d7_calculated_investment_gain of -39470.00' do
+        @holding.d7_calculated_investment_gain(@time).should == -49470
+      end
+    end
+
+    describe 'd180' do
       it 'should have a d180 of 607.22' do
         @holding.d180_close(@time).should == 607.22
       end
@@ -157,6 +158,9 @@ describe StockHolding do
       it 'should have a d180_value of 607220.00' do
         @holding.d180_value.should == 607220.00
       end
+    end
+
+    describe 'd365' do
       it 'should have a d365 of 611.83' do
         @holding.d365_close(@time).should == 611.83
       end
@@ -166,6 +170,9 @@ describe StockHolding do
       it 'should have a d365_value of 611830.00' do
         @holding.d365_value.should == 611830.00
       end
+    end
+
+    describe 'y2' do
       it 'should have a y2 of 550.01' do
         @holding.y2_close(@time).should == 550.01
       end
@@ -175,6 +182,9 @@ describe StockHolding do
       it 'should have a y2_value of 550010.00' do
         @holding.y2_value.should == 550010.00
       end
+    end
+
+    describe 'y3' do
       it 'should have a y3 of 324.7' do
         @holding.y3_close(@time).should == 324.7
       end
@@ -184,6 +194,9 @@ describe StockHolding do
       it 'should have a y3 of 324700.00' do
         @holding.y3_value.should == 324700.00
       end
+    end
+
+    describe 'y4' do
       it 'should have a y4 of 548.62' do
         @holding.y4_close(@time).should == 548.62
       end
@@ -193,6 +206,9 @@ describe StockHolding do
       it 'should have a y4_value of 548620.00' do
         @holding.y4_value.should == 548620.00
       end
+    end
+
+    describe 'y5' do
       it 'should have a y5 of 479.05' do
         @holding.y5_close(@time).should == 479.05
       end
@@ -204,4 +220,5 @@ describe StockHolding do
       end
     end
   end
+end
 
