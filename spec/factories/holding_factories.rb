@@ -45,8 +45,8 @@ FactoryGirl.define do
     frequency 2
     starting_quantity 1
     purchased_at {Time.now}
-    association :user
-    association :portfolio
+    user
+    portfolio
   end
 
   factory :cd_holding do

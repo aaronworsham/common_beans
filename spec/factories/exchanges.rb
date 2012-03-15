@@ -1,3 +1,7 @@
-Factory.define :exchange do |f|
-  f.name Faker::Name.name
+
+FactoryGirl.define do
+
+  factory :exchange do
+    name Faker::Name.name
+  end
 end

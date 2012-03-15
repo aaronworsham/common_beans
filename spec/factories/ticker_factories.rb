@@ -4,7 +4,7 @@ FactoryGirl.define do
   end
 end
 
-FactoryGirl.define do |f|
+FactoryGirl.define do
   factory :stock_ticker do
     symbol
     name Faker::Name.name
