@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120109202010) do
+ActiveRecord::Schema.define(:version => 20120123200819) do
 
   create_table "bond_events", :force => true do |t|
     t.integer  "bond_ticker_id"
@@ -53,6 +53,22 @@ ActiveRecord::Schema.define(:version => 20120109202010) do
     t.integer  "sp500_index_eod_id"
     t.integer  "tbill_index_eod_id"
     t.string   "current_state"
+    t.float    "d7_value"
+    t.float    "d7_gain"
+    t.float    "d30_value"
+    t.float    "d30_gain"
+    t.float    "d180_value"
+    t.float    "d180_gain"
+    t.float    "d365_value"
+    t.float    "d365_gain"
+    t.float    "y2_value"
+    t.float    "y2_gain"
+    t.float    "y3_value"
+    t.float    "y3_gain"
+    t.float    "y4_value"
+    t.float    "y4_gain"
+    t.float    "y5_value"
+    t.float    "y5_gain"
   end
 
   create_table "bond_tickers", :force => true do |t|
@@ -101,16 +117,23 @@ ActiveRecord::Schema.define(:version => 20120109202010) do
     t.integer  "sp500_index_eod_id"
     t.integer  "tbill_index_eod_id"
     t.string   "current_state"
+    t.float    "d7_value"
+    t.float    "d7_gain"
+    t.float    "d30_value"
+    t.float    "d30_gain"
+    t.float    "d180_value"
+    t.float    "d180_gain"
+    t.float    "d365_value"
+    t.float    "d365_gain"
+    t.float    "y2_value"
+    t.float    "y2_gain"
+    t.float    "y3_value"
+    t.float    "y3_gain"
+    t.float    "y4_value"
+    t.float    "y4_gain"
+    t.float    "y5_value"
+    t.float    "y5_gain"
   end
-
-  create_table "configurables", :force => true do |t|
-    t.string   "name"
-    t.string   "value"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "configurables", ["name"], :name => "index_configurables_on_name"
 
   create_table "etf_events", :force => true do |t|
     t.integer  "etf_ticker_id"
@@ -147,6 +170,22 @@ ActiveRecord::Schema.define(:version => 20120109202010) do
     t.integer  "sp500_index_eod_id"
     t.integer  "tbill_index_eod_id"
     t.string   "current_state"
+    t.float    "d7_value"
+    t.float    "d7_gain"
+    t.float    "d30_value"
+    t.float    "d30_gain"
+    t.float    "d180_value"
+    t.float    "d180_gain"
+    t.float    "d365_value"
+    t.float    "d365_gain"
+    t.float    "y2_value"
+    t.float    "y2_gain"
+    t.float    "y3_value"
+    t.float    "y3_gain"
+    t.float    "y4_value"
+    t.float    "y4_gain"
+    t.float    "y5_value"
+    t.float    "y5_gain"
   end
 
   create_table "etf_ticker_eods", :force => true do |t|
@@ -209,6 +248,22 @@ ActiveRecord::Schema.define(:version => 20120109202010) do
     t.integer  "sp500_index_eod_id"
     t.integer  "tbill_index_eod_id"
     t.string   "current_state"
+    t.float    "d7_value"
+    t.float    "d7_gain"
+    t.float    "d30_value"
+    t.float    "d30_gain"
+    t.float    "d180_value"
+    t.float    "d180_gain"
+    t.float    "d365_value"
+    t.float    "d365_gain"
+    t.float    "y2_value"
+    t.float    "y2_gain"
+    t.float    "y3_value"
+    t.float    "y3_gain"
+    t.float    "y4_value"
+    t.float    "y4_gain"
+    t.float    "y5_value"
+    t.float    "y5_gain"
   end
 
   create_table "fund_ticker_eods", :force => true do |t|
@@ -290,6 +345,18 @@ ActiveRecord::Schema.define(:version => 20120109202010) do
     t.string   "current_state"
   end
 
+  create_table "portfolio_plans", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "portfolio_strategies", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "portfolios", :force => true do |t|
     t.string   "name"
     t.integer  "user_id"
@@ -298,6 +365,40 @@ ActiveRecord::Schema.define(:version => 20120109202010) do
     t.datetime "updated_at"
     t.integer  "trust_level"
     t.string   "current_state"
+    t.string   "portfolio_plan_id"
+    t.string   "portfolio_strategy_id"
+    t.float    "d7_value"
+    t.float    "d7_gain"
+    t.float    "d7_plan_rank"
+    t.float    "d7_strategy_rank"
+    t.float    "d30_value"
+    t.float    "d30_gain"
+    t.float    "d30_plan_rank"
+    t.float    "d30_strategy_rank"
+    t.float    "d180_value"
+    t.float    "d180_gain"
+    t.float    "d180_plan_rank"
+    t.float    "d180_strategy_rank"
+    t.float    "d365_value"
+    t.float    "d365_gain"
+    t.float    "d365_plan_rank"
+    t.float    "d365_strategy_rank"
+    t.float    "y2_value"
+    t.float    "y2_gain"
+    t.float    "y2_plan_rank"
+    t.float    "y2_strategy_rank"
+    t.float    "y3_value"
+    t.float    "y3_gain"
+    t.float    "y3_plan_rank"
+    t.float    "y3_strategy_rank"
+    t.float    "y4_value"
+    t.float    "y4_gain"
+    t.float    "y4_plan_rank"
+    t.float    "y4_strategy_rank"
+    t.float    "y5_value"
+    t.float    "y5_gain"
+    t.float    "y5_plan_rank"
+    t.float    "y5_strategy_rank"
   end
 
   create_table "stock_events", :force => true do |t|
@@ -335,6 +436,22 @@ ActiveRecord::Schema.define(:version => 20120109202010) do
     t.integer  "sp500_index_eod_id"
     t.integer  "tbill_index_eod_id"
     t.string   "current_state"
+    t.float    "d7_value"
+    t.float    "d7_gain"
+    t.float    "d30_value"
+    t.float    "d30_gain"
+    t.float    "d180_value"
+    t.float    "d180_gain"
+    t.float    "d365_value"
+    t.float    "d365_gain"
+    t.float    "y2_value"
+    t.float    "y2_gain"
+    t.float    "y3_value"
+    t.float    "y3_gain"
+    t.float    "y4_value"
+    t.float    "y4_gain"
+    t.float    "y5_value"
+    t.float    "y5_gain"
   end
 
   create_table "stock_ticker_eods", :force => true do |t|

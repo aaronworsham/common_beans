@@ -16,6 +16,9 @@
 
 $ ->
 
+  $( ".warmlist" ).tabs();
+  $('.accordion').accordion();
+
   $('button.buy_button[rel*=facebox], button.sell_button[rel*=facebox]').live('click', (e)->
     if e.currentTarget.className == 'buy_button'
       url_root = '/buys';
@@ -108,7 +111,7 @@ $ ->
   );
 
 
-  $('#portfolios-hotlist li.add_item').click((e) ->
+  $('#warmlist-portfolios a.add_portfolio').click((e) ->
     e.stopPropagation();
     $.facebox({div:'#add-portfolio-form'});
     $('#facebox .create_link').click( ->

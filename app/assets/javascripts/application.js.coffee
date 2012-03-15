@@ -21,7 +21,7 @@ class HotList
       .find('.add-holding')
         .attr('data-portfolio-id', id)
       .end()
-      .slideDown('slow');
+      .fadeIn('fast');
     callback.call();
 hotlistMenu = new HotList
 
@@ -30,30 +30,8 @@ $ ->
     window.location = "/"
   );
 
-  $("#message_bar").tabs({
-    select: ->
-
-      $(@).animate({
-        height: '500px',
-        }, 500, ->
-          $(@).find('.messages').show();
-          $('#message_close_btn').show();
-      );
 
 
-  });
-
-
-  $('#message_close_btn').click( ->
-      $('#message_bar .messages').hide();
-      $('#message_close_btn').hide();
-      $('#message_bar').animate({
-        height: '65px',
-        }, 500
-
-      );
-
-  );
 
   $('#portfolios-hotlist li.selectable').live("click", ->
     id = $(@).attr('data-id');
@@ -64,7 +42,7 @@ $ ->
     $(@).addClass('selected');
     hotlistMenu.select(id, title, '#warmlist-portfolios', ()->
       $('.portfolio-content').hide()
-      $('.portfolio-content#'+title).show();
+      $('#portfolio-content-'+id).fadeIn('fast');
     );
   );
   $('#groups-hotlist li.selectable').live("click", ->
@@ -79,19 +57,5 @@ $ ->
   );
 
 
-fetchMessages = ->
-  $.getJSON('messages').success( (data) ->
-    $('a[href=#tab-everyone]').text('Everyone('+data.everyone.length+')');
-    $('a[href=#tab-friends]').text('Friends('+data.friend.length+')');
-    $('a[href=#tab-groups]').text('Groups('+data.group.length+')');
-    $("#tab-everyone table").html('');
-    $("#tab-friends table").html('');
-    $("#tab-groups table").html('');
-    EveryoneMessages.reset(data.everyone);
-    FriendMessages.reset(data.friend);
-    GroupMessages.reset(data.group);
 
-  );
-
-setInterval(fetchMessages, 15000);
 

@@ -36,8 +36,20 @@ include DateMixin
     self.net_return = 0
   end
 
+  def populate_eod
+    EOD.points(Date.today).each do |pre, date|
+      self.send("#{pre}_value=", self.send("#{pre}_calculated_value"))
+      self.send("#{pre}_gain=", self.send("#{pre}_investment_gain_to_today"))
+      self.save
+    end
+  end
+
   def num_coupons_from_today
     frequency * (matures_at.year - Date.today.year)
+  end
+
+  def num_coupons_from_date(date)
+    frequency * (matures_at.year - date.year)
   end
 
   def num_coupons_from_purchase
@@ -60,13 +72,26 @@ include DateMixin
     face_value / (1+frequency_yield)**num_coupons_from_today
   end
 
+  def past_value_of_redemption(date)
+    face_value / (1+frequency_yield)**num_coupons_from_date(date)
+  end
+
   def pv_of_interest_payments
     value_of_coupon_payments * ((1-(1/(1+frequency_yield)**num_coupons_from_today))/frequency_yield)
+  end
+
+  def past_value_of_interest_payments(date)
+    value_of_coupon_payments * ((1-(1/(1+frequency_yield)**num_coupons_from_date(date)))/frequency_yield)
   end
 
   def present_value
     pv = pv_of_redemption + pv_of_interest_payments
     pv.round(2) * net_quantity
+  end
+
+  def past_value(date)
+    past_value = past_value_of_redemption(date) + past_value_of_interest_payments(date)
+    past_value.round(2) * net_quantity
   end
 
   def update_net_values_for_sell(sell)
@@ -93,5 +118,7 @@ include DateMixin
   def total_gain
     self.present_value + self.total_return - self.net_investment
   end
+
+
 
 end

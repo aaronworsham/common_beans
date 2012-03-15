@@ -17,6 +17,7 @@ class window.PortfolioView extends Backbone.View
 
 
 
+
 #    window.chart_gainloss = new Highcharts.Chart({
 #      chart: {
 #         renderTo: "chart_gainloss_"+@model.id,
