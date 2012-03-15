@@ -37,7 +37,7 @@ include DateMixin
   end
 
   def populate_eod
-    EOD.points.each do |pre, date|
+    EOD.points(Date.today).each do |pre, date|
       self.send("#{pre}_value=", self.send("#{pre}_calculated_value"))
       self.send("#{pre}_gain=", self.send("#{pre}_investment_gain_to_today"))
       self.save
@@ -120,27 +120,5 @@ include DateMixin
   end
 
 
-  EOD.points.each do |pre, date|
-
-    ##### Past Value
-    define_method("#{pre}_calculated_value") do
-      past_value(date)
-    end
-
-    #####  Past Value Gain to today
-    define_method("#{pre}_value_gain_to_today") do
-      (self.present_value - self.send("#{pre}_calculated_value")).round(2)
-    end
-
-    #####  Past investment Gain to today
-    define_method("#{pre}_investment_gain_to_today") do
-      (self.send("#{pre}_value_gain_to_today") - net_investment).round(2)
-    end
-
-    #####  Past investment Gain to today
-    define_method("#{pre}_investment_gain_ratio_to_today") do
-      (self.send("#{pre}_investment_gain_to_today")/self.present_value).round(2)
-    end
-  end
 
 end

@@ -1,6 +1,9 @@
 class StockHolding < ActiveRecord::Base
 
   include DateMixin
+  include Tradeable
+
+
   belongs_to :user
   belongs_to :stock_ticker
   belongs_to :portfolio
@@ -37,13 +40,7 @@ class StockHolding < ActiveRecord::Base
     self.net_return = 0
   end
 
-  def populate_eod
-    EOD.points.each do |pre, date|
-      self.send("#{pre}_value=", self.send("#{pre}_calculated_value"))
-      self.send("#{pre}_gain=", self.send("#{pre}_investment_gain_to_today"))
-      self.save
-    end
-  end
+
 
   def update_net_values_for_buy(buy)
     self.update_attributes(
@@ -73,28 +70,6 @@ class StockHolding < ActiveRecord::Base
   end
 
 
-  def days_since_holding_purchase
-    humanize_seconds(Time.now - self.purchased_at) 
-  end
-
-
-
-  def todays_price
-    @todays_price ||= self.ticker.todays_close
-  end
-
-  def todays_value
-    (self.net_shares * self.todays_price).round
-  end
-
-  def total_gain
-    self.todays_value + self.net_return - self.net_investment
-  end
-
-  def total_price_delta
-    self.todays_price - self.starting_price
-  end
-
   def past_shares(date)
     shares = net_shares
     stock_buys.each do |buy|
@@ -106,44 +81,14 @@ class StockHolding < ActiveRecord::Base
     shares
   end
 
-  EOD.points.each do |pre, date|
-    #######  Past Price
-    define_method("#{pre}_price") do
-      self.ticker.send("#{pre}_close")
-    end
+  def net_denomination
+    net_shares
+  end
 
-    ##### Past Value
-    define_method("#{pre}_calculated_value") do
-      self.send("#{pre}_price") * past_shares(date)
-    end
-
-    #####  Past Value Gain to today
-    define_method("#{pre}_value_gain_to_today") do
-      (self.todays_value - self.send("#{pre}_calculated_value")).round(2)
-    end
-
-    #####  Past investment Gain to today
-    define_method("#{pre}_investment_gain_to_today") do
-      (self.send("#{pre}_value_gain_to_today") - net_investment).round(2)
-    end
-
-    #####  Past investment Gain to today
-    define_method("#{pre}_investment_gain_ratio_to_today") do
-      (self.send("#{pre}_investment_gain_to_today")/self.todays_value).round(2)
-    end
+  def past_denomination(date)
+    past_shares(date)
   end
 
 
-  def as_json(options={})
-    result = super(options)
-    result["ticker_name"] = self.ticker.name
-    result["ticker_symbol"] = self.ticker.symbol
-    result["relative_day"] = self.days_since_holding_purchase
-    result["todays_value"] = self.todays_value
-    result["total_gain"] = self.total_gain
-    result["todays_price"] = self.todays_price
-    result["total_price_delta"] = self.total_price_delta
-    result
-  end
 
 end

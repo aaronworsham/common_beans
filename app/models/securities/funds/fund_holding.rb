@@ -108,44 +108,12 @@ class FundHolding < ActiveRecord::Base
     units
   end
 
-  EOD.points.each do |pre, date|
-    #######  Past Price
-    define_method("#{pre}_price") do
-      self.ticker.send("#{pre}_close")
-    end
-
-    ##### Past Value
-    define_method("#{pre}_calculated_value") do
-      self.send("#{pre}_price") * past_units(date)
-    end
-
-    #####  Past Value Gain to today
-    define_method("#{pre}_value_gain_to_today") do
-      (self.todays_value - self.send("#{pre}_calculated_value")).round(2)
-    end
-
-    #####  Past investment Gain to today
-    define_method("#{pre}_investment_gain_to_today") do
-      (self.send("#{pre}_value_gain_to_today") - net_investment).round(2)
-    end
-
-    #####  Past investment Gain to today
-    define_method("#{pre}_investment_gain_ratio_to_today") do
-      (self.send("#{pre}_investment_gain_to_today")/self.todays_value).round(2)
-    end
+  def net_denomination
+    net_units
   end
 
-
-  def as_json(options={})
-    result = super(options)
-    result["ticker_name"] = self.ticker.name
-    result["ticker_symbol"] = self.ticker.symbol
-    result["relative_day"] = self.days_since_holding_purchase
-    result["todays_value"] = self.todays_value
-    result["total_gain"] = self.total_gain
-    result["todays_price"] = self.todays_price
-    result["total_price_delta"] = self.total_price_delta
-    result
+  def past_denomination(date)
+    past_units(date)
   end
 
 

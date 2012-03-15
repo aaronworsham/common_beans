@@ -1,9 +1,6 @@
 module Quotable
 
 
-  def date_for_eod
-
-  end
 
   def yahoo_symbol
     (read_attribute :yahoo_symbol) || self.symbol
@@ -13,19 +10,37 @@ module Quotable
     current_quote.results[:last_trade]
   end
 
-  EOD.points.each do |k,v|
-    define_method("#{k}_close") do
-      close_for_date(v.to_date)
-    end
+  def current_price
+    current_quote.results[:last_trade]
+  end
+
+  def days_since_holding_purchase
+    humanize_seconds(Time.now - self.purchased_at)
   end
 
 
+  def todays_price
+    @todays_price ||= self.ticker.todays_close
+  end
+
+  def todays_value
+    (self.net_denomination * self.todays_price).round
+  end
+
+  def total_gain
+    self.todays_value + self.net_return - self.net_investment
+  end
+
+  def total_price_delta
+    self.todays_price - self.starting_price
+  end
+
   def close_for_date(date)
-    raise 'Date must be a Ruby Date Object' unless date.is_a?(Date)
-    if local_eod_by_date(date).present?
-      local_eod_by_date(date).close
+    raise 'Date must be a Ruby Date Object' unless date.respond_to?('to_date')
+    if local_eod_by_date(date.to_date).present?
+      local_eod_by_date(date.to_date).close
     else
-      create_eod(past_quote(date).results, date)
+      create_eod(past_quote(date.to_date).results, date.to_date)
     end
   rescue => e
     logger.info e.message
@@ -48,15 +63,6 @@ module Quotable
     quote
   end
 
-
-
-  def as_json(options={})
-    result = super(options)
-    EOD.points.each do |x|
-      result["#{x}_close"] = self.send("#{x}_close")
-    end
-    result
-  end
 
 
 end

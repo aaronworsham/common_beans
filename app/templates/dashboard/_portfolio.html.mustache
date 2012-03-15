@@ -10,143 +10,33 @@
   <div class='overview'>
     <p>This is the overview </p>
     <p>Add:
-      <a href='#'>Stock </a> |
-      <a href='#'>Bond </a> |
-      <a href='#'>Fund </a> |
-      <a href='#'>ETF </a> |
-      <a href='#'>CD </a> |
-      <a href='#'>401k </a> |
-      <a href='#'>IRA</a>
+      <a href='#' class='add-stock' ref={{id}}>Stock </a> |
+      <a href='#' class='add-bond' ref={{id}}>Bond </a> |
+      <a href='#' class='add-fund' ref={{id}}>Fund </a> |
+      <a href='#' class='add-etf' ref={{id}}>ETF </a> |
+      <a href='#' class='add-cd' ref={{id}}>CD </a> |
+      <a href='#' class='add-401k' ref={{id}}>401k </a> |
+      <a href='#' class='add-ira' ref={{id}}>IRA</a>
   </div>
 
+  <div id='portfolio-stock-holding-{{ id }}'>
 
-  <div class='accordion'>
-    <h3><a href="#">Stocks (1)</a></h3>
-
-    <div>
-
-      <table id='portfolio-stock-holding-{{ id }}'>
-        <thead>
-          <tr class='super_head'>
-            <th></th>
-            <th colspan=3>Totals</th>
-            <th colspan=2>Today's</th>
-            <th colspan=3>Gain/Loss</th>
-          </tr>
-          <tr class='sub_head'>
-            <th>Sym</th>
-            <th scope="col">Shares</th>
-            <th scope="col">Investment</th>
-            <th scope="col">Return</th>
-            <th scope="col">Price</th>
-            <th scope="col">Value</th>
-            <th scope="col">Total Gain</th>
-          </tr>
-        </thead>
-      </table>
-
-    </div>
-
-    <h3><a href="#">Funds (1)</a></h3>
-
-    <div>
-
-       <table id='portfolio-fund-holding-{{ id }}'>
-        <thead>
-          <tr class='super_head'>
-            <th></th>
-            <th colspan=3>Totals</th>
-            <th colspan=2>Today's</th>
-            <th colspan=3>Gain/Loss</th>
-          </tr>
-          <tr class='sub_head'>
-            <th>Sym</th>
-            <th scope="col">Units</th>
-            <th scope="col">Investment</th>
-            <th scope="col">Return</th>
-            <th scope="col">Price</th>
-            <th scope="col">Value</th>
-            <th scope="col">Total Gain</th>
-          </tr>
-        </thead>
-      </table>
-    </div>
-
-    <h3><a href="#">ETFs (0)</a></h3>
-
-    <div>
-
-       <table id='portfolio-etf-holding-{{ id }}'>
-        <thead>
-          <tr class='super_head'>
-            <th></th>
-            <th colspan=3>Totals</th>
-            <th colspan=2>Today's</th>
-            <th colspan=3>Gain/Loss</th>
-          </tr>
-          <tr class='sub_head'>
-            <th>Sym</th>
-            <th scope="col">Shares</th>
-            <th scope="col">Investment</th>
-            <th scope="col">Return</th>
-            <th scope="col">Price</th>
-            <th scope="col">Value</th>
-            <th scope="col">Total Gain</th>
-          </tr>
-        </thead>
-      </table>
-
-    </div>
-
-    <h3><a href="#">Bonds (0)</a></h3>
-
-    <div>
-       <table id='portfolio-bond-holding-{{ id }}'>
-        <thead>
-          <tr class='super_head'>
-            <th></th>
-            <th colspan=3>Totals</th>
-            <th colspan=2>Today's</th>
-            <th colspan=3>Gain/Loss</th>
-          </tr>
-          <tr class='sub_head'>
-            <th>Sym</th>
-            <th scope="col">Shares</th>
-            <th scope="col">Investment</th>
-            <th scope="col">Return</th>
-            <th scope="col">Price</th>
-            <th scope="col">Value</th>
-            <th scope="col">Total Gain</th>
-          </tr>
-        </thead>
-      </table>
-    </div>
-    <h3><a href="#">CDs (0)</a></h3>
-
-    <div>
-
-       <table id='portfolio-cd-holding-{{ id }}'>
-        <thead>
-          <tr class='super_head'>
-            <th></th>
-            <th colspan=3>Totals</th>
-            <th colspan=2>Today's</th>
-            <th colspan=3>Gain/Loss</th>
-          </tr>
-          <tr class='sub_head'>
-            <th>Sym</th>
-            <th scope="col">Shares</th>
-            <th scope="col">Investment</th>
-            <th scope="col">Return</th>
-            <th scope="col">Price</th>
-            <th scope="col">Value</th>
-            <th scope="col">Total Gain</th>
-          </tr>
-        </thead>
-      </table>
-    </div>
   </div>
 
-  <div id='chart_gainloss_{{ id }}'></div>
-  <div id='chart_index_{{ id }}'></div>
+  <div id='portfolio-fund-holding-{{ id }}'>
+
+  </div>
+
+  <div id='portfolio-etf-holding-{{ id }}'>
+
+  </div>
+
+  <div id='portfolio-bond-holding-{{ id }}'>
+
+  </div>
+
+  <div id='portfolio-cd-holding-{{ id }}'>
+
+  </div>
+
 </div>

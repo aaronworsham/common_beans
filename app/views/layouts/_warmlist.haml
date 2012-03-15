@@ -7,12 +7,12 @@
       %a{:href => '#compare'} Compare
 
   #list
-    %a Add Portfolio
+    %a.add_portfolio Add Portfolio
     = render :partial => 'layouts/portfolio', :collection => current_user.portfolios
 
 
   #compare
-    %a Add Portfolio
+    %a.add_portfolio Add Portfolio
     %h4 Growth
     = render :partial => 'layouts/compare', :collection => current_user.portfolios
     %h4 Income

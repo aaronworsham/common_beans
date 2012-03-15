@@ -111,7 +111,7 @@ $ ->
   );
 
 
-  $('#portfolios-hotlist li.add_item').click((e) ->
+  $('#warmlist-portfolios a.add_portfolio').click((e) ->
     e.stopPropagation();
     $.facebox({div:'#add-portfolio-form'});
     $('#facebox .create_link').click( ->
