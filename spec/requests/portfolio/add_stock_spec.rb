@@ -8,7 +8,7 @@ feature "add stock to portfolio" do
   
   scenario 'accessible from portfolio' do
     visit '/dashboard'
-    within('#portfolios-hotlist') do
+    within('#nav') do
       page.should have_content(@portfolio.name)
     end
     within('#warmlist-portfolios') do

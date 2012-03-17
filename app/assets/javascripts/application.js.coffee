@@ -13,7 +13,6 @@ class HotList
   select : (id, title, warmlist, callback) ->
     console.log(id);
     @.currentId = id;
-    $('.warmlist').hide();
     $(warmlist)
       .find('h3')
         .text(title)
@@ -33,10 +32,10 @@ $ ->
 
 
 
-  $('#portfolios-hotlist li.selectable').live("click", ->
+  $('#nav li.selectable').live("click", ->
     id = $(@).attr('data-id');
     title = $(@).attr('data-label');
-    $('#portfolios-hotlist li.selectable').each((i,v) ->
+    $('#nav li.selectable').each((i,v) ->
       $(v).removeClass('selected');
     );
     $(@).addClass('selected');

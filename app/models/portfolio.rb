@@ -11,6 +11,9 @@ class Portfolio < ActiveRecord::Base
 
   validates_associated :portfolio_plan
   validates_associated :portfolio_strategy
+  validates_presence_of :name
+  validates_presence_of :portfolio_plan_id
+  validates_presence_of :portfolio_strategy_id
   validates_associated :user
 
 

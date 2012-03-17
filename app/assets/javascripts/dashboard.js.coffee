@@ -16,7 +16,7 @@
 
 $ ->
 
-  $( ".warmlist" ).tabs();
+  $( "#nav" ).tabs();
   $('.accordion').accordion();
 
   $('button.buy_button[rel*=facebox], button.sell_button[rel*=facebox]').live('click', (e)->
@@ -111,7 +111,7 @@ $ ->
   );
 
 
-  $('#warmlist-portfolios a.add_portfolio').click((e) ->
+  $('.add_portfolio_group_action').click((e) ->
     e.stopPropagation();
     $.facebox({div:'#add-portfolio-form'});
     $('#facebox .create_link').click( ->

@@ -177,7 +177,8 @@ class window.AddPortfolioView extends Backbone.View
         authenticity_token: this.$("input[name=authenticity_token]").val(),
         portfolio: {
           name: this.$("#portfolio_name").val(),
-          trust_level: this.$("#portfolio_trust_level").val(),
+          portfolio_plan_id: this.$("#portfolio_portfolio_plan").val(),
+          portfolio_strategy_id: this.$("#portfolio_portfolio_strategy").val()
         }
       }
 

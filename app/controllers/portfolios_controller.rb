@@ -18,7 +18,7 @@ class PortfoliosController < ApplicationController
     respond_with(@portfolio)
   rescue => e
     p e.message
-    logger e.message
+    logger.error e.message
   end
 
   def destroy

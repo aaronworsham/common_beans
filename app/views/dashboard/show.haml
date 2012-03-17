@@ -12,7 +12,7 @@
   - if @stock_holdings
     !="CdHoldings.add(#{@cd_holdings.to_json});"
 
-  $('#portfolios-hotlist li.selectable').first().trigger('click');
+  $('#nav li.selectable').first().trigger('click');
   $('.accordion').accordion();
 
 = content_for :templates do

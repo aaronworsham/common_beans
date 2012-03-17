@@ -30,6 +30,8 @@ gem 'mysql2'
 gem 'stocktracker', '0.0.6'
 gem 'aasm'
 gem "rails_config"
+gem 'rspec',       "~> 2.6.0"
+gem 'rspec-rails', "~> 2.6.1"
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -47,8 +49,7 @@ group :development do
 end
 
 group :test do
-  gem 'rspec',       "~> 2.6.0"
-  gem 'rspec-rails', "~> 2.6.1"
+
   gem 'timecop'
   gem 'mocha'
   gem 'factory_girl'

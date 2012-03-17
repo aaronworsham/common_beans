@@ -10,5 +10,5 @@ class window.HotlistPortfolioView extends Backbone.View
   render: ->
     elem = ich.hotlist_portfolio_template(@model.toJSON());
     $(elem).hide();
-    $('#portfolios-hotlist').append(elem);
+    $('#nav').append(elem);
     $(elem).fadeIn("slow");
