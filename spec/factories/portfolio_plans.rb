@@ -2,5 +2,6 @@
 
 FactoryGirl.define do
   factory :portfolio_plan do
+   name 'growth'
   end
 end

@@ -6,6 +6,13 @@ feature "add portfolio" do
     visit '/auth/twitter'
     
   end
+
+  scenario 'It should show the add portfolio form when button clicked' do
+    visit '/dashboard'
+    find('#new_portfolio').visible?.should be_false
+    find('#nav .add_portfolio_group_action').click
+    find('#new_portfolio').visible?.should be_true
+  end
   
   scenario 'add form has correct fields'do
     visit '/dashboard'  
@@ -48,5 +55,7 @@ feature "add portfolio" do
     
     Portfolio.count.should eql(0)
   end
+
+
   
 end

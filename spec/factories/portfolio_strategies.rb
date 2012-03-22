@@ -2,5 +2,6 @@
 
 FactoryGirl.define do
   factory :portfolio_strategy do
+   name 'Large Cap'
   end
 end

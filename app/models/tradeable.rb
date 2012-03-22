@@ -1,5 +1,13 @@
 module Tradeable
 
+  def todays_value
+    calculate_value(Date.today)
+  end
+
+  def total_gain
+    calculate_value_gain(Date.today, self.purchased_at)
+  end
+
   def calculate_value(date)
     if date == Date.today
       ticker.current_price * net_denomination
