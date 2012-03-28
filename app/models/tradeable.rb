@@ -1,5 +1,17 @@
 module Tradeable
 
+  def days_since_holding_purchase
+    humanize_seconds(Time.now - self.purchased_at)
+  end
+
+  def total_price_delta
+    self.todays_price - self.starting_price
+  end
+
+  def todays_price
+    self.ticker.current_price
+  end
+
   def todays_value
     calculate_value(Date.today)
   end
@@ -10,9 +22,9 @@ module Tradeable
 
   def calculate_value(date)
     if date == Date.today
-      ticker.current_price * net_denomination
+      todays_price * net_denomination
     else
-      ticker.close_for_date(date) * past_denomination(date)
+      self.ticker.close_for_date(date) * past_denomination(date)
     end
   end
 

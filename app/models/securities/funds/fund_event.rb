@@ -59,12 +59,5 @@ class FundEvent < ActiveRecord::Base
   end
 
 
-  def todays_price
-    self.fund_ticker.todays_close
-  end
-
-  def todays_value
-    self.shares * self.todays_price
-  end
 
 end

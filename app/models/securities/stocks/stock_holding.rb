@@ -3,7 +3,6 @@ class StockHolding < ActiveRecord::Base
   include DateMixin
   include Tradeable
 
-
   belongs_to :user
   belongs_to :stock_ticker
   belongs_to :portfolio
@@ -87,6 +86,15 @@ class StockHolding < ActiveRecord::Base
 
   def past_denomination(date)
     past_shares(date)
+  end
+
+  def as_json(options={})
+    result = super(options)
+    result["ticker_symbol"] = self.ticker.symbol
+    result["todays_price"] = self.todays_price
+    result["todays_value"] = self.todays_value
+    result["total_gain"] = self.total_gain
+    result
   end
 
 

@@ -75,27 +75,6 @@ class FundHolding < ActiveRecord::Base
   end
 
 
-  def days_since_holding_purchase
-    humanize_seconds(Time.now - self.purchased_at)
-  end
-
-
-
-  def todays_price
-    @todays_price ||= self.fund_ticker.todays_close
-  end
-
-  def todays_value
-    (self.net_units * self.todays_price).round
-  end
-
-  def total_gain
-    self.todays_value + self.net_return - self.net_investment
-  end
-
-  def total_price_delta
-    self.todays_price - self.starting_price
-  end
 
   def past_units(date)
     units = net_units
@@ -116,5 +95,12 @@ class FundHolding < ActiveRecord::Base
     past_units(date)
   end
 
+
+  def as_json(options={})
+    result = super(options)
+    result["ticker_symbol"] = self.ticker.symbol
+    result["todays_price"] = self.ticker.current_price
+    result
+  end
 
 end

@@ -1,7 +1,4 @@
-module Quotable
-
-
-
+module Tickerable
   def yahoo_symbol
     (read_attribute :yahoo_symbol) || self.symbol
   end
@@ -14,25 +11,8 @@ module Quotable
     current_quote.results[:last_trade]
   end
 
-  def days_since_holding_purchase
-    humanize_seconds(Time.now - self.purchased_at)
-  end
-
-
   def todays_price
     @todays_price ||= self.ticker.todays_close
-  end
-
-  def todays_value
-    (self.net_denomination * self.todays_price).round
-  end
-
-  def total_gain
-    self.todays_value + self.net_return - self.net_investment
-  end
-
-  def total_price_delta
-    self.todays_price - self.starting_price
   end
 
   def close_for_date(date)
@@ -62,7 +42,4 @@ module Quotable
     raise "Could not locate Past Quote for #{self.symbol} for #{date}" unless quote.results
     quote
   end
-
-
-
 end
