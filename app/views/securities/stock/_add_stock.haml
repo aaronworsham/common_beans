@@ -2,6 +2,7 @@
 
 #add-stock-form{:style => 'display:none;'}
   = simple_form_for(StockHolding.new, :url => '#') do |f|
+    %h3 Add Stocks
     #autocomplete
       = "Select Name or Symbol"
       = f.input :ticker_name, :url => autocomplete_stock_ticker_name_stock_tickers_path, :as => :autocomplete, :input_html => {"data-id-element" => "#facebox #stock_holding_stock_ticker_id"}

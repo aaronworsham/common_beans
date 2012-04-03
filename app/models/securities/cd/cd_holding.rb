@@ -92,4 +92,16 @@ class CdHolding < ActiveRecord::Base
       self.present_value + self.total_return - self.net_investment
     end
 
+    def todays_value
+      self.present_value
+    end
+
+    def as_json(options={})
+      result = super(options)
+      result["todays_value"] = self.present_value.round(2)
+      result["total_gain"] = self.total_gain.round(2)
+      result
+    end
+
+
 end

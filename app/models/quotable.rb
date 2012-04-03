@@ -1,4 +1,4 @@
-module Tickerable
+module Quotable
   def yahoo_symbol
     (read_attribute :yahoo_symbol) || self.symbol
   end

@@ -1,6 +1,8 @@
 class FundHolding < ActiveRecord::Base
 
   include DateMixin
+  include Tradeable
+
   belongs_to :user
   belongs_to :fund_ticker
   belongs_to :portfolio
@@ -99,7 +101,9 @@ class FundHolding < ActiveRecord::Base
   def as_json(options={})
     result = super(options)
     result["ticker_symbol"] = self.ticker.symbol
-    result["todays_price"] = self.ticker.current_price
+    result["todays_price"] = self.todays_price.round(2)
+    result["todays_value"] = self.todays_value.round(2)
+    result["total_gain"] = self.total_gain.round(2)
     result
   end
 

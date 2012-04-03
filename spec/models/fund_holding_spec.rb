@@ -4,11 +4,25 @@ describe FundHolding do
   context :populate_data do
     let(:holding){ Factory :fund_holding, :starting_units => 1000, :starting_price => 10 }
     it 'should have the investment populated by default' do
-      holding.starting_investment.should == (holding.starting_units * holding.starting_price)
+      holding.starting_investment.should == 10000.0
     end
 
     it 'should have a zero return by default' do
       holding.net_return.should == 0
+    end
+
+    context :current_price do
+      before(:each) do
+        FundHolding.any_instance.stub(:todays_price).and_return(20)
+      end
+
+      it 'should have a value of 20000' do
+        holding.todays_value.should == 20000.0
+      end
+
+      it 'should have a gain of 10000' do
+        holding.total_gain.should == 10000.0
+      end
     end
 
     context :sells do

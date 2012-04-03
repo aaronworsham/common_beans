@@ -1,10 +1,12 @@
 require 'spec_helper'
 
 feature "add stock to portfolio" do
-  fixtures :stock_tickers
+  fixtures :stock_tickers, :stock_ticker_eods
   before(:each) do
     visit '/auth/twitter'
-    @portfolio = Factory :portfolio, :user => User.first
+    StockHolding.any_instance.stub(:todays_price).and_return(100)
+    StockHolding.any_instance.stub(:todays_value).and_return(1000)
+    @portfolio = Factory :portfolio, :user => User.first, :name => 'Test'
   end
   
   scenario 'accessible from portfolio' do
@@ -22,21 +24,26 @@ feature "add stock to portfolio" do
     visit '/dashboard'
     find('.portfolio-content a.add-stock').click
     within('#new_stock_holding') do
-      fill_in 'stock_holding_ticker_name', :with => 'Apple'
+      fill_in 'stock_holding_ticker_name', :with => 'Google'
     end
     find('.ui-autocomplete li:first a').click
     within('#new_stock_holding') do
       fill_in 'stock_holding_starting_shares', :with => '10'
-      fill_in 'stock_holding_starting_price', :with => '$7.50'
-      select '2010', :from => 'stock_holding_purchased_at_1i'
-      select 'October', :from => 'stock_holding_purchased_at_2i'
-      select '11', :from => 'stock_holding_purchased_at_3i'
+      fill_in 'stock_holding_starting_price', :with => '7.50'
+      select '2012', :from => 'stock_holding_purchased_at_1i'
+      select 'January', :from => 'stock_holding_purchased_at_2i'
+      select '16', :from => 'stock_holding_purchased_at_3i'
       click_on('Create')
     end
     @portfolio.reload
     @portfolio.stock_holdings.size.should == 1
+    within('#portfolio-content-1 .stock-content') do
+      page.should have_content('GOOG')
+      page.should have_content('10')
+      page.should have_content('75.0')
+    end
   end
-  
+
   scenario 'validates for required information' do
     visit '/dashboard'
     find('.portfolio-content a.add-stock').click
@@ -45,5 +52,5 @@ feature "add stock to portfolio" do
     end
     @portfolio.stock_holdings.size.should == 0
   end
-  
+
 end

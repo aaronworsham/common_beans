@@ -1,8 +1,6 @@
 ###
 = require application
 = require models/cb_models
-= require views/add_security_views
-= require views/show_security_views
 = require views/messages_views
 = require views/hotlist_views
 = require collections/messages_collections

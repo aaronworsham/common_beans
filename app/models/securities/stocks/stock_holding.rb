@@ -91,9 +91,9 @@ class StockHolding < ActiveRecord::Base
   def as_json(options={})
     result = super(options)
     result["ticker_symbol"] = self.ticker.symbol
-    result["todays_price"] = self.todays_price
-    result["todays_value"] = self.todays_value
-    result["total_gain"] = self.total_gain
+    result["todays_price"] = self.todays_price.round(2)
+    result["todays_value"] = self.todays_value.round(2)
+    result["total_gain"] = self.total_gain.round(2)
     result
   end
 

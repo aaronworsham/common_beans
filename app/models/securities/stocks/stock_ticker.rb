@@ -1,6 +1,6 @@
 class StockTicker < ActiveRecord::Base
 
-  include Tickerable
+  include Quotable
   include TickerLiquidity
   has_many :stock_holdings
   has_many :stock_ticker_eods

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120123200819) do
+ActiveRecord::Schema.define(:version => 20120403163841) do
 
   create_table "bond_events", :force => true do |t|
     t.integer  "bond_ticker_id"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(:version => 20120123200819) do
     t.float    "y4_gain"
     t.float    "y5_value"
     t.float    "y5_gain"
+    t.string   "cusip"
   end
 
   create_table "bond_tickers", :force => true do |t|
@@ -133,6 +134,7 @@ ActiveRecord::Schema.define(:version => 20120123200819) do
     t.float    "y4_gain"
     t.float    "y5_value"
     t.float    "y5_gain"
+    t.string   "cusip"
   end
 
   create_table "etf_events", :force => true do |t|

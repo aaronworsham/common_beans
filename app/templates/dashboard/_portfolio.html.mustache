@@ -1,12 +1,5 @@
 <div class='portfolio-content' id="portfolio-content-{{id}}">
-  <table>
-  <tr>
-  <td>
-  <h3>{{name}}</h3>
-  </td>
-  </tr>
-  </table>
-
+<h3>{{name}}</h3>
   <div class='overview'>
     <p>This is the overview </p>
     <p>Add:
@@ -19,24 +12,74 @@
       <a href='#' class='add-ira' data-portfolio-id={{id}}>IRA</a>
   </div>
 
-  <div id='portfolio-stock-holding-{{ id }}'>
+  <table class='stock-content' id='portfolio-stock-holding-{{ id }}'>
+    <thead>
+      <tr><th colspan=7>Stocks</td></tr>
+      <tr>
+        <th>Symbol</th>
+        <th>Shares</th>
+        <th>Investment</th>
+        <th>Return</th>
+        <th>Price</th>
+        <th>Value</th>
+        <th>Gain</th>
+      </tr>
+    </thead>
+  </table>
 
-  </div>
+  <table class='fund-content' id='portfolio-fund-holding-{{ id }}'>
+    <thead>
+      <tr><th colspan=7>Funds</td></tr>
+      <tr>
+        <th>Symbol</th>
+        <th>Shares</th>
+        <th>Investment</th>
+        <th>Return</th>
+        <th>Price</th>
+        <th>Value</th>
+        <th>Gain</th>
+      </tr>
+    </thead>
+  </table>
 
-  <div id='portfolio-fund-holding-{{ id }}'>
+  <table class='etf-content' id='portfolio-etf-holding-{{ id }}'>
+    <thead>
+      <tr><th colspan=7>ETFs</td></tr>
+      <tr>
+        <th>Symbol</th>
+        <th>Shares</th>
+        <th>Investment</th>
+        <th>Return</th>
+        <th>Price</th>
+        <th>Value</th>
+        <th>Gain</th>
+      </tr>
+    </thead>
+  </table>
 
-  </div>
 
-  <div id='portfolio-etf-holding-{{ id }}'>
+  <table class='bond-content' id='portfolio-bond-holding-{{ id }}'>
+    <thead>
+      <tr><th colspan=7>Bonds</td></tr>
+      <tr>
+        <th>Name</th>
+        <th>Face Value</th>
+        <th>Today's Value</th>
+        <th>Gain</th>
+      </tr>
+    </thead>
+  </table>
 
-  </div>
-
-  <div id='portfolio-bond-holding-{{ id }}'>
-
-  </div>
-
-  <div id='portfolio-cd-holding-{{ id }}'>
-
-  </div>
+  <table class='cd-content' id='portfolio-cd-holding-{{ id }}'>
+    <thead>
+      <tr><th colspan=7>CDs</td></tr>
+      <tr>
+        <th>Name</th>
+        <th>Face Value</th>
+        <th>Today's Value</th>
+        <th>Gain</th>
+      </tr>
+    </thead>
+  </table>
 
 </div>

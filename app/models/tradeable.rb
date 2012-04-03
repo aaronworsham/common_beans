@@ -17,7 +17,7 @@ module Tradeable
   end
 
   def total_gain
-    calculate_value_gain(Date.today, self.purchased_at)
+    calculate_value(Date.today) - self.starting_investment
   end
 
   def calculate_value(date)
