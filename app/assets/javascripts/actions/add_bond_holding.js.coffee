@@ -38,10 +38,10 @@ class window.AddBondHoldingView extends Backbone.View
 
 $ ->
 
-  $('.add-cd').live('click', (e) ->
+  $('.add-bond').live('click', (e) ->
     portfolio = Portfolios.get($(this).attr('data-portfolio-id'))
 
-    $.facebox({div:'#add-cd-form'});
+    $.facebox({div:'#add-bond-form'});
 
     $('#facebox .create_link').click( ->
       holding = new CdHoldingModel({portfolio_id:portfolio.id});

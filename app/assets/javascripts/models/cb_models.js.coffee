@@ -33,6 +33,13 @@ class window.BondBuyModel extends Backbone.Model
 class window.BondSellModel extends Backbone.Model
   urlRoot : "/bond_sells"
 
+class window.MultiHoldingModel extends Backbone.Model
+  urlRoot : "/multi_holdings"
+class window.MultiBuyModel extends Backbone.Model
+  urlRoot : "/multi_buys"
+class window.MultiSellModel extends Backbone.Model
+  urlRoot : "/multi_sells"
+
 
 class window.PortfolioModel extends Backbone.Model
   urlRoot : "/portfolios"

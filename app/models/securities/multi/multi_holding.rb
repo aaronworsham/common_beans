@@ -36,45 +36,73 @@ class MultiHolding < ActiveRecord::Base
     )
   end
 
-  def reallocate(new_array)
-    current_array = multi_holding_allocations
-    new_fund_ids = new_array.map{|x| x[:fund_ticker_id]}
-    current_fund_ids = current_array.map{|x| x.fund_ticker_id}
+  def allocate(array)
+    #puts "Allocating : #{array}"
 
-    deactivate = current_fund_ids - new_fund_ids
-    update = current_fund_ids & new_fund_ids
-    create = new_fund_ids - current_fund_ids
+    array.each do |alloc|
+      MultiHoldingAllocation.create(
+        :multi_holding => self,
+        :fund_ticker_id => alloc[:fund_ticker_id],
+        :allocation_percentage => alloc[:allocation],
+        :estimated_units => alloc[:estimated_units]
+      )
+    end
+  end
 
-    deactivate.each do |id|
-      current_alloc = current_array.select{|x| x.fund_ticker_id == id}.first
-      current_alloc.deactivate! if current_alloc.active?
+  def update_allocation(array)
+    #puts "Updating allocation : #{array}"
+
+     array.each do |alloc|
+      current_alloc = find_alloc_by_fund_ticker_id(alloc[:fund_ticker_id])
+      current_alloc.update_attributes(
+              :allocation_percentage => alloc[:allocation],
+              :estimated_units => alloc[:estimated_units]
+      )
+      current_alloc.activate! if current_alloc.inactive?
+    end
+  end
+
+  def deactivate_allocation(array)
+    #puts "Deactivating allocation : #{array}"
+    array.each do |alloc|
+      current_alloc = find_alloc_by_fund_ticker_id(alloc[:fund_ticker_id])
       current_alloc.update_attributes(
                 :allocation_percentage => 0,
                 :estimated_units => 0
       ) if (current_alloc.allocation_percentage > 0 or current_alloc.estimated_units > 0)
+      current_alloc.deactivate! if current_alloc.active?
     end
+  end
 
-    update.each do |id|
-      current_alloc = current_array.select{|x| x.fund_ticker_id == id}.first
-      new_alloc = new_array.select{|x| x[:fund_ticker_id] == id}.first
-      current_alloc.update_attributes(
-              :allocation_percentage => new_alloc[:allocation],
-              :estimated_units => new_alloc[:estimated_units]
-      )
-      current_alloc.activate! if current_alloc.inactive?
-    end
+  def reallocate(array)
+    new_fund_ids = array.map{|x| x[:fund_ticker_id]}
+    current_fund_ids = multi_holding_allocations.map{|x| x.fund_ticker_id}
+    deactivate_ids = current_fund_ids - new_fund_ids
+    update_ids = current_fund_ids & new_fund_ids
+    create_ids = new_fund_ids - current_fund_ids
 
-    create.each do |id|
-      new_alloc = new_array.select{|x| x[:fund_ticker_id] == id}.first
-      MultiHoldingAllocation.create(
-        :multi_holding => self,
-        :fund_ticker_id => new_alloc[:fund_ticker_id],
-        :allocation_percentage => new_alloc[:allocation],
-        :estimated_units => new_alloc[:estimated_units]
-      )
-    end
+    #puts "New Fund Ids : #{new_fund_ids}"
+    #puts "Current Fund Ids : #{current_fund_ids}"
+    #puts "Deactivate Ids : #{deactivate_ids}"
+    #puts "Update Fund Ids : #{update_ids}"
+    #puts "Create Fund Ids : #{create_ids}"
+
+    deactivate_allocation(multi_holding_allocations.select{|x| deactivate_ids.include?(x[:fund_ticker_id])})
+    update_allocation(array.select{|x| update_ids.include?(x[:fund_ticker_id])})
+    allocate(array.select{|x| create_ids.include?(x[:fund_ticker_id])})
     self.reload
     self.update_investments
   end
+
+
+  def find_alloc_by_fund_ticker_id(id)
+     multi_holding_allocations.select{|x| x.fund_ticker_id == id}.first
+  end
+
+  def as_json(options={})
+    result = super(options)
+    result
+  end
+
 
 end

@@ -305,6 +305,31 @@ window.CdSells.bind('reset', (events)->
 
 
 
+# Multi
+
+class window.MultiHoldingCollection extends Backbone.Collection
+  model: MultiHoldingModel
+  initialize: ->
+     @bind('add', (holding)->
+       @addOneView(holding)
+     );
+     @bind('reset', (holdings)->
+       holdings.each( (h)->
+         holdings.addOneView(h)
+       );
+     );
+
+  addOneView: (h)->
+    view = new MultiHoldingView({model:h});
+    view.render();
+
+
+window.MultiHoldings = new MultiHoldingCollection
+window.MultiHoldings.bind('reset', (events)->
+     events.each( (e)->
+       events.addOneView(e)
+     );
+);
 
 
 

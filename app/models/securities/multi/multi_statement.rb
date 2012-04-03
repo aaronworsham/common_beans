@@ -1,4 +1,7 @@
 class MultiStatement < ActiveRecord::Base
+
+  attr_accessor :ticker_name, :ticker_symbol
+
   belongs_to :multi_holding
   has_many :multi_statement_allocations
 

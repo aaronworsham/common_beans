@@ -1,0 +1,21 @@
+
+
+#add-multi-form{:style => 'display:none;'}
+  = simple_form_for(MultiHolding.new, :url => '#') do |f|
+    %h3 Add Multi
+    = f.input :name
+    = link_to 'Create', '#', :class => 'create_link'
+
+#add-multi-statement-form{:style => 'display:none;'}
+  = simple_form_for(MultiStatement.new, :url => '#') do |f|
+    %h3 Add Multi
+    #autocomplete
+      = "Select Name or Symbol"
+      = f.input :ticker_name, :url => autocomplete_fund_ticker_name_fund_tickers_path, :as => :autocomplete, :input_html => {"data-id-element" => "#facebox #fund_holding_fund_ticker_id"}
+      = f.input :ticker_symbol, :url => autocomplete_fund_ticker_symbol_fund_tickers_path, :as => :autocomplete, :input_html => {"data-id-element" => "#facebox #fund_holding_fund_ticker_id"}
+      = f.input :started_on
+      = f.input :starting_balance
+      = f.input :ended_on
+      = f.input :ending_balance
+      = f.input :contributions
+    = link_to 'Create', '#', :class => 'create_link'

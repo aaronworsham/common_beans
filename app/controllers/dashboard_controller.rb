@@ -10,5 +10,6 @@ class DashboardController < ApplicationController
     @etf_holdings = current_user.etf_holdings
     @bond_holdings = current_user.bond_holdings
     @cd_holdings = current_user.cd_holdings
+    @multi_holdings = current_user.multi_holdings
   end
 end

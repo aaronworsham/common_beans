@@ -9,8 +9,10 @@
     !="EtfHoldings.add(#{@etf_holdings.to_json});"
   - if @bond_holdings
     !="BondHoldings.add(#{@bond_holdings.to_json});"
-  - if @stock_holdings
+  - if @cd_holdings
     !="CdHoldings.add(#{@cd_holdings.to_json});"
+  - if @multi_holdings
+    !="MultiHoldings.add(#{@multi_holdings.to_json});"
 
   $('#nav li.selectable').first().trigger('click');
   $('.accordion').accordion();
@@ -29,5 +31,5 @@
 = render :partial => "portfolios/add_portfolio"
 
 - Settings.securities.each do |sec|
-  - ['buy','sell', 'add'].each do |action|
+  - ['add'].each do |action|
     = render :partial => "securities/#{sec}/#{action}_#{sec}"

@@ -8,8 +8,8 @@
       <a href='#' class='add-fund' data-portfolio-id={{id}}>Fund </a> |
       <a href='#' class='add-etf' data-portfolio-id={{id}}>ETF </a> |
       <a href='#' class='add-cd' data-portfolio-id={{id}}>CD </a> |
-      <a href='#' class='add-401k' data-portfolio-id={{id}}>401k </a> |
-      <a href='#' class='add-ira' data-portfolio-id={{id}}>IRA</a>
+      <a href='#' class='add-multi' data-portfolio-id={{id}}>401k </a> |
+      <a href='#' class='add-multi' data-portfolio-id={{id}}>IRA</a>
   </div>
 
   <table class='stock-content' id='portfolio-stock-holding-{{ id }}'>
@@ -78,6 +78,15 @@
         <th>Face Value</th>
         <th>Today's Value</th>
         <th>Gain</th>
+      </tr>
+    </thead>
+  </table>
+
+  <table class='multi-content' id='portfolio-multi-holding-{{ id }}'>
+    <thead>
+      <tr><th colspan=7>Multi</td></tr>
+      <tr>
+        <th>Name</th>
       </tr>
     </thead>
   </table>
