@@ -1,6 +1,6 @@
-class window.StockHoldingView extends Backbone.View
+class window.StockBuyView extends Backbone.View
 
-  tagName: "tbody"
+  tagName: "li"
 
 
   initialize: ->
@@ -8,9 +8,9 @@ class window.StockHoldingView extends Backbone.View
     @model.bind('destroy', @remove, this);
 
   render: ->
-    elem = $(@el).append(ich.stock_holding_template(@model.toJSON()));
+    elem = $(@el).append(ich.stock_buy_template(@model.toJSON()));
     $(elem).hide();
-    $("#portfolio-stock-holding-" + @model.get('portfolio_id')).append(elem);
+    $("#stock-buys-for-holding-" + @model.get('stock_holding_id')).append(elem);
     $(elem).fadeIn("slow");
 
   remove: ->

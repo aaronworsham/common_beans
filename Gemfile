@@ -27,7 +27,7 @@ gem 'mustache'
 gem "stache", "~> 0.0.2"
 gem "valuable"
 gem 'mysql2'
-gem 'stocktracker', '0.0.6'
+gem 'stocktracker', '0.0.8'
 gem 'aasm'
 gem "rails_config"
 gem 'rspec',       "~> 2.6.0"

@@ -11,5 +11,7 @@ class DashboardController < ApplicationController
     @bond_holdings = current_user.bond_holdings
     @cd_holdings = current_user.cd_holdings
     @multi_holdings = current_user.multi_holdings
+    @stock_buys = current_user.stock_buys
+    @stock_sells = current_user.stock_sells
   end
 end

@@ -3,16 +3,14 @@ module Quotable
     (read_attribute :yahoo_symbol) || self.symbol
   end
 
-  def todays_close
-    current_quote.results[:last_trade]
-  end
-
   def current_price
     current_quote.results[:last_trade]
-  end
-
-  def todays_price
-    @todays_price ||= self.ticker.todays_close
+  rescue NoMethodError
+    logger.error "Failed to get Current Quote for #{self.symbol}"
+    return 0
+  rescue => e
+    logger.error e.message
+    return 0
   end
 
   def close_for_date(date)
@@ -22,8 +20,11 @@ module Quotable
     else
       create_eod(past_quote(date.to_date).results, date.to_date)
     end
+  rescue NoMethodError
+    logger.error "Failed to get Past Quote for #{self.symbol}"
+    return 0
   rescue => e
-    logger.info e.message
+    logger.error e.message
     return 0
   end
 

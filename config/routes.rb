@@ -36,6 +36,8 @@ CommonBeans::Application.routes.draw do
   resources :cd_holdings
   resources :bond_holdings
   resources :multi_holdings
+  resources :stock_buys
+  resources :stock_sells
 
 
   match "/auth/:provider/callback" => "sessions#create"

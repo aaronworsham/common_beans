@@ -31,9 +31,11 @@ class window.StockBuyCollection extends Backbone.Collection
   initialize: ->
     @bind('add', @addOneView, this);
 
-  addOneView: (e)->
-     view = new TrackerStockEventView({model:e});
-     view.render();
+  addOneView: (h)->
+    view = new StockBuyView({model:h});
+    view.render();
+
+
 
 window.StockBuys = new StockBuyCollection
 window.StockBuys.bind('reset', (events)->
@@ -47,9 +49,9 @@ class window.StockSellCollection extends Backbone.Collection
   initialize: ->
     @bind('add', @addOneView, this);
 
-  addOneView: (e)->
-     view = new TrackerStockEventView({model:e});
-     view.render();
+  addOneView: (h)->
+    view = new StockSellView({model:h});
+    view.render();
 
 window.StockSells = new StockSellCollection
 window.StockSells.bind('reset', (events)->

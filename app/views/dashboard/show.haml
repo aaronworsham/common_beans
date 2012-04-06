@@ -13,6 +13,10 @@
     !="CdHoldings.add(#{@cd_holdings.to_json});"
   - if @multi_holdings
     !="MultiHoldings.add(#{@multi_holdings.to_json});"
+  - if @stock_buys
+    !="StockBuys.add(#{@stock_buys.to_json});"
+  - if @stock_sells
+    !="StockSells.add(#{@stock_sells.to_json});"
 
   $('#nav li.selectable').first().trigger('click');
   $('.accordion').accordion();
@@ -21,6 +25,8 @@
   = template_include_tag "dashboard/portfolio"
   - Settings.securities.each do |sec|
     = template_include_tag "dashboard/securities/#{sec}_holding"
+  = template_include_tag "dashboard/securities/stock_buy"
+  = template_include_tag "dashboard/securities/stock_sell"
 
 
 
@@ -31,5 +37,5 @@
 = render :partial => "portfolios/add_portfolio"
 
 - Settings.securities.each do |sec|
-  - ['add'].each do |action|
+  - ['add', 'buy', 'sell'].each do |action|
     = render :partial => "securities/#{sec}/#{action}_#{sec}"

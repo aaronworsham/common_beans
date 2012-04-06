@@ -2,8 +2,14 @@ class window.StockHoldingModel extends Backbone.Model
   urlRoot : "/stock_holdings"
 class window.StockBuyModel extends Backbone.Model
   urlRoot : "/stock_buys"
+
+  holding: =>
+   StockHoldings.get(@get('stock_holding_id'))
 class window.StockSellModel extends Backbone.Model
   urlRoot : "/stock_sells"
+
+  holding: =>
+   StockHoldings.get(@get('stock_holding_id'))
 
 class window.FundHoldingModel extends Backbone.Model
   urlRoot : "/fund_holdings"

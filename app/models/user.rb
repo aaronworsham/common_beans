@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   has_many :bond_holdings,    :dependent => :destroy
   has_many :cd_holdings,    :dependent => :destroy
   has_many :multi_holdings,    :dependent => :destroy
+  has_many :stock_buys,        :dependent => :destroy
+  has_many :stock_sells,        :dependent => :destroy
 
   aasm_column :current_state
 
