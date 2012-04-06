@@ -12,89 +12,102 @@
       <a href='#' class='add-multi' data-portfolio-id={{id}}>IRA</a>
   </div>
 
-  <table class='stock-content' id='portfolio-stock-holding-{{ id }}'>
-    <thead>
-      <tr><th colspan=8>Stocks</td></tr>
-      <tr>
-        <th>Symbol</th>
-        <th>Shares</th>
-        <th>Investment</th>
-        <th>Return</th>
-        <th>Price</th>
-        <th>Value</th>
-        <th>Gain</th>
-        <th></th>
-      </tr>
-    </thead>
-  </table>
+  <div id='portfolio-stocks-{{ id }}' style='display:none'>
+    <table class='stock-content' id='portfolio-stock-holding-{{ id }}'>
+      <thead>
+        <tr><th colspan=9 class='portfolio-header'>Stocks</td></tr>
+        <tr>
+          <th></th>
+          <th>Symbol</th>
+          <th>Shares</th>
+          <th>Investment</th>
+          <th>Return</th>
+          <th>Price</th>
+          <th>Value</th>
+          <th>Gain</th>
+          <th></th>
+        </tr>
+      </thead>
+    </table>
+  </div>
 
-  <table class='fund-content' id='portfolio-fund-holding-{{ id }}'>
-    <thead>
-      <tr><th colspan=8>Funds</td></tr>
-      <tr>
-        <th>Symbol</th>
-        <th>Shares</th>
-        <th>Investment</th>
-        <th>Return</th>
-        <th>Price</th>
-        <th>Value</th>
-        <th>Gain</th>
-        <th></th>
-      </tr>
-    </thead>
-  </table>
+  <div id='portfolio-funds-{{ id }}' style='display:none'>
+    <table class='fund-content' id='portfolio-fund-holding-{{ id }}'>
+      <thead>
+        <tr><th colspan=8 class='portfolio-header'>Funds</td></tr>
+        <tr>
+          <th>Symbol</th>
+          <th>Shares</th>
+          <th>Investment</th>
+          <th>Return</th>
+          <th>Price</th>
+          <th>Value</th>
+          <th>Gain</th>
+          <th></th>
+        </tr>
+      </thead>
+    </table>
+  </div>
 
-  <table class='etf-content' id='portfolio-etf-holding-{{ id }}'>
-    <thead>
-      <tr><th colspan=8>ETFs</td></tr>
-      <tr>
-        <th>Symbol</th>
-        <th>Shares</th>
-        <th>Investment</th>
-        <th>Return</th>
-        <th>Price</th>
-        <th>Value</th>
-        <th>Gain</th>
-        <th></th>
-      </tr>
-    </thead>
-  </table>
+  <div id='portfolio-etfs-{{ id }}' style='display:none'>
+    <table class='etf-content' id='portfolio-etf-holding-{{ id }}'>
+      <thead>
+        <tr><th colspan=8 class='portfolio-header'>ETFs</td></tr>
+        <tr>
+          <th>Symbol</th>
+          <th>Shares</th>
+          <th>Investment</th>
+          <th>Return</th>
+          <th>Price</th>
+          <th>Value</th>
+          <th>Gain</th>
+          <th></th>
+        </tr>
+      </thead>
+    </table>
+  </div>
 
 
-  <table class='bond-content' id='portfolio-bond-holding-{{ id }}'>
-    <thead>
-      <tr><th colspan=8>Bonds</td></tr>
-      <tr>
-        <th>Name</th>
-        <th>Face Value</th>
-        <th>Today's Value</th>
-        <th>Gain</th>
-        <th></th>
-      </tr>
-    </thead>
-  </table>
+  <div id='portfolio-stocks-{{ id }}' style='display:none'>
+    <table class='bond-content' id='portfolio-bond-holding-{{ id }}'>
+      <thead>
+        <tr><th colspan=8 class='portfolio-header'>Bonds</td></tr>
+        <tr>
+          <th>Name</th>
+          <th>Face Value</th>
+          <th>Today's Value</th>
+          <th>Gain</th>
+          <th></th>
+        </tr>
+      </thead>
+    </table>
+  </div>
 
-  <table class='cd-content' id='portfolio-cd-holding-{{ id }}'>
-    <thead>
-      <tr><th colspan=8>CDs</td></tr>
-      <tr>
-        <th>Name</th>
-        <th>Face Value</th>
-        <th>Today's Value</th>
-        <th>Gain</th>
-        <th></th>
-      </tr>
-    </thead>
-  </table>
+  <div id='portfolio-cds-{{ id }}' style='display:none'>
+    <table class='cd-content' id='portfolio-cd-holding-{{ id }}'>
+      <thead>
+        <tr><th colspan=8 class='portfolio-header'>CDs</td></tr>
+        <tr>
+          <th>Name</th>
+          <th>Face Value</th>
+          <th>Today's Value</th>
+          <th>Gain</th>
+          <th></th>
+        </tr>
+      </thead>
+    </table>
+  </div>
 
-  <table class='multi-content' id='portfolio-multi-holding-{{ id }}'>
-    <thead>
-      <tr><th colspan=8>Multi</td></tr>
-      <tr>
-        <th>Name</th>
-        <th></th>
-      </tr>
-    </thead>
-  </table>
+  <div id='portfolio-multis-{{ id }}' style='display:none'>
+    <table class='multi-content' id='portfolio-multi-holding-{{ id }}'>
+      <thead>
+        <tr><th colspan=8 class='portfolio-header'>Multi</td></tr>
+        <tr>
+          <th>Name</th>
+          <th></th>
+        </tr>
+      </thead>
+    </table>
+  </div>
 
 </div>

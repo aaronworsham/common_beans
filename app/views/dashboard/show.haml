@@ -36,6 +36,7 @@
 
 = render :partial => "portfolios/add_portfolio"
 
-- Settings.securities.each do |sec|
-  - ['add', 'buy', 'sell'].each do |action|
-    = render :partial => "securities/#{sec}/#{action}_#{sec}"
+#forms
+  - Settings.securities.each do |sec|
+    - ['add', 'buy', 'sell'].each do |action|
+      = render :partial => "securities/#{sec}/#{action}_#{sec}"

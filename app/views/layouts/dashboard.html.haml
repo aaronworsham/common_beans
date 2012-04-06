@@ -11,12 +11,6 @@
   %script{:type => 'text/javascript', :charset => 'utf-8'}
     $(document).ready(function() {
     = yield :on_ready
-    -if @everyone_messages.present?
-      EveryoneMessages.reset(JSON.parse(#{raw(@everyone_messages.as_json)}));
-    -if @friend_messages.present?
-      FriendMessages.reset(JSON.parse(#{raw(@friend_messages.as_json)}));
-    -if @group_messages.present?
-      GroupMessages.reset(JSON.parse(<#{raw(@group_messages.as_json)}));
     });
 %body
   =render "layouts/header"

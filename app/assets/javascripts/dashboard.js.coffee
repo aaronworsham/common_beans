@@ -26,7 +26,7 @@ $ ->
 
     e.stopPropagation();
     $.facebox({div:'#buy-shares'});
-    holding_id = $(this).attr('data_holding_id');
+    holding_id = $(@).attr('data_holding_id');
 
     submit_form = ->
       event = new StockEventModel({holding_id:holding_id});
@@ -46,34 +46,16 @@ $ ->
     return false;
   );
 
+  $('.holding-header').live('click', ->
+    type = $(@).attr('data-holding-type')
+    id = $(@).attr('data-stock-holding-id')
+
+    $("#"+type+'-events-for-holding-'+id).slideToggle('slow')
+  )
 
 
 
 
-
-
-
-
-
-
-
-  $('.remove-portfolio').live('click',  ->
-    p = Portfolios.get($(this).attr('data-portfolio-id'))
-    p.destroy();
-  );
-  $('.remove-holding').live('click',  ->
-    h = StockHoldings.get($(this).attr('data-holding-id'))
-    h.destroy();
-  );
-  $('.remove-event').live('click',  ->
-    e = StockEvents.get($(this).attr('data-event-id'))
-    holding = e.holding
-    e.destroy(
-      { success : (model, resp)->
-        holding.fetch();
-      }
-    );
-  );
 
 
 

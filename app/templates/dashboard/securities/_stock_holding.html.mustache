@@ -1,4 +1,5 @@
-<tr id="stock-holding-{{ id }}" data-stock-holding-id={{id}}>
+<tr class='holding-header' id="stock-holding-{{ id }}" data-stock-holding-id={{id}} data-holding-type='stock'>
+  <td>S</td>
   <td>{{ ticker_symbol }}</td>
   <td>{{ net_shares }}</td>
   <td>{{ net_investment }}</td>
@@ -14,15 +15,14 @@
   </td>
 </tr>
 <tr>
-  <td colspan=8>
-    <ul class='stock-buys' id="stock-buys-for-holding-{{ id }}" data-stock-holding-id={{id}}>
-      <li>Started with {{starting_shares}} shares at {{starting_price}} on {{purchased_on}}</li>
-    </ul>
+  <td colspan=9>
+    <div class='stock-events' id="stock-events-for-holding-{{ id }}" data-stock-holding-id={{id}} style='display:none'>
+      <ul class='stock-buys' id="stock-buys-for-holding-{{ id }}" data-stock-holding-id={{id}}>
+        <li>Started with {{starting_shares}} shares at {{starting_price}} on {{purchased_on}}</li>
+      </ul>
+      <ul class='stock-sells' id="stock-sells-for-holding-{{ id }}" data-stock-holding-id={{id}}>
+      </ul>
+    </div>
   </td>
 </tr>
-<tr>
-  <td colspan=8>
-    <ul class='stock-sells' id="stock-sells-for-holding-{{ id }}" data-stock-holding-id={{id}}>
-    </ul>
-  </td>
-</tr>
+
