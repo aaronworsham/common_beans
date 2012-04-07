@@ -1,3 +1,6 @@
 #sell-fund{:style => 'display:none;'}
   = simple_form_for(FundSell.new, :url => '#') do |f|
+    = f.input :units
+    = f.input :price
+    = f.input :executed_at
     = link_to 'Record', '#', :class => 'record_link'

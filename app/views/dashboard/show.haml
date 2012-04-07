@@ -1,42 +1,14 @@
 = content_for :on_ready do
-  - if @portfolios
-    !="Portfolios.add(#{@portfolios.to_json});"
-  - if @stock_holdings
-    !="StockHoldings.add(#{@stock_holdings.to_json});"
-  - if @fund_holdings
-    !="FundHoldings.add(#{@fund_holdings.to_json});"
-  - if @etf_holdings
-    !="EtfHoldings.add(#{@etf_holdings.to_json});"
-  - if @bond_holdings
-    !="BondHoldings.add(#{@bond_holdings.to_json});"
-  - if @cd_holdings
-    !="CdHoldings.add(#{@cd_holdings.to_json});"
-  - if @multi_holdings
-    !="MultiHoldings.add(#{@multi_holdings.to_json});"
-  - if @stock_buys
-    !="StockBuys.add(#{@stock_buys.to_json});"
-  - if @stock_sells
-    !="StockSells.add(#{@stock_sells.to_json});"
-
+  - @models.each do |k,v|
+    != "#{k.classify.pluralize}.add(#{v.to_json});"
   $('#nav li.selectable').first().trigger('click');
   $('.accordion').accordion();
 
 = content_for :templates do
-  = template_include_tag "dashboard/portfolio"
-  - Settings.securities.each do |sec|
-    = template_include_tag "dashboard/securities/#{sec}_holding"
-  = template_include_tag "dashboard/securities/stock_buy"
-  = template_include_tag "dashboard/securities/stock_sell"
-
-
-
+  = template_include_path_helper('dashboard')
 
 #portfolio-glance
 
-
-= render :partial => "portfolios/add_portfolio"
-
 #forms
-  - Settings.securities.each do |sec|
-    - ['add', 'buy', 'sell'].each do |action|
-      = render :partial => "securities/#{sec}/#{action}_#{sec}"
+  = render :partial => "portfolios/add_portfolio"
+  = securities_form_loader_helper

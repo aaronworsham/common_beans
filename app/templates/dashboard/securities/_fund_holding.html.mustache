@@ -1,4 +1,5 @@
-<tr id="holding-{{ id }}-today">
+<tr class='holding-header' id="fund-holding-{{ id }}" data-holding-id={{id}} data-holding-type='fund'>
+  <td>S</td>
   <td>{{ ticker_symbol }}</td>
   <td>{{ net_units }}</td>
   <td>{{ net_investment }}</td>
@@ -6,10 +7,19 @@
   <td>{{ todays_price }}</td>
   <td>{{ todays_value }}</td>
   <td>{{ total_gain }}</td>
-  <td>
+</tr>
+<tr>
+  <td colspan=8>
+    <div class='fund-events' id="fund-events-for-holding-{{ id }}" data-fund-holding-id={{id}} style='display:none'>
     <a href='#' class='buy-fund-event' data-holding-id={{id}}>Bought Units |</a>
     <a href='#' class='sell-fund-event' data-holding-id={{id}}>Sold Units |</a>
     <a href='#' class='edit-fund-holding' data-holding-id={{id}}>Edit |</a>
     <a href='#' class='delete-fund-holding' data-holding-id={{id}}>Remove</a>
+      <ul class='fund-buys' id="fund-buys-for-holding-{{ id }}" data-fund-holding-id={{id}}>
+        <li>Started with {{starting_units}} units at {{starting_price}} on {{purchased_on}}</li>
+      </ul>
+      <ul class='fund-sells' id="fund-sells-for-holding-{{ id }}" data-fund-holding-id={{id}}>
+      </ul>
+    </div>
   </td>
 </tr>

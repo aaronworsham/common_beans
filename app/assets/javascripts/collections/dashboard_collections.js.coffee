@@ -95,7 +95,7 @@ class window.FundBuyCollection extends Backbone.Collection
     @bind('add', @addOneView, this);
 
   addOneView: (e)->
-     view = new TrackerFundEventView({model:e});
+     view = new FundBuyView({model:e});
      view.render();
 
 window.FundBuys = new FundBuyCollection
@@ -111,7 +111,7 @@ class window.FundSellCollection extends Backbone.Collection
     @bind('add', @addOneView, this);
 
   addOneView: (e)->
-     view = new TrackerFundEventView({model:e});
+     view = new FundSellView({model:e});
      view.render();
 
 window.FundSells = new FundSellCollection
@@ -211,40 +211,6 @@ window.BondHoldings.bind('reset', (events)->
 );
 
 
-class window.BondBuyCollection extends Backbone.Collection
-  model: BondBuyModel
-  initialize: ->
-    @bind('add', @addOneView, this);
-
-  addOneView: (e)->
-     view = new TrackerBondEventView({model:e});
-     view.render();
-
-window.BondBuys = new BondBuyCollection
-window.BondBuys.bind('reset', (events)->
-     events.each( (e)->
-       events.addOneView(e)
-     );
-);
-
-class window.BondSellCollection extends Backbone.Collection
-  model: BondSellModel
-  initialize: ->
-    @bind('add', @addOneView, this);
-
-  addOneView: (e)->
-     view = new TrackerBondEventView({model:e});
-     view.render();
-
-window.BondSells = new BondSellCollection
-window.BondSells.bind('reset', (events)->
-     events.each( (e)->
-       events.addOneView(e)
-     );
-);
-
-
-
 # Cds
 
 class window.CdHoldingCollection extends Backbone.Collection
@@ -270,41 +236,6 @@ window.CdHoldings.bind('reset', (events)->
        events.addOneView(e)
      );
 );
-
-
-class window.CdBuyCollection extends Backbone.Collection
-  model: CdBuyModel
-  initialize: ->
-    @bind('add', @addOneView, this);
-
-  addOneView: (e)->
-     view = new TrackerCdEventView({model:e});
-     view.render();
-
-window.CdBuys = new CdBuyCollection
-window.CdBuys.bind('reset', (events)->
-     events.each( (e)->
-       events.addOneView(e)
-     );
-);
-
-class window.CdSellCollection extends Backbone.Collection
-  model: CdSellModel
-  initialize: ->
-    @bind('add', @addOneView, this);
-
-  addOneView: (e)->
-     view = new TrackerCdEventView({model:e});
-     view.render();
-
-window.CdSells = new CdSellCollection
-window.CdSells.bind('reset', (events)->
-     events.each( (e)->
-       events.addOneView(e)
-     );
-);
-
-
 
 
 # Multi

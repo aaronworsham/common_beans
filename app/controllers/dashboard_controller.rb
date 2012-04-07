@@ -3,15 +3,6 @@ class DashboardController < ApplicationController
   before_filter :setup_messages
   
   def show
-    @friends = current_user.friends
-    @portfolios = current_user.portfolios
-    @stock_holdings = current_user.stock_holdings
-    @fund_holdings = current_user.fund_holdings
-    @etf_holdings = current_user.etf_holdings
-    @bond_holdings = current_user.bond_holdings
-    @cd_holdings = current_user.cd_holdings
-    @multi_holdings = current_user.multi_holdings
-    @stock_buys = current_user.stock_buys
-    @stock_sells = current_user.stock_sells
+    @models = current_user.backbone_models
   end
 end

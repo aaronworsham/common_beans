@@ -15,8 +15,12 @@ class window.FundHoldingModel extends Backbone.Model
   urlRoot : "/fund_holdings"
 class window.FundBuyModel extends Backbone.Model
   urlRoot : "/fund_buys"
+  holding: =>
+    FundHoldings.get(@get('fund_holding_id'))
 class window.FundSellModel extends Backbone.Model
   urlRoot : "/fund_sells"
+  holding: =>
+    FundHoldings.get(@get('fund_holding_id'))
 
 class window.EtfHoldingModel extends Backbone.Model
   urlRoot : "/etf_holdings"

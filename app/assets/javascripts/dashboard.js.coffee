@@ -1,11 +1,8 @@
 ###
 = require application
 = require models/cb_models
-= require views/messages_views
 = require views/hotlist_views
-= require collections/messages_collections
 = require collections/dashboard_collections
-= require collections/hotlist_collections
 = require_tree ./actions
 
 ###
@@ -48,7 +45,7 @@ $ ->
 
   $('.holding-header').live('click', ->
     type = $(@).attr('data-holding-type')
-    id = $(@).attr('data-stock-holding-id')
+    id = $(@).attr('data-holding-id')
 
     $("#"+type+'-events-for-holding-'+id).slideToggle('slow')
   )

@@ -3,19 +3,19 @@
   <div class='overview'>
     <p>This is the overview </p>
     <p>Add:
-      <a href='#' class='add-stock' data-portfolio-id={{id}}>Stock </a> |
-      <a href='#' class='add-bond' data-portfolio-id={{id}}>Bond </a> |
-      <a href='#' class='add-fund' data-portfolio-id={{id}}>Fund </a> |
-      <a href='#' class='add-etf' data-portfolio-id={{id}}>ETF </a> |
-      <a href='#' class='add-cd' data-portfolio-id={{id}}>CD </a> |
-      <a href='#' class='add-multi' data-portfolio-id={{id}}>401k </a> |
-      <a href='#' class='add-multi' data-portfolio-id={{id}}>IRA</a>
+      <a href='#' class='add-holding' data-portfolio-id={{id}} data-security-name='stock'>Stock </a> |
+      <a href='#' class='add-holding' data-portfolio-id={{id}} data-security-name='bond'>Bond </a> |
+      <a href='#' class='add-holding' data-portfolio-id={{id}} data-security-name='fund'>Fund </a> |
+      <a href='#' class='add-holding' data-portfolio-id={{id}} data-security-name='etf'>ETF </a> |
+      <a href='#' class='add-holding' data-portfolio-id={{id}} data-security-name='cd'>CD </a> |
+      <a href='#' class='add-holding' data-portfolio-id={{id}} data-security-name='multi'>401k </a> |
+      <a href='#' class='add-holding' data-portfolio-id={{id}} data-security-name='multi'>IRA</a>
   </div>
 
   <div id='portfolio-stocks-{{ id }}' style='display:none'>
     <table class='stock-content' id='portfolio-stock-holding-{{ id }}'>
       <thead>
-        <tr><th colspan=9 class='portfolio-header'>Stocks</td></tr>
+        <tr><th colspan=8 class='portfolio-header'>Stocks</td></tr>
         <tr>
           <th></th>
           <th>Symbol</th>
@@ -25,7 +25,6 @@
           <th>Price</th>
           <th>Value</th>
           <th>Gain</th>
-          <th></th>
         </tr>
       </thead>
     </table>
@@ -36,6 +35,7 @@
       <thead>
         <tr><th colspan=8 class='portfolio-header'>Funds</td></tr>
         <tr>
+          <th></th>
           <th>Symbol</th>
           <th>Shares</th>
           <th>Investment</th>
@@ -43,7 +43,6 @@
           <th>Price</th>
           <th>Value</th>
           <th>Gain</th>
-          <th></th>
         </tr>
       </thead>
     </table>

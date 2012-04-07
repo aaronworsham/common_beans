@@ -76,6 +76,10 @@ $ ->
     hotlistMenu.select(id, title, '#warmlist-friends')
   );
 
+  window.capitaliseFirstLetter = (string)->
+    return string.charAt(0).toUpperCase() + string.slice(1);
+
+
 
 
 

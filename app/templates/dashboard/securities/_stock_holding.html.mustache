@@ -1,4 +1,4 @@
-<tr class='holding-header' id="stock-holding-{{ id }}" data-stock-holding-id={{id}} data-holding-type='stock'>
+<tr class='holding-header' id="stock-holding-{{ id }}" data-holding-id={{id}} data-holding-type='stock'>
   <td>S</td>
   <td>{{ ticker_symbol }}</td>
   <td>{{ net_shares }}</td>
@@ -7,16 +7,15 @@
   <td>{{ todays_price }}</td>
   <td>{{ todays_value }}</td>
   <td>{{ total_gain }}</td>
-  <td>
-    <a href='#' class='buy-stock-event' data-holding-id={{id}}>Bought Shares |</a>
-    <a href='#' class='sell-stock-event' data-holding-id={{id}}>Sold Shares |</a>
-    <a href='#' class='edit-stock-holding' data-holding-id={{id}}>Edit |</a>
-    <a href='#' class='delete-stock-holding' data-holding-id={{id}}>Remove</a>
-  </td>
+
 </tr>
 <tr>
-  <td colspan=9>
+  <td colspan=8>
     <div class='stock-events' id="stock-events-for-holding-{{ id }}" data-stock-holding-id={{id}} style='display:none'>
+      <a href='#' class='add-event' data-holding-id={{id}} data-security-name='stock' data-event-type='buy'>Bought Shares |</a>
+      <a href='#' class='add-event' data-holding-id={{id}} data-security-name='stock' data-event-type='sell'>Sold Shares |</a>
+      <a href='#' class='edit-stock-holding' data-holding-id={{id}}>Edit |</a>
+      <a href='#' class='delete-stock-holding' data-holding-id={{id}}>Remove</a>
       <ul class='stock-buys' id="stock-buys-for-holding-{{ id }}" data-stock-holding-id={{id}}>
         <li>Started with {{starting_shares}} shares at {{starting_price}} on {{purchased_on}}</li>
       </ul>

@@ -73,5 +73,21 @@ class User < ActiveRecord::Base
     "user:#{self.id}:#{str}"
   end
 
+  def backbone_models
+    hash = {}
+    %w( portfolios
+        stock_holdings
+        fund_holdings
+        etf_holdings
+        bond_holdings
+        cd_holdings
+        multi_holdings
+        stock_buys
+        stock_sells).each do |x|
+      hash[x] = self.send(x)
+    end
+    return hash
+  end
+
 
 end
