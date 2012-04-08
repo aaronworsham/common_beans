@@ -11,10 +11,10 @@
 <tr>
   <td colspan=8>
     <div class='fund-events' id="fund-events-for-holding-{{ id }}" data-fund-holding-id={{id}} style='display:none'>
-    <a href='#' class='buy-fund-event' data-holding-id={{id}}>Bought Units |</a>
-    <a href='#' class='sell-fund-event' data-holding-id={{id}}>Sold Units |</a>
-    <a href='#' class='edit-fund-holding' data-holding-id={{id}}>Edit |</a>
-    <a href='#' class='delete-fund-holding' data-holding-id={{id}}>Remove</a>
+      <a href='#' class='add-event' data-holding-id={{id}} data-security-name='fund' data-event-type='buy'>Bought Shares |</a>
+      <a href='#' class='add-event' data-holding-id={{id}} data-security-name='fund' data-event-type='sell'>Sold Shares |</a>
+      <a href='#' class='edit-fund-holding' data-holding-id={{id}}>Edit |</a>
+      <a href='#' class='delete-fund-holding' data-holding-id={{id}}>Remove</a>
       <ul class='fund-buys' id="fund-buys-for-holding-{{ id }}" data-fund-holding-id={{id}}>
         <li>Started with {{starting_units}} units at {{starting_price}} on {{purchased_on}}</li>
       </ul>

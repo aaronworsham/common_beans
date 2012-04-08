@@ -1,4 +1,5 @@
 
+
 #bond
 
 class window.AddBondHoldingView extends Backbone.View
@@ -43,7 +44,7 @@ class window.AddBondHoldingView extends Backbone.View
 
   #CD
 
-  class window.AddCdHoldingView extends Backbone.View
+class window.AddCdHoldingView extends Backbone.View
 
   el: '#facebox'
 
@@ -82,7 +83,7 @@ class window.AddBondHoldingView extends Backbone.View
 
   #ETF
 
-  class window.AddEtfHoldingView extends Backbone.View
+class window.AddEtfHoldingView extends Backbone.View
 
   el: '#facebox'
 
@@ -114,7 +115,7 @@ class window.AddBondHoldingView extends Backbone.View
 
   #fund
 
-  class window.AddFundHoldingView extends Backbone.View
+class window.AddFundHoldingView extends Backbone.View
 
   el: '#facebox'
 
@@ -144,7 +145,7 @@ class window.AddBondHoldingView extends Backbone.View
 
   #multi
 
-  class window.AddMultiHoldingView extends Backbone.View
+class window.AddMultiHoldingView extends Backbone.View
 
     el: '#facebox'
 

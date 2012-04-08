@@ -5,6 +5,6 @@ module DashboardHelper
     ::Dir["app/views/securities/**/*.haml"].each do |path|
       html << render(:file => path)
     end
-    html.join("/n").html_safe
+    html.join().html_safe
   end
 end
