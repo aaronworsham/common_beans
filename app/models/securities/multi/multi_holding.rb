@@ -21,6 +21,14 @@ class MultiHolding < ActiveRecord::Base
     contrib
   end
 
+  def total_contrib_from_statements
+    contrib = 0
+    multi_statements.each do |a|
+      contrib += (a.contributions || 0)
+    end
+    contrib
+  end
+
   def total_distrib_from_alloc
     distrib = 0
     multi_statement_allocations.each do |a|
@@ -31,7 +39,7 @@ class MultiHolding < ActiveRecord::Base
 
   def update_investments
     self.update_attributes(
-            :net_investment => total_contrib_from_alloc,
+            :net_investment => total_contrib_from_statements,
             :net_return => total_distrib_from_alloc
     )
   end

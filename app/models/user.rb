@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :bond_holdings,    :dependent => :destroy
   has_many :cd_holdings,    :dependent => :destroy
   has_many :multi_holdings,    :dependent => :destroy
+  has_many :multi_statements,    :dependent => :destroy
   has_many :stock_buys,        :dependent => :destroy
   has_many :stock_sells,        :dependent => :destroy
 
@@ -82,6 +83,7 @@ class User < ActiveRecord::Base
         bond_holdings
         cd_holdings
         multi_holdings
+        multi_statements
         stock_buys
         stock_sells).each do |x|
       hash[x] = self.send(x)

@@ -40,6 +40,8 @@ class Portfolio < ActiveRecord::Base
   def as_json(options={})
     result = super(options)
     result["trust"] = self.trust_level
+    result["portfolio-plan"] = self.portfolio_plan.name
+    result["portfolio-strategy"] = self.portfolio_strategy.name
     result["total_value"] = self.total_value
     result["total_gain"] = self.total_gain
     result['holding_ids'] = self.cached_holdings.map{|x| x.id}

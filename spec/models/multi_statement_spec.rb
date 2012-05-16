@@ -21,13 +21,11 @@ describe MultiStatement do
                          :multi_statement_allocations_attributes => [
                             {
                               :fund_ticker => @fund1,
-                              :allocation_percentage => 50.0,
-                              :total_contribution => 2000
+                              :allocation_percentage => 50.0
                             },
                             {
                               :fund_ticker => @fund2,
-                              :allocation_percentage => 50.0,
-                              :total_contribution => 2000
+                              :allocation_percentage => 50.0
                             }
                          ]
     @statement.reload
@@ -85,12 +83,10 @@ describe MultiStatement do
                         {
                           :fund_ticker => @fund2,
                           :allocation_percentage => 30.0,
-                          :total_contribution => 1000
                         },
                         {
                           :fund_ticker => @fund3,
                           :allocation_percentage => 70.0,
-                          :total_contribution => 1000
                         }
                      ]
     end
@@ -146,12 +142,10 @@ describe MultiStatement do
                             {
                               :fund_ticker => @fund2,
                               :allocation_percentage => 30.0,
-                              :total_contribution => 1000
                             },
                             {
                               :fund_ticker => @fund3,
                               :allocation_percentage => 70.0,
-                              :total_contribution => 1000
                             }
                          ]
         end

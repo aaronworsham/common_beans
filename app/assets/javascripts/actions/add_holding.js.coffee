@@ -199,6 +199,7 @@ class window.AddStockHoldingView extends Backbone.View
 
 
 
+
 $ ->
 
   $('.add-holding').live('click', (e) ->

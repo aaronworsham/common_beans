@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120403215601) do
+ActiveRecord::Schema.define(:version => 20120426195548) do
 
   create_table "bond_events", :force => true do |t|
     t.integer  "bond_ticker_id"
@@ -346,6 +346,7 @@ ActiveRecord::Schema.define(:version => 20120403215601) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "current_state"
+    t.integer  "user_id"
   end
 
   create_table "portfolio_plans", :force => true do |t|

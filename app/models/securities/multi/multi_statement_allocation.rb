@@ -1,10 +1,11 @@
 class MultiStatementAllocation < ActiveRecord::Base
   belongs_to :multi_statement
   belongs_to :fund_ticker
-  attr_accessor :total_contribution
+
+  attr_accessor  :ticker_name, :ticker_symbol
 
   before_create do |x|
-    x.contributions = total_contribution * (allocation_percentage / 100)
+    x.contributions = multi_statement.contributions * (allocation_percentage / 100)
   end
 
   after_create do |x|

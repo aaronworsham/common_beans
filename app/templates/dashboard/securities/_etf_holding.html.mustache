@@ -1,5 +1,5 @@
 <tr class='holding-header' id="etf-holding-{{ id }}" data-holding-id={{id}} data-holding-type='etf'>
-  <td></td>
+  <td>S</td>
   <td>{{ ticker_symbol }}</td>
   <td>{{ net_units }}</td>
   <td>{{ net_investment }}</td>
@@ -9,7 +9,7 @@
   <td>{{ total_gain }}</td>
 </tr>
 <tr>
-  <td colspan=8>
+  <td colspan=8 class='holding-drawer'>
     <div class='etf-events' id="etf-events-for-holding-{{ id }}" data-etf-holding-id={{id}} style='display:none'>
       <a href='#' class='add-event' data-holding-id={{id}} data-security-name='etf' data-event-type='buy'>Bought Shares |</a>
       <a href='#' class='add-event' data-holding-id={{id}} data-security-name='etf' data-event-type='sell'>Sold Shares |</a>

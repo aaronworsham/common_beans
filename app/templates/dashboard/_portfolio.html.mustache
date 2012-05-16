@@ -1,7 +1,8 @@
 <div class='portfolio-content' id="portfolio-content-{{id}}">
 <h3>{{name}}</h3>
+Plan: {{portfolio-plan}}
+Strategy: {{portfolio-strategy}}
   <div class='overview'>
-    <p>This is the overview </p>
     <p>Add:
       <a href='#' class='add-holding' data-portfolio-id={{id}} data-security-name='stock'>Stock </a> |
       <a href='#' class='add-holding' data-portfolio-id={{id}} data-security-name='bond'>Bond </a> |
@@ -53,6 +54,7 @@
       <thead>
         <tr><th colspan=8 class='portfolio-header'>ETFs</td></tr>
         <tr>
+          <th></th>
           <th>Symbol</th>
           <th>Shares</th>
           <th>Investment</th>
@@ -60,18 +62,18 @@
           <th>Price</th>
           <th>Value</th>
           <th>Gain</th>
-          <th></th>
         </tr>
       </thead>
     </table>
   </div>
 
 
-  <div id='portfolio-stocks-{{ id }}' style='display:none'>
+  <div id='portfolio-bonds-{{ id }}' style='display:none'>
     <table class='bond-content' id='portfolio-bond-holding-{{ id }}'>
       <thead>
         <tr><th colspan=8 class='portfolio-header'>Bonds</td></tr>
         <tr>
+          <th></th>
           <th>Name</th>
           <th>Face Value</th>
           <th>Today's Value</th>
@@ -87,6 +89,7 @@
       <thead>
         <tr><th colspan=8 class='portfolio-header'>CDs</td></tr>
         <tr>
+          <th></th>
           <th>Name</th>
           <th>Face Value</th>
           <th>Today's Value</th>

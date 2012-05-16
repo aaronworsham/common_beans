@@ -1,10 +1,23 @@
-<tr id="holding-{{ id }}-today">
-  <td>{{ name }}</td>
-  <td>{{ face_value }}</td>
+<tr class='holding-header' id="cd-holding-{{ id }}" data-holding-id={{id}} data-holding-type='cd'>
+  <td>S</td>
+  <td>{{ ticker_symbol }}</td>
+  <td>{{ net_units }}</td>
+  <td>{{ net_investment }}</td>
+  <td>{{ net_return }}</td>
+  <td>{{ todays_price }}</td>
   <td>{{ todays_value }}</td>
   <td>{{ total_gain }}</td>
-  <td>
-    <a href='#' class='edit-cd-holding' data-holding-id={{id}}>Edit |</a>
-    <a href='#' class='delete-cd-holding' data-holding-id={{id}}>Remove</a>
+</tr>
+<tr>
+  <td colspan=8 class='holding-drawer>
+    <div class='cd-events' id="cd-events-for-holding-{{ id }}" data-cd-holding-id={{id}} style='display:none'>
+      <a href='#' class='edit-cd-holding' data-holding-id={{id}}>Edit |</a>
+      <a href='#' class='delete-cd-holding' data-holding-id={{id}}>Remove</a>
+      <ul class='cd-buys' id="cd-buys-for-holding-{{ id }}" data-cd-holding-id={{id}}>
+        <li>Started with {{starting_units}} units at {{starting_price}} on {{purchased_on}}</li>
+      </ul>
+      <ul class='cd-sells' id="cd-sells-for-holding-{{ id }}" data-cd-holding-id={{id}}>
+      </ul>
+    </div>
   </td>
 </tr>

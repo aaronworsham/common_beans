@@ -15,14 +15,14 @@ feature "add stock to portfolio" do
       page.should have_content(@portfolio.name)
     end
     within('.portfolio-content') do
-      page.should have_css('a.add-stock')
+      page.should have_css('a.add-holding[data-security-name=stock]')
     end
   end
 
   scenario 'create new stock' do
     @portfolio.stock_holdings.size.should == 0
     visit '/dashboard'
-    find('.portfolio-content a.add-stock').click
+    find('.portfolio-content a.add-holding[data-security-name=stock]').click
     within('#new_stock_holding') do
       fill_in 'stock_holding_ticker_name', :with => 'Google'
     end
@@ -46,7 +46,7 @@ feature "add stock to portfolio" do
 
   scenario 'validates for required information' do
     visit '/dashboard'
-    find('.portfolio-content a.add-stock').click
+    find('.portfolio-content a.add-holding[data-security-name=stock]').click
     within('#new_stock_holding') do
       click_on('Create')
     end

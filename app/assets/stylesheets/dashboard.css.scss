@@ -3,7 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #portfolio-glance{
-  cursor:pointer;
   table {
     font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
     font-size: 12px;
@@ -11,21 +10,24 @@
     width: 100%;
     text-align: left;
     border-collapse: collapse;
+    thead{
+      border-bottom: 6px solid #fff;
+    }
     tr.holding-tr{
+
       td{
         text-align:left;
         background: #cfeab9;
         font-size:16px;
         color:#64b0fc;
+
       }
     }
     td{
       text-align: center;
       padding: 2px;
       background: #f0f7f2; 
-      border-bottom: 1px solid #fff;
       color: #014414;
-      border-top: 1px solid transparent;
 
       .holding_name {
         background: #e3efe7;
@@ -39,15 +41,19 @@
         }
       }
     }
+    td.holding-drawer{
+      text-align: center;
+      background: white;
+      color: #014414;
+      cusror:default;
+    }
     th{
       text-align:center;
       font-size: 13px;
       font-weight: normal;
-      padding: 2px;
       background: #f0f7f2;
       border-left:2px solid #d3e5d8;
       border-right:2px solid #d3e5d8;
-      border-bottom: 1px solid #d3e5d8;
       color: #777;
       .remove-profile{
         float: right;
@@ -67,10 +73,16 @@
         border-bottom:0px;
       }
     }
+    tr.holding-header{
+      cursor:pointer;
+      border-top: 3px solid #fff;
+      border-right: 3px solid #fff;
+      border-left: 3px solid #fff;
+    }
   }
 }
 
-#portfolio-glance table tr:hover td
+#portfolio-glance table tr.holding-header:hover td
 {
 	background: #d0dafd;
 	color: #339;

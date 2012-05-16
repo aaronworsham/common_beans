@@ -36,6 +36,7 @@ CommonBeans::Application.routes.draw do
   resources :cd_holdings
   resources :bond_holdings
   resources :multi_holdings
+  resources :multi_statements
   resources :stock_buys
   resources :fund_buys
   resources :etf_buys

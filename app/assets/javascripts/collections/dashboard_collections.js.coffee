@@ -82,3 +82,23 @@ class window.PortfolioCollection extends Backbone.Collection
 
 window.Portfolios = new PortfolioCollection
 
+class window.MultiStatementCollection extends Backbone.Collection
+  model: MultiStatementModel
+
+  initialize: ->
+     @bind('add', (statement)->
+       @addOneView(statement)
+     );
+     @bind('reset', (statements)->
+       statements.each( (p)->
+         statements.addOneView(p)
+       );
+     );
+
+
+  addOneView: (p)->
+    new MultiStatementView({model:p}).render();
+
+window.MultiStatements = new MultiStatementCollection
+
+

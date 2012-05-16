@@ -22,4 +22,6 @@ for security in securities
 
 class window.PortfolioModel extends Backbone.Model
   urlRoot : "/portfolios"
+class window.MultiStatementModel extends Backbone.Model
+  urlRoot : "/multi_statements"
 
