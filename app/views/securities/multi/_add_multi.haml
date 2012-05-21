@@ -17,8 +17,10 @@
       = f.input :ended_on
       = f.input :ending_balance
       = f.input :contributions
-      = f.simple_fields_for :multi_statement_allocations do |msa|
-        = msa.input :ticker_name, :url => autocomplete_fund_ticker_name_multi_tickers_path, :as => :autocomplete, :input_html => {"data-id-element" => "#facebox #multi_statement_fund_ticker_id"}
-        = msa.input :ticker_symbol, :url => autocomplete_fund_ticker_symbol_fund_tickers_path, :as => :autocomplete, :input_html => {"data-id-element" => "#facebox #multi_statement_fund_ticker_id"}
+
+      = f.simple_fields_for MultiStatementAllocation.new do |msa|
+        = msa.input :ticker_name, :url => '/fund_tickers/autocomplete_fund_ticker_name', :as => :autocomplete, :input_html => {"data-id-element" => "#facebox #multi_statement_fund_ticker_id"}
+        = msa.input :ticker_symbol, :url => '/fund_tickers/autocomplete_fund_ticker_symbol', :as => :autocomplete, :input_html => {"data-id-element" => "#facebox #multi_statement_fund_ticker_id"}
         = msa.input :fund_ticker_id, :as => :hidden
+
     = link_to 'Create', '#', :class => 'create_link'

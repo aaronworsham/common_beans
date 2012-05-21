@@ -2,6 +2,7 @@ class MultiHoldingAllocation < ActiveRecord::Base
   belongs_to :multi_holding
   belongs_to :fund_ticker
 
+  attr_accessible :ticker_name, :ticker_symbol
 
 
   include AASM

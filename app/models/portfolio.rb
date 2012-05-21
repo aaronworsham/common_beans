@@ -52,7 +52,11 @@ class Portfolio < ActiveRecord::Base
   end
 
   def total_gain_ratio
-    (total_value_gain/total_investment*100).round(3)
+    if total_value_gain > 0
+      (total_value_gain/total_investment*100).round(3)
+    else
+      0
+    end
   end
 
   Point.names.each do |pre|
@@ -64,7 +68,11 @@ class Portfolio < ActiveRecord::Base
   end
 
   def started_at
-    cached_holdings.sort_by(&:purchased_at).first.purchased_at
+    if cached_holdings.size > 0
+      cached_holdings.sort_by(&:purchased_at).first.purchased_at
+    else
+      self.created_at
+    end
   end
 
   def sum_holding_value(method)
