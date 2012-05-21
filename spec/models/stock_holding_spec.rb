@@ -21,7 +21,7 @@ describe StockHolding do
       end
 
       it 'should have a gain of 10000' do
-        holding.total_gain.should == 10000
+        holding.total_value_gain.should == 10000
       end
     end
 

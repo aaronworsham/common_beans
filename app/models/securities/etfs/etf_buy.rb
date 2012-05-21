@@ -26,7 +26,7 @@ class EtfBuy < EtfEvent
     0
   end
 
-  def total_gain
+  def total_value_gain
     todays_value - self.investment
   end
 

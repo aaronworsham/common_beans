@@ -1,9 +1,12 @@
 ###
 = require application
-= require models/cb_models
-= require views/hotlist_views
-= require collections/dashboard_collections
+= require_tree ./models
+= require_tree ./views
+= require_tree ./collections
 = require_tree ./actions
+= require highcharts
+= require highcharts-theme
+
 
 ###
 

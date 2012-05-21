@@ -5,7 +5,7 @@ beforeEach ->
         id : 1
         name : 'main'
         "todays_value":50000.0
-        "total_gain":40000.0
+        "total_value_gain":40000.0
         "price_delta":40.0
         "day_delta":40.0
         "week_delta":40.0
@@ -36,7 +36,7 @@ beforeEach ->
         "ticker_symbol":"AAPL"
         "relative_day":"Day 5"
         "todays_value":50000.0
-        "total_gain":40000.0
+        "total_value_gain":40000.0
         "todays_price":50.0
         "price_delta":40.0
         "day_delta":40.0

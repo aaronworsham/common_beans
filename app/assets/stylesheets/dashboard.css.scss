@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#portfolio-glance{
+#portfolio-show{
   table {
     font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
     font-size: 12px;
@@ -82,7 +82,7 @@
   }
 }
 
-#portfolio-glance table tr.holding-header:hover td
+#portfolio-show table tr.holding-header:hover td
 {
 	background: #d0dafd;
 	color: #339;

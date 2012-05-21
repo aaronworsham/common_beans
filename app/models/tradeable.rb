@@ -1,5 +1,7 @@
 module Tradeable
 
+
+
   def days_since_holding_purchase
     humanize_seconds(Time.now - self.purchased_at)
   end
@@ -16,9 +18,75 @@ module Tradeable
     calculate_value(Date.today)
   end
 
-  def total_gain
+  def total_value_gain
     calculate_value(Date.today) - self.starting_investment
   end
+
+  def total_value_gain_ratio
+    ((total_value_gain/self.starting_investment)*100).round(3)
+  end
+
+  def get_past_prices
+    hash = Hash.new
+    Point.names.each do |d|
+      hash[d] = self.send("#{d}_close")
+    end
+    hash
+  end
+
+  def get_past_values
+    hash = Hash.new
+    Point.names.each do |d|
+      hash[d] = self.send("#{d}_calculated_value")
+    end
+    hash
+  end
+
+  def get_past_price_gains
+    hash = Hash.new
+    Point.names.each do |d|
+      hash[d] = self.send("#{d}_calculated_price_gain")
+    end
+    hash
+  end
+
+  def get_past_value_gains
+    hash = Hash.new
+    Point.names.each do |d|
+      hash[d] = self.send("#{d}_calculated_value_gain")
+    end
+    hash
+  end
+
+  def get_past_value_gain_ratios
+    hash = Hash.new
+    Point.names.each do |d|
+      hash[d] = self.send("#{d}_calculated_value_gain_ratio")
+    end
+    hash
+  end
+
+  def calculate_price_gain(pre)
+    (self.todays_price - self.send("#{pre}_close")).round(3)
+  end
+
+  def calculate_price_gain_ratio(pre)
+    past_price = self.send("#{pre}_close")
+    ((self.todays_price - past_price)/past_price*100).round(3)
+  end
+
+  Point.names.each do |pre|
+    define_method("#{pre}_calculated_price_gain") do
+      calculate_price_gain(pre)
+    end
+    define_method("#{pre}_calculated_price_gain_ratio") do
+      calculate_price_gain_ratio(pre)
+    end
+  end
+
+
+
+
 
   def calculate_value(date)
     if date == Date.today
@@ -29,7 +97,17 @@ module Tradeable
   end
 
   def calculate_value_gain(date1, date2)
-    calculate_value(date1) - calculate_value(date2)
+    calculate_value(date2) - calculate_value(date1)
+  end
+
+  def calculate_value_gain_ratio(date1, date2)
+    gain = calculate_value_gain(date1, date2)
+    value = calculate_value(date1)
+    if gain == 0 || value == 0
+      nil
+    else
+      (gain/value*100).round(3)
+    end
   end
 
   def calculate_investment_gain(date1, date2)
@@ -40,18 +118,23 @@ module Tradeable
     (calculate_investment_gain(date1, date2)/calculate_value(date1)).round(3)
   end
 
+
+
   #cant use define_method and keep default param syntax
-  def d7_close(date = Date.today)
-    ticker.close_for_date( Point.date('d7',date))
+  def d5_close(date = Date.today)
+    ticker.close_for_date( Point.date('d5',date))
   end
   def d30_close(date = Date.today)
     ticker.close_for_date( Point.date('d30',date))
   end
+  def d90_close(date = Date.today)
+    ticker.close_for_date( Point.date('d90',date))
+  end
   def d180_close(date = Date.today)
     ticker.close_for_date( Point.date('d180',date))
   end
-  def d365_close(date = Date.today)
-    ticker.close_for_date( Point.date('d365',date))
+  def y1_close(date = Date.today)
+    ticker.close_for_date( Point.date('y1',date))
   end
   def y2_close(date = Date.today)
     ticker.close_for_date( Point.date('y2',date))
@@ -68,26 +151,38 @@ module Tradeable
 
   Point.names.each do |pre|
 
-    define_method("#{pre}_calculated_value") do |date|
-      calculate_value(Point.date(pre, date))
+    define_method("#{pre}_calculated_value") do
+      calculate_value(Point.date(pre, Date.today))
     end
-    define_method("#{pre}_calculated_value_gain") do |date|
-      calculate_value_gain(date, Point.date(pre, date))
+    define_method("#{pre}_calculated_value_gain") do
+      calculate_value_gain(date, Point.date(pre, Date.today))
     end
-    define_method("#{pre}_calculated_investment_gain") do |date|
-      calculate_investment_gain(date, Point.date(pre, date))
+    define_method("#{pre}_calculated_value_gain_ratio") do
+      calculate_value_gain_ratio(date, Point.date(pre, Date.today))
     end
-    define_method("#{pre}_calculated_investment_gain_ratio") do |date|
-      calculate_investment_gain_ratio(date, Point.date(pre, date))
+    define_method("#{pre}_calculated_investment_gain") do
+      calculate_investment_gain(date, Point.date(pre, Date.today))
     end
-  end
-
-  def populate_eod(date = Date.today)
-    Point.names.each do |pre|
-      self.send("#{pre}_value=", self.send("#{pre}_calculated_value", date))
-      self.send("#{pre}_gain=", self.send("#{pre}_calculated_value_gain", date))
-      self.save
+    define_method("#{pre}_calculated_investment_gain_ratio") do
+      calculate_investment_gain_ratio(date, Point.date(pre, Date.today))
     end
   end
 
+
+  def populate_points
+    past_prices = self.get_past_prices
+    past_values = self.get_past_values
+    past_price_gains = self.get_past_price_gains
+    past_value_gains = self.get_past_value_gains
+    past_value_gain_ratios = self.get_past_value_gain_ratios
+    Point.names.each do |n|
+      self.send("#{n}_price=", past_prices[n]) if self.has_price?
+      self.send("#{n}_value=", past_values[n])
+      self.send("#{n}_price_gain=", past_price_gains[n]) if self.has_price?
+      self.send("#{n}_value_gain=", past_value_gains[n])
+      self.send("#{n}_gain_ratio=", past_value_gain_ratios[n])
+    end
+    self.points_updated_at = Date.today
+    self.save
+  end
 end

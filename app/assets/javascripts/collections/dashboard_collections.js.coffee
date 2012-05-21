@@ -101,4 +101,23 @@ class window.MultiStatementCollection extends Backbone.Collection
 
 window.MultiStatements = new MultiStatementCollection
 
+class window.CompareIndicesCollection extends Backbone.Collection
+  model: CompareIndicesModel
+
+  initialize: ->
+     @bind('add', (statement)->
+       @addOneView(statement)
+     );
+     @bind('reset', (statements)->
+       statements.each( (p)->
+         statements.addOneView(p)
+       );
+     );
+
+
+  addOneView: (p)->
+    new CompareIndicesView({model:p}).render();
+
+window.IndexComparisons = new CompareIndicesCollection
+
 
