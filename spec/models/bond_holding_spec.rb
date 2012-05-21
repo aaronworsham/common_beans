@@ -121,7 +121,7 @@ describe BondHolding do
       @bond.total_return.should == 1500.0
     end
     it 'should have a total gain of 984.6' do
-      @bond.total_gain.should == 984.6
+      @bond.total_value_gain.should == 984.6
     end
 
   end

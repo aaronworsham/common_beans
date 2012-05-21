@@ -14,7 +14,7 @@ class HotList
   select : (id, title, warmlist, callback) ->
     @.currentId = id;
     $(warmlist)
-      .find('h3')
+      .find('#portfolio-show h3')
         .text(title)
       .end()
       .find('.add-holding')
@@ -35,7 +35,7 @@ $ ->
 
 
 
-  $('#nav li.selectable').live("click", ->
+  $('#nav #show li.selectable').live("click", ->
     id = $(@).attr('data-id');
     title = $(@).attr('data-label');
     stocks = StockHoldings.where({portfolio_id:parseInt(id)});
@@ -45,13 +45,15 @@ $ ->
     cds = CdHoldings.where({portfolio_id:parseInt(id)});
     multis = MultiHoldings.where({portfolio_id:parseInt(id)});
 
+    $('#portfolio-compare').hide();
+    $('#portfolio-show').hide();
     $('#nav li.selectable').each((i,v) ->
       $(v).removeClass('selected');
     );
     $(@).addClass('selected');
     hotlistMenu.select(id, title, '#warmlist-portfolios', ()->
-      $('.portfolio-content').hide()
-      $('#portfolio-content-'+id).fadeIn('fast');
+      $('#nav #show .portfolio-content').hide()
+      $('#nav #show #portfolio-content-'+id).show();
       if(stocks.length > 0)
         $('#portfolio-stocks-'+id).show();
       if(funds.length > 0)
@@ -67,16 +69,22 @@ $ ->
 
 
     );
+    $('#portfolio-show').fadeIn('fast');
   );
-  $('#groups-hotlist li.selectable').live("click", ->
+
+
+  $('#nav #compare li.selectable').live("click", ->
     id = $(@).attr('data-id');
     title = $(@).attr('data-label');
-    hotlistMenu.select(id, title, '#warmlist-groups')
-  );
-  $('#friends-hotlist li.selectable').live("click", ->
-    id = $(@).attr('data-id');
-    title = $(@).attr('data-label');
-    hotlistMenu.select(id, title, '#warmlist-friends')
+
+    $('#portfolio-compare').hide();
+    $('#portfolio-show').hide();
+    $('#nav li.selectable').each((i,v) ->
+      $(v).removeClass('selected');
+    );
+    $(@).addClass('selected');
+
+    $('#portfolio-compare').fadeIn('fast');
   );
 
 

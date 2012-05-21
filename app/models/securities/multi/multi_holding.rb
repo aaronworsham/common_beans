@@ -107,6 +107,10 @@ class MultiHolding < ActiveRecord::Base
      multi_holding_allocations.select{|x| x.fund_ticker_id == id}.first
   end
 
+  def has_price?
+    false
+  end
+
   def as_json(options={})
     result = super(options)
     result

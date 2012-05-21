@@ -31,6 +31,10 @@ class StockHolding < ActiveRecord::Base
     ).save
   end
 
+  def has_price?
+    true
+  end
+
 
   def populate_net_values
     self.starting_investment = self.starting_shares * self.starting_price
@@ -38,6 +42,8 @@ class StockHolding < ActiveRecord::Base
     self.net_investment = self.starting_investment
     self.net_return = 0
   end
+
+
 
 
 
@@ -93,7 +99,7 @@ class StockHolding < ActiveRecord::Base
     result["ticker_symbol"] = self.ticker.symbol
     result["todays_price"] = self.todays_price.round(2)
     result["todays_value"] = self.todays_value.round(2)
-    result["total_gain"] = self.total_gain.round(2)
+    result["total_value_gain"] = self.total_value_gain.round(2)
     result
   end
 

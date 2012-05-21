@@ -10,7 +10,7 @@ class window.PortfolioView extends Backbone.View
   render: ->
     elem = $(@el).append(ich.portfolio_template(@model.toJSON()));
     $(elem).hide();
-    $('#portfolio-glance').append(elem);
+    $('#portfolio-show').append(elem);
     $(elem).fadeIn("slow");
 
 
@@ -138,7 +138,7 @@ class window.PortfolioStockView extends Backbone.View
   render: ->
     elem = $(@el).append(ich.portfolio_stocks_template(@model.toJSON()));
     $(elem).hide();
-    $('#portfolio-glance #portfolio-stocks ').append(elem);
+    $('#portfolio-show #portfolio-stocks ').append(elem);
     $(elem).fadeIn("slow");
 
   remove: ->

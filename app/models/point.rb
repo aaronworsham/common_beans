@@ -2,10 +2,11 @@ class Point
 
   NAMES =
     [
-      "d7"    ,
+      "d5"    ,
       "d30"   ,
+      "d90"   ,
       "d180"  ,
-      "d365"  ,
+      "y1"  ,
       "y2"    ,
       "y3"    ,
       "y4"    ,
@@ -18,10 +19,11 @@ class Point
 
   def self.dates(date = Date.today)
    {
-      "d7"   => (date - 7.days),
+      "d5"   => (date - 5.days),
       "d30"  => (date - 30.days),
+      "d90"  => (date - 90.days),
       "d180" => (date - 180.days),
-      "d365" => (date - 1.year),
+      "y1"   => (date - 1.year),
       "y2"   => (date - 2.years),
       "y3"   => (date - 3.years),
       "y4"   => (date - 4.years),

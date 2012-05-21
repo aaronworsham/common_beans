@@ -30,6 +30,10 @@ include DateMixin
     ).save
   end
 
+  def has_price?
+    false
+  end
+
   def populate_net_values
     self.net_quantity = self.starting_quantity
     self.net_investment = (self.purchase_price * self.starting_quantity)
@@ -115,7 +119,7 @@ include DateMixin
     net_return + (value_of_coupon_payments * num_coupons_paid)
   end
 
-  def total_gain
+  def total_value_gain
     self.present_value + self.total_return - self.net_investment
   end
 
@@ -126,7 +130,7 @@ include DateMixin
   def as_json(options={})
     result = super(options)
     result["todays_value"] = self.present_value.round(2)
-    result["total_gain"] = self.total_gain.round(2)
+    result["total_value_gain"] = self.total_value_gain.round(2)
     result
   end
 

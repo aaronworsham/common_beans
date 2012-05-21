@@ -30,7 +30,7 @@ module Quotable
 
 
   def current_quote
-    StockTracker::CurrentQuote.new(self.yahoo_symbol == '^DJI' ? 'INDU' : self.yahoo_symbol)
+    StockTracker::CurrentQuote.new(self.yahoo_symbol)
   end
 
   def past_quote(date, i = 7)

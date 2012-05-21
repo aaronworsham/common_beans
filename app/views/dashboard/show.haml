@@ -1,13 +1,18 @@
 = content_for :on_ready do
   - @models.each do |k,v|
     != "#{k.classify.pluralize}.add(#{v.to_json});"
+  != "IndexComparisons.add(#{@compare_indices.to_json});"
   $('#nav li.selectable').first().trigger('click');
   $('.accordion').accordion();
 
 = content_for :templates do
   = template_include_path_helper('dashboard')
 
-#portfolio-glance
+#portfolio-show
+#portfolio-compare
+  Hi from Compare
+  #compare-indices
+
 
 #forms
   = render :partial => "portfolios/add_portfolio"
