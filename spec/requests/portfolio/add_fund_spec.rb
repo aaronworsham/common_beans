@@ -15,14 +15,14 @@ feature "add fund to portfolio" do
       page.should have_content(@portfolio.name)
     end
     within('.portfolio-content') do
-      page.should have_css('a.add-fund')
+      page.should have_css('a.add-holding[data-security-name=fund]')
     end
   end
 
   scenario 'create new fund' do
     @portfolio.fund_holdings.size.should == 0
     visit '/dashboard'
-    find('.portfolio-content a.add-fund').click
+    find('.portfolio-content a.add-holding[data-security-name=fund]').click
     within('#new_fund_holding') do
       fill_in 'fund_holding_ticker_name', :with => 'Fidelity Growth Co'
     end
@@ -46,7 +46,7 @@ feature "add fund to portfolio" do
 
   scenario 'validates for required information' do
     visit '/dashboard'
-    find('.portfolio-content a.add-fund').click
+    find('.portfolio-content a.add-holding[data-security-name=fund]').click
     within('#new_fund_holding') do
       click_on('Create')
     end
