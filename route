@@ -1,0 +1,224 @@
+                                      trackers GET    /trackers(.:format)                                       {:action=>"index", :controller=>"trackers"}
+                                               POST   /trackers(.:format)                                       {:action=>"create", :controller=>"trackers"}
+                                   new_tracker GET    /trackers/new(.:format)                                   {:action=>"new", :controller=>"trackers"}
+                                  edit_tracker GET    /trackers/:id/edit(.:format)                              {:action=>"edit", :controller=>"trackers"}
+                                       tracker GET    /trackers/:id(.:format)                                   {:action=>"show", :controller=>"trackers"}
+                                               PUT    /trackers/:id(.:format)                                   {:action=>"update", :controller=>"trackers"}
+                                               DELETE /trackers/:id(.:format)                                   {:action=>"destroy", :controller=>"trackers"}
+                                       indices GET    /indices(.:format)                                        {:action=>"index", :controller=>"indices"}
+                                               POST   /indices(.:format)                                        {:action=>"create", :controller=>"indices"}
+                                     new_index GET    /indices/new(.:format)                                    {:action=>"new", :controller=>"indices"}
+                                    edit_index GET    /indices/:id/edit(.:format)                               {:action=>"edit", :controller=>"indices"}
+                                         index GET    /indices/:id(.:format)                                    {:action=>"show", :controller=>"indices"}
+                                               PUT    /indices/:id(.:format)                                    {:action=>"update", :controller=>"indices"}
+                                               DELETE /indices/:id(.:format)                                    {:action=>"destroy", :controller=>"indices"}
+                                  fund_tickers GET    /fund_tickers(.:format)                                   {:action=>"index", :controller=>"fund_tickers"}
+                                               POST   /fund_tickers(.:format)                                   {:action=>"create", :controller=>"fund_tickers"}
+                               new_fund_ticker GET    /fund_tickers/new(.:format)                               {:action=>"new", :controller=>"fund_tickers"}
+                              edit_fund_ticker GET    /fund_tickers/:id/edit(.:format)                          {:action=>"edit", :controller=>"fund_tickers"}
+                                   fund_ticker GET    /fund_tickers/:id(.:format)                               {:action=>"show", :controller=>"fund_tickers"}
+                                               PUT    /fund_tickers/:id(.:format)                               {:action=>"update", :controller=>"fund_tickers"}
+                                               DELETE /fund_tickers/:id(.:format)                               {:action=>"destroy", :controller=>"fund_tickers"}
+                                      messages GET    /messages(.:format)                                       {:action=>"index", :controller=>"messages"}
+                                               POST   /messages(.:format)                                       {:action=>"create", :controller=>"messages"}
+                                   new_message GET    /messages/new(.:format)                                   {:action=>"new", :controller=>"messages"}
+                                  edit_message GET    /messages/:id/edit(.:format)                              {:action=>"edit", :controller=>"messages"}
+                                       message GET    /messages/:id(.:format)                                   {:action=>"show", :controller=>"messages"}
+                                               PUT    /messages/:id(.:format)                                   {:action=>"update", :controller=>"messages"}
+                                               DELETE /messages/:id(.:format)                                   {:action=>"destroy", :controller=>"messages"}
+                                          buys GET    /buys(.:format)                                           {:action=>"index", :controller=>"buys"}
+                                               POST   /buys(.:format)                                           {:action=>"create", :controller=>"buys"}
+                                       new_buy GET    /buys/new(.:format)                                       {:action=>"new", :controller=>"buys"}
+                                      edit_buy GET    /buys/:id/edit(.:format)                                  {:action=>"edit", :controller=>"buys"}
+                                           buy GET    /buys/:id(.:format)                                       {:action=>"show", :controller=>"buys"}
+                                               PUT    /buys/:id(.:format)                                       {:action=>"update", :controller=>"buys"}
+                                               DELETE /buys/:id(.:format)                                       {:action=>"destroy", :controller=>"buys"}
+                                         sells GET    /sells(.:format)                                          {:action=>"index", :controller=>"sells"}
+                                               POST   /sells(.:format)                                          {:action=>"create", :controller=>"sells"}
+                                      new_sell GET    /sells/new(.:format)                                      {:action=>"new", :controller=>"sells"}
+                                     edit_sell GET    /sells/:id/edit(.:format)                                 {:action=>"edit", :controller=>"sells"}
+                                          sell GET    /sells/:id(.:format)                                      {:action=>"show", :controller=>"sells"}
+                                               PUT    /sells/:id(.:format)                                      {:action=>"update", :controller=>"sells"}
+                                               DELETE /sells/:id(.:format)                                      {:action=>"destroy", :controller=>"sells"}
+                                    portfolios GET    /portfolios(.:format)                                     {:action=>"index", :controller=>"portfolios"}
+                                               POST   /portfolios(.:format)                                     {:action=>"create", :controller=>"portfolios"}
+                                 new_portfolio GET    /portfolios/new(.:format)                                 {:action=>"new", :controller=>"portfolios"}
+                                edit_portfolio GET    /portfolios/:id/edit(.:format)                            {:action=>"edit", :controller=>"portfolios"}
+                                     portfolio GET    /portfolios/:id(.:format)                                 {:action=>"show", :controller=>"portfolios"}
+                                               PUT    /portfolios/:id(.:format)                                 {:action=>"update", :controller=>"portfolios"}
+                                               DELETE /portfolios/:id(.:format)                                 {:action=>"destroy", :controller=>"portfolios"}
+                                      holdings GET    /holdings(.:format)                                       {:action=>"index", :controller=>"holdings"}
+                                               POST   /holdings(.:format)                                       {:action=>"create", :controller=>"holdings"}
+                                   new_holding GET    /holdings/new(.:format)                                   {:action=>"new", :controller=>"holdings"}
+                                  edit_holding GET    /holdings/:id/edit(.:format)                              {:action=>"edit", :controller=>"holdings"}
+                                       holding GET    /holdings/:id(.:format)                                   {:action=>"show", :controller=>"holdings"}
+                                               PUT    /holdings/:id(.:format)                                   {:action=>"update", :controller=>"holdings"}
+                                               DELETE /holdings/:id(.:format)                                   {:action=>"destroy", :controller=>"holdings"}
+                                        events GET    /events(.:format)                                         {:action=>"index", :controller=>"events"}
+                                               POST   /events(.:format)                                         {:action=>"create", :controller=>"events"}
+                                     new_event GET    /events/new(.:format)                                     {:action=>"new", :controller=>"events"}
+                                    edit_event GET    /events/:id/edit(.:format)                                {:action=>"edit", :controller=>"events"}
+                                         event GET    /events/:id(.:format)                                     {:action=>"show", :controller=>"events"}
+                                               PUT    /events/:id(.:format)                                     {:action=>"update", :controller=>"events"}
+                                               DELETE /events/:id(.:format)                                     {:action=>"destroy", :controller=>"events"}
+                                         pages GET    /pages(.:format)                                          {:action=>"index", :controller=>"pages"}
+                                               POST   /pages(.:format)                                          {:action=>"create", :controller=>"pages"}
+                                      new_page GET    /pages/new(.:format)                                      {:action=>"new", :controller=>"pages"}
+                                     edit_page GET    /pages/:id/edit(.:format)                                 {:action=>"edit", :controller=>"pages"}
+                                          page GET    /pages/:id(.:format)                                      {:action=>"show", :controller=>"pages"}
+                                               PUT    /pages/:id(.:format)                                      {:action=>"update", :controller=>"pages"}
+                                               DELETE /pages/:id(.:format)                                      {:action=>"destroy", :controller=>"pages"}
+                                      sessions GET    /sessions(.:format)                                       {:action=>"index", :controller=>"sessions"}
+                                               POST   /sessions(.:format)                                       {:action=>"create", :controller=>"sessions"}
+                                   new_session GET    /sessions/new(.:format)                                   {:action=>"new", :controller=>"sessions"}
+                                  edit_session GET    /sessions/:id/edit(.:format)                              {:action=>"edit", :controller=>"sessions"}
+                                       session GET    /sessions/:id(.:format)                                   {:action=>"show", :controller=>"sessions"}
+                                               PUT    /sessions/:id(.:format)                                   {:action=>"update", :controller=>"sessions"}
+                                               DELETE /sessions/:id(.:format)                                   {:action=>"destroy", :controller=>"sessions"}
+                                         trust POST   /trust(.:format)                                          {:action=>"create", :controller=>"Trust"}
+                                     new_trust GET    /trust/new(.:format)                                      {:action=>"new", :controller=>"Trust"}
+                                    edit_trust GET    /trust/edit(.:format)                                     {:action=>"edit", :controller=>"Trust"}
+                                               GET    /trust(.:format)                                          {:action=>"show", :controller=>"Trust"}
+                                               PUT    /trust(.:format)                                          {:action=>"update", :controller=>"Trust"}
+                                               DELETE /trust(.:format)                                          {:action=>"destroy", :controller=>"Trust"}
+                                      profiles GET    /profiles(.:format)                                       {:action=>"index", :controller=>"profiles"}
+                                               POST   /profiles(.:format)                                       {:action=>"create", :controller=>"profiles"}
+                                   new_profile GET    /profiles/new(.:format)                                   {:action=>"new", :controller=>"profiles"}
+                                  edit_profile GET    /profiles/:id/edit(.:format)                              {:action=>"edit", :controller=>"profiles"}
+                                       profile GET    /profiles/:id(.:format)                                   {:action=>"show", :controller=>"profiles"}
+                                               PUT    /profiles/:id(.:format)                                   {:action=>"update", :controller=>"profiles"}
+                                               DELETE /profiles/:id(.:format)                                   {:action=>"destroy", :controller=>"profiles"}
+  autocomplete_stock_ticker_name_stock_tickers GET    /stock_tickers/autocomplete_stock_ticker_name(.:format)   {:action=>"autocomplete_stock_ticker_name", :controller=>"stock_tickers"}
+autocomplete_stock_ticker_symbol_stock_tickers GET    /stock_tickers/autocomplete_stock_ticker_symbol(.:format) {:action=>"autocomplete_stock_ticker_symbol", :controller=>"stock_tickers"}
+                                 stock_tickers GET    /stock_tickers(.:format)                                  {:action=>"index", :controller=>"stock_tickers"}
+                                               POST   /stock_tickers(.:format)                                  {:action=>"create", :controller=>"stock_tickers"}
+                              new_stock_ticker GET    /stock_tickers/new(.:format)                              {:action=>"new", :controller=>"stock_tickers"}
+                             edit_stock_ticker GET    /stock_tickers/:id/edit(.:format)                         {:action=>"edit", :controller=>"stock_tickers"}
+                                  stock_ticker GET    /stock_tickers/:id(.:format)                              {:action=>"show", :controller=>"stock_tickers"}
+                                               PUT    /stock_tickers/:id(.:format)                              {:action=>"update", :controller=>"stock_tickers"}
+                                               DELETE /stock_tickers/:id(.:format)                              {:action=>"destroy", :controller=>"stock_tickers"}
+    autocomplete_fund_ticker_name_fund_tickers GET    /fund_tickers/autocomplete_fund_ticker_name(.:format)     {:action=>"autocomplete_fund_ticker_name", :controller=>"fund_tickers"}
+  autocomplete_fund_ticker_symbol_fund_tickers GET    /fund_tickers/autocomplete_fund_ticker_symbol(.:format)   {:action=>"autocomplete_fund_ticker_symbol", :controller=>"fund_tickers"}
+                                               GET    /fund_tickers(.:format)                                   {:action=>"index", :controller=>"fund_tickers"}
+                                               POST   /fund_tickers(.:format)                                   {:action=>"create", :controller=>"fund_tickers"}
+                                               GET    /fund_tickers/new(.:format)                               {:action=>"new", :controller=>"fund_tickers"}
+                                               GET    /fund_tickers/:id/edit(.:format)                          {:action=>"edit", :controller=>"fund_tickers"}
+                                               GET    /fund_tickers/:id(.:format)                               {:action=>"show", :controller=>"fund_tickers"}
+                                               PUT    /fund_tickers/:id(.:format)                               {:action=>"update", :controller=>"fund_tickers"}
+                                               DELETE /fund_tickers/:id(.:format)                               {:action=>"destroy", :controller=>"fund_tickers"}
+      autocomplete_etf_ticker_name_etf_tickers GET    /etf_tickers/autocomplete_etf_ticker_name(.:format)       {:action=>"autocomplete_etf_ticker_name", :controller=>"etf_tickers"}
+    autocomplete_etf_ticker_symbol_etf_tickers GET    /etf_tickers/autocomplete_etf_ticker_symbol(.:format)     {:action=>"autocomplete_etf_ticker_symbol", :controller=>"etf_tickers"}
+                                   etf_tickers GET    /etf_tickers(.:format)                                    {:action=>"index", :controller=>"etf_tickers"}
+                                               POST   /etf_tickers(.:format)                                    {:action=>"create", :controller=>"etf_tickers"}
+                                new_etf_ticker GET    /etf_tickers/new(.:format)                                {:action=>"new", :controller=>"etf_tickers"}
+                               edit_etf_ticker GET    /etf_tickers/:id/edit(.:format)                           {:action=>"edit", :controller=>"etf_tickers"}
+                                    etf_ticker GET    /etf_tickers/:id(.:format)                                {:action=>"show", :controller=>"etf_tickers"}
+                                               PUT    /etf_tickers/:id(.:format)                                {:action=>"update", :controller=>"etf_tickers"}
+                                               DELETE /etf_tickers/:id(.:format)                                {:action=>"destroy", :controller=>"etf_tickers"}
+                                     dashboard POST   /dashboard(.:format)                                      {:action=>"create", :controller=>"dashboard"}
+                                 new_dashboard GET    /dashboard/new(.:format)                                  {:action=>"new", :controller=>"dashboard"}
+                                edit_dashboard GET    /dashboard/edit(.:format)                                 {:action=>"edit", :controller=>"dashboard"}
+                                               GET    /dashboard(.:format)                                      {:action=>"show", :controller=>"dashboard"}
+                                               PUT    /dashboard(.:format)                                      {:action=>"update", :controller=>"dashboard"}
+                                               DELETE /dashboard(.:format)                                      {:action=>"destroy", :controller=>"dashboard"}
+                                        social POST   /social(.:format)                                         {:action=>"create", :controller=>"Social"}
+                                    new_social GET    /social/new(.:format)                                     {:action=>"new", :controller=>"Social"}
+                                   edit_social GET    /social/edit(.:format)                                    {:action=>"edit", :controller=>"Social"}
+                                               GET    /social(.:format)                                         {:action=>"show", :controller=>"Social"}
+                                               PUT    /social(.:format)                                         {:action=>"update", :controller=>"Social"}
+                                               DELETE /social(.:format)                                         {:action=>"destroy", :controller=>"Social"}
+                                stock_holdings GET    /stock_holdings(.:format)                                 {:action=>"index", :controller=>"stock_holdings"}
+                                               POST   /stock_holdings(.:format)                                 {:action=>"create", :controller=>"stock_holdings"}
+                             new_stock_holding GET    /stock_holdings/new(.:format)                             {:action=>"new", :controller=>"stock_holdings"}
+                            edit_stock_holding GET    /stock_holdings/:id/edit(.:format)                        {:action=>"edit", :controller=>"stock_holdings"}
+                                 stock_holding GET    /stock_holdings/:id(.:format)                             {:action=>"show", :controller=>"stock_holdings"}
+                                               PUT    /stock_holdings/:id(.:format)                             {:action=>"update", :controller=>"stock_holdings"}
+                                               DELETE /stock_holdings/:id(.:format)                             {:action=>"destroy", :controller=>"stock_holdings"}
+                                 fund_holdings GET    /fund_holdings(.:format)                                  {:action=>"index", :controller=>"fund_holdings"}
+                                               POST   /fund_holdings(.:format)                                  {:action=>"create", :controller=>"fund_holdings"}
+                              new_fund_holding GET    /fund_holdings/new(.:format)                              {:action=>"new", :controller=>"fund_holdings"}
+                             edit_fund_holding GET    /fund_holdings/:id/edit(.:format)                         {:action=>"edit", :controller=>"fund_holdings"}
+                                  fund_holding GET    /fund_holdings/:id(.:format)                              {:action=>"show", :controller=>"fund_holdings"}
+                                               PUT    /fund_holdings/:id(.:format)                              {:action=>"update", :controller=>"fund_holdings"}
+                                               DELETE /fund_holdings/:id(.:format)                              {:action=>"destroy", :controller=>"fund_holdings"}
+                                  etf_holdings GET    /etf_holdings(.:format)                                   {:action=>"index", :controller=>"etf_holdings"}
+                                               POST   /etf_holdings(.:format)                                   {:action=>"create", :controller=>"etf_holdings"}
+                               new_etf_holding GET    /etf_holdings/new(.:format)                               {:action=>"new", :controller=>"etf_holdings"}
+                              edit_etf_holding GET    /etf_holdings/:id/edit(.:format)                          {:action=>"edit", :controller=>"etf_holdings"}
+                                   etf_holding GET    /etf_holdings/:id(.:format)                               {:action=>"show", :controller=>"etf_holdings"}
+                                               PUT    /etf_holdings/:id(.:format)                               {:action=>"update", :controller=>"etf_holdings"}
+                                               DELETE /etf_holdings/:id(.:format)                               {:action=>"destroy", :controller=>"etf_holdings"}
+                                   cd_holdings GET    /cd_holdings(.:format)                                    {:action=>"index", :controller=>"cd_holdings"}
+                                               POST   /cd_holdings(.:format)                                    {:action=>"create", :controller=>"cd_holdings"}
+                                new_cd_holding GET    /cd_holdings/new(.:format)                                {:action=>"new", :controller=>"cd_holdings"}
+                               edit_cd_holding GET    /cd_holdings/:id/edit(.:format)                           {:action=>"edit", :controller=>"cd_holdings"}
+                                    cd_holding GET    /cd_holdings/:id(.:format)                                {:action=>"show", :controller=>"cd_holdings"}
+                                               PUT    /cd_holdings/:id(.:format)                                {:action=>"update", :controller=>"cd_holdings"}
+                                               DELETE /cd_holdings/:id(.:format)                                {:action=>"destroy", :controller=>"cd_holdings"}
+                                 bond_holdings GET    /bond_holdings(.:format)                                  {:action=>"index", :controller=>"bond_holdings"}
+                                               POST   /bond_holdings(.:format)                                  {:action=>"create", :controller=>"bond_holdings"}
+                              new_bond_holding GET    /bond_holdings/new(.:format)                              {:action=>"new", :controller=>"bond_holdings"}
+                             edit_bond_holding GET    /bond_holdings/:id/edit(.:format)                         {:action=>"edit", :controller=>"bond_holdings"}
+                                  bond_holding GET    /bond_holdings/:id(.:format)                              {:action=>"show", :controller=>"bond_holdings"}
+                                               PUT    /bond_holdings/:id(.:format)                              {:action=>"update", :controller=>"bond_holdings"}
+                                               DELETE /bond_holdings/:id(.:format)                              {:action=>"destroy", :controller=>"bond_holdings"}
+                                multi_holdings GET    /multi_holdings(.:format)                                 {:action=>"index", :controller=>"multi_holdings"}
+                                               POST   /multi_holdings(.:format)                                 {:action=>"create", :controller=>"multi_holdings"}
+                             new_multi_holding GET    /multi_holdings/new(.:format)                             {:action=>"new", :controller=>"multi_holdings"}
+                            edit_multi_holding GET    /multi_holdings/:id/edit(.:format)                        {:action=>"edit", :controller=>"multi_holdings"}
+                                 multi_holding GET    /multi_holdings/:id(.:format)                             {:action=>"show", :controller=>"multi_holdings"}
+                                               PUT    /multi_holdings/:id(.:format)                             {:action=>"update", :controller=>"multi_holdings"}
+                                               DELETE /multi_holdings/:id(.:format)                             {:action=>"destroy", :controller=>"multi_holdings"}
+                              multi_statements GET    /multi_statements(.:format)                               {:action=>"index", :controller=>"multi_statements"}
+                                               POST   /multi_statements(.:format)                               {:action=>"create", :controller=>"multi_statements"}
+                           new_multi_statement GET    /multi_statements/new(.:format)                           {:action=>"new", :controller=>"multi_statements"}
+                          edit_multi_statement GET    /multi_statements/:id/edit(.:format)                      {:action=>"edit", :controller=>"multi_statements"}
+                               multi_statement GET    /multi_statements/:id(.:format)                           {:action=>"show", :controller=>"multi_statements"}
+                                               PUT    /multi_statements/:id(.:format)                           {:action=>"update", :controller=>"multi_statements"}
+                                               DELETE /multi_statements/:id(.:format)                           {:action=>"destroy", :controller=>"multi_statements"}
+                                    stock_buys GET    /stock_buys(.:format)                                     {:action=>"index", :controller=>"stock_buys"}
+                                               POST   /stock_buys(.:format)                                     {:action=>"create", :controller=>"stock_buys"}
+                                 new_stock_buy GET    /stock_buys/new(.:format)                                 {:action=>"new", :controller=>"stock_buys"}
+                                edit_stock_buy GET    /stock_buys/:id/edit(.:format)                            {:action=>"edit", :controller=>"stock_buys"}
+                                     stock_buy GET    /stock_buys/:id(.:format)                                 {:action=>"show", :controller=>"stock_buys"}
+                                               PUT    /stock_buys/:id(.:format)                                 {:action=>"update", :controller=>"stock_buys"}
+                                               DELETE /stock_buys/:id(.:format)                                 {:action=>"destroy", :controller=>"stock_buys"}
+                                     fund_buys GET    /fund_buys(.:format)                                      {:action=>"index", :controller=>"fund_buys"}
+                                               POST   /fund_buys(.:format)                                      {:action=>"create", :controller=>"fund_buys"}
+                                  new_fund_buy GET    /fund_buys/new(.:format)                                  {:action=>"new", :controller=>"fund_buys"}
+                                 edit_fund_buy GET    /fund_buys/:id/edit(.:format)                             {:action=>"edit", :controller=>"fund_buys"}
+                                      fund_buy GET    /fund_buys/:id(.:format)                                  {:action=>"show", :controller=>"fund_buys"}
+                                               PUT    /fund_buys/:id(.:format)                                  {:action=>"update", :controller=>"fund_buys"}
+                                               DELETE /fund_buys/:id(.:format)                                  {:action=>"destroy", :controller=>"fund_buys"}
+                                      etf_buys GET    /etf_buys(.:format)                                       {:action=>"index", :controller=>"etf_buys"}
+                                               POST   /etf_buys(.:format)                                       {:action=>"create", :controller=>"etf_buys"}
+                                   new_etf_buy GET    /etf_buys/new(.:format)                                   {:action=>"new", :controller=>"etf_buys"}
+                                  edit_etf_buy GET    /etf_buys/:id/edit(.:format)                              {:action=>"edit", :controller=>"etf_buys"}
+                                       etf_buy GET    /etf_buys/:id(.:format)                                   {:action=>"show", :controller=>"etf_buys"}
+                                               PUT    /etf_buys/:id(.:format)                                   {:action=>"update", :controller=>"etf_buys"}
+                                               DELETE /etf_buys/:id(.:format)                                   {:action=>"destroy", :controller=>"etf_buys"}
+                                   stock_sells GET    /stock_sells(.:format)                                    {:action=>"index", :controller=>"stock_sells"}
+                                               POST   /stock_sells(.:format)                                    {:action=>"create", :controller=>"stock_sells"}
+                                new_stock_sell GET    /stock_sells/new(.:format)                                {:action=>"new", :controller=>"stock_sells"}
+                               edit_stock_sell GET    /stock_sells/:id/edit(.:format)                           {:action=>"edit", :controller=>"stock_sells"}
+                                    stock_sell GET    /stock_sells/:id(.:format)                                {:action=>"show", :controller=>"stock_sells"}
+                                               PUT    /stock_sells/:id(.:format)                                {:action=>"update", :controller=>"stock_sells"}
+                                               DELETE /stock_sells/:id(.:format)                                {:action=>"destroy", :controller=>"stock_sells"}
+                                    fund_sells GET    /fund_sells(.:format)                                     {:action=>"index", :controller=>"fund_sells"}
+                                               POST   /fund_sells(.:format)                                     {:action=>"create", :controller=>"fund_sells"}
+                                 new_fund_sell GET    /fund_sells/new(.:format)                                 {:action=>"new", :controller=>"fund_sells"}
+                                edit_fund_sell GET    /fund_sells/:id/edit(.:format)                            {:action=>"edit", :controller=>"fund_sells"}
+                                     fund_sell GET    /fund_sells/:id(.:format)                                 {:action=>"show", :controller=>"fund_sells"}
+                                               PUT    /fund_sells/:id(.:format)                                 {:action=>"update", :controller=>"fund_sells"}
+                                               DELETE /fund_sells/:id(.:format)                                 {:action=>"destroy", :controller=>"fund_sells"}
+                                     etf_sells GET    /etf_sells(.:format)                                      {:action=>"index", :controller=>"etf_sells"}
+                                               POST   /etf_sells(.:format)                                      {:action=>"create", :controller=>"etf_sells"}
+                                  new_etf_sell GET    /etf_sells/new(.:format)                                  {:action=>"new", :controller=>"etf_sells"}
+                                 edit_etf_sell GET    /etf_sells/:id/edit(.:format)                             {:action=>"edit", :controller=>"etf_sells"}
+                                      etf_sell GET    /etf_sells/:id(.:format)                                  {:action=>"show", :controller=>"etf_sells"}
+                                               PUT    /etf_sells/:id(.:format)                                  {:action=>"update", :controller=>"etf_sells"}
+                                               DELETE /etf_sells/:id(.:format)                                  {:action=>"destroy", :controller=>"etf_sells"}
+                                                      /auth/:provider/callback(.:format)                        {:controller=>"sessions", :action=>"create"}
+                                       signout        /signout(.:format)                                        {:controller=>"sessions", :action=>"destroy"}
+                                public_profile        /profiles/public/:screen_name(.:format)                   {:controller=>"profiles", :action=>"show"}
+                                          root        /                                                         {:controller=>"pages", :action=>"index"}
