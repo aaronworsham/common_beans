@@ -65,7 +65,7 @@ class Portfolio < ActiveRecord::Base
       :id => self.id,
       :since => self.started_at.strftime('%D'),
       :current_value => self.total_value,
-      :starting_values => self.starting_investment,
+      :starting_value => self.starting_investment,
       :past_values => self.get_total_past_values
     }
   end

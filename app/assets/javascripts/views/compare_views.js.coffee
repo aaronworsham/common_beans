@@ -47,19 +47,20 @@ class window.CompareIndicesView extends Backbone.View
       }]
     };
 
-#    options.xAxis.categories.push('Holding')
-#    options.series[0].data.push(@model.attributes['gain_ratio'])
-#    for k,v of @model.attributes.indices_gain
-#      options.xAxis.categories.push(k)
-#      options.series[0].data.push(v)
-#    Highcharts.Chart(options);
+    options.xAxis.categories.push('Holding')
+    options.series[0].data.push(@model.attributes['gain_ratio'])
+    for k,v of @model.attributes.indices_gain
+      options.xAxis.categories.push(k)
+      options.series[0].data.push(v)
+    chart = new Highcharts.Chart(options);
+#    $.extend(this, Highcharts.Chart(options))
 
 #    $.getJSON("/portfolios/1/compare.json", (data)->
 #      console.log(data)
 #      for k,v of data.indices_gain
 #        options.series[0].data.push(v)
 #      console.log(options)
-#      Highcharts.Chart(options);
+#      $.extend(this, Highcharts.Chart(options));
 #    );
 
 
@@ -95,43 +96,39 @@ class window.CompareValuesView extends Backbone.View
       chart: {
          renderTo: ("compare-values-portfolio-" + @model.id),
          type: 'line',
-         margin: [ 50, 50, 100, 80]
       },
       title: {
          text: 'Values for Model'
       },
       xAxis: {
-         categories: [],
-        labels: {
-          align: 'right',
-          style: {
-            font: 'normal 10px Verdana, sans-serif'
-          }
-        }
+        categories: [],
       },
       yAxis: {
-         title: {
-            text: 'Percent Gains since ' + @model.get('since')
-         }
-      },
-      legend: {
-        enabled: false
+        title: {
+           text: 'Percent Gains since ' + @model.get('since')
+        }
+        plotLines: [{
+          value: 0,
+          width: 1,
+          color: '#808080'
+        }]
       },
 
       series: [{
         color: '#016633',
+        name: 'bob',
         data: []
       }]
     };
 
-#    options.xAxis.categories.push('start')
-#    options.series[0].data.push(@model.attributes['starting_value'])
-#    for k,v of @model.attributes.past_values
-#      options.xAxis.categories.push(k)
-#      options.series[0].data.push(v)
-#    options.xAxis.categories.push('current')
-#    options.series[0].data.push(@model.attributes['current_value'])
-#    Highcharts.Chart(options);
+    options.xAxis.categories.push('start')
+    options.series[0].data.push(@model.attributes['starting_value'])
+    for k,v of @model.attributes.past_values
+      options.xAxis.categories.push(k)
+      options.series[0].data.push(v)
+    options.xAxis.categories.push('current')
+    options.series[0].data.push(@model.attributes['current_value'])
+    chart = new Highcharts.Chart(options);
 
 
 #    $.getJSON("/portfolios/1/compare.json", (data)->
