@@ -4,7 +4,13 @@ module Quotable
   end
 
   def current_price
-    current_quote.results[:last_trade]
+    if Settings.offline
+      price = rand(100.0)
+      logger.info 'Stubbing Current Price!!! ' + price.to_s
+      price
+    else
+      current_quote.results[:last_trade]
+    end
   rescue NoMethodError
     logger.error "Failed to get Current Quote for #{self.symbol}"
     return 0
@@ -17,6 +23,10 @@ module Quotable
     raise 'Date must be a Ruby Date Object' unless date.respond_to?('to_date')
     if local_eod_by_date(date.to_date).present?
       local_eod_by_date(date.to_date).close
+    elsif Settings.offline
+      price = rand(100.0)
+      logger.info 'Stubbing Past Price!!! ' + price.to_s
+      price
     else
       create_eod(past_quote(date.to_date).results, date.to_date)
     end

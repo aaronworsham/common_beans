@@ -67,12 +67,20 @@ module Tradeable
   end
 
   def calculate_price_gain(pre)
-    (self.todays_price - self.send("#{pre}_close")).round(3)
+    if Settings.offline
+      rand(10000)
+    else
+      (self.todays_price - self.send("#{pre}_close")).round(3)
+    end
   end
 
   def calculate_price_gain_ratio(pre)
     past_price = self.send("#{pre}_close")
-    ((self.todays_price - past_price)/past_price*100).round(3)
+    if Settings.offline
+      rand(25)
+    else
+      ((self.todays_price - past_price)/past_price*100).round(3)
+    end
   end
 
   Point.names.each do |pre|
@@ -89,7 +97,9 @@ module Tradeable
 
 
   def calculate_value(date)
-    if date == Date.today
+    if Settings.offline
+      rand(100000)
+    elsif date == Date.today
       todays_price * net_denomination
     else
       self.ticker.close_for_date(date) * past_denomination(date)
@@ -97,13 +107,19 @@ module Tradeable
   end
 
   def calculate_value_gain(date1, date2)
-    calculate_value(date2) - calculate_value(date1)
+    if Settings.offline
+      rand(10000)
+    else
+      calculate_value(date2) - calculate_value(date1)
+    end
   end
 
   def calculate_value_gain_ratio(date1, date2)
     gain = calculate_value_gain(date1, date2)
     value = calculate_value(date1)
-    if gain == 0 || value == 0
+    if Settings.offline
+      rand(25)
+    elsif gain == 0 || value == 0
       nil
     else
       (gain/value*100).round(3)
@@ -111,11 +127,19 @@ module Tradeable
   end
 
   def calculate_investment_gain(date1, date2)
-    calculate_value_gain(date1, date2) - net_investment
+    if Settings.offline
+      rand(10000)
+    else
+      calculate_value_gain(date1, date2) - net_investment
+    end
   end
 
   def calculate_investment_gain_ratio(date1, date2)
-    (calculate_investment_gain(date1, date2)/calculate_value(date1)).round(3)
+    if Settings.offline
+      rand(25)
+    else
+      (calculate_investment_gain(date1, date2)/calculate_value(date1)).round(3)
+    end
   end
 
 
@@ -155,16 +179,16 @@ module Tradeable
       calculate_value(Point.date(pre, Date.today))
     end
     define_method("#{pre}_calculated_value_gain") do
-      calculate_value_gain(date, Point.date(pre, Date.today))
+      calculate_value_gain(Point.date(pre, Date.today), Date.today)
     end
     define_method("#{pre}_calculated_value_gain_ratio") do
-      calculate_value_gain_ratio(date, Point.date(pre, Date.today))
+      calculate_value_gain_ratio(Point.date(pre, Date.today), Date.today)
     end
     define_method("#{pre}_calculated_investment_gain") do
-      calculate_investment_gain(date, Point.date(pre, Date.today))
+      calculate_investment_gain(Point.date(pre, Date.today), Date.today)
     end
     define_method("#{pre}_calculated_investment_gain_ratio") do
-      calculate_investment_gain_ratio(date, Point.date(pre, Date.today))
+      calculate_investment_gain_ratio(Point.date(pre, Date.today), Date.today)
     end
   end
 

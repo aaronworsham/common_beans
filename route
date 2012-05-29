@@ -40,6 +40,7 @@
                                           sell GET    /sells/:id(.:format)                                      {:action=>"show", :controller=>"sells"}
                                                PUT    /sells/:id(.:format)                                      {:action=>"update", :controller=>"sells"}
                                                DELETE /sells/:id(.:format)                                      {:action=>"destroy", :controller=>"sells"}
+                             portfolio_compare GET    /portfolios/:portfolio_id/compare(.:format)               {:action=>"compare", :controller=>"portfolios"}
                                     portfolios GET    /portfolios(.:format)                                     {:action=>"index", :controller=>"portfolios"}
                                                POST   /portfolios(.:format)                                     {:action=>"create", :controller=>"portfolios"}
                                  new_portfolio GET    /portfolios/new(.:format)                                 {:action=>"new", :controller=>"portfolios"}
@@ -218,6 +219,15 @@ autocomplete_stock_ticker_symbol_stock_tickers GET    /stock_tickers/autocomplet
                                       etf_sell GET    /etf_sells/:id(.:format)                                  {:action=>"show", :controller=>"etf_sells"}
                                                PUT    /etf_sells/:id(.:format)                                  {:action=>"update", :controller=>"etf_sells"}
                                                DELETE /etf_sells/:id(.:format)                                  {:action=>"destroy", :controller=>"etf_sells"}
+              gather_invite_financial_advisers GET    /invite_financial_advisers/gather(.:format)               {:action=>"gather", :controller=>"invite_financial_advisers"}
+              redeem_invite_financial_advisers POST   /invite_financial_advisers/redeem(.:format)               {:action=>"redeem", :controller=>"invite_financial_advisers"}
+                     invite_financial_advisers GET    /invite_financial_advisers(.:format)                      {:action=>"index", :controller=>"invite_financial_advisers"}
+                                               POST   /invite_financial_advisers(.:format)                      {:action=>"create", :controller=>"invite_financial_advisers"}
+                  new_invite_financial_adviser GET    /invite_financial_advisers/new(.:format)                  {:action=>"new", :controller=>"invite_financial_advisers"}
+                 edit_invite_financial_adviser GET    /invite_financial_advisers/:id/edit(.:format)             {:action=>"edit", :controller=>"invite_financial_advisers"}
+                      invite_financial_adviser GET    /invite_financial_advisers/:id(.:format)                  {:action=>"show", :controller=>"invite_financial_advisers"}
+                                               PUT    /invite_financial_advisers/:id(.:format)                  {:action=>"update", :controller=>"invite_financial_advisers"}
+                                               DELETE /invite_financial_advisers/:id(.:format)                  {:action=>"destroy", :controller=>"invite_financial_advisers"}
                                                       /auth/:provider/callback(.:format)                        {:controller=>"sessions", :action=>"create"}
                                        signout        /signout(.:format)                                        {:controller=>"sessions", :action=>"destroy"}
                                 public_profile        /profiles/public/:screen_name(.:format)                   {:controller=>"profiles", :action=>"show"}

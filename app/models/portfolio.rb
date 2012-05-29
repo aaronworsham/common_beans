@@ -1,4 +1,7 @@
 class Portfolio < ActiveRecord::Base
+
+  extend Rankable
+
   has_many :stock_holdings, :dependent => :destroy
   has_many :fund_holdings, :dependent => :destroy
   has_many :etf_holdings, :dependent => :destroy
@@ -20,19 +23,73 @@ class Portfolio < ActiveRecord::Base
     array = []
     portfolios = user.portfolios
     portfolios.each do |p|
-      array << {
-        :name => p.name,
-        :id => p.id,
-        :since => p.started_at.strftime('%D'),
-        :gain_ratio => p.total_gain_ratio,
-        :indices_gain => SecurityIndex.gains_since(p.started_at)
-      }
+      array << p.compare_indices
+    end
+    array
+  end
+  def self.compare_values_for_user(user)
+    array = []
+    portfolios = user.portfolios
+    portfolios.each do |p|
+      array << p.compare_values
+    end
+    array
+  end
+  def self.compare_rankings_for_user(user)
+    array = []
+    portfolios = user.portfolios
+    portfolios.each do |p|
+      array << p.compare_rankings
     end
     array
   end
 
+
+
+
+
+
+  def compare_indices
+    {
+      :name => self.name,
+      :id => self.id,
+      :since => self.started_at.strftime('%D'),
+      :gain_ratio => self.total_gain_ratio,
+      :indices_gain => SecurityIndex.gains_since(self.started_at)
+    }
+  end
+
+  def compare_values
+    {
+      :name => self.name,
+      :id => self.id,
+      :since => self.started_at.strftime('%D'),
+      :current_value => self.total_value,
+      :starting_values => self.starting_investment,
+      :past_values => self.get_total_past_values
+    }
+  end
+  def compare_rankings
+    {
+      :name => self.name,
+      :id => self.id,
+      :since => self.started_at.strftime('%D'),
+      :past_plan_ranks => self.get_past_plan_rankings,
+      :past_strategy_ranks => self.get_past_strategy_rankings
+    }
+  end
+
+
   def cached_holdings
     @holdings ||= self.stock_holdings +
+                  self.fund_holdings +
+                  self.etf_holdings +
+                  self.bond_holdings +
+                  self.cd_holdings
+  end
+
+  def reload_cached_holdings
+    @holdings = self.stock_holdings +
                   self.fund_holdings +
                   self.etf_holdings +
                   self.bond_holdings +
@@ -59,6 +116,42 @@ class Portfolio < ActiveRecord::Base
     end
   end
 
+  def get_total_past_values
+    hash = Hash.new
+    Point.names.each do |d|
+      hash[d] = self.send("#{d}_total_value")
+    end
+    hash
+  end
+  def get_total_past_value_gains
+    hash = Hash.new
+    Point.names.each do |d|
+      hash[d] = self.send("#{d}_total_value_gain")
+    end
+    hash
+  end
+  def get_total_past_gain_ratios
+    hash = Hash.new
+    Point.names.each do |d|
+      hash[d] = self.send("#{d}_total_gain_ratio")
+    end
+    hash
+  end
+  def get_past_plan_rankings
+    hash = Hash.new
+    Point.names.each do |d|
+      hash[d] = self.send("#{d}_plan_rank")
+    end
+    hash
+  end
+  def get_past_strategy_rankings
+    hash = Hash.new
+    Point.names.each do |d|
+      hash[d] = self.send("#{d}_strategy_rank")
+    end
+    hash
+  end
+
   Point.names.each do |pre|
     %w(value value_gain gain_ratio).each do |name|
       define_method("#{pre}_total_#{name}") do
@@ -75,8 +168,16 @@ class Portfolio < ActiveRecord::Base
     end
   end
 
+  def starting_investment
+    if cached_holdings.size > 0
+      cached_holdings.sort_by(&:purchased_at).first.starting_investment
+    else
+      0
+    end
+  end
+
   def sum_holding_value(method)
-    cached_holdings.inject(0){|s, h| s + h.send(method)}
+    cached_holdings.reject{|x| x.send(method).nil?}.inject(0){|s, h| s + h.send(method)}
   end
 
   def as_json(options={})
@@ -88,5 +189,18 @@ class Portfolio < ActiveRecord::Base
     result["total_value_gain"] = self.total_value_gain
     result['holding_ids'] = self.cached_holdings.map{|x| x.id}
     result
+  end
+
+  def populate_points
+    past_values = self.get_total_past_values
+    past_value_gains = self.get_total_past_value_gains
+    past_gain_ratios = self.get_total_past_gain_ratios
+    Point.names.each do |n|
+      self.send("#{n}_value=", past_values[n])
+      self.send("#{n}_value_gain=", past_value_gains[n])
+      self.send("#{n}_gain_ratio=", past_gain_ratios[n])
+    end
+    self.points_updated_at = Date.today
+    self.save
   end
 end

@@ -8,7 +8,9 @@ CommonBeans::Application.routes.draw do
   resources :messages
   resources :buys
   resources :sells
-  resources :portfolios
+  resources :portfolios do
+    get :compare
+  end
   resources :holdings
   resources :events
   resources :pages
@@ -43,6 +45,11 @@ CommonBeans::Application.routes.draw do
   resources :stock_sells
   resources :fund_sells
   resources :etf_sells
+
+  resources :invite_financial_advisers do
+    get :gather, :on => :collection
+    post :redeem, :on => :collection
+  end
 
 
   match "/auth/:provider/callback" => "sessions#create"

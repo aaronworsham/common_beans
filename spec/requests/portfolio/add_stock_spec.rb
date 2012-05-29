@@ -6,6 +6,7 @@ feature "add stock to portfolio" do
     visit '/auth/twitter'
     StockHolding.any_instance.stub(:todays_price).and_return(100)
     StockHolding.any_instance.stub(:todays_value).and_return(1000)
+    Portfolio.stub(:compare_indices_for_user).and_return([])
     @portfolio = Factory :portfolio, :user => User.first, :name => 'Test'
   end
   

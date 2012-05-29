@@ -9,7 +9,7 @@ class PortfoliosController < ApplicationController
   end
 
   def show
-    @portfolio = Portfolio.find_by_id params[:id]
+    @portfolio = current_user.portfolios.find_by_id params[:id]
     respond_with(@portfolio)
   end
 
@@ -22,8 +22,15 @@ class PortfoliosController < ApplicationController
   end
 
   def destroy
-    @portfolio = Portfolio.find_by_id params[:id]
+    @portfolio = current_user.portfolios.find_by_id params[:id]
     @portfolio.destroy
     respond_with(@portfolio)
+  end
+
+  def compare
+    @portfolio = current_user.portfolios.find_by_id params[:portfolio_id]
+    if @portfolio
+      respond_with(@portfolio.compare_indices)
+    end
   end
 end

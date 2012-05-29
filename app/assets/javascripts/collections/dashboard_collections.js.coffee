@@ -120,4 +120,23 @@ class window.CompareIndicesCollection extends Backbone.Collection
 
 window.IndexComparisons = new CompareIndicesCollection
 
+class window.CompareValuesCollection extends Backbone.Collection
+  model: CompareValuesModel
+
+  initialize: ->
+     @bind('add', (statement)->
+       @addOneView(statement)
+     );
+     @bind('reset', (statements)->
+       statements.each( (p)->
+         statements.addOneView(p)
+       );
+     );
+
+
+  addOneView: (p)->
+    new CompareValuesView({model:p}).render();
+
+window.ValueComparisons = new CompareValuesCollection
+
 

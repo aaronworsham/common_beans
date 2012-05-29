@@ -1,5 +1,7 @@
 class CdHolding < ActiveRecord::Base
   include DateMixin
+  include Holdable
+
   belongs_to :user
   belongs_to :portfolio
   has_many :cd_sells
@@ -105,6 +107,19 @@ class CdHolding < ActiveRecord::Base
     result["todays_value"] = self.present_value.round(2)
     result["total_value_gain"] = self.total_value_gain.round(2)
     result
+  end
+
+  def populate_points
+    past_values = self.get_past_values
+    past_value_gains = self.get_past_value_gains
+    past_value_gain_ratios = self.get_past_value_gain_ratios
+    Point.names.each do |n|
+      self.send("#{n}_value=", past_values[n])
+      self.send("#{n}_value_gain=", past_value_gains[n])
+      self.send("#{n}_gain_ratio=", past_value_gain_ratios[n])
+    end
+    self.points_updated_at = Date.today
+    self.save
   end
 
 

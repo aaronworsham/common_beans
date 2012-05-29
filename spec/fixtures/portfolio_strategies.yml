@@ -1,28 +1,42 @@
 1:
+  id: 1
   name: 'Mainly Bonds'
 2:
+  id: 2
   name: 'Mainly ETFs'
 3:
+  id: 3
   name: 'Unknown'
 4:
+  id: 4
   name: 'Custom'
 5:
+  id: 5
   name: 'Large Cap Growth'
 6:
+  id: 6
   name: 'Large Cap Blend'
 7:
+  id: 7
   name: 'Large Cap Value'
 8:
+  id: 8
   name: 'Mid Cap Growth'
 9:
+  id: 9
   name: 'Mid Cap Blend'
 10:
+  id: 10
   name: 'Mid Cap Value'
 11:
+  id: 11
   name: 'Small Cap Growth'
 12:
+  id: 12
   name: 'Small Cap Blend'
 13:
+  id: 13
   name: 'Small Cap Value'
 14:
+  id: 14
   name: 'International'

@@ -2,6 +2,7 @@
   - @models.each do |k,v|
     != "#{k.classify.pluralize}.add(#{v.to_json});"
   != "IndexComparisons.add(#{@compare_indices.to_json});"
+  != "ValueComparisons.add(#{@compare_values.to_json});"
   $('#nav li.selectable').first().trigger('click');
   $('.accordion').accordion();
 
@@ -10,8 +11,9 @@
 
 #portfolio-show
 #portfolio-compare
-  Hi from Compare
   #compare-indices
+  #compare-values
+  #compare-others
 
 
 #forms

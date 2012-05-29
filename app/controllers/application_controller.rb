@@ -21,7 +21,13 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user  
-    @current_user ||= User.find_by_id(session[:user_id]) if session[:user_id]
+    @current_user ||= if Settings.offline
+      User.find_by_screen_name('aaronworsham')
+    elsif session[:user_id]
+      User.find_by_id(session[:user_id])
+    else
+      nil
+    end
   end
 
   def log_errors(obj)

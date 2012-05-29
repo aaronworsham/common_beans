@@ -11,6 +11,11 @@ class StockHoldingsController < ApplicationController
     respond_with(@holding)
   end
 
+  def edit
+    @holding = StockHolding.find_by_id params[:id]
+    render :template => 'edit_securities/stock/edit_stock', :layout => false
+  end
+
   def create
     @holding = StockHolding.create(params[:stock_holding].merge(:user => current_user))
     respond_with(@holding)

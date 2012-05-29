@@ -46,6 +46,8 @@ $ ->
     return false;
   );
 
+  $('')
+
   $('.holding-header').live('click', ->
     type = $(@).attr('data-holding-type')
     id = $(@).attr('data-holding-id')

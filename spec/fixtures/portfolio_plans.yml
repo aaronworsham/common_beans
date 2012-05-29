@@ -1,6 +1,9 @@
 1:
+  id: 1
   name: 'growth'
 2:
+  id: 2
   name: 'balanced'
 3:
+  id: 3
   name: 'income'
