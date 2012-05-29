@@ -22,7 +22,7 @@ feature "add stock to portfolio" do
   scenario 'create new stock' do
     @portfolio.stock_holdings.size.should == 0
     visit '/dashboard'
-    find('.portfolio-content a.add-holding[data-security-name=stock]').click
+    find('.overview a.add-holding[data-security-name=stock]').click
     within('#new_stock_holding') do
       fill_in 'stock_holding_ticker_name', :with => 'Google'
     end
@@ -30,9 +30,9 @@ feature "add stock to portfolio" do
     within('#new_stock_holding') do
       fill_in 'stock_holding_starting_shares', :with => '10'
       fill_in 'stock_holding_starting_price', :with => '7.50'
-      select '2012', :from => 'stock_holding_purchased_at_1i'
-      select 'January', :from => 'stock_holding_purchased_at_2i'
-      select '16', :from => 'stock_holding_purchased_at_3i'
+      select '2012', :from => 'stock_holding[purchased_at(1i)]'
+      select 'January', :from => 'stock_holding[purchased_at(2i)]'
+      select '16', :from => 'stock_holding[purchased_at(3i)]'
       click_on('Create')
     end
     @portfolio.reload
