@@ -11,6 +11,11 @@ class BondHoldingsController < ApplicationController
     respond_with(@holding)
   end
 
+  def edit
+    @holding = BondHolding.find_by_id params[:id]
+    render :template => 'edit_securities/bond/edit_bond', :layout => false
+  end
+  
   def create
     @holding = BondHolding.create(params[:bond_holding].merge(:user => current_user))
     respond_with(@holding)

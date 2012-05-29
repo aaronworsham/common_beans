@@ -11,6 +11,11 @@ class EtfHoldingsController < ApplicationController
     respond_with(@holding)
   end
 
+  def edit
+     @holding = EtfHolding.find_by_id params[:id]
+     render :template => 'edit_securities/etf/edit_etf', :layout => false
+   end
+   
   def create
     @holding = EtfHolding.create(params[:etf_holding].merge(:user => current_user))
     respond_with(@holding)
