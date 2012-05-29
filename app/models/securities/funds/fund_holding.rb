@@ -2,6 +2,7 @@ class FundHolding < ActiveRecord::Base
 
   include DateMixin
   include Tradeable
+  include Holdable
 
   belongs_to :user
   belongs_to :fund_ticker

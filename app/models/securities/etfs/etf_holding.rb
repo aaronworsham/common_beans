@@ -2,6 +2,8 @@ class EtfHolding < ActiveRecord::Base
 
   include DateMixin
   include Tradeable
+  include Holdable
+
   belongs_to :user
   belongs_to :etf_ticker
   belongs_to :portfolio

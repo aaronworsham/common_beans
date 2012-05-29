@@ -13,6 +13,14 @@ class User < ActiveRecord::Base
   has_many :multi_statements,    :dependent => :destroy
   has_many :stock_buys,        :dependent => :destroy
   has_many :stock_sells,        :dependent => :destroy
+  has_many :financial_advice,  :foreign_key => :user_id
+  has_many :financial_advisers, :through => :financial_advice
+  has_many :financial_clients,  :through => :financial_advice
+  has_many :user_roles
+  has_many :roles,              :through => :user_roles
+  has_many :financial_adviser_invites
+
+  attr_accessor :token, :passcode
 
   aasm_column :current_state
 

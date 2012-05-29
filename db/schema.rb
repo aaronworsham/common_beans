@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111226163955) do
+ActiveRecord::Schema.define(:version => 20120527195118) do
 
   create_table "bond_events", :force => true do |t|
     t.integer  "bond_ticker_id"
@@ -265,6 +265,23 @@ ActiveRecord::Schema.define(:version => 20111226163955) do
 
   create_table "exchanges", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "financial_advice", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "financial_adviser_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "financial_adviser_invites", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "token"
+    t.string   "email"
+    t.string   "passcode"
+    t.string   "salt"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -542,6 +559,12 @@ ActiveRecord::Schema.define(:version => 20111226163955) do
     t.float    "y5_strategy_rank"
   end
 
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "security_indices", :force => true do |t|
     t.string   "type"
     t.string   "name"
@@ -694,6 +717,23 @@ ActiveRecord::Schema.define(:version => 20111226163955) do
     t.string   "symbol"
     t.string   "name"
     t.integer  "exchange_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_invites", :force => true do |t|
+    t.string   "name"
+    t.string   "token"
+    t.string   "email"
+    t.string   "passcode"
+    t.string   "salt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_roles", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -2,6 +2,7 @@ class StockHolding < ActiveRecord::Base
 
   include DateMixin
   include Tradeable
+  include Holdable
 
   belongs_to :user
   belongs_to :stock_ticker
@@ -17,7 +18,12 @@ class StockHolding < ActiveRecord::Base
 
   #after_create :notify_everyone
   before_create :populate_net_values
+
   attr_accessor :ticker_name, :ticker_symbol
+
+  def populate_portfolio_points
+
+  end
 
   def ticker
     @ticker ||= stock_ticker

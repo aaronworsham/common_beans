@@ -14,7 +14,7 @@
     <div class='stock-events' id="stock-events-for-holding-{{ id }}" data-stock-holding-id={{id}} style='display:none'>
       <a href='#' class='add-event' data-holding-id={{id}} data-security-name='stock' data-event-type='buy'>Bought Shares |</a>
       <a href='#' class='add-event' data-holding-id={{id}} data-security-name='stock' data-event-type='sell'>Sold Shares |</a>
-      <a href='#' class='edit-stock-holding' data-holding-id={{id}}>Edit |</a>
+      <a href='#' class='edit-holding' data-holding-id={{id}} data-security-name='stock'>Edit |</a>
       <a href='#' class='delete-stock-holding' data-holding-id={{id}}>Remove</a>
       <ul class='stock-buys' id="stock-buys-for-holding-{{ id }}" data-stock-holding-id={{id}}>
         <li>Started with {{starting_shares}} shares at {{starting_price}} on {{purchased_on}}</li>

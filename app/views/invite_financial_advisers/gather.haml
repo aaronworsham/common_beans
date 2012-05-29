@@ -1,0 +1,6 @@
+= simple_form_for User.new, :url => redeem_invite_financial_advisers_path do |f|
+ = f.input :name
+ = f.input :email
+ = f.input :passcode
+ = f.input :token, :as => :hidden, :input_html => {:value => @invite.token}
+ = f.submit

@@ -1,0 +1,2 @@
+module InviteFinancialAdvisersHelper
+end

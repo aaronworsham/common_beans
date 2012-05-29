@@ -1,9 +1,15 @@
 class MultiHolding < ActiveRecord::Base
+
+  extend Holdable
+  include Tradeable
+  include Holdable
+
   belongs_to  :user
   belongs_to  :portfolio
   has_many    :multi_holding_allocations
   has_many    :multi_statements
   has_many    :multi_statement_allocations, :through => :multi_statements
+
 
   def percent_allocated
     percent = 0
@@ -114,6 +120,20 @@ class MultiHolding < ActiveRecord::Base
   def as_json(options={})
     result = super(options)
     result
+  end
+
+
+  def populate_points
+    past_values = self.get_past_values
+    past_value_gains = self.get_past_value_gains
+    past_value_gain_ratios = self.get_past_value_gain_ratios
+    Point.names.each do |n|
+      self.send("#{n}_value=", past_values[n])
+      self.send("#{n}_value_gain=", past_value_gains[n])
+      self.send("#{n}_gain_ratio=", past_value_gain_ratios[n])
+    end
+    self.points_updated_at = Date.today
+    self.save
   end
 
 

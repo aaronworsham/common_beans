@@ -26,3 +26,5 @@ class window.MultiStatementModel extends Backbone.Model
   urlRoot : "/multi_statements"
 class window.CompareIndicesModel extends Backbone.Model
   urlRoot : "/compare_indices"
+class window.CompareValuesModel extends Backbone.Model
+  urlRoot : "/compare_values"
