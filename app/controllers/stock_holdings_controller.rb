@@ -16,6 +16,14 @@ class StockHoldingsController < ApplicationController
     render :template => 'edit_securities/stock/edit_stock', :layout => false
   end
 
+  def update
+    @holding = StockHolding.find_by_id params[:id]
+    @holding.update_attributes(params[:stock_holding].except(:id))
+    puts @holding.errors.full_messages
+    render :json => {:success => true}
+
+  end
+
   def create
     @holding = StockHolding.create(params[:stock_holding].merge(:user => current_user))
     respond_with(@holding)

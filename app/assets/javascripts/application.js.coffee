@@ -1,6 +1,7 @@
 ###
 = require jquery
 = require jquery-ui
+= require jquery.ba-serializeobject
 = require autocomplete-rails
 = require jquery.facebox
 = require underscore-min
