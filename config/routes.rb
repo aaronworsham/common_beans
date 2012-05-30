@@ -56,6 +56,10 @@ CommonBeans::Application.routes.draw do
   match "/signout" => "sessions#destroy", :as => :signout
   match "/profiles/public/:screen_name" => "profiles#show", :as => :public_profile
   root :to => 'pages#index'
+  
+
+  match "/auth/failure", to: "advisors#failure"
+  resources :advisors
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -22,6 +22,8 @@ gem 'jasmine', "1.1.0"
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
+gem 'omniauth-identity'
+gem 'bcrypt-ruby' #added for omniauth identity
 gem "rails3-jquery-autocomplete"
 gem 'mustache'
 gem "stache", "~> 0.0.2"

@@ -42,6 +42,10 @@ class User < ActiveRecord::Base
       user.location = auth['info']['location']
       user.description = auth['info']['description']
       user.urls = auth['info']['urls']
+      if provider.source == "identity"
+        user.screen_name = auth['info']['email']
+        user.email = auth['info']['email']
+      end
     end  
   rescue => e
     p 'INSIDE USER CREATE'

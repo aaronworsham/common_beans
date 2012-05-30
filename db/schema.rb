@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120527195118) do
+ActiveRecord::Schema.define(:version => 20120530173558) do
+
+  create_table "advisors", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.string   "keycode"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "bond_events", :force => true do |t|
     t.integer  "bond_ticker_id"
@@ -401,6 +410,15 @@ ActiveRecord::Schema.define(:version => 20120527195118) do
     t.string   "current_state"
     t.boolean  "lead",                                            :default => false
     t.string   "name"
+  end
+
+  create_table "identities", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.string   "keycode"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "index_eods", :force => true do |t|
