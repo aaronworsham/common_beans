@@ -10,5 +10,5 @@
     = f.input :fund_ticker_id, :as => :hidden
     = f.input :starting_units
     = f.input :starting_price
-    = f.input :purchased_at
+    = f.input :purchased_at, :as => :string, :input_html => {:simple_tag_name => true, :class => 'date_picker'}
     = link_to 'Create', '#', :class => 'create_link'

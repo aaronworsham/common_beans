@@ -6,7 +6,7 @@
     = f.input :name, :input_html => {:simple_tag_name => true}
     = f.input :cusip, :label => 'CUSIP number', :input_html => {:simple_tag_name => true}
     = f.input :purchased_at, :as => :string, :input_html => {:simple_tag_name => true, :class => 'date_picker'}
-    = f.input :matures_at, :input_html => {:simple_tag_name => true}
+    = f.input :matures_at, :as => :string, :input_html => {:simple_tag_name => true, :class => 'date_picker'}
     = f.input :coupon, :input_html => {:simple_tag_name => true}
     = f.input :purchase_price, :input_html => {:simple_tag_name => true}
     = f.input :starting_quantity, :input_html => {:simple_tag_name => true}
