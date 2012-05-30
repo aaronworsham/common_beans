@@ -6,6 +6,7 @@ $ ->
     $.ajax('/'+type+'_holdings/'+holding_id+'/edit')
       .success((data)->
         $.facebox(data);
+        $( "#facebox .date_picker" ).datepicker();
       );
   );
 
