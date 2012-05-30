@@ -1,16 +1,16 @@
 
 
 #edit-cd-form
-  = simple_form_for(@holding, :url => '#', :html =>{:class => 'edit-holding'}) do |f|
+  = simple_form_for(@holding, :url => '#', :html =>{:class => 'edit-holding', 'data-holding-id' => @holding.id, 'data-collection-name' => 'CdHoldings'}) do |f|
     %h3 Edit CD Holding
-    = f.input :name
-    = f.input :cusip, :label => 'CUSIP number'
-    = f.input :purchased_at
-    = f.input :matures_at
-    = f.input :coupon
-    = f.input :purchase_price
-    = f.input :starting_quantity
-    = f.input :frequency
-    = f.input :face_value
-    = f.input :expected_yield
-    = link_to 'Create', '#', :class => 'create_link '
+    = f.input :name, :input_html => {:simple_tag_name => true}
+    = f.input :cusip, :label => 'CUSIP number', :input_html => {:simple_tag_name => true}
+    = f.input :purchased_at, :as => :string, :input_html => {:simple_tag_name => true, :class => 'date_picker'}
+    = f.input :matures_at, :input_html => {:simple_tag_name => true}
+    = f.input :coupon, :input_html => {:simple_tag_name => true}
+    = f.input :purchase_price, :input_html => {:simple_tag_name => true}
+    = f.input :starting_quantity, :input_html => {:simple_tag_name => true}
+    = f.input :frequency, :input_html => {:simple_tag_name => true}
+    = f.input :face_value, :input_html => {:simple_tag_name => true}
+    = f.input :expected_yield, :input_html => {:simple_tag_name => true}
+    = f.submit
