@@ -12,8 +12,8 @@ $ ->
   $('#facebox form.edit-holding').live('submit', (e) ->
     e.stopPropegation
     holding_id = $(@).attr('data-holding-id')
-    type = $(@).attr('data-type-name')
-    holding = StockHoldings.get(holding_id)
+    collection = $(@).attr('data-collection-name')
+    holding = window[collection].get(holding_id)
     holding.set({authenticity_token: $("#facebox form.edit-holding input[name=authenticity_token]").val()})
     holding.set($(@).serializeObject());
     holding.save();

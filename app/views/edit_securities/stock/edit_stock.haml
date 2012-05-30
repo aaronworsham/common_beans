@@ -1,7 +1,7 @@
 
 
 #edit-stock-form
-  = simple_form_for(@holding, :url => '#', :html =>{:class => 'edit-holding', 'data-holding-id' => @holding.id, 'data-type-name' => 'stock'}) do |f|
+  = simple_form_for(@holding, :url => '#', :html =>{:class => 'edit-holding', 'data-holding-id' => @holding.id, 'data-collection-name' => 'StockHoldings'}) do |f|
     %h3 Edit Stock Holding
     #autocomplete
       = "Select Name or Symbol"
