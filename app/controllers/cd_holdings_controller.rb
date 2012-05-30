@@ -16,6 +16,7 @@ class CdHoldingsController < ApplicationController
      render :template => 'edit_securities/cd/edit_cd', :layout => false
    end
   def update
+     params[:cd_holding][:purchased_at] = Date.strptime(params[:cd_holding][:purchased_at], '%m/%d/%Y')
      @holding = CdHolding.find_by_id params[:id]
      @holding.update_attributes(params[:cd_holding].except(:id))
      puts @holding.errors.full_messages
@@ -23,6 +24,7 @@ class CdHoldingsController < ApplicationController
 
   end
   def create
+    params[:cd_holding][:purchased_at] = Date.strptime(params[:cd_holding][:purchased_at], '%m/%d/%Y')
     @holding = CdHolding.create(params[:cd_holding].merge(:user => current_user))
     respond_with(@holding)
   end
