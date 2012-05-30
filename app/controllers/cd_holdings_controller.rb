@@ -15,7 +15,13 @@ class CdHoldingsController < ApplicationController
      @holding = CdHolding.find_by_id params[:id]
      render :template => 'edit_securities/cd/edit_cd', :layout => false
    end
-   
+  def update
+     @holding = CdHolding.find_by_id params[:id]
+     @holding.update_attributes(params[:cd_holding].except(:id))
+     puts @holding.errors.full_messages
+     render :json => {:success => true}
+
+  end
   def create
     @holding = CdHolding.create(params[:cd_holding].merge(:user => current_user))
     respond_with(@holding)

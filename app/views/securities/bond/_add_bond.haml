@@ -5,8 +5,8 @@
     %h3 Add Bond
     = f.input :name
     = f.input :cusip, :label => 'CUSIP number'
-    = f.input :purchased_at
-    = f.input :matures_at
+    = f.input :purchased_at, :as => :string, :input_html => {:simple_tag_name => true, :class => 'date_picker'}
+    = f.input :matures_at, :as => :string, :input_html => {:simple_tag_name => true, :class => 'date_picker'}
     = f.input :coupon
     = f.input :purchase_price
     = f.input :starting_quantity
