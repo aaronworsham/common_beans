@@ -1,0 +1,13 @@
+
+#edit-etf-form
+  = simple_form_for(@holding, :url => '#', :html =>{:class => 'edit-holding'}) do |f|
+    %h3 Edit ETF holding
+    #autocomplete
+      = "Select Name or Symbol"
+      = f.input :ticker_name, :input_html => {:value => @holding.ticker.name, :disabled => true}
+      = f.input :ticker_symbol, :input_html => {:value => @holding.ticker.symbol, :disabled => true}
+    = f.input :etf_ticker_id, :as => :hidden
+    = f.input :starting_units
+    = f.input :starting_price
+    = f.input :purchased_at
+    = link_to 'Create', '#', :class => 'create_link'

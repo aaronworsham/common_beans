@@ -11,6 +11,11 @@ class FundHoldingsController < ApplicationController
     respond_with(@holding)
   end
 
+  def edit
+    @holding = FundHolding.find_by_id params[:id]
+    render :template => 'edit_securities/fund/edit_fund', :layout => false
+  end
+  
   def create
     @holding = FundHolding.create(params[:fund_holding].merge(:user => current_user))
     respond_with(@holding)
