@@ -1,0 +1,2 @@
+module FinancialAdvisor::AdvisorsHelper
+end

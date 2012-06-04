@@ -98,6 +98,10 @@ class User < ActiveRecord::Base
     end
     return hash
   end
+  
+  def advisor?
+    self.financial_clients.present? ? true : false
+  end
 
 
 end

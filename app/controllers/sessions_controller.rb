@@ -5,7 +5,11 @@ class SessionsController < ApplicationController
     session[:user_id] = user.id
     session[:auth_provider] = auth["provider"]
     cookies[:preferred_provider] = auth["provider"]
-    redirect_to root_url, :notice => "Signed in!"
+    if user.advisor?
+      redirect_to financial_advisor_root_path, :notice => "Thanks for signing in, advisor"
+    else
+      redirect_to root_url, :notice => "Signed in!"
+    end
   end
 
   def destroy

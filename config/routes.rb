@@ -2,6 +2,8 @@ CommonBeans::Application.routes.draw do
 
 
 
+  get "advisors/index"
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -49,7 +51,16 @@ CommonBeans::Application.routes.draw do
   resources :stock_sells
   resources :fund_sells
   resources :etf_sells
-
+  
+  namespace :financial_advisor do
+    root :to => "advisors#index"
+    resources :advisors
+  end
+  
+  #match 'financial_advisors' => 'financial_advisors/advisors#index'
+  
+  
+    
   resources :invite_financial_advisers do
     get :gather, :on => :collection
     post :redeem, :on => :collection
