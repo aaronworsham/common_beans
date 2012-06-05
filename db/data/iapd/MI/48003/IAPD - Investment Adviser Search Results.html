@@ -1,0 +1,335 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+    <head id="ctl00_Head1"><meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type" /><title>
+	IAPD - Investment Adviser Search Results
+</title><link href="/IAPD/Stylesheets/iapd.css" rel="stylesheet" type="text/css" media="screen" /><link href="/IAPD/Stylesheets/iapd_print.css" rel="stylesheet" type="text/css" media="print" />
+    <script type="text/javascript" language='Javascript' src='/IAPD/Includes/Validation/Search/iapd_OrgSearch.js'></script> 
+  	<script type="text/javascript" language='Javascript' src='/Iapd/Includes/iapd_WindowManagement.js'></script> 
+	<script type="text/javascript" language='Javascript' src='/Iapd/Includes/iapd_SetAndSub.js'></script> 
+	<script type="text/javascript" language="javascript">
+       function init() 
+       {
+            if(document.Content.Name != null)
+                document.Content.Name.value = "";
+            if(document.Content.CrdNumber != null)
+                document.Content.CrdNumber.value = "";
+            if(document.Content.SecNumber != null)
+                document.Content.SecNumber.value = "";
+       }
+       window.onload = init; 
+    </script>
+</head>
+
+    <body bgcolor="#ffffff">
+	    <a name="PageTop"></a>
+	    <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
+	    <tr>
+	    <td>
+	    <table id="ctl00_tblHeader" border="0" cellpadding="0" cellspacing="0" width="100%" class="noprint" style="background-image: url(/IAPD/Images/SEC_bannerBg.png);  background-repeat: repeat;">
+	<tr valign="top">
+		<td height="92" nowrap="nowrap"><a href="http://www.sec.gov" target="_blank"><img alt="SEC Seal" border="0" height="92" src="/IAPD/Images/SEC_SealTopLeft.gif" width="95" /><img alt="SEC Seal" border="0" height="92" src="/IAPD/Images/SEC_SealTopRight.gif" width="26" /></a></td>
+		<td width="100%">
+                    <table border="0" cellpadding="0"  cellspacing="0" width="100%">
+                        <tr><td colspan="2" height="39"><img alt="Top Banner" border="0" height="39" width="171" src="/IAPD/Images/SEC_bannerFlagMain.gif" /></td></tr>
+                        <tr>
+                            <td width="170" height="34"></td>
+                            <td height="34"><img alt="Investment Adviser Public Disclosure" border="0" height="34" width="391" src="/IAPD/Images/IAPDtitle.gif" /></td>
+                        </tr>
+                        <tr><td colspan="2" height="2"></td></tr>
+                        <tr><td colspan="2" height="15" valign="middle"><img alt="Bottom Banner" border="0" width="50" height="15" src="/IAPD/Images/SEC_bannerFlagBot.gif" /></td></tr>
+                        <tr><td colspan="2" height="2"></td></tr>
+                    </table>                    
+                </td>
+		<td align="right">
+                    <!-- State Flag -->
+                    
+                    <!-- End State Flag -->
+
+                    <!-- NASAA Logo -->
+                    <table id="ctl00_tblNASAALogo" cellspacing="0" cellpadding="0" border="0" style="border-style:None;width:92px;border-collapse:collapse;">
+			<tr>
+				<td><a href="http://www.nasaa.org" target="_blank"><img border="0" height="92" width="92" alt="NASAA" src="/IAPD/Images/NASAA_Logo_92.png" /></a></td>
+			</tr>
+		</table>
+                    <!-- End NASAA Logo -->
+                </td>
+	</tr>
+</table>
+
+        <!-- Left Nav and Content -->
+	    <table id="ctl00_tblMain" border="0" cellpadding="0" height="92%" cellspacing="0" width="100%">
+	<tr valign="top">
+		<td bgcolor="#e1e1d6" colspan="3" valign="top" width="1%">
+	                <table id="ctl00_tblLeftNavHeader" border="0" cellpadding="0" cellspacing="0" width="150" class="noprint">
+			<tr>
+				<td><a href="http://www.sec.gov" target="_blank"><img src="/IAPD/Images/SEC_SealBotFrontB.gif" border="0" alt="SEC Seal" /></a></td>
+			</tr>
+			<tr>
+				<td><img alt=" " border="0" height="1" src="/IAPD/Images/pixel.gif" width="5" /></td>
+			</tr>
+		</table>
+		
+	                <table id="ctl00_tblLeftNav" border="0" cellpadding="0" cellspacing="5" width="130" class="noprint">
+			<tr>
+				<td>
+                                <!-- Left Navigation -->
+                                
+                                    <table border="0" width="130" cellspacing="5" cellpadding="0">
+  <tr>
+    <td>
+      <img src="/IAPD/images/IAPDhome2.jpg" alt="IAPD Main">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <table border="0" width="130" cellspacing="3" cellpadding="0">
+        <tr>
+          <td>
+            <a onMouseOver="status='Link To the SEC';return true" onMouseOut="status='';" class="Nav" href="&#xA;                              javascript: JNav('/IAPD/Content/IAPDMain/iapd_SECRedirect.aspx');&#xA;                            ">Return to the SEC</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <a onMouseOver="status='Link To the SEC IARD Page';return true" onMouseOut="status='';" class="Nav" href="&#xA;                              javascript: JNav('/IAPD/Content/IAPDMain/iapd_SECRedirect.aspx?dir=IARD');&#xA;                            ">Return to SEC IARD Page</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <a onMouseOver="status='Link To Sitemap';return true" onMouseOut="status='';" class="Nav" href="&#xA;                              javascript: JNav('/IAPD/Content/IAPDMain/iapd_SiteMap.aspx');&#xA;                            ">Return to Sitemap</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <a onMouseOver="status='Link To Investment Adviser Search';return true" onMouseOut="status='';" class="NavSelected" href="&#xA;                              javascript: JNav('/IAPD/Content/Search/iapd_Search.aspx');&#xA;                            ">Investment Adviser Search</a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<BR>
+<BR>
+
+                                
+                                <!-- Left Nav Control Goes Here -->
+		                    </td>
+			</tr>
+		</table>
+		
+	            </td>
+		<td>
+                    <table border="0" height="92%" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td id="ctl00_tdBackground">
+                                <img alt="pixel" height="10" src="/IAPD/Images/pixel.gif" width="540" /><br />
+                                <table  border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <!-- Main Content -->
+                                             
+    <form method="post" action="iapd_OrgSearch.aspx?SearchGroup=Firm&amp;IndlText=&amp;FirmText=&amp;ZipCode=48003&amp;ZipRadius=5&amp;PageNumber=1" id="aspnetForm">
+		<div>
+		<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE2MTAyMzg3NzIPZBYCZg9kFgYCAQ9kFgICAQ9kFgJmDxYCHgRUZXh0BShJQVBEIC0gSW52ZXN0bWVudCBBZHZpc2VyIFNlYXJjaCBSZXN1bHRzZAIFD2QWAmYPZBYEZg9kFgICAw9kFgJmD2QWAmYPZBYCAgEPZBYCAgEPZBYCZg8WAh8ABYQNPHRhYmxlIGJvcmRlcj0iMCIgd2lkdGg9IjEzMCIgY2VsbHNwYWNpbmc9IjUiIGNlbGxwYWRkaW5nPSIwIj4NCiAgPHRyPg0KICAgIDx0ZD4NCiAgICAgIDxpbWcgc3JjPSIvSUFQRC9pbWFnZXMvSUFQRGhvbWUyLmpwZyIgYWx0PSJJQVBEIE1haW4iPg0KICAgIDwvdGQ+DQogIDwvdHI+DQogIDx0cj4NCiAgICA8dGQ+DQogICAgICA8dGFibGUgYm9yZGVyPSIwIiB3aWR0aD0iMTMwIiBjZWxsc3BhY2luZz0iMyIgY2VsbHBhZGRpbmc9IjAiPg0KICAgICAgICA8dHI+DQogICAgICAgICAgPHRkPg0KICAgICAgICAgICAgPGEgb25Nb3VzZU92ZXI9InN0YXR1cz0nTGluayBUbyB0aGUgU0VDJztyZXR1cm4gdHJ1ZSIgb25Nb3VzZU91dD0ic3RhdHVzPScnOyIgY2xhc3M9Ik5hdiIgaHJlZj0iJiN4QTsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBqYXZhc2NyaXB0OiBKTmF2KCcvSUFQRC9Db250ZW50L0lBUERNYWluL2lhcGRfU0VDUmVkaXJlY3QuYXNweCcpOyYjeEE7ICAgICAgICAgICAgICAgICAgICAgICAgICAgICI+UmV0dXJuIHRvIHRoZSBTRUM8L2E+DQogICAgICAgICAgPC90ZD4NCiAgICAgICAgPC90cj4NCiAgICAgICAgPHRyPg0KICAgICAgICAgIDx0ZD4NCiAgICAgICAgICAgIDxhIG9uTW91c2VPdmVyPSJzdGF0dXM9J0xpbmsgVG8gdGhlIFNFQyBJQVJEIFBhZ2UnO3JldHVybiB0cnVlIiBvbk1vdXNlT3V0PSJzdGF0dXM9Jyc7IiBjbGFzcz0iTmF2IiBocmVmPSImI3hBOyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGphdmFzY3JpcHQ6IEpOYXYoJy9JQVBEL0NvbnRlbnQvSUFQRE1haW4vaWFwZF9TRUNSZWRpcmVjdC5hc3B4P2Rpcj1JQVJEJyk7JiN4QTsgICAgICAgICAgICAgICAgICAgICAgICAgICAgIj5SZXR1cm4gdG8gU0VDIElBUkQgUGFnZTwvYT4NCiAgICAgICAgICA8L3RkPg0KICAgICAgICA8L3RyPg0KICAgICAgICA8dHI+DQogICAgICAgICAgPHRkPg0KICAgICAgICAgICAgPGEgb25Nb3VzZU92ZXI9InN0YXR1cz0nTGluayBUbyBTaXRlbWFwJztyZXR1cm4gdHJ1ZSIgb25Nb3VzZU91dD0ic3RhdHVzPScnOyIgY2xhc3M9Ik5hdiIgaHJlZj0iJiN4QTsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBqYXZhc2NyaXB0OiBKTmF2KCcvSUFQRC9Db250ZW50L0lBUERNYWluL2lhcGRfU2l0ZU1hcC5hc3B4Jyk7JiN4QTsgICAgICAgICAgICAgICAgICAgICAgICAgICAgIj5SZXR1cm4gdG8gU2l0ZW1hcDwvYT4NCiAgICAgICAgICA8L3RkPg0KICAgICAgICA8L3RyPg0KICAgICAgICA8dHI+DQogICAgICAgICAgPHRkPg0KICAgICAgICAgICAgPGEgb25Nb3VzZU92ZXI9InN0YXR1cz0nTGluayBUbyBJbnZlc3RtZW50IEFkdmlzZXIgU2VhcmNoJztyZXR1cm4gdHJ1ZSIgb25Nb3VzZU91dD0ic3RhdHVzPScnOyIgY2xhc3M9Ik5hdlNlbGVjdGVkIiBocmVmPSImI3hBOyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGphdmFzY3JpcHQ6IEpOYXYoJy9JQVBEL0NvbnRlbnQvU2VhcmNoL2lhcGRfU2VhcmNoLmFzcHgnKTsmI3hBOyAgICAgICAgICAgICAgICAgICAgICAgICAgICAiPkludmVzdG1lbnQgQWR2aXNlciBTZWFyY2g8L2E+DQogICAgICAgICAgPC90ZD4NCiAgICAgICAgPC90cj4NCiAgICAgIDwvdGFibGU+DQogICAgPC90ZD4NCiAgPC90cj4NCjwvdGFibGU+DQo8QlI+DQo8QlI+ZAIBD2QWAgIBD2QWAgIBD2QWAgIBD2QWAgIBD2QWBAIBDw8WAh4DMjIzBfIICjxpbWcgaWQ9ImN0bDAwX2NwaE1haW5Db250ZW50X2ltZ0luZm8iIHNyYz0iLi4vLi4vSW1hZ2VzL0luZm9fc21hbGwuZ2lmIiBzdHlsZT0iYm9yZGVyLXdpZHRoOjBweDsiIC8+ClRoZSBpbnZlc3RtZW50IGFkdmlzZXJzIGxpc3RlZCBiZWxvdyBhcmUgKG9yIHdlcmUgaW4gdGhlIGxhc3QgMTAgeWVhcnMpIHJlZ2lzdGVyZWQgd2l0aCB0aGUgU0VDIGFuZC9vciB0aGUgc3RhdGVzLCBvciBleGVtcHQgZnJvbSByZWdpc3RyYXRpb24gYnV0IHJlcXVpcmVkIHRvIGZpbGUgcmVwb3J0cyB3aXRoIHRoZSBTRUMgYW5kL29yIHRoZSBzdGF0ZXMgKCJFeGVtcHQgUmVwb3J0aW5nIEFkdmlzZXJzIikuClRoZSBCcm9rZXJhZ2UgZmlybXMgbGlzdGVkIGJlbG93IGhhdmUgaW5mb3JtYXRpb24gaW4gRklOUkEncyBCcm9rZXJDaGVjayBzeXN0ZW0uCjxwPgpCeSBjbGlja2luZyBvbiBhbnkgaW52ZXN0bWVudCBhZHZpc2VyIGJlbG93LCB5b3Ugd2lsbCBiZSB2aWV3aW5nIHRoZSBtb3N0IHJlY2VudCBGb3JtIEFEViBpdCBmaWxlZC4gSW52ZXN0bWVudCBhZHZpc2VycyBmaWxlIGEgRm9ybSBBRFYgdG8gcmVnaXN0ZXIgd2l0aCB0aGUgU0VDIGFuZC9vciB0aGUgc3RhdGVzLgpFeGVtcHQgUmVwb3J0aW5nIEFkdmlzZXJzIGNvbXBsZXRlIGEgcG9ydGlvbiBvZiBGb3JtIEFEViBmb3IgcHVycG9zZXMgb2YgcmVwb3J0aW5nIHRvIHRoZSBTRUMgYW5kL29yIHRoZSBzdGF0ZXMuCjwvcD4KPHA+CkJ5IGNsaWNraW5nIG9uIGFueSBCcm9rZXJhZ2UgZmlybSBiZWxvdywgeW91IHdpbGwgYmUgbGlua2VkIHRvIEZJTlJBJ3MgQnJva2VyQ2hlY2sgc3lzdGVtIHRvIHZpZXcgaW5mb3JtYXRpb24gYWJvdXQgdGhhdCBCcm9rZXJhZ2UgZmlybS4KPC9wPgo8cD4KSWYgeW91IHdvdWxkIGxpa2UgYWRkaXRpb25hbCBpbmZvcm1hdGlvbiBhYm91dCBhbiBpbnZlc3RtZW50IGFkdmlzZXIgKHN1Y2ggYXMgdGhlIGludmVzdG1lbnQgYWR2aXNlcidzIHByZXZpb3VzbHkgZmlsZWQgRm9ybSBBRFZzKSwKY29udGFjdCB0aGUgU0VDIFB1YmxpYyBSZWZlcmVuY2UgUm9vbSAoMjAyLTU1MS04MDkwKSBvciBjb250YWN0IGEgc3RhdGUgd2hlcmUgdGhlIGludmVzdG1lbnQgYWR2aXNlciBpcyByZWdpc3RlcmVkIG9yIGZpbGVzIHJlcG9ydHMKPC9wPmQWAmYPDxYCHwAF8ggKPGltZyBpZD0iY3RsMDBfY3BoTWFpbkNvbnRlbnRfaW1nSW5mbyIgc3JjPSIuLi8uLi9JbWFnZXMvSW5mb19zbWFsbC5naWYiIHN0eWxlPSJib3JkZXItd2lkdGg6MHB4OyIgLz4KVGhlIGludmVzdG1lbnQgYWR2aXNlcnMgbGlzdGVkIGJlbG93IGFyZSAob3Igd2VyZSBpbiB0aGUgbGFzdCAxMCB5ZWFycykgcmVnaXN0ZXJlZCB3aXRoIHRoZSBTRUMgYW5kL29yIHRoZSBzdGF0ZXMsIG9yIGV4ZW1wdCBmcm9tIHJlZ2lzdHJhdGlvbiBidXQgcmVxdWlyZWQgdG8gZmlsZSByZXBvcnRzIHdpdGggdGhlIFNFQyBhbmQvb3IgdGhlIHN0YXRlcyAoIkV4ZW1wdCBSZXBvcnRpbmcgQWR2aXNlcnMiKS4KVGhlIEJyb2tlcmFnZSBmaXJtcyBsaXN0ZWQgYmVsb3cgaGF2ZSBpbmZvcm1hdGlvbiBpbiBGSU5SQSdzIEJyb2tlckNoZWNrIHN5c3RlbS4KPHA+CkJ5IGNsaWNraW5nIG9uIGFueSBpbnZlc3RtZW50IGFkdmlzZXIgYmVsb3csIHlvdSB3aWxsIGJlIHZpZXdpbmcgdGhlIG1vc3QgcmVjZW50IEZvcm0gQURWIGl0IGZpbGVkLiBJbnZlc3RtZW50IGFkdmlzZXJzIGZpbGUgYSBGb3JtIEFEViB0byByZWdpc3RlciB3aXRoIHRoZSBTRUMgYW5kL29yIHRoZSBzdGF0ZXMuCkV4ZW1wdCBSZXBvcnRpbmcgQWR2aXNlcnMgY29tcGxldGUgYSBwb3J0aW9uIG9mIEZvcm0gQURWIGZvciBwdXJwb3NlcyBvZiByZXBvcnRpbmcgdG8gdGhlIFNFQyBhbmQvb3IgdGhlIHN0YXRlcy4KPC9wPgo8cD4KQnkgY2xpY2tpbmcgb24gYW55IEJyb2tlcmFnZSBmaXJtIGJlbG93LCB5b3Ugd2lsbCBiZSBsaW5rZWQgdG8gRklOUkEncyBCcm9rZXJDaGVjayBzeXN0ZW0gdG8gdmlldyBpbmZvcm1hdGlvbiBhYm91dCB0aGF0IEJyb2tlcmFnZSBmaXJtLgo8L3A+CjxwPgpJZiB5b3Ugd291bGQgbGlrZSBhZGRpdGlvbmFsIGluZm9ybWF0aW9uIGFib3V0IGFuIGludmVzdG1lbnQgYWR2aXNlciAoc3VjaCBhcyB0aGUgaW52ZXN0bWVudCBhZHZpc2VyJ3MgcHJldmlvdXNseSBmaWxlZCBGb3JtIEFEVnMpLApjb250YWN0IHRoZSBTRUMgUHVibGljIFJlZmVyZW5jZSBSb29tICgyMDItNTUxLTgwOTApIG9yIGNvbnRhY3QgYSBzdGF0ZSB3aGVyZSB0aGUgaW52ZXN0bWVudCBhZHZpc2VyIGlzIHJlZ2lzdGVyZWQgb3IgZmlsZXMgcmVwb3J0cwo8L3A+ZGQCAw88KwARAgAPFgYeF0V4R3JpZFZpZXdfVG90YWxSZWNvcmRzAgEeC18hRGF0YUJvdW5kZx4LXyFJdGVtQ291bnQCAWQBEBYFZgIBAgICAwIEFgU8KwAFAQAWAh4KSGVhZGVyVGV4dAXBAUxlZ2FsIE5hbWUgKElBUkQvQ1JEIykgPGltZyBpZD0naW1nSW5kdmwnIHNyYz0nL2ltYWdlcy9xdWVzdGlvbl9tYXJrLnBuZycgb25jbGljaz0iamF2YXNjcmlwdDogc2hvd0hpZGUoJ01zZ0RpdicsIHRoaXMsICAnVGhpcyBpcyB0aGUgZmlybVwncyBjdXJyZW50IGxlZ2FsIG5hbWUuJyk7IiAvPjxiciAvPlN1bW1hcnkgSW5mb3JtYXRpb248KwAFAQAWAh8FBY4CT3RoZXIgTmFtZXMgPGltZyBpZD0naW1nSW5kdmwnIHNyYz0nL2ltYWdlcy9xdWVzdGlvbl9tYXJrLnBuZycgb25jbGljaz0iamF2YXNjcmlwdDogc2hvd0hpZGUoJ01zZ0RpdicsIHRoaXMsICAnVGhpcyBpcyB0aGUgbmFtZSB1bmRlciB3aGljaCB0aGUgZmlybVwncyBicm9rZXItZGVhbGVyIG9yIGludmVzdG1lbnQgYWR2aXNvcnkgYnVzaW5lc3MgaXMgcHJpbWFyaWx5IGNvbmR1Y3RlZCwgaWYgZGlmZmVyZW50IHRoYW4gdGhlIGZpcm1cJ3MgbGVnYWwgbmFtZS4nKTsiIC8+PCsABQEAFgIfBQXiAVNFQyBOdW1iZXIgPGltZyBpZD0naW1nSW5kdmwnIHNyYz0nL2ltYWdlcy9xdWVzdGlvbl9tYXJrLnBuZycgb25jbGljaz0iamF2YXNjcmlwdDogc2hvd0hpZGUoJ01zZ0RpdicsIHRoaXMsICAnQW4gU0VDIG51bWJlciBpcyBhIHVuaXF1ZSBpZGVudGlmaWNhdGlvbiBudW1iZXIgYXNzaWduZWQgdG8gYSBmaXJtIGJ5IHRoZSBTZWN1cml0aWVzIGFuZCBFeGNoYW5nZSBDb21taXNzaW9uLicpOyIgLz48KwAFAQAWAh8FBbgBTWF0Y2hlZCBMb2NhdGlvbnMgPGltZyBpZD0naW1nSW5kdmwnIHNyYz0nL2ltYWdlcy9xdWVzdGlvbl9tYXJrLnBuZycgb25jbGljaz0iamF2YXNjcmlwdDogc2hvd0hpZGUoJ01zZ0RpdicsIHRoaXMsICAnVGhlc2UgYXJlIHRoZSBmaXJtIGxvY2F0aW9ucyB0aGF0IG1lZXQgeW91ciBzZWFyY2ggY3JpdGVyaWEuJyk7IiAvPjwrAAUBABYCHgdWaXNpYmxlaBYFAgYCBgIGAgYCBhYCZg9kFghmDw8WAh8GaGQWAmYPZBYCZg9kFgJmD2QWAmYPZBYCZg9kFgICCg8QDxYCHwNnZGQWAWZkAgIPZBYKZg9kFgJmDxUEE1BOQyBJTlZFU1RNRU5UUyBMTEMGMTI5MDUymwI8bGk+PGEgaHJlZj0iamF2YXNjcmlwdDpKU2V0QW5kU3ViKCdpYXBkX2xhbmRpbmcuYXNweD9TZWFyY2hHcm91cD1GaXJtJkZpcm1LZXk9MTI5MDUyJkJyb2tlcktleT0tMScsJzEyOTA1MicpIiB0aXRsZT0iTGluayB0byBGb3JtIEFEViIgb25Nb3VzZU92ZXI9InN0YXR1cz0mcXVvdDtMaW5rIHRvIElBIFJlZ2lzdHJhdGlvbiZxdW90OzsgcmV0dXJuIHRydWUiIG9uTW91c2VPdXQ9InN0YXR1cz0mcXVvdDsmcXVvdDs7IiAgPjxiPiBJbnZlc3RtZW50IEFkdmlzZXIgRmlybSA8L2I+PC9hPjwvbGk+uQI8bGk+PGEgaHJlZj0iaHR0cDovL2Jyb2tlcmNoZWNrLmZpbnJhLm9yZy9TdXBwb3J0L05CQ19MaW5rX0Zvcl9JQVBELmFzcHg/SU5EVkxfUEs9LTEmTGlua2VkRnJvbT1TdW1tYXJ5Jk9SR19QSz0xMjkwNTImRU5USVRZX1RZUEU9MiIgdGl0bGU9IkxpbmsgdG8gQnJva2VyQ2hlY2siIG9uTW91c2VPdmVyPSJzdGF0dXM9JnF1b3Q7TGluayB0byBCcm9rZXIgU3VtbWFyeSZxdW90OzsgcmV0dXJuIHRydWUiIG9uTW91c2VPdXQ9InN0YXR1cz0mcXVvdDsmcXVvdDs7IiB0YXJnZXQ9J19ibGFuaycgPjxiPiBCcm9rZXJhZ2UgRmlybSA8L2I+PC9hPjwvbGk+ZAIBD2QWAmYPFQEQUE5DIElOVkVTVE1FTlRTIGQCAg9kFgJmDxUBFjgtNjYxOTU8YnIgLz44MDEtNjYxOTVkAgMPZBYCAgEPFgIfBAIBFgJmD2QWAmYPFQEzQUxNT05ULCA0MDIgTk9SVEggTUFJTiBTVFJFRVQ8YnIgLz5BTE1PTlQsIE1JIDQ4MDAzZAIED2QWAgIBDxYCHwQC/////w9kAgMPDxYCHwZoZGQCBA8PFgIfBmhkFgJmD2QWAmYPZBYCZg9kFgJmD2QWAmYPZBYCAgoPEA8WAh8DZ2RkFgFmZAIHD2QWAmYPZBYCZg9kFgICAQ9kFgICAQ9kFgJmDxYCHwAF3wo8dGFibGUgYm9yZGVyPSIwIiBjZWxscGFkZGluZz0iMCIgY2VsbHNwYWNpbmc9IjAiIHdpZHRoPSIxMDAlIj4NCiAgPHRyIGNsYXNzPSJub3ByaW50IiBhbGlnbj0idG9wIj4NCiAgICA8VEQgY29sc3Bhbj0iMyIgYWxpZ249ImNlbnRlciIgdmFsaWduPSJ0b3AiIHdpZHRoPSIxNTAiIENsYXNzPSJCYWNrVG9Ub3AiPg0KICAgICAgPGEgSFJFRj0iI1BhZ2VUb3AiIENsYXNzPSJGb290ZXJNZW51SXRlbSIgb25Nb3VzZU92ZXI9InN0YXR1cz0nU2Nyb2xsIEJhY2sgdG8gVG9wIG9mIHRoaXMgUGFnZSc7cmV0dXJuIHRydWUiIG9uTW91c2VPdXQ9InN0YXR1cz0nJyI+QmFjayB0byBUb3A8L2E+DQogICAgPC9URD4NCiAgICA8dGQgQ2xhc3M9IkZvb3Rlck1lbnVJdGVtIiBhbGlnbj0iQ2VudGVyIj4NCiAgICAgIDxkaXYgYWxpZ249ImNlbnRlciI+DQogICAgICAgIDxiPklBUEQgTWFpbjwvYj4NCiAgICAgIDwvZGl2Pg0KICAgICAgPGEgY2xhc3M9IkZvb3Rlck1lbnVJdGVtIiBocmVmPSJqYXZhc2NyaXB0OiBKTmF2KCcvSUFQRC9Db250ZW50L0lBUERNYWluL2lhcGRfU0VDUmVkaXJlY3QuYXNweCcpOyIgb25Nb3VzZU92ZXI9InN0YXR1cz0nTGluayBUbyB0aGUgU0VDJzsgcmV0dXJuIHRydWUiIG9uTW91c2VPdXQ9InN0YXR1cz0nJyI+UmV0dXJuIHRvIHRoZSBTRUM8L2E+CgkgICAgICDCoHzCoAoJICAgPGEgY2xhc3M9IkZvb3Rlck1lbnVJdGVtIiBocmVmPSJqYXZhc2NyaXB0OiBKTmF2KCcvSUFQRC9Db250ZW50L0lBUERNYWluL2lhcGRfU0VDUmVkaXJlY3QuYXNweD9kaXI9SUFSRCcpOyIgb25Nb3VzZU92ZXI9InN0YXR1cz0nTGluayBUbyB0aGUgU0VDIElBUkQgUGFnZSc7IHJldHVybiB0cnVlIiBvbk1vdXNlT3V0PSJzdGF0dXM9JyciPlJldHVybiB0byBTRUMgSUFSRCBQYWdlPC9hPgoJICAgICAgwqB8wqAKCSAgIDxhIGNsYXNzPSJGb290ZXJNZW51SXRlbSIgaHJlZj0iamF2YXNjcmlwdDogSk5hdignL0lBUEQvQ29udGVudC9JQVBETWFpbi9pYXBkX1NpdGVNYXAuYXNweCcpOyIgb25Nb3VzZU92ZXI9InN0YXR1cz0nTGluayBUbyBTaXRlbWFwJzsgcmV0dXJuIHRydWUiIG9uTW91c2VPdXQ9InN0YXR1cz0nJyI+UmV0dXJuIHRvIFNpdGVtYXA8L2E+CgkgICAgICDCoHzCoAoJICAgPGEgY2xhc3M9IkZvb3Rlckl0ZW1TZWxlY3RlZCIgaHJlZj0iamF2YXNjcmlwdDogSk5hdignL0lBUEQvQ29udGVudC9TZWFyY2gvaWFwZF9TZWFyY2guYXNweCcpOyIgb25Nb3VzZU92ZXI9InN0YXR1cz0nTGluayBUbyBJbnZlc3RtZW50IEFkdmlzZXIgU2VhcmNoJzsgcmV0dXJuIHRydWUiIG9uTW91c2VPdXQ9InN0YXR1cz0nJyI+SW52ZXN0bWVudCBBZHZpc2VyIFNlYXJjaDwvYT7CoAogPC90ZD4NCiAgPC90cj4NCjwvdGFibGU+ZBgBBSFjdGwwMCRjcGhNYWluQ29udGVudCRnck9yZ1Jlc3VsdHMPPCsADAEIAgFkG+MnL/6YLDUmQK+9OG6/yDk778qYxet/dc89i2WtjTM=" />
+		</div>
+
+		
+<script src="/WebResource.axd?d=P887KQJqL5OfaG-iufUXV3dgNK5CUOsjm_dX8ujYlchT7S7mTAK4D-Ugmaf_zUMpkcKHWf4qqjNfTAo-zgUMbHyHFf6Xj37LLdmbhQpmzqJTD6vwt28qnu3K-3-22-qA7DTqxLgPYs0gD5YJM1Gn5Tct7taKRY6l0gXsYJr15xk1&amp;t=634740054840000000" type="text/javascript"></script>
+		<div>
+
+			<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+			<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+			<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWCQLB2dueDgKckKftBQKS//GACQKX/82ACQK1vqrXDgLQ/9nLCALekI+mBALbkLOmBAL50dTxA4gBnazPxWkKGYl3cloZwfkvfd9xzOsy16EZ9J9udwwZ" />
+		</div>
+
+<div id="ctl00_cphMainContent_pnlOrgResults">
+			
+    <div class="pageTitle">Investment Adviser Search Results</div>
+    <table border="0" cellpadding="5" cellspacing="0" width="100%">
+        <tr>
+            <td class="QueryTableTitle" >&nbsp;</td>
+        </tr>
+        <tr>
+            <td  >
+           <span id="ctl00_cphMainContent_insSearchRstlsInstrText_lblSectionInstruction" style="display:inline-block;color:Black;width:100%;">
+<img id="ctl00_cphMainContent_imgInfo" src="../../Images/Info_small.gif" style="border-width:0px;" />
+The investment advisers listed below are (or were in the last 10 years) registered with the SEC and/or the states, or exempt from registration but required to file reports with the SEC and/or the states ("Exempt Reporting Advisers").
+The Brokerage firms listed below have information in FINRA's BrokerCheck system.
+<p>
+By clicking on any investment adviser below, you will be viewing the most recent Form ADV it filed. Investment advisers file a Form ADV to register with the SEC and/or the states.
+Exempt Reporting Advisers complete a portion of Form ADV for purposes of reporting to the SEC and/or the states.
+</p>
+<p>
+By clicking on any Brokerage firm below, you will be linked to FINRA's BrokerCheck system to view information about that Brokerage firm.
+</p>
+<p>
+If you would like additional information about an investment adviser (such as the investment adviser's previously filed Form ADVs),
+contact the SEC Public Reference Room (202-551-8090) or contact a state where the investment adviser is registered or files reports
+</p></span>
+
+ 
+           </td>
+        </tr>
+    </table>
+    <div>
+				<table cellspacing="0" cellpadding="2" rules="all" border="1" id="ctl00_cphMainContent_grOrgResults" style="width:100%;border-collapse:collapse;">
+					<tr style="border-width:0px;border-style:None;">
+						<td colspan="4" style="border-width:0px;border-style:None;"><table border="0" style="border-width:0px;width:100%;">
+							<tr>
+								<td align="center"><div id="ctl00_cphMainContent_grOrgResults_ctl01_pnlPager">
+									&nbsp<label for="ctl00_cphMainContent_grOrgResults_ctl01_ddlPageSize" id="ctl00_cphMainContent_grOrgResults_ctl01_lblRecordsPerPage" class="pagerText">Records per Page: </label><select name="ctl00$cphMainContent$grOrgResults$ctl01$ddlPageSize" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$cphMainContent$grOrgResults$ctl01$ddlPageSize\&#39;,\&#39;\&#39;)&#39;, 0)" id="ctl00_cphMainContent_grOrgResults_ctl01_ddlPageSize" class="pagerText">
+										<option selected="selected" value="25">25</option>
+										<option value="50">50</option>
+										<option value="100">100</option>
+
+									</select>&nbsp<span id="ctl00_cphMainContent_grOrgResults_ctl01_lblTotalRecords" class="pagerText">Total Records: 1</span>
+								</div></td>
+							</tr>
+						</table></td>
+					</tr><tr class="QueryTableTitle">
+						<th class="tableHeaderLabel" scope="col" style="white-space:nowrap;">Legal Name (IARD/CRD#) <img id='imgIndvl' src='/images/question_mark.png' onclick="javascript: showHide('MsgDiv', this,  'This is the firm\'s current legal name.');" /><br />Summary Information</th><th class="tableHeaderLabel" align="left" valign="top" scope="col" style="width:32%;white-space:nowrap;">Other Names <img id='imgIndvl' src='/images/question_mark.png' onclick="javascript: showHide('MsgDiv', this,  'This is the name under which the firm\'s broker-dealer or investment advisory business is primarily conducted, if different than the firm\'s legal name.');" /></th><th class="tableHeaderLabel" scope="col" style="white-space:nowrap;">SEC Number <img id='imgIndvl' src='/images/question_mark.png' onclick="javascript: showHide('MsgDiv', this,  'An SEC number is a unique identification number assigned to a firm by the Securities and Exchange Commission.');" /></th><th class="tableHeaderLabel" scope="col" style="width:32%;white-space:nowrap;">Matched Locations <img id='imgIndvl' src='/images/question_mark.png' onclick="javascript: showHide('MsgDiv', this,  'These are the firm locations that meet your search criteria.');" /></th>
+					</tr><tr style="background-color:#EAECF4;">
+						<td align="left" valign="top">
+                <b>PNC INVESTMENTS LLC</b> (129052)<br />
+                    <div class='GrayShade' style='padding-top:4px;'>&nbsp;View Summary:</div>
+                <table width='100%' cellpadding='0' cellspacing='0' border='0'>
+                    <tr>
+                        <td colspan='3' style='padding-top: 4px;'>
+                            <ul type='square' class='GrayShadeNowrap'>
+                                <li><a href="javascript:JSetAndSub('iapd_landing.aspx?SearchGroup=Firm&FirmKey=129052&BrokerKey=-1','129052')" title="Link to Form ADV" onMouseOver="status=&quot;Link to IA Registration&quot;; return true" onMouseOut="status=&quot;&quot;;"  ><b> Investment Adviser Firm </b></a></li>
+                                <li><a href="http://brokercheck.finra.org/Support/NBC_Link_For_IAPD.aspx?INDVL_PK=-1&LinkedFrom=Summary&ORG_PK=129052&ENTITY_TYPE=2" title="Link to BrokerCheck" onMouseOver="status=&quot;Link to Broker Summary&quot;; return true" onMouseOut="status=&quot;&quot;;" target='_blank' ><b> Brokerage Firm </b></a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+             </td><td align="left" valign="top">
+                PNC INVESTMENTS                 
+             </td><td align="left" valign="top">
+                8-66195<br />801-66195                
+                </td><td align="left" valign="top">
+            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+              <tr>
+               <td class="SearchResultsAddress" style="padding-left:15px;">
+                <ul  type="square"  class='GrayShade'>
+                  
+                        <li style="padding-bottom:5px;">
+                            ALMONT, 402 NORTH MAIN STREET<br />ALMONT, MI 48003<br /> 
+                        </li>
+                    
+                </ul> 
+               </td>               
+              </tr>
+             </table>
+             </td>
+					</tr><tr style="border-width:0px;border-style:None;">
+						<td colspan="4" style="border-width:0px;border-style:None;"><table border="0" style="border-width:0px;width:100%;">
+							<tr>
+								<td align="center"><div id="ctl00_cphMainContent_grOrgResults_ctl05_pnlPager">
+									&nbsp<label for="ctl00_cphMainContent_grOrgResults_ctl05_ddlPageSize" id="ctl00_cphMainContent_grOrgResults_ctl05_lblRecordsPerPage" class="pagerText">Records per Page: </label><select name="ctl00$cphMainContent$grOrgResults$ctl05$ddlPageSize" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$cphMainContent$grOrgResults$ctl05$ddlPageSize\&#39;,\&#39;\&#39;)&#39;, 0)" id="ctl00_cphMainContent_grOrgResults_ctl05_ddlPageSize" class="pagerText">
+										<option selected="selected" value="25">25</option>
+										<option value="50">50</option>
+										<option value="100">100</option>
+
+									</select>&nbsp<span id="ctl00_cphMainContent_grOrgResults_ctl05_lblTotalRecords" class="pagerText">Total Records: 1</span>
+								</div></td>
+							</tr>
+						</table></td>
+					</tr>
+				</table>
+			</div> 
+
+		</div>
+ 
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+		if (!theForm) {
+    theForm = document.aspnetForm;
+}
+		function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+		//]]>
+</script>
+
+		</form>
+<script type="text/javascript" language="Javascript">
+    bDoneLoading = "Y"
+</script> 
+<form name="Content" method="Post">
+<input type="hidden" name="LinkPage" value="">
+<input type="hidden" name="PageType" value="Search">
+<input type="hidden" name="ORG_PK" value="000">
+<input type="hidden" name="STATE_CD" value="">
+</form>
+
+
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+		
+                        </tr>
+                    </table>
+                </td>
+	</tr>
+</table>
+
+       </td>
+      </tr>
+      <tr>
+      <td>
+      <table id="ctl00_tblFooter" height="100%" border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr valign="top">
+		<td class="FooterMenuItem noprint">
+                    
+                        <!-- Navigation Footer -->
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr class="noprint" align="top">
+    <TD colspan="3" align="center" valign="top" width="150" Class="BackToTop">
+      <a HREF="#PageTop" Class="FooterMenuItem" onMouseOver="status='Scroll Back to Top of this Page';return true" onMouseOut="status=''">Back to Top</a>
+    </TD>
+    <td Class="FooterMenuItem" align="Center">
+      <div align="center">
+        <b>IAPD Main</b>
+      </div>
+      <a class="FooterMenuItem" href="javascript: JNav('/IAPD/Content/IAPDMain/iapd_SECRedirect.aspx');" onMouseOver="status='Link To the SEC'; return true" onMouseOut="status=''">Return to the SEC</a>
+	       | 
+	   <a class="FooterMenuItem" href="javascript: JNav('/IAPD/Content/IAPDMain/iapd_SECRedirect.aspx?dir=IARD');" onMouseOver="status='Link To the SEC IARD Page'; return true" onMouseOut="status=''">Return to SEC IARD Page</a>
+	       | 
+	   <a class="FooterMenuItem" href="javascript: JNav('/IAPD/Content/IAPDMain/iapd_SiteMap.aspx');" onMouseOver="status='Link To Sitemap'; return true" onMouseOut="status=''">Return to Sitemap</a>
+	       | 
+	   <a class="FooterItemSelected" href="javascript: JNav('/IAPD/Content/Search/iapd_Search.aspx');" onMouseOver="status='Link To Investment Adviser Search'; return true" onMouseOut="status=''">Investment Adviser Search</a> 
+ </td>
+  </tr>
+</table>
+
+                    
+                 </td>
+	</tr>
+</table>
+        
+        </td>
+        <td>
+            <div id="MsgDiv" class="HelpDiv" style="display:none">
+                <table width="100%" cellpadding="3" cellspacing="0">    
+                    <tr>
+                        <td style="padding-right:10px;padding-left:5px""><label id="lblMsg"></label></td>                       
+                        <td align="right"><img id="imgCloseWindow" src="/images/CloseWindow.png" onclick="javascript: showHide('MsgDiv');"/></td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+      </tr>
+      </table>
+    </body>
+</html>
+
