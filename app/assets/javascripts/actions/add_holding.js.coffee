@@ -25,16 +25,8 @@ class window.AddBondHoldingView extends Backbone.View
           frequency: this.$("#bond_holding_frequency").val(),
           face_value: this.$("#bond_holding_face_value").val(),
           expected_yield: this.$("#bond_holding_expected_yield").val(),
-          'purchased_at(1i)': this.$("#bond_holding_purchased_at_1i").val(),
-          'purchased_at(2i)': this.$("#bond_holding_purchased_at_2i").val(),
-          'purchased_at(3i)': this.$("#bond_holding_purchased_at_3i").val(),
-          'purchased_at(4i)': this.$("#bond_holding_purchased_at_4i").val(),
-          'purchased_at(5i)': this.$("#bond_holding_purchased_at_5i").val(),
-          'matures_at(1i)': this.$("#bond_holding_matures_at_1i").val(),
-          'matures_at(2i)': this.$("#bond_holding_matures_at_2i").val(),
-          'matures_at(3i)': this.$("#bond_holding_matures_at_3i").val(),
-          'matures_at(4i)': this.$("#bond_holding_matures_at_4i").val(),
-          'matures_at(5i)': this.$("#bond_holding_matures_at_5i").val(),
+          purchased_at: this.$("input[name=purchased_at]").val(),
+          matures_at: this.$("input[name=purchased_at]").val(),
           portfolio_id: @model.get('portfolio_id')
         }
       }
@@ -67,16 +59,8 @@ class window.AddCdHoldingView extends Backbone.View
           frequency: this.$("#cd_holding_frequency").val(),
           face_value: this.$("#cd_holding_face_value").val(),
           expected_yield: this.$("#cd_holding_expected_yield").val(),
-          'purchased_at(1i)': this.$("#cd_holding_purchased_at_1i").val(),
-          'purchased_at(2i)': this.$("#cd_holding_purchased_at_2i").val(),
-          'purchased_at(3i)': this.$("#cd_holding_purchased_at_3i").val(),
-          'purchased_at(4i)': this.$("#cd_holding_purchased_at_4i").val(),
-          'purchased_at(5i)': this.$("#cd_holding_purchased_at_5i").val(),
-          'matures_at(1i)': this.$("#cd_holding_matures_at_1i").val(),
-          'matures_at(2i)': this.$("#cd_holding_matures_at_2i").val(),
-          'matures_at(3i)': this.$("#cd_holding_matures_at_3i").val(),
-          'matures_at(4i)': this.$("#cd_holding_matures_at_4i").val(),
-          'matures_at(5i)': this.$("#cd_holding_matures_at_5i").val(),
+          purchased_at: this.$("input[name=purchased_at]").val(),
+          matures_at: this.$("input[name=purchased_at]").val(),
           portfolio_id: @model.get('portfolio_id')
         }
       }
@@ -101,11 +85,7 @@ class window.AddEtfHoldingView extends Backbone.View
           etf_ticker_id: this.$("#etf_holding_etf_ticker_id").val(),
           starting_units: this.$("#etf_holding_starting_units").val(),
           starting_price: this.$("#etf_holding_starting_price").val(),
-          'purchased_at(1i)': this.$("#etf_holding_purchased_at_1i").val(),
-          'purchased_at(2i)': this.$("#etf_holding_purchased_at_2i").val(),
-          'purchased_at(3i)': this.$("#etf_holding_purchased_at_3i").val(),
-          'purchased_at(4i)': this.$("#etf_holding_purchased_at_4i").val(),
-          'purchased_at(5i)': this.$("#etf_holding_purchased_at_5i").val(),
+          purchased_at: this.$("input[name=purchased_at]").val(),
           portfolio_id: @model.get('portfolio_id')
         }
       }
@@ -133,11 +113,7 @@ class window.AddFundHoldingView extends Backbone.View
           fund_ticker_id: this.$("#fund_holding_fund_ticker_id").val(),
           starting_units: this.$("#fund_holding_starting_units").val(),
           starting_price: this.$("#fund_holding_starting_price").val(),
-          'purchased_at(1i)': this.$("#fund_holding_purchased_at_1i").val(),
-          'purchased_at(2i)': this.$("#fund_holding_purchased_at_2i").val(),
-          'purchased_at(3i)': this.$("#fund_holding_purchased_at_3i").val(),
-          'purchased_at(4i)': this.$("#fund_holding_purchased_at_4i").val(),
-          'purchased_at(5i)': this.$("#fund_holding_purchased_at_5i").val(),
+          purchased_at: this.$("input[name=purchased_at]").val(),
           portfolio_id: @model.get('portfolio_id')
         }
       }

@@ -42,7 +42,7 @@ class window.CompareIndicesView extends Backbone.View
       },
 
       series: [{
-        color: '#016633',
+        color: '#459E00',
         data: []
       }]
     };
@@ -101,7 +101,7 @@ class window.CompareValuesView extends Backbone.View
          text: 'Values for Model'
       },
       xAxis: {
-        categories: [],
+        categories: ['start','d5','d30','d90','d180','y1','y2','y3','y4','y5','current'],
       },
       yAxis: {
         title: {
@@ -115,19 +115,19 @@ class window.CompareValuesView extends Backbone.View
       },
 
       series: [{
-        color: '#016633',
+        color: '#459E00',
         name: 'bob',
-        data: []
+        data: [100,100,100,100,500,6000,100,500,600,700,100]
       }]
     };
 
-    options.xAxis.categories.push('start')
-    options.series[0].data.push(@model.attributes['starting_value'])
-    for k,v of @model.attributes.past_values
-      options.xAxis.categories.push(k)
-      options.series[0].data.push(v)
-    options.xAxis.categories.push('current')
-    options.series[0].data.push(@model.attributes['current_value'])
+#    options.xAxis.categories.push('start')
+#    options.series[0].data.push(@model.attributes['starting_value'])
+#    for k,v of @model.attributes.past_values
+#      options.xAxis.categories.push(k)
+#      options.series[0].data.push(v)
+#    options.xAxis.categories.push('current')
+#    options.series[0].data.push(@model.attributes['current_value'])
     chart = new Highcharts.Chart(options);
 
 

@@ -9,11 +9,12 @@ Highcharts.theme = {
       backgroundColor: {
          linearGradient: [0, 0, 0, 400],
          stops: [
-            [0, 'rgb(96, 96, 96)'],
-            [1, 'rgb(16, 16, 16)']
+            [0, 'rgb(249, 249, 249)'],
+            [1, 'rgb(245, 243, 229)']
          ]
       },
-      borderWidth: 0,
+      borderWidth: 1,
+      borderColor: '#D4CCB0',
       borderRadius: 15,
       plotBackgroundColor: null,
       plotShadow: false,
@@ -21,7 +22,7 @@ Highcharts.theme = {
    },
    title: {
       style: {
-         color: '#FFF',
+         color: '#AAA',
          font: '16px Lucida Grande, Lucida Sans Unicode, Verdana, Arial, Helvetica, sans-serif'
       }
    },
@@ -87,13 +88,13 @@ Highcharts.theme = {
       backgroundColor: {
          linearGradient: [0, 0, 0, 50],
          stops: [
-            [0, 'rgba(96, 96, 96, .8)'],
-            [1, 'rgba(16, 16, 16, .8)']
+            [0, 'rgba(249, 249, 249, .8)'],
+            [1, 'rgba(245, 243, 229, .8)']
          ]
       },
       borderWidth: 0,
       style: {
-         color: '#FFF'
+         color: '#000000'
       }
    },
 
