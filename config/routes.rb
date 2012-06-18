@@ -54,7 +54,8 @@ CommonBeans::Application.routes.draw do
 
   match "/auth/:provider/callback" => "sessions#create"
   match "/signout" => "sessions#destroy", :as => :signout
-  match "/profiles/public/:screen_name" => "profiles#show", :as => :public_profile
+  match "/profiles/public/twitter/:screen_name" => "users#twitter", :as => :public_twitter_profile
+  match "/profiles/public/facebook/:screen_name" => "users#twitter", :as => :public_twitter_profile
   root :to => 'pages#index'
 
   # The priority is based upon order of creation:

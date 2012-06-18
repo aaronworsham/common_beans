@@ -20,20 +20,43 @@ module Trust
   end
 
   # users that self follows
-  def trusting
+  def trusting_user_ids
     user_ids = $redis.smembers(self.redis_key(:trusting))
-    User.where(:id => user_ids)
+    user_ids.reject{|x| x.to_i == self.id}
+  end
+
+  def trusting
+    User.where(:id => trusting_user_ids)
   end
 
   # users that follow self
-  def trusted_by
+  def trusted_by_user_ids
     user_ids = $redis.smembers(self.redis_key(:trusted_by))
-    User.where(:id => user_ids)
+    user_ids.reject{|x| x.to_i == self.id}
+  end
+
+  def trusted_by
+    User.where(:id => trusted_by_user_ids)
   end
 
   # users who follow and are being followed by self
-  def friends
+  def friend_user_ids
     user_ids = $redis.sinter(self.redis_key(:trusting), self.redis_key(:trusted_by))
+    user_ids.reject{|x| x.to_i == self.id}
+  end
+
+  def friends
+    User.where(:id => friend_user_ids)
+
+  end
+
+  def invites_to
+    user_ids = (self.trusting_user_ids - self.friend_user_ids)
+    User.where(:id => user_ids)
+  end
+
+  def invites_from
+    user_ids = (self.trusted_by_user_ids - self.friend_user_ids)
     User.where(:id => user_ids)
   end
 

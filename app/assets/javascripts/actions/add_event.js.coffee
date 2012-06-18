@@ -62,7 +62,7 @@ for security in securities
         obj['authenticity_token'] = this.$("input[name=authenticity_token]").val()
 
         sec = new Object
-        sec[denom]= this.$("#"+security+"_sell_"+deno).val()
+        sec[denom]= this.$("#"+security+"_sell_"+denom).val()
         sec['price']= this.$("#"+security+"_sell_price").val()
         sec['executed_at(1i)']= this.$("#"+security+"_sell_executed_at_1i").val()
         sec['executed_at(2i)']= this.$("#"+security+"_sell_executed_at_2i").val()

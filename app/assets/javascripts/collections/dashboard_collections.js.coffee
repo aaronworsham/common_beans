@@ -98,8 +98,31 @@ class window.MultiStatementCollection extends Backbone.Collection
 
   addOneView: (p)->
     new MultiStatementView({model:p}).render();
+    for alloc in p.attributes.multi_allocations
+      do (alloc) ->
+        model = new MultiAllocationModel(alloc)
+        MultiAllocations.add(model)
 
 window.MultiStatements = new MultiStatementCollection
+
+class window.MultiAllocationCollection extends Backbone.Collection
+  model: MultiAllocationModel
+
+  initialize: ->
+     @bind('add', (alloc)->
+       @addOneView(alloc)
+     );
+     @bind('reset', (allocations)->
+       allocations.each( (p)->
+         allocation.addOneView(p)
+       );
+     );
+
+
+  addOneView: (p)->
+    new MultiAllocationView({model:p}).render();
+
+window.MultiAllocations = new MultiAllocationCollection
 
 class window.CompareIndicesCollection extends Backbone.Collection
   model: CompareIndicesModel

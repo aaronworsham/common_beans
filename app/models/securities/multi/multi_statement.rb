@@ -20,4 +20,10 @@ class MultiStatement < ActiveRecord::Base
     x.multi_holding.reallocate(allocations)
   end
 
+  def as_json(options={})
+    result = super(options)
+    result["multi_allocations"] = multi_statement_allocations
+    result
+  end
+
 end

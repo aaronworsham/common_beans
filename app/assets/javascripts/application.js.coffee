@@ -36,7 +36,25 @@ $ ->
 
 
 
-  $('#nav #show li.selectable').live("click", ->
+  $('#nav #compare tr.selectable').live("click", ->
+    id = $(@).attr('data-id');
+    title = $(@).attr('data-label');
+    $('#portfolio-compare').hide();
+    $('#portfolio-show').hide();
+    $('#portfolio-share .share-module').hide();
+    $('#nav li.selectable').each((i,v) ->
+      $(v).removeClass('selected');
+    );
+    $(@).addClass('selected');
+    $('#portfolio-compare #compare-indices > div').hide()
+    $('#portfolio-compare #compare-indices #compare-indices-portfolio-'+id).show();
+    $('#portfolio-compare #compare-values > div').hide()
+    $('#portfolio-compare #compare-values #compare-values-portfolio-'+id).show();
+    $('#portfolio-compare').fadeIn('fast');
+  );
+
+
+  $('#nav #show tr.selectable').live("click", ->
     id = $(@).attr('data-id');
     title = $(@).attr('data-label');
     stocks = StockHoldings.where({portfolio_id:parseInt(id)});
@@ -48,13 +66,14 @@ $ ->
 
     $('#portfolio-compare').hide();
     $('#portfolio-show').hide();
+    $('#portfolio-share .share-module').hide();
     $('#nav li.selectable').each((i,v) ->
       $(v).removeClass('selected');
     );
     $(@).addClass('selected');
     hotlistMenu.select(id, title, '#warmlist-portfolios', ()->
-      $('#nav #show .portfolio-content').hide()
-      $('#nav #show #portfolio-content-'+id).show();
+      $('#portfolio-show .portfolio-content').hide()
+      $('#portfolio-show #portfolio-content-'+id).show();
       if(stocks.length > 0)
         $('#portfolio-stocks-'+id).show();
       if(funds.length > 0)
@@ -74,7 +93,7 @@ $ ->
   );
 
 
-  $('#nav #compare li.selectable').live("click", ->
+  $('#nav #compare tr.selectable').live("click", ->
     id = $(@).attr('data-id');
     title = $(@).attr('data-label');
 
@@ -86,6 +105,14 @@ $ ->
     $(@).addClass('selected');
 
     $('#portfolio-compare').fadeIn('fast');
+  );
+
+
+  $('#nav #share tr.selectable').live("click", ->
+    $('#portfolio-compare').hide();
+    $('#portfolio-show').hide();
+    $('#portfolio-share .share-module').fadeIn('slow');
+
   );
 
 

@@ -12,15 +12,16 @@
     #autocomplete
       = "Select Name or Symbol"
 
-      = f.input :started_on
+      = f.input :started_on, :as => :string, :input_html => {:simple_tag_name => true, :class => 'date_picker'}
       = f.input :starting_balance
-      = f.input :ended_on
+      = f.input :ended_on, :as => :string, :input_html => {:simple_tag_name => true, :class => 'date_picker'}
       = f.input :ending_balance
       = f.input :contributions
 
       = f.simple_fields_for MultiStatementAllocation.new do |msa|
         = msa.input :ticker_name, :url => '/fund_tickers/autocomplete_fund_ticker_name', :as => :autocomplete, :input_html => {"data-id-element" => "#facebox #multi_statement_fund_ticker_id"}
         = msa.input :ticker_symbol, :url => '/fund_tickers/autocomplete_fund_ticker_symbol', :as => :autocomplete, :input_html => {"data-id-element" => "#facebox #multi_statement_fund_ticker_id"}
+        = msa.input :allocation_percentage
         = msa.input :fund_ticker_id, :as => :hidden
 
     = link_to 'Create', '#', :class => 'create_link'

@@ -230,5 +230,6 @@ autocomplete_stock_ticker_symbol_stock_tickers GET    /stock_tickers/autocomplet
                                                DELETE /invite_financial_advisers/:id(.:format)                  {:action=>"destroy", :controller=>"invite_financial_advisers"}
                                                       /auth/:provider/callback(.:format)                        {:controller=>"sessions", :action=>"create"}
                                        signout        /signout(.:format)                                        {:controller=>"sessions", :action=>"destroy"}
-                                public_profile        /profiles/public/:screen_name(.:format)                   {:controller=>"profiles", :action=>"show"}
+                        public_twitter_profile        /profiles/public/twitter/:screen_name(.:format)           {:controller=>"users", :action=>"twitter"}
+                        public_twitter_profile        /profiles/public/facebook/:screen_name(.:format)          {:controller=>"users", :action=>"twitter"}
                                           root        /                                                         {:controller=>"pages", :action=>"index"}

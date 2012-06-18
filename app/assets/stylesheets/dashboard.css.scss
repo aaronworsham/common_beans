@@ -2,83 +2,86 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#portfolio-show{
-  table {
-    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-    font-size: 12px;
-    margin: 2px;
-    width: 100%;
-    text-align: left;
-    border-collapse: collapse;
-    thead{
-      border-bottom: 6px solid #fff;
-    }
-    tr.holding-tr{
+.portfolio-content{
+  text-align: center;
+}
 
-      td{
-        text-align:left;
-        background: #cfeab9;
-        font-size:16px;
-        color:#64b0fc;
 
-      }
-    }
+table {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+  font-size: 12px;
+  margin: 2px;
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+  thead{
+    border-bottom: 6px solid #fff;
+  }
+  tr.holding-tr{
+
     td{
-      text-align: center;
-      padding: 2px;
-      background: #f0f7f2; 
-      color: #014414;
+      text-align:left;
+      background: #cfeab9;
+      font-size:16px;
+      color:#64b0fc;
 
-      .holding_name {
-        background: #e3efe7;
-        font-size: 14px;
-      }
-      .holding_buy_sell {
-        width:250px;
-        background: #e3efe7;
-        .remove-holding{
-          float: right;
-        }
+    }
+  }
+  td{
+    text-align: center;
+    padding: 2px;
+    background: #f0f7f2;
+    color: #014414;
+
+    .holding_name {
+      background: #e3efe7;
+      font-size: 14px;
+    }
+    .holding_buy_sell {
+      width:250px;
+      background: #e3efe7;
+      .remove-holding{
+        float: right;
       }
     }
-    td.holding-drawer{
-      text-align: center;
-      background: white;
-      color: #014414;
-      cusror:default;
+  }
+  td.holding-drawer{
+    text-align: center;
+    background: white;
+    color: #014414;
+    cusror:default;
+  }
+  th{
+    text-align:center;
+    font-size: 13px;
+    font-weight: normal;
+    background: #f0f7f2;
+    border-left:2px solid #d3e5d8;
+    border-right:2px solid #d3e5d8;
+    color: #777;
+    .remove-profile{
+      float: right;
     }
+    .remove-event{
+      float: right;
+    }
+  }
+  tr.super_head{
     th{
       text-align:center;
-      font-size: 13px;
-      font-weight: normal;
-      background: #f0f7f2;
-      border-left:2px solid #d3e5d8;
-      border-right:2px solid #d3e5d8;
-      color: #777;
-      .remove-profile{
-        float: right;
-      }
-      .remove-event{
-        float: right;
-      }
+      border: 2px solid #d3e5d8;
     }
-    tr.super_head{
-      th{
-        text-align:center;
-        border: 2px solid #d3e5d8;
-      }
-      th.name{
-        font-size:16px;
-        color:#c2def9;
-        border-bottom:0px;
-      }
+    th.name{
+      font-size:16px;
+      color:#c2def9;
+      border-bottom:0px;
     }
-    tr.holding-header{
-      cursor:pointer;
-      border-top: 3px solid #fff;
-      border-right: 3px solid #fff;
-      border-left: 3px solid #fff;
-    }
+  }
+  tr.holding-header{
+    cursor:pointer;
+    border-top: 3px solid #fff;
+    border-right: 3px solid #fff;
+    border-left: 3px solid #fff;
   }
 }
 
@@ -119,7 +122,60 @@
 
 }
 
+.security-module {
+  /* fallback */
+  background-color: #fafaf4;
+  padding: 10px;
+  border: 1px solid #dfd9c3;
 
+
+  /* Safari 4-5, Chrome 1-9 */
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fafaf4), to(#f5f3e5));
+
+  /* Safari 5.1, Chrome 10+ */
+  background: -webkit-linear-gradient(top, #fafaf4, #f5f3e5);
+
+  /* Firefox 3.6+ */
+  background: -moz-linear-gradient(top, #fafaf4, #f5f3e5);
+
+  /* IE 10 */
+  background: -ms-linear-gradient(top, #fafaf4, #f5f3e5);
+
+  /* Opera 11.10+ */
+  background: -o-linear-gradient(top, #fafaf4, #f5f3e5);
+
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px; /* future proofing */
+  -khtml-border-radius: 10px; /* for old Konqueror browsers */
+}
+
+
+.holding-drawer{
+  table{
+    thead{
+      th{
+        text-align:center;
+        font-size: 13px;
+        font-weight: normal;
+        background: white;
+        border:1px solid #d3e5d8;
+        color: #777;
+      }
+      border-bottom: 1px solid #d3e5d8;;
+    }
+    td{
+      border:1px solid #d3e5d8;
+      background: white;
+      color:#777;
+    }
+  }
+}
+
+a.add_portfolio_group_action{
+  cursor:pointer;
+
+}
 
 
 

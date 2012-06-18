@@ -13,7 +13,6 @@
 
 body {
 	margin:10px 0px; padding:0px;
-	text-align:center;
 	}
 	
 #Content {
@@ -26,3 +25,10 @@ body {
   cursor: pointer
 }
 
+table tr.selectable {
+  cursor: pointer
+}
+
+table tr.selectable:hover td {
+	background: #d0dafd;
+}

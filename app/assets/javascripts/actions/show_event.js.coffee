@@ -11,7 +11,7 @@ for security in securities
 
     class window[capSecurity+'BuyView'] extends Backbone.View
 
-      tagName: "li"
+      tagName: "tr"
 
 
       initialize: ->
@@ -21,7 +21,7 @@ for security in securities
       render: ->
         elem = $(@el).append(ich[security+'_buy_template'](@model.toJSON()));
         $(elem).hide();
-        $("#"+security+"-buys-for-holding-" + @model.get(security+'_holding_id')).append(elem);
+        $("#"+security+"-events-for-holding-" + @model.get(security+'_holding_id') + " tbody").append(elem);
         $(elem).fadeIn("slow");
 
       remove: ->
@@ -34,7 +34,7 @@ for security in securities
 
     class window[capSecurity+'SellView'] extends Backbone.View
 
-      tagName: "li"
+      tagName: "tr"
 
 
       initialize: ->
@@ -44,7 +44,7 @@ for security in securities
       render: ->
         elem = $(@el).append(ich[security+'_sell_template'](@model.toJSON()));
         $(elem).hide();
-        $("#"+security+"-sells-for-holding-" + @model.get(security+'_holding_id')).append(elem);
+        $("#"+security+"-events-for-holding-" + @model.get(security+'_holding_id') + " tbody").append(elem);
         $(elem).fadeIn("slow");
 
       remove: ->

@@ -188,6 +188,14 @@ $ ->
       view.submit();
       $(document).trigger('close.facebox')
     );
+    $('#facebox form').submit((e)->
+      e.stopPropegation
+      holding = new window[className]({portfolio_id:portfolio.id});
+      view = new window[viewName]({model:holding});
+      view.submit();
+      $(document).trigger('close.facebox')
+      return false
+    );
 
 
   );

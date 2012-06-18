@@ -9,13 +9,80 @@
       %a{:href => '#share'} Share
 
   #show
-    %a.add_portfolio_group_action Add Portfolio
+    %a.add_portfolio_group_action
+      %img{:src=>'/images/portfolio.gif'}
+    .your_portfolios
+      You
+      %table
+        %tbody
+    .friends_portfolios
+      Friends
+      %table
+        %tbody
+        - for f in @friends
+          %tr
+            %td= f.screen_name
+    .friends_portfolios
+      Groups (coming soon)
+      %table
+        %tbody
 
 
   #compare
-    %a.add_portfolio_group_action Add Portfolio
+    %a.add_portfolio_group_action
+      %img{:src=>'/images/portfolio.gif'}
+    .your_portfolios
+      You
+      %table
+        %tbody
+    .friends_portfolios
+      Friends
+      %table
+        %tbody
+        - for f in @friends
+          %tr
+            %td= f.screen_name
+    .friends_portfolios
+      Groups (coming soon)
+      %table
+        %tbody
+
 
   #share
-    %a.add_portfolio_group_action Add Portfolio
+
+    .share_with
+      %h4 Share with..
+      Your Financial Adviser
+      %table
+        %tbody
+          %tr.selectable
+            %td Invite your Adviser
+          %tr.selectable
+            %td Find an Adviser
+
+
+      Your Friends
+      %table
+        %tbody
+          %tr.selectable
+            %td Find your friend on CB
+          %tr.selectable
+            %td Invite a friend to join CB
+          %tr.selectable
+            %td= "Accept a friend invite (#{@invites_from.count})"
+          %tr.selectable
+            %td= "Invites awaiting response (#{@invites_to.count})"
+          %tr.selectable
+            %td= "List of Friends (#{@friends.count})"
+
+
+      Groups (coming soon)
+    %br
+    %br
+    .compete_with
+      %h4 Compete with..
+      Friends  (coming soon)
+      %br
+      Groups  (coming soon)
 
 

@@ -3,17 +3,40 @@
     != "#{k.classify.pluralize}.add(#{v.to_json});"
   != "IndexComparisons.add(#{@compare_indices.to_json});"
   != "ValueComparisons.add(#{@compare_values.to_json});"
-  $('#nav li.selectable').first().trigger('click');
+  $('#nav tr.selectable').first().trigger('click');
   $('.accordion').accordion();
 
 = content_for :templates do
-  = template_include_path_helper('dashboard')
+  = template_include_path_helper(['dashboard', 'hotlist'])
 
 #portfolio-show
 #portfolio-compare
   #compare-indices
   #compare-values
   #compare-others
+#portfolio-share
+  #your-friends
+    #invites-from.share-module{:style => 'display:none'}
+      Invites From
+      %table
+        %tbody
+        - for i in @invites_from
+          %tr
+            %td= i.screen_name
+    #invites-to.share-module{:style => 'display:none'}
+      Invites To
+      %table
+        %tbody
+        - for i in @invites_to
+          %tr
+            %td= i.screen_name
+    #friends.share-module{:style => 'display:none'}
+      Friends
+      %table
+        %tbody
+        - for i in @friends
+          %tr
+            %td= i.screen_name
 
 
 #forms

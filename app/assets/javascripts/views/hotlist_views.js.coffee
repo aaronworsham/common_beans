@@ -1,6 +1,6 @@
 class window.HotlistPortfolioView extends Backbone.View
 
-  tagName: "li"
+  tagName: "tr"
 
   initialize: ->
     @model.view = this
@@ -12,8 +12,8 @@ class window.HotlistPortfolioView extends Backbone.View
     elem_compare = ich.hotlist_portfolio_compare_template(@model.toJSON());
     $(elem_show).hide();
     $(elem_compare).hide();
-    $('#nav #show').append(elem_show);
-    $('#nav #compare').append(elem_compare);
+    $('#nav #show .your_portfolios table tbody').append(elem_show);
+    $('#nav #compare .your_portfolios table tbody').append(elem_compare);
     $(elem_show).fadeIn("slow");
     $(elem_compare).fadeIn("slow");
 

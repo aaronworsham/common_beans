@@ -9,10 +9,21 @@ module ApplicationHelper
   end
 
   def template_include_path_helper(dir)
-    html = []
-    ::Dir["app/templates/#{dir}/**/*.mustache"].each do |path|
-      html << mustache_include_helper(path)
+    if dir.respond_to?('each')
+      array = []
+      dir.each do |d|
+        array = add_template(d, array)
+      end
+    else
+      array = add_template(dir)
     end
-    html.join("\n").html_safe
+    array.join("\n").html_safe
+  end
+
+  def add_template(dir, array = [])
+    ::Dir["app/templates/#{dir}/**/*.mustache"].each do |path|
+      array << mustache_include_helper(path)
+    end
+    array
   end
 end

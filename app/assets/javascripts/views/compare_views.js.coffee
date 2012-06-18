@@ -48,10 +48,10 @@ class window.CompareIndicesView extends Backbone.View
     };
 
     options.xAxis.categories.push('Holding')
-    options.series[0].data.push(@model.attributes['gain_ratio'])
+    options.series[0].data.push(@.redGreen(parseInt(@model.attributes['gain_ratio'])))
     for k,v of @model.attributes.indices_gain
       options.xAxis.categories.push(k)
-      options.series[0].data.push(v)
+      options.series[0].data.push(@.redGreen(v))
     chart = new Highcharts.Chart(options);
 #    $.extend(this, Highcharts.Chart(options))
 
@@ -65,15 +65,14 @@ class window.CompareIndicesView extends Backbone.View
 
 
 
-  markNegative: (data, color)->
-    new_data = []
-    for row in data
-      if(row < 0)
-        new_data.push({y: row, color: color})
-      else
-        new_data.push(row)
-    new_data;
-
+  redGreen: (data)->
+    new_data = {}
+    if(data < 0)
+      new_data['y'] = data;
+      new_data['color'] = '#ff0000';
+      return new_data
+    else
+      return data
 
 
 class window.CompareValuesView extends Backbone.View

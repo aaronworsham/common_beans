@@ -6,6 +6,7 @@
 = require_tree ./actions
 = require highcharts.src
 = require highcharts-theme
+= require currency_formatter
 
 
 ###
@@ -51,7 +52,12 @@ $ ->
   $('.holding-header').live('click', ->
     type = $(@).attr('data-holding-type')
     id = $(@).attr('data-holding-id')
-
+    $(@).find('td.arrow').hide()
+    if($(@).find('td.arrow').text() == '>')
+      $(@).find('td.arrow').text('V')
+    else
+      $(@).find('td.arrow').text('>')
+    $(@).find('td.arrow').fadeIn('slow')
     $("#"+type+'-events-for-holding-'+id).slideToggle('slow')
   )
 

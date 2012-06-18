@@ -3,7 +3,10 @@
   %table
     %tr
       %td{:colspan=>2}
-        = link_to "Follow", "#", :class=> 'follow-user'
+        %form{:action => trust_path('.json'), :method=>'post'}
+          %input{:type=>'hidden',:name =>'trust[user_id]',:value=>@user.id}
+          %input{:type=>'hidden',:name =>'trust[level]',:value=>5}
+          %button{:type => 'submit'} Test
     %tr
       %td Name
       %td=@user.name

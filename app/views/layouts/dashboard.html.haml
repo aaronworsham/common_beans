@@ -6,9 +6,8 @@
   = javascript_include_tag "dashboard"
   = csrf_meta_tags
   = yield :templates
-  = template_include_tag "message/message"
-  = template_include_tag "hotlist/hotlist_portfolio_show"
-  = template_include_tag "hotlist/hotlist_portfolio_compare"
+
+
   %script{:type => 'text/javascript', :charset => 'utf-8'}
     $(document).ready(function() {
     = yield :on_ready

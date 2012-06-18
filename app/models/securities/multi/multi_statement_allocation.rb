@@ -18,5 +18,10 @@ class MultiStatementAllocation < ActiveRecord::Base
     (bal * (allocation_percentage / 100) / close)
   end
 
-
+  def as_json(options={})
+    result = super(options)
+    result["fund_symbol"] = fund_ticker.symbol
+    result["fund_name"] = fund_ticker.name
+    result
+  end
 end

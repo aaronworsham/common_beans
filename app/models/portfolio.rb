@@ -109,10 +109,10 @@ class Portfolio < ActiveRecord::Base
   end
 
   def total_gain_ratio
-    if total_value_gain > 0
-      (total_value_gain/total_investment*100).round(3)
+    if total_value_gain == 0 or total_investment == 0
+      return 0
     else
-      0
+      (total_value_gain/total_investment*100).round(3)
     end
   end
 

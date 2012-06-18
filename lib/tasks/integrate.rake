@@ -1,0 +1,66 @@
+require 'nokogiri'
+namespace :cb do
+  namespace :integrate do
+    desc 'grab from BS'
+    task :brightscope_firms => :environment do
+      #firms
+      first_page = Nokogiri::HTML(open('http://www.brightscope.com/financial-planning/find/firm/1/?search_expanded=0&address_city=&address_state=MI&firm_service=&firm_name='))
+      pages = first_page.css('#search_result_counts').text.gsub(',','').slice(/\d+/).to_i/15
+      pages.times do |p|
+        p += 1
+        p "Page #{p}..."
+        html = (p == 1) ? first_page :  Nokogiri::HTML(open('http://www.brightscope.com/financial-planning/find/firm/1/?search_expanded=0&address_city=&address_state=MI&firm_service=&firm_name='))
+        firms = html.css('.search_result_item')
+        firms.each do |a|
+          firm_brightscope_id = a.css('.firm_result_details a').attribute('href').value.split('/').last.to_i
+          firm_name = a.css('.firm_result_details a').text
+          firm_address = a.css('.firm_result_details div').text
+          p "Adding #{firm_brightscope_id} - #{firm_name} - #{firm_address} ..."
+          details = Nokogiri::HTML(open("http://www.brightscope.com/financial-planning/firm/#{firm_brightscope_id}"))
+          url = details.css('.sidebar_box_container .key_information tr:nth-child(5) a').attribute('href').value
+          address = details.css('.principal_office .key_information address').text.squeeze.gsub(/[\n?|\t?]/, "")
+          phone = details.css('.principal_office .key_information tr:nth-child(2) td').text.squeeze.gsub(/[\n?|\t?]/, "")
+          p "url #{url} - address #{address} - Phone #{phone}"
+        end
+      end
+    end
+    desc 'grab from BS'
+    task :brightscope_advisers => :environment do
+      #Advisors
+      first_page = Nokogiri::HTML(open('http://www.brightscope.com/financial-planning/find/advisor/1/?address_city=&search_expanded=0&advisor_service=&advisor_name=&address_state=MI'))
+      pages = first_page.css('#search_result_counts').text.gsub(',','').slice(/\d+/).to_i/15
+      pages.times do |p|
+        p += 1
+        p "Page #{p}..."
+        html = (p == 1) ? first_page :  Nokogiri::HTML(open("http://www.brightscope.com/financial-planning/find/advisor/#{p}/?address_city=&search_expanded=0&advisor_service=&advisor_name=&address_state=MI"))
+        advisors = html.css('.search_result_item')
+        advisors.each do |a|
+          advisor_brightscope_id = a.css('.advisor_result_details a').attribute('href').value.split('/').last.to_i
+          name = a.css('.advisor_result_details a').text
+          firm = a.css('.advisor_result_details .result_firm_address')[0].text
+          firm_address = a.css('.advisor_result_details .result_firm_address')[1].text
+          p "Adding #{advisor_brightscope_id} - #{name} - #{firm} - #{firm_address}..."
+          details = Nokogiri::HTML(open("http://www.brightscope.com/financial-planning/advisor/#{advisor_brightscope_id}"))
+          firm_brightscope_id = details.css('.advisor_details_table tr:first td:first a').attribute('href').value.split('/')[-2].to_i
+          advisor_address = details.css('.key_information address').text.squeeze.gsub(/[\n?|\t?]/, "")
+          firm_table =  details.css('.firm_table tr')
+          data = []
+          firm_table.each do |ft|
+            data << ft.children[0].text.squeeze.gsub(/[\n?|\t?]/, "")
+            data << ft.children[1].text.squeeze.gsub(/[\n?|\t?]/, "")
+            data << ft.children[2].text.squeeze.gsub(/[\n?|\t?]/, "")
+          end
+          social_media = []
+          html.css('.information_display a').each do |sm|
+            social_media << sm.attribute('href').value
+          end
+          p "Social Media #{social_media.inspect}"
+          p "Firm ID #{firm_brightscope_id} - Adviser Address - #{advisor_address} "
+          p "Data #{data.inspect}"
+
+        end
+      end
+      p pages
+    end
+  end
+end

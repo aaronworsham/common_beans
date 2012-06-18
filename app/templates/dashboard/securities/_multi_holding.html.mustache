@@ -7,6 +7,39 @@
       <a href='#' class='add-multi-statement' data-holding-id={{id}}>Add Statement |</a>
       <a href='#' class='edit-multi-holding' data-holding-id={{id}}>Edit |</a>
       <a href='#' class='delete-multi-holding' data-holding-id={{id}}>Remove</a>
+      <div>
+        <div style='width:50%;float:left'>
+          <div id='multi-graph-for-holding-{{id}}'></div>
+        </div>
+        <div style='width:50%;float:left'>
+          <p>{{name}})</p>
+          <p>
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum."
+          </p>
+        </div>
+      </div>
+      <div>
+        <p>Statements</p>
+        <table id="multi-events-for-holding-{{ id }}" data-multi-holding-id={{id}}>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Starting Balance</th>
+              <th>Started On</th>
+              <th>Ending Balance</th>
+              <th>Ended On</th>
+              <th>Contributions</th>
+              <th></th>
+            </tr>
+          </thead>
+        </table>
+      </div>
     </div>
   </td>
 </tr>

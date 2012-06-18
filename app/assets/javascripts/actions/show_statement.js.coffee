@@ -1,29 +1,46 @@
-securities = ['multi']
 
-for security in securities
-  do (security) ->
-    capSecurity = window.capitaliseFirstLetter(security)
-    class window[capSecurity+'StatementView'] extends Backbone.View
-      tagName: "tbody"
+class window['MultiStatementView'] extends Backbone.View
+  tagName: "tbody"
+  initialize: ->
+    @model.view = this
+    @model.bind('destroy', @remove, this);
 
+  render: ->
+    elem = $(@el).append(ich["multi_statement_template"](@model.toJSON()));
+    $(elem).hide();
+    $("#multi-events-for-holding-" + @model.get('multi_holding_id') + " table").append(elem);
+    $(elem).fadeIn("slow");
 
-      initialize: ->
-        @model.view = this
-        @model.bind('destroy', @remove, this);
+  remove: ->
+    $(@el).fadeOut("slow", ->
+      $(this).remove();
+    );
 
-      render: ->
-        elem = $(@el).append(ich[security+"_statement_template"](@model.toJSON()));
-        $(elem).hide();
-        $("#"+security+"-events-for-holding-" + @model.get('multi_holding_id')).append(elem);
-        $(elem).fadeIn("slow");
+  update: ->
+    $(@el).html(ich["multi_statement_template"](@model.toJSON()));
 
-      remove: ->
-        $(@el).fadeOut("slow", ->
-          $(this).remove();
-        );
+class window['MultiAllocationView'] extends Backbone.View
 
-      update: ->
-        $(@el).html(ich[security+"_statement_template"](@model.toJSON()));
+  tagName: "tr"
+
+  initialize: ->
+    @model.view = this
+    @model.bind('destroy', @remove, this);
+
+  render: ->
+    elem = $(@el).append(ich["multi_allocation_template"](@model.toJSON()));
+    $(elem).hide();
+    $("#allocations-for-multi-statement-" + @model.get('multi_statement_id') + ' ul' ).append(elem);
+    $(elem).fadeIn("slow");
+
+  remove: ->
+    $(@el).fadeOut("slow", ->
+      $(this).remove();
+    );
+
+  update: ->
+    $(@el).html(ich["multi_statement_template"](@model.toJSON()));
+
 
 
 

@@ -106,6 +106,9 @@ class StockHolding < ActiveRecord::Base
     result["todays_price"] = self.todays_price.round(2)
     result["todays_value"] = self.todays_value.round(2)
     result["total_value_gain"] = self.total_value_gain.round(2)
+    result["name"] = self.ticker.name
+    result["symbol"] = self.ticker.symbol
+    result["purchased_on"] = self.purchased_at.strftime('%D')
     result
   end
 

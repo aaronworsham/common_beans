@@ -1,5 +1,5 @@
 <tr class='holding-header' id="fund-holding-{{ id }}" data-holding-id={{id}} data-holding-type='fund'>
-  <td>S</td>
+  <td class='arrow'>></td>
   <td>{{ ticker_symbol }}</td>
   <td>{{ net_units }}</td>
   <td>{{ net_investment }}</td>
@@ -15,11 +15,46 @@
       <a href='#' class='add-event' data-holding-id={{id}} data-security-name='fund' data-event-type='sell'>Sold Shares |</a>
       <a href='#' class='edit-holding' data-holding-id={{id}} data-security-name='fund'>Edit |</a>
       <a href='#' class='delete-fund-holding' data-holding-id={{id}}>Remove</a>
-      <ul class='fund-buys' id="fund-buys-for-holding-{{ id }}" data-fund-holding-id={{id}}>
-        <li>Started with {{starting_units}} units at {{starting_price}} on {{purchased_on}}</li>
-      </ul>
-      <ul class='fund-sells' id="fund-sells-for-holding-{{ id }}" data-fund-holding-id={{id}}>
-      </ul>
+      <div>
+        <div style='width:50%;float:left'>
+          <div id='fund-graph-for-holding-{{id}}'></div>
+        </div>
+        <div style='width:50%;float:left'>
+          <p>{{name}} ({{symbol}})</p>
+          <p>
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum."
+          </p>
+        </div>
+      </div>
+      <div>
+        <p>History</p>
+        <table id="fund-events-for-holding-{{ id }}" data-fund-holding-id={{id}}>
+          <thead>
+            <tr>
+              <th>Action</th>
+              <th>Units</th>
+              <th>Price</th>
+              <th>Date</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Buy</td>
+              <td>{{starting_units}}</td>
+              <td>{{starting_price}}</td>
+              <td>{{purchased_on}}</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </td>
 </tr>
