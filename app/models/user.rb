@@ -99,5 +99,22 @@ class User < ActiveRecord::Base
     return hash
   end
 
+  def safe_backbone_models
+    hash = {}
+    self.portfolios.each do |p|
+      hash[p.id]
+      hash[:total_value_gain] = self.total_value_gain_percentage
+    end
+  end
+
+  def friend_backbone_models
+    hash = {}
+    friends = self.friends
+    friends.each do |f|
+      hash[f.id] = f.backbone_models
+    end
+    hash
+  end
+
 
 end

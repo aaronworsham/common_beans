@@ -1,12 +1,14 @@
 <div class='portfolio-content' id="portfolio-content-{{id}}">
 
-  <div class='security-module'>
+  <div class='security-module portfolio-header'>
     <table>
       <tr>
         <td><h3>{{name}}</h3>
         <td>Plan: {{portfolio-plan}}</td>
         <td>Strategy: {{portfolio-strategy}}</td>
-        <td><h3>{{formatted_total_value}}</h3></td>
+        <td class='{{formatted_total_value_class}} number'>{{formatted_total_value}}</td>
+        <td class='{{formatted_total_value_gain_class}} number'>{{formatted_total_value_gain}}</td>
+        <td class='{{formatted_total_gain_ratio_class}} number'>{{total_gain_ratio}}%</td>
       </tr>
     </table>
   </div>
@@ -133,8 +135,9 @@
           <th>Symbol</th>
           <th>Investment</th>
           <th>Cash Out</th>
-          <th>Value</th>
-          <th>Gain</th>
+          <th>Last Known Value</th>
+          <th>Est. Current Value</th>
+          <th>Est. Current Gain</th>
         </tr>
       </thead>
     </table>

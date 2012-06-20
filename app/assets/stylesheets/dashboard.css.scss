@@ -31,7 +31,7 @@ table {
     text-align: center;
     padding: 2px;
     background: #f0f7f2;
-    color: #014414;
+    color: black;
 
     .holding_name {
       background: #e3efe7;
@@ -175,6 +175,14 @@ table {
 a.add_portfolio_group_action{
   cursor:pointer;
 
+}
+
+td.positive{
+  color: green;
+}
+
+td.negative{
+  color: red;
 }
 
 

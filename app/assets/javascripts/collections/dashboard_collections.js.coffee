@@ -162,4 +162,23 @@ class window.CompareValuesCollection extends Backbone.Collection
 
 window.ValueComparisons = new CompareValuesCollection
 
+class window.FriendPortfolioCollection extends Backbone.Collection
+  model: FriendPortfolioModel
+
+  initialize: ->
+     @bind('add', (statement)->
+       @addOneView(statement)
+     );
+     @bind('reset', (statements)->
+       statements.each( (p)->
+         statements.addOneView(p)
+       );
+     );
+
+
+  addOneView: (p)->
+    new CompareValuesView({model:p}).render();
+
+window.ValueComparisons = new CompareValuesCollection
+
 

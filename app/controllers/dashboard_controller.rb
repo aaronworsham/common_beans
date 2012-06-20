@@ -9,5 +9,6 @@ class DashboardController < ApplicationController
     @invites_from = current_user.invites_from
     @invites_to = current_user.invites_to
     @friends = current_user.friends
+    @friend_models = current_user.friend_backbone_models
   end
 end

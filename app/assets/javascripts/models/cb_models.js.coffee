@@ -23,7 +23,10 @@ for security in securities
           do (data_point) ->
             if data[data_point] isnt null
               data['formatted_'+ data_point] = FormatCurrency(data[data_point])
-
+              if data[data_point] >= 0
+                data['formatted_' + data_point + '_class'] = 'positive'
+              else
+                data['formatted_' + data_point + '_class'] = 'negative'
         return data
 
     class window[capSecurity+'BuyModel'] extends Backbone.Model
@@ -44,10 +47,14 @@ class window.PortfolioModel extends Backbone.Model
   urlRoot : "/portfolios"
   formattedData : ->
     data = @.toJSON()
-    for data_point in ['total_value']
+    for data_point in ['total_value', 'total_value_gain', 'total_gain_ratio']
       do (data_point) ->
         if data[data_point] isnt null
           data['formatted_'+ data_point] = FormatCurrency(data[data_point])
+          if data[data_point] >= 0
+            data['formatted_' + data_point + '_class'] = 'positive'
+          else
+            data['formatted_' + data_point + '_class'] = 'negative'
     return data
 
 class window.MultiStatementModel extends Backbone.Model
@@ -66,3 +73,6 @@ class window.CompareIndicesModel extends Backbone.Model
   urlRoot : "/compare_indices"
 class window.CompareValuesModel extends Backbone.Model
   urlRoot : "/compare_values"
+
+class window.FriendPortfolioModel extends Backbone.Model
+  urlRoot : "/friends_portfolios"

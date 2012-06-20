@@ -32,6 +32,7 @@ gem 'aasm'
 gem "rails_config"
 gem 'rspec',       "~> 2.6.0"
 gem 'rspec-rails', "~> 2.6.1"
+gem 'nokogiri'
 
 # Gems used only for assets and not required
 # in production environments by default.

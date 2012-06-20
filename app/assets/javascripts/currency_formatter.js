@@ -61,5 +61,5 @@ function SeparateThousands(str) { // Thousands separation
 
 
 function FormatCurrency(amount){
-  return parseFloat(amount).toCurrency()
+  return parseFloat(amount).toCurrency({use_fractions:{fraction_separator:'.', fractions:2}})
 }

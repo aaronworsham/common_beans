@@ -250,6 +250,7 @@ DEPENDENCIES
   mocha
   mustache
   mysql2
+  nokogiri
   omniauth
   omniauth-facebook
   omniauth-twitter

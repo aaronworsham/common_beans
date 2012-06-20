@@ -187,6 +187,7 @@ class Portfolio < ActiveRecord::Base
     result["portfolio-strategy"] = self.portfolio_strategy.name
     result["total_value"] = self.total_value
     result["total_value_gain"] = self.total_value_gain
+    result["total_gain_ratio"] = self.total_gain_ratio
     result['holding_ids'] = self.cached_holdings.map{|x| x.id}
     result
   end

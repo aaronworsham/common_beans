@@ -1,8 +1,9 @@
 <tr class='holding-header' id="multi-holding-{{ id }}" data-holding-id={{id}} data-holding-type='multi'>
   <td>></td>
   <td>{{ name }}</td>
-  <td>{{ net_investment }}</td>
-  <td>{{ net_return }}</td>
+  <td class="{{formatted_net_investment_class}}">{{ formatted_net_investment }}</td>
+  <td class="{{formatted_net_return_class}}">{{ formatted_net_return }}</td>
+  <td></td>
   <td></td>
   <td></td>
 </tr>

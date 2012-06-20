@@ -46,3 +46,8 @@ table tr.selectable:hover td {
 #warmlist .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {
   color: black;
 }
+
+.portfolio-header td.number{
+  font-size: 21px;
+}
+

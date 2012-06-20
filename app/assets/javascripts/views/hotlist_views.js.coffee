@@ -8,7 +8,7 @@ class window.HotlistPortfolioView extends Backbone.View
     @model.bind('destroy', @remove, this);
 
   render: ->
-    elem_show = ich.hotlist_portfolio_show_template(@model.toJSON());
+    elem_show = ich.hotlist_portfolio_show_template(@model.formattedData());
     elem_compare = ich.hotlist_portfolio_compare_template(@model.toJSON());
     $(elem_show).hide();
     $(elem_compare).hide();
