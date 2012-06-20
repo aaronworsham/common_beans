@@ -70,10 +70,17 @@ namespace :cb do
     namespace :yahoo_finance do
       desc 'add data from yahoo finance'
       task :stock => :environment do
-        stock = StockTicker.all
+        stock = [StockTicker.find_by_symbol("AAPL"),StockTicker.find_by_symbol("MSFT"),StockTicker.find_by_symbol("GOOG")]
         CSV.open('db/data/stock_profiles.csv', 'wb') do |csv|
+          csv << ["Stock Symbol","Business Summary","Sector","Industry","URL"]
           stock.each do |s|
-            csv <<
+            stock_symbol = s.symbol
+            first_page = Nokogiri::HTML(open("http://finance.yahoo.com/q/pr?s=#{stock_symbol}"))
+            business_summary = first_page.at_css("body div#rightcol table#yfncsumtab tr td p").text
+            sector = first_page.at_css("body div#rightcol table#yfncsumtab tr td table.yfnc_datamodoutline1 tr:nth-child(2) td.yfnc_tabledata1 a").children.text
+            industry = first_page.at_css("body div#rightcol table#yfncsumtab tr td table.yfnc_datamodoutline1 tr:nth-child(3) td.yfnc_tabledata1 a").children.text
+            url = first_page.css("body div#rightcol table#yfncsumtab tr td.yfnc_modtitlew1 table")[5].css("tr td a")[0].first[1]
+            csv << [stock_symbol, business_summary, sector, industry, url]
           end
         end
 
