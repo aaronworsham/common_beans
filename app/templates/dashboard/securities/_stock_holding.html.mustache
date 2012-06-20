@@ -2,20 +2,20 @@
   <td class='arrow'>></td>
   <td>{{ ticker_symbol }}</td>
   <td>{{ net_shares }}</td>
-  <td>{{ net_investment }}</td>
-  <td>{{ net_return }}</td>
-  <td>{{ todays_price }}</td>
-  <td>{{ todays_value }}</td>
-  <td>{{ total_value_gain }}</td>
+  <td>{{ formatted_net_investment }}</td>
+  <td>{{ formatted_net_return }}</td>
+  <td>{{ formatted_todays_price }}</td>
+  <td>{{ formatted_todays_value }}</td>
+  <td>{{ formatted_total_value_gain }}</td>
 
 </tr>
 <tr>
   <td colspan=8 class='holding-drawer'>
     <div class='stock-events' id="stock-events-for-holding-{{ id }}" data-stock-holding-id={{id}} style='display:none'>
-      <a href='#' class='add-event' data-holding-id={{id}} data-security-name='stock' data-event-type='buy'>Bought Shares |</a>
-      <a href='#' class='add-event' data-holding-id={{id}} data-security-name='stock' data-event-type='sell'>Sold Shares |</a>
-      <a href='#' class='edit-holding' data-holding-id={{id}} data-security-name='stock'>Edit |</a>
-      <a href='#' class='delete-stock-holding' data-holding-id={{id}}>Remove</a>
+      <a href='#' class='add-event' data-holding-id={{id}} data-security-name='stock' data-event-type='buy'>BOUGHT {{symbol}} SHARES |</a>
+      <a href='#' class='add-event' data-holding-id={{id}} data-security-name='stock' data-event-type='sell'>SOLD {{symbol}} SHARES |</a>
+      <a href='#' class='edit-holding' data-holding-id={{id}} data-security-name='stock'>EDIT |</a>
+      <a href='#' class='delete-stock-holding' data-holding-id={{id}}>REMOVE</a>
       <div>
         <div style='width:50%;float:left'>
           <div id='stock-graph-for-holding-{{id}}'></div>

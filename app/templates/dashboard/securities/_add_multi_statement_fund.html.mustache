@@ -1,0 +1,15 @@
+<div class="multi_statement_fund_form" data-form-id="{{id}}">
+  <div class="input autocomplete optional">
+    <label class="autocomplete optional" for="multi_statement_multi_statement_allocation_ticker_name"> Ticker name</label>
+    <input class="autocomplete optional ui-autocomplete-input" data-autocomplete="/fund_tickers/autocomplete_fund_ticker_name" data-id-element="#facebox #fund_{{id}}_ticker_id" id="multi_statement_multi_statement_allocation_ticker_name"+{{id}} name="multi_statement[multi_statement_allocation][ticker_name]" size="30" type="text" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">
+  </div>
+  <div class="input autocomplete optional">
+    <label class="autocomplete optional" for="multi_statement_multi_statement_allocation_ticker_symbol"> Ticker symbol</label>
+    <input class="autocomplete optional" data-autocomplete="/fund_tickers/autocomplete_fund_ticker_symbol" data-id-element="#facebox #fund_{{id}}_ticker_id" id="multi_statement_multi_statement_allocation_ticker_symbol{{id}}" name="multi_statement[multi_statement_allocation][ticker_symbol]" size="30" type="text"></div>
+  <div class="input numeric decimal optional">
+    <label class="decimal optional" for="multi_statement_multi_statement_allocation_allocation_percentage"> Allocation percentage</label>
+    <input class="numeric decimal optional" id="fund_{{id}}_allocation_percentage" name="multi_statement[multi_statement_allocation][allocation_percentage]" step="any" type="number"></div>
+  <input class="hidden" id="fund_{{id}}_ticker_id" name="multi_statement[multi_statement_allocation][fund_ticker_id]" type="hidden">
+</div>
+
+

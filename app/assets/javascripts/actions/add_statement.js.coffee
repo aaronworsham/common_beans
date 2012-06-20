@@ -11,7 +11,7 @@ class window.AddMultiStatementView extends Backbone.View
     );
 
   serialize: =>
-    return {
+    params = {
         authenticity_token: this.$("input[name=authenticity_token]").val(),
         multi_statement: {
           fund_ticker_id: this.$("#multi_statement_fund_tracker_id").val(),
@@ -21,14 +21,19 @@ class window.AddMultiStatementView extends Backbone.View
           ending_balance: this.$("#multi_statement_ending_balance").val(),
           ended_on: this.$("input[name=ended_on]").val(),
           multi_holding_id: @model.get('holding_id'),
-          multi_statement_allocations_attributes: [
-            {
-              fund_ticker_id:1,
-              allocation_percentage:100
-            }
-          ]
+          multi_statement_allocations_attributes: []
         }
       }
+    for fund in $('#facebox .multi_statement_fund_form')
+      do (fund) ->
+        console.log(fund)
+        id = $(fund).attr('data-form-id')
+        params['multi_statement']['multi_statement_allocations_attributes'].push({
+          fund_ticker_id : $(fund).find("#fund_"+id+"_ticker_id").val(),
+          allocation_percentage : $(fund).find("#fund_"+id+"_allocation_percentage").val()
+        })
+    console.log(params)
+    return params
 
 
 $ ->
@@ -47,3 +52,10 @@ $ ->
 
 
   );
+
+  $('#facebox .add_multi_statement_fund').live('click',(e) ->
+    next_id = $('#facebox .multi_statement_fund_form').size()
+    elem = ich.add_multi_statement_fund_template({id: next_id});
+    $('#facebox #multi_statement_funds').append(elem);
+
+  )

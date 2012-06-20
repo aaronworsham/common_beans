@@ -54,8 +54,7 @@ class MultiHolding < ActiveRecord::Base
     #puts "Allocating : #{array}"
 
     array.each do |alloc|
-      MultiHoldingAllocation.create(
-        :multi_holding => self,
+      self.multi_holding_allocations.create(
         :fund_ticker_id => alloc[:fund_ticker_id],
         :allocation_percentage => alloc[:allocation],
         :estimated_units => alloc[:estimated_units]
@@ -88,7 +87,7 @@ class MultiHolding < ActiveRecord::Base
     end
   end
 
-  def reallocate(array)
+  def reallocate(array = self.multi_statements.last.allocation_array)
     new_fund_ids = array.map{|x| x[:fund_ticker_id]}
     current_fund_ids = multi_holding_allocations.map{|x| x.fund_ticker_id}
     deactivate_ids = current_fund_ids - new_fund_ids

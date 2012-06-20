@@ -18,10 +18,13 @@
       = f.input :ending_balance
       = f.input :contributions
 
-      = f.simple_fields_for MultiStatementAllocation.new do |msa|
-        = msa.input :ticker_name, :url => '/fund_tickers/autocomplete_fund_ticker_name', :as => :autocomplete, :input_html => {"data-id-element" => "#facebox #multi_statement_fund_ticker_id"}
-        = msa.input :ticker_symbol, :url => '/fund_tickers/autocomplete_fund_ticker_symbol', :as => :autocomplete, :input_html => {"data-id-element" => "#facebox #multi_statement_fund_ticker_id"}
-        = msa.input :allocation_percentage
-        = msa.input :fund_ticker_id, :as => :hidden
-
+      #multi_statement_funds
+        Breakdown of Contribution to Funds by Percentage
+        .multi_statement_fund_form{'data-form-id' => 0}
+          = f.simple_fields_for MultiStatementAllocation.new do |msa|
+            = msa.input :ticker_name, :url => '/fund_tickers/autocomplete_fund_ticker_name', :as => :autocomplete, :input_html => {"data-id-element" => "#facebox #fund_0_ticker_id"}
+            = msa.input :ticker_symbol, :url => '/fund_tickers/autocomplete_fund_ticker_symbol', :as => :autocomplete, :input_html => {"data-id-element" => "#facebox #fund_0_ticker_id"}
+            = msa.input :allocation_percentage, :input_html => {:id => 'fund_0_allocation_percentage'}
+            = msa.input :fund_ticker_id, :as => :hidden, :input_html => {:id => 'fund_0_ticker_id'}
+      %a.add_multi_statement_fund{:href=> '#'} Add Another Fund
     = link_to 'Create', '#', :class => 'create_link'

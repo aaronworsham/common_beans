@@ -22,6 +22,7 @@
         - for f in @friends
           %tr
             %td= f.screen_name
+            %td= "-%5 (5day)"
     .friends_portfolios
       Groups (coming soon)
       %table
@@ -29,21 +30,22 @@
 
 
   #compare
-    %a.add_portfolio_group_action
-      %img{:src=>'/images/portfolio.gif'}
     .your_portfolios
-      You
+      Your Portfolios To...
       %table
         %tbody
-    .friends_portfolios
-      Friends
-      %table
-        %tbody
-        - for f in @friends
-          %tr
-            %td= f.screen_name
-    .friends_portfolios
-      Groups (coming soon)
+          %tr.selectable{'data-module' => '#compare-indices'}
+            %td Market Indices
+          %tr.selectable{'data-module' => '#compare-values'}
+            %td Gains over Time
+          %tr.selectable{'data-module' => '#compare-friends'}
+            %td Friends
+          %tr.selectable{'data-module' => '#compare-others'}
+            %td Others on CB
+
+
+    .group_portfolios
+      Your Groups (coming soon)
       %table
         %tbody
 

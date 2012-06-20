@@ -2,7 +2,9 @@ class MultiHoldingAllocation < ActiveRecord::Base
   belongs_to :multi_holding
   belongs_to :fund_ticker
 
-  attr_accessible :ticker_name, :ticker_symbol
+  include Tradeable
+
+  attr_accessor :ticker_name, :ticker_symbol
 
 
   include AASM
@@ -21,6 +23,18 @@ class MultiHoldingAllocation < ActiveRecord::Base
   aasm_event :deactivate do
     transitions :to => :inactive, :from => [:active]
   end
+
+  def ticker
+    fund_ticker
+  end
+
+
+
+  #TODO add calculation that gives current units, value, and gain given
+  #point in time contribution amount and point in time price
+
+
+
 
 
 end

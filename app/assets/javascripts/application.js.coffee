@@ -37,19 +37,16 @@ $ ->
 
 
   $('#nav #compare tr.selectable').live("click", ->
-    id = $(@).attr('data-id');
-    title = $(@).attr('data-label');
+    module = $(@).attr('data-module');
     $('#portfolio-compare').hide();
+    $('#portfolio-compare .compare-module').hide();
     $('#portfolio-show').hide();
     $('#portfolio-share .share-module').hide();
     $('#nav li.selectable').each((i,v) ->
       $(v).removeClass('selected');
     );
     $(@).addClass('selected');
-    $('#portfolio-compare #compare-indices > div').hide()
-    $('#portfolio-compare #compare-indices #compare-indices-portfolio-'+id).show();
-    $('#portfolio-compare #compare-values > div').hide()
-    $('#portfolio-compare #compare-values #compare-values-portfolio-'+id).show();
+    $('#portfolio-compare '+module).show();
     $('#portfolio-compare').fadeIn('fast');
   );
 
@@ -90,21 +87,6 @@ $ ->
 
     );
     $('#portfolio-show').fadeIn('fast');
-  );
-
-
-  $('#nav #compare tr.selectable').live("click", ->
-    id = $(@).attr('data-id');
-    title = $(@).attr('data-label');
-
-    $('#portfolio-compare').hide();
-    $('#portfolio-show').hide();
-    $('#nav li.selectable').each((i,v) ->
-      $(v).removeClass('selected');
-    );
-    $(@).addClass('selected');
-
-    $('#portfolio-compare').fadeIn('fast');
   );
 
 

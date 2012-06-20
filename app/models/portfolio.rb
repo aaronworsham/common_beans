@@ -97,11 +97,11 @@ class Portfolio < ActiveRecord::Base
   end
 
   def total_value
-    sum_holding_value("todays_value")
+    sum_holding_value("todays_value").round(3)
   end
 
   def total_value_gain
-    sum_holding_value("total_value_gain")
+    sum_holding_value("total_value_gain").round(3)
   end
 
   def total_investment

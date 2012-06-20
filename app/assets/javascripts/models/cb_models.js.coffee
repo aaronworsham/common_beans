@@ -1,10 +1,30 @@
 securities = ['stock', 'fund', 'bond', 'etf', 'cd', 'multi']
-
+data_points = [
+          'starting_price',
+          'starting_price',
+          'starting_investment',
+          'net_investment',
+          'net_return',
+          'todays_price',
+          'todays_value',
+          'total_value_gain',
+          'starting_balance',
+          'ending_balance',
+          'contributions'
+          ]
 for security in securities
   do (security) ->
     capSecurity = window.capitaliseFirstLetter(security)
     class window[capSecurity+'HoldingModel'] extends Backbone.Model
       urlRoot : "/"+security+"_holdings"
+      formattedData : ->
+        data = @.toJSON()
+        for data_point in data_points
+          do (data_point) ->
+            if data[data_point] isnt null
+              data['formatted_'+ data_point] = FormatCurrency(data[data_point])
+
+        return data
 
     class window[capSecurity+'BuyModel'] extends Backbone.Model
       urlRoot : "/"+security+"_buys"
@@ -22,8 +42,24 @@ for security in securities
 
 class window.PortfolioModel extends Backbone.Model
   urlRoot : "/portfolios"
+  formattedData : ->
+    data = @.toJSON()
+    for data_point in ['total_value']
+      do (data_point) ->
+        if data[data_point] isnt null
+          data['formatted_'+ data_point] = FormatCurrency(data[data_point])
+    return data
+
 class window.MultiStatementModel extends Backbone.Model
   urlRoot : "/multi_statements"
+  formattedData : ->
+    data = @.toJSON()
+    for data_point in data_points
+      do (data_point) ->
+        if data[data_point] isnt null
+          data['formatted_'+ data_point] = FormatCurrency(data[data_point])
+
+    return data
 class window.MultiAllocationModel extends Backbone.Model
   urlRoot : "/multi_allocations"
 class window.CompareIndicesModel extends Backbone.Model

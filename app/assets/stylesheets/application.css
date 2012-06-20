@@ -32,3 +32,17 @@ table tr.selectable {
 table tr.selectable:hover td {
 	background: #d0dafd;
 }
+
+#warmlist .ui-tabs .ui-tabs-nav li a {
+  padding: 4px;
+}
+
+
+
+#warmlist .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited {
+ color: #459E00;
+}
+
+#warmlist .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {
+  color: black;
+}

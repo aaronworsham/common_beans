@@ -13,7 +13,6 @@ class window.HotlistPortfolioView extends Backbone.View
     $(elem_show).hide();
     $(elem_compare).hide();
     $('#nav #show .your_portfolios table tbody').append(elem_show);
-    $('#nav #compare .your_portfolios table tbody').append(elem_compare);
     $(elem_show).fadeIn("slow");
     $(elem_compare).fadeIn("slow");
 

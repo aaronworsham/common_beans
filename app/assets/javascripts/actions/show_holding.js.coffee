@@ -12,7 +12,7 @@ for security in securities
         @model.bind('destroy', @remove, this);
 
       render: ->
-        elem = $(@el).append(ich[security+"_holding_template"](@model.toJSON()));
+        elem = $(@el).append(ich[security+"_holding_template"](@model.formattedData()));
         $(elem).hide();
         $("#portfolio-"+security+"-holding-" + @model.get('portfolio_id')).append(elem);
         $("#portfolio-"+security+"s-" + @model.get('portfolio_id')).fadeIn('fast');

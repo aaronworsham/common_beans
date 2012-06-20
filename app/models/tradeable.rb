@@ -19,11 +19,11 @@ module Tradeable
   end
 
   def total_value_gain
-    calculate_value(Date.today) - self.starting_investment
+    calculate_value(Date.today) - self.net_investment
   end
 
   def total_value_gain_ratio
-    ((total_value_gain/self.starting_investment)*100).round(3)
+    ((total_value_gain/self.net_investment)*100).round(3)
   end
 
   def get_past_prices

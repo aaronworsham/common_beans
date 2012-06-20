@@ -6,7 +6,7 @@ class window['MultiStatementView'] extends Backbone.View
     @model.bind('destroy', @remove, this);
 
   render: ->
-    elem = $(@el).append(ich["multi_statement_template"](@model.toJSON()));
+    elem = $(@el).append(ich["multi_statement_template"](@model.formattedData()));
     $(elem).hide();
     $("#multi-events-for-holding-" + @model.get('multi_holding_id') + " table").append(elem);
     $(elem).fadeIn("slow");

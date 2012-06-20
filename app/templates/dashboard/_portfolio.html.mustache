@@ -1,32 +1,40 @@
 <div class='portfolio-content' id="portfolio-content-{{id}}">
-<h3>{{name}}</h3>
-Plan: {{portfolio-plan}}
-Strategy: {{portfolio-strategy}}
-  <div class='overview'>
-    <p>Add:
-      <a href='#' class='add-holding' data-portfolio-id={{id}} data-security-name='stock'>
-        <img src='/images/stock.gif'/>
-      </a> |
-      <a href='#' class='add-holding' data-portfolio-id={{id}} data-security-name='fund'>
-        <img src='/images/fund.gif'/>
-      </a> |
-      <a href='#' class='add-holding' data-portfolio-id={{id}} data-security-name='bond'>
-        <img src='/images/bond.gif'/>
-      </a> |
-      <a href='#' class='add-holding' data-portfolio-id={{id}} data-security-name='etf'>
-        <img src='/images/etf.gif'/>
-      </a> |
-      <a href='#' class='add-holding' data-portfolio-id={{id}} data-security-name='cd'>
-        <img src='/images/cd.gif'/>
-      </a> |
-      <a href='#' class='add-holding' data-portfolio-id={{id}} data-security-name='multi'>
-        <img src='/images/401k.gif'/>
-      </a> |
-      <a href='#' class='add-holding' data-portfolio-id={{id}} data-security-name='multi'>
-        <img src='/images/ira.gif'/>
-      </a>
+
+  <div class='security-module'>
+    <table>
+      <tr>
+        <td><h3>{{name}}</h3>
+        <td>Plan: {{portfolio-plan}}</td>
+        <td>Strategy: {{portfolio-strategy}}</td>
+        <td><h3>{{formatted_total_value}}</h3></td>
+      </tr>
+    </table>
   </div>
 
+  <div class='overview'>
+    <p>ADD:
+      <a href='#' class='add-holding' data-portfolio-id={{id}} data-security-name='stock'>
+        STOCK
+      </a> |
+      <a href='#' class='add-holding' data-portfolio-id={{id}} data-security-name='fund'>
+        FUND
+      </a> |
+      <a href='#' class='add-holding' data-portfolio-id={{id}} data-security-name='bond'>
+        BOND
+      </a> |
+      <a href='#' class='add-holding' data-portfolio-id={{id}} data-security-name='etf'>
+        ETF
+      </a> |
+      <a href='#' class='add-holding' data-portfolio-id={{id}} data-security-name='cd'>
+        CD
+      </a> |
+      <a href='#' class='add-holding' data-portfolio-id={{id}} data-security-name='multi'>
+        401K
+      </a> |
+      <a href='#' class='add-holding' data-portfolio-id={{id}} data-security-name='multi'>
+        IRA
+      </a>
+  </div>
 
   <div class='security-module' id='portfolio-stocks-{{ id }}' style='display:none'>
     <table class='stock-content' id='portfolio-stock-holding-{{ id }}'>
@@ -37,7 +45,7 @@ Strategy: {{portfolio-strategy}}
           <th>Symbol</th>
           <th>Shares</th>
           <th>Investment</th>
-          <th>Return</th>
+          <th>Cash Out</th>
           <th>Price</th>
           <th>Value</th>
           <th>Gain</th>
@@ -56,7 +64,7 @@ Strategy: {{portfolio-strategy}}
           <th>Symbol</th>
           <th>Shares</th>
           <th>Investment</th>
-          <th>Return</th>
+          <th>Cash Out</th>
           <th>Price</th>
           <th>Value</th>
           <th>Gain</th>
@@ -74,7 +82,7 @@ Strategy: {{portfolio-strategy}}
           <th>Symbol</th>
           <th>Shares</th>
           <th>Investment</th>
-          <th>Return</th>
+          <th>Cash Out</th>
           <th>Price</th>
           <th>Value</th>
           <th>Gain</th>
@@ -118,7 +126,17 @@ Strategy: {{portfolio-strategy}}
 
   <div class='security-module' id='portfolio-multis-{{ id }}' style='display:none'>
     <table class='multi-content' id='portfolio-multi-holding-{{ id }}'>
-      <tr><th colspan=8 class='portfolio-header'>Retirement</td></tr>
+      <thead>
+        <tr><th colspan=8 class='portfolio-header'>Retirement</td></tr>
+        <tr>
+          <th></th>
+          <th>Symbol</th>
+          <th>Investment</th>
+          <th>Cash Out</th>
+          <th>Value</th>
+          <th>Gain</th>
+        </tr>
+      </thead>
     </table>
   </div>
 
