@@ -57,7 +57,12 @@ class MultiHolding < ActiveRecord::Base
       self.multi_holding_allocations.create(
         :fund_ticker_id => alloc[:fund_ticker_id],
         :allocation_percentage => alloc[:allocation],
-        :estimated_units => alloc[:estimated_units]
+        :estimated_units => alloc[:estimated_units],
+        :allocated_on => alloc[:allocated_on],
+        :price_at_allocation => alloc[:price_at_allocation],
+        :est_value_at_allocation => alloc[:est_value_at_allocation],
+        :est_units => alloc[:est_units]
+
       )
     end
   end
@@ -116,10 +121,32 @@ class MultiHolding < ActiveRecord::Base
     false
   end
 
+  def last_known_value
+    multi_statements.last.try('ending_balance')
+  end
+
+  def est_current_value
+    sum = 0
+    multi_holding_allocations.each do |mha|
+      sum += mha.est_current_value
+    end
+    sum
+  end
+
+  def est_current_gain
+    est_current_value - net_investment
+  end
+
+
   def as_json(options={})
     result = super(options)
+    result['last_known_value'] = self.last_known_value
+    result['est_current_value'] = self.est_current_value
+    result['est_current_gain'] = self.est_current_gain
     result
   end
+
+
 
 
   def populate_points

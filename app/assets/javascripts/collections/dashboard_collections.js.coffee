@@ -177,8 +177,8 @@ class window.FriendPortfolioCollection extends Backbone.Collection
 
 
   addOneView: (p)->
-    new CompareValuesView({model:p}).render();
+    new FriendPortfolioView({model:p}).render();
 
-window.ValueComparisons = new CompareValuesCollection
+window.FriendPortfolios = new FriendPortfolioCollection
 
 

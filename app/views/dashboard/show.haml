@@ -1,42 +1,51 @@
 = content_for :on_ready do
   - @models.each do |k,v|
     != "#{k.classify.pluralize}.add(#{v.to_json});"
+  - @friend_models.each do |k,v|
+    - v.each do |h|
+      != "FriendPortfolios.add(#{ h.to_json});"
   != "IndexComparisons.add(#{@compare_indices.to_json});"
   != "ValueComparisons.add(#{@compare_values.to_json});"
-  $('#nav tr.selectable').first().trigger('click');
+  $('#show-your-portfolios-nav tr.selectable').first().trigger('click');
+  $('#show-content tr.holding-header').first().trigger('click');
   $('.accordion').accordion();
 
 = content_for :templates do
   = template_include_path_helper(['dashboard', 'hotlist'])
 
-#portfolio-show
-#portfolio-compare
-  #compare-indices.compare-module
-  #compare-values.compare-module
-  #compare-others.compare-module
-#portfolio-share
-  #your-friends
-    #invites-from.share-module{:style => 'display:none'}
-      Invites From
-      %table
-        %tbody
-        - for i in @invites_from
-          %tr
-            %td= i.screen_name
-    #invites-to.share-module{:style => 'display:none'}
-      Invites To
-      %table
-        %tbody
-        - for i in @invites_to
-          %tr
-            %td= i.screen_name
-    #friends.share-module{:style => 'display:none'}
-      Friends
-      %table
-        %tbody
-        - for i in @friends
-          %tr
-            %td= i.screen_name
+#show-content
+  #show-your-portfolios-content.show-module
+  #show-friends-portfolios-content.show-module
+#compare-content
+  #compare-your-portfolios-content.compare-module
+    #compare-indices-content.compare-module
+    #compare-values-content.compare-module
+    #compare-others-content.compare-module
+  #compare-friends-portfolios-content.compare-module
+#share-content
+  #share-with-content.share-module
+    #your-friends.share-module
+      #invites-from.share-module{:style => 'display:none'}
+        Invites From
+        %table
+          %tbody
+          - for i in @invites_from
+            %tr
+              %td= i.screen_name
+      #invites-to.share-module{:style => 'display:none'}
+        Invites To
+        %table
+          %tbody
+          - for i in @invites_to
+            %tr
+              %td= i.screen_name
+      #friends.share-module{:style => 'display:none'}
+        Friends
+        %table
+          %tbody
+          - for i in @friends
+            %tr
+              %td= i.screen_name
 
 
 #forms

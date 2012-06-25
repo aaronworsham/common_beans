@@ -9,10 +9,7 @@ class window.HotlistPortfolioView extends Backbone.View
 
   render: ->
     elem_show = ich.hotlist_portfolio_show_template(@model.formattedData());
-    elem_compare = ich.hotlist_portfolio_compare_template(@model.toJSON());
     $(elem_show).hide();
-    $(elem_compare).hide();
-    $('#nav #show .your_portfolios table tbody').append(elem_show);
+    $('#show-your-portfolios-nav table tbody').append(elem_show);
     $(elem_show).fadeIn("slow");
-    $(elem_compare).fadeIn("slow");
 

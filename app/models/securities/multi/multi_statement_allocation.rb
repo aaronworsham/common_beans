@@ -6,6 +6,16 @@ class MultiStatementAllocation < ActiveRecord::Base
 
   before_create do |x|
     x.contributions = multi_statement.contributions * (allocation_percentage / 100)
+    end_date = multi_statement.ended_on
+    x.allocated_on = end_date
+    x.price_at_allocation = self.fund_ticker.close_for_date(end_date)
+    x.est_value_at_allocation = (multi_statement.ending_balance * (allocation_percentage / 100))
+    x.est_units = if x.price_at_allocation > 0
+       (x.est_value_at_allocation / x.price_at_allocation)
+    else
+      0
+    end
+
   end
 
   after_create do |x|

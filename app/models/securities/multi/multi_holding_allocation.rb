@@ -28,6 +28,10 @@ class MultiHoldingAllocation < ActiveRecord::Base
     fund_ticker
   end
 
+  def est_current_value
+    todays_price * est_units
+  end
+
 
 
   #TODO add calculation that gives current units, value, and gain given

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120604204540) do
+ActiveRecord::Schema.define(:version => 20120621230127) do
 
   create_table "bond_events", :force => true do |t|
     t.integer  "bond_ticker_id"
@@ -566,11 +566,15 @@ ActiveRecord::Schema.define(:version => 20120604204540) do
   create_table "multi_holding_allocations", :force => true do |t|
     t.integer  "multi_holding_id"
     t.integer  "fund_ticker_id"
-    t.decimal  "allocation_percentage", :precision => 5, :scale => 2
+    t.decimal  "allocation_percentage",   :precision => 5,  :scale => 2
     t.integer  "estimated_units"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "current_state"
+    t.date     "allocated_on"
+    t.decimal  "price_at_allocation",     :precision => 15, :scale => 2
+    t.float    "est_units"
+    t.float    "est_value_at_allocation"
   end
 
   create_table "multi_holdings", :force => true do |t|
@@ -615,13 +619,17 @@ ActiveRecord::Schema.define(:version => 20120604204540) do
   create_table "multi_statement_allocations", :force => true do |t|
     t.integer  "multi_statement_id"
     t.integer  "fund_ticker_id"
-    t.decimal  "allocation_percentage", :precision => 5,  :scale => 2
-    t.decimal  "contributions",         :precision => 9,  :scale => 2
-    t.decimal  "distributions",         :precision => 15, :scale => 2
+    t.decimal  "allocation_percentage",   :precision => 5,  :scale => 2
+    t.decimal  "contributions",           :precision => 9,  :scale => 2
+    t.decimal  "distributions",           :precision => 15, :scale => 2
     t.integer  "estimated_units"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "current_state"
+    t.date     "allocated_on"
+    t.decimal  "price_at_allocation",     :precision => 15, :scale => 2
+    t.float    "est_units"
+    t.float    "est_value_at_allocation"
   end
 
   create_table "multi_statements", :force => true do |t|

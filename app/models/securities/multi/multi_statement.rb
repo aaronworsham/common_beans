@@ -14,7 +14,11 @@ class MultiStatement < ActiveRecord::Base
         :fund_ticker_id => msa.fund_ticker_id,
         :allocation => msa.allocation_percentage,
         :contributions => msa.contributions,
-        :estimated_units => msa.estimated_units
+        :estimated_units => msa.estimated_units,
+        :allocated_on => msa.allocated_on,
+        :price_at_allocation => msa.price_at_allocation,
+        :est_value => msa.est_value_at_allocation,
+        :est_units => msa.est_units
       }
     end
     x.multi_holding.reallocate(allocations)

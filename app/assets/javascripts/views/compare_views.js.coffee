@@ -10,7 +10,7 @@ class window.CompareIndicesView extends Backbone.View
   render: ->
     elem = ich.compare_indices_template(@model.toJSON());
     $(elem).hide();
-    $("#portfolio-compare #compare-indices").append(elem);
+    $("#compare-your-portfolios-content #compare-indices-content").append(elem);
     $(elem).fadeIn("slow");
 
 
@@ -87,7 +87,7 @@ class window.CompareValuesView extends Backbone.View
   render: ->
     elem = ich.compare_values_template(@model.toJSON());
     $(elem).hide();
-    $("#portfolio-compare #compare-values").append(elem);
+    $("#compare-your-portfolios-content #compare-values-content").append(elem);
     $(elem).fadeIn("slow");
 
 

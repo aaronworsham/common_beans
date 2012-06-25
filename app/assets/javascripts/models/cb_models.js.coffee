@@ -10,7 +10,10 @@ data_points = [
           'total_value_gain',
           'starting_balance',
           'ending_balance',
-          'contributions'
+          'last_known_value',
+          'contributions',
+          'est_current_value',
+          'est_current_gain'
           ]
 for security in securities
   do (security) ->
@@ -65,6 +68,10 @@ class window.MultiStatementModel extends Backbone.Model
       do (data_point) ->
         if data[data_point] isnt null
           data['formatted_'+ data_point] = FormatCurrency(data[data_point])
+          if data[data_point] >= 0
+            data['formatted_' + data_point + '_class'] = 'positive'
+          else
+            data['formatted_' + data_point + '_class'] = 'negative'
 
     return data
 class window.MultiAllocationModel extends Backbone.Model

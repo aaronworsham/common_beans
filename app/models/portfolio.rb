@@ -44,6 +44,18 @@ class Portfolio < ActiveRecord::Base
     array
   end
 
+  def self.safe_backbone_models(user, friend)
+    if user.mutual_trust?(friend)
+      array = []
+      user.portfolios.each do |p|
+        array << p.safe_portfolio
+      end
+      array
+    else
+      []
+    end
+  end
+
 
 
 
@@ -76,6 +88,18 @@ class Portfolio < ActiveRecord::Base
       :since => self.started_at.strftime('%D'),
       :past_plan_ranks => self.get_past_plan_rankings,
       :past_strategy_ranks => self.get_past_strategy_rankings
+    }
+  end
+
+  def safe_portfolio
+    {
+      :user_id => self.user_id,
+      :name => self.name,
+      :id => self.id,
+      :total_gain_ratio => self.total_gain_ratio,
+      :plan => self.portfolio_plan.name,
+      :strategy => self.portfolio_strategy.name,
+      :started_at => self.started_at.strftime('%D')
     }
   end
 

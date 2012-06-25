@@ -15,7 +15,6 @@ table {
   text-align: left;
   border-collapse: collapse;
   thead{
-    border-bottom: 6px solid #fff;
   }
   tr.holding-tr{
 
@@ -30,7 +29,7 @@ table {
   td{
     text-align: center;
     padding: 2px;
-    background: #f0f7f2;
+    background: #fafaf4;
     color: black;
 
     .holding_name {
@@ -55,9 +54,8 @@ table {
     text-align:center;
     font-size: 13px;
     font-weight: normal;
-    background: #f0f7f2;
-    border-left:2px solid #d3e5d8;
-    border-right:2px solid #d3e5d8;
+    background: #fafaf4;
+    border-bottom: 3px solid #fff;
     color: #777;
     .remove-profile{
       float: right;
@@ -79,9 +77,6 @@ table {
   }
   tr.holding-header{
     cursor:pointer;
-    border-top: 3px solid #fff;
-    border-right: 3px solid #fff;
-    border-left: 3px solid #fff;
   }
 }
 
@@ -125,7 +120,7 @@ table {
 .security-module {
   /* fallback */
   background-color: #fafaf4;
-  padding: 10px;
+  padding: 3px;
   border: 1px solid #dfd9c3;
 
 
@@ -183,6 +178,18 @@ td.positive{
 
 td.negative{
   color: red;
+}
+
+.arrow{
+ color: #00919F;
+}
+
+.overview{
+  text-align:center;
+}
+
+table tr.holding-header:hover td {
+	background: #d0dafd;
 }
 
 

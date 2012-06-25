@@ -2,41 +2,41 @@
 #nav
   %ul
     %li
-      %a{:href => '#show'} Show
+      %a{:href => '#show-nav'} Show
     %li
-      %a{:href => '#compare'} Compare
+      %a{:href => '#compare-nav'} Compare
     %li
-      %a{:href => '#share'} Share
+      %a{:href => '#share-nav'} Share
 
-  #show
+  #show-nav
     %a.add_portfolio_group_action
       %img{:src=>'/images/portfolio.gif'}
-    .your_portfolios
+    #show-your-portfolios-nav
       You
       %table
         %tbody
-    .friends_portfolios
+    #show-friends-portfolios-nav
       Friends
       %table
         %tbody
         - for f in @friends
-          %tr
+          %tr.selectable{"data-friend-id" => f.id}
             %td= f.screen_name
             %td= "-%5 (5day)"
-    .friends_portfolios
+    #show-group-portfolios-nav
       Groups (coming soon)
       %table
         %tbody
 
 
-  #compare
-    .your_portfolios
+  #compare-nav
+    #compare-your-portfolios-nav
       Your Portfolios To...
       %table
         %tbody
-          %tr.selectable{'data-module' => '#compare-indices'}
+          %tr.selectable{'data-module' => '#compare-indices-content'}
             %td Market Indices
-          %tr.selectable{'data-module' => '#compare-values'}
+          %tr.selectable{'data-module' => '#compare-values-content'}
             %td Gains over Time
           %tr.selectable{'data-module' => '#compare-friends'}
             %td Friends
@@ -44,15 +44,14 @@
             %td Others on CB
 
 
-    .group_portfolios
+    #compare-friend-portfolios-nav
       Your Groups (coming soon)
       %table
         %tbody
 
 
-  #share
-
-    .share_with
+  #share-nav
+    #share-with-nav
       %h4 Share with..
       Your Financial Adviser
       %table
@@ -81,7 +80,7 @@
       Groups (coming soon)
     %br
     %br
-    .compete_with
+    #compete-with-nav
       %h4 Compete with..
       Friends  (coming soon)
       %br
