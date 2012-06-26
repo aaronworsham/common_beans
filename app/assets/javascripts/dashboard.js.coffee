@@ -61,6 +61,10 @@ $ ->
     $("#"+type+'-events-for-holding-'+id).slideToggle('slow')
   )
 
+  $('.portfolio-header:visible tr.clickable').live('click', ->
+    $('.portfolio-header:visible tr.expandable').toggle('slow')
+  )
+
 
 
 

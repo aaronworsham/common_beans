@@ -13,6 +13,42 @@ class window.PortfolioView extends Backbone.View
     $('#show-content #show-your-portfolios-content').append(elem);
     $(elem).fadeIn("slow");
 
+    options = {
+      chart: {
+           renderTo: 'portfolio-content-' + @model.id + '-dist-graph',
+           plotBackgroundColor: null,
+           plotBorderWidth: null,
+           plotShadow: false,
+           width:400,
+           height:400,
+           style: {
+            float: 'right'
+           }
+      },
+      title: {
+        text: 'Securities Distribution'
+      },
+
+      plotOptions: {
+        pie: {
+          allowPointSelect: true,
+          cursor: 'pointer',
+          dataLabels: {
+            enabled: false
+          },
+          showInLegend: false
+        }
+      },
+      series: [{
+        type: 'pie',
+        name: 'Holding Percentage',
+        data: []
+      }]
+    };
+
+    for v in @model.attributes.distribution
+      options.series[0].data.push([v['holding_name'],v['ratio']])
+    chart = new Highcharts.Chart(options);
 
 
 

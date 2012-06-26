@@ -99,8 +99,21 @@ class Portfolio < ActiveRecord::Base
       :total_gain_ratio => self.total_gain_ratio,
       :plan => self.portfolio_plan.name,
       :strategy => self.portfolio_strategy.name,
+      :distribution => self.distribution_array,
       :started_at => self.started_at.strftime('%D')
     }
+  end
+
+  def distribution_array
+    array = []
+    cached_holdings.each do |h|
+      array << {:holding_name => h.name, :ratio => self.distribution_ratio_for_holding(h)}
+    end
+    array
+  end
+
+  def distribution_ratio_for_holding(holding)
+    ((holding.todays_value / self.total_value) * 100).round(0)
   end
 
 
@@ -207,6 +220,8 @@ class Portfolio < ActiveRecord::Base
   def as_json(options={})
     result = super(options)
     result["trust"] = self.trust_level
+    result["distribution"] = self.distribution_array
+    result['started_at'] = self.started_at.strftime('%D')
     result["portfolio-plan"] = self.portfolio_plan.name
     result["portfolio-strategy"] = self.portfolio_strategy.name
     result["total_value"] = self.total_value

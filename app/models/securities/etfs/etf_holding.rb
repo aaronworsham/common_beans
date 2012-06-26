@@ -15,6 +15,9 @@ class EtfHolding < ActiveRecord::Base
   validates_presence_of :starting_units
   validates_presence_of :starting_price
 
+  delegate  :name,
+          :symbol,
+          :to => :etf_ticker
 
   #after_create :notify_everyone
   before_create :populate_net_values
@@ -24,6 +27,10 @@ class EtfHolding < ActiveRecord::Base
 
   def ticker
     @ticker ||= etf_ticker
+  end
+
+  def name
+    "#{ticker.name.truncate(30)}(#{ticker.symbol})"
   end
 
   def notify_everyone

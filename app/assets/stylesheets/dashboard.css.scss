@@ -192,6 +192,35 @@ table tr.holding-header:hover td {
 	background: #d0dafd;
 }
 
+tr.small-table-header {
+  font-size: 8px;
+  td {
+    color: #dfd9c3;
+  }
+}
+
+.portfolio-header tr.clickable{
+  cursor:pointer;
+}
+
+.portfolio-header tr.expandable table td{
+  text-align: left;
+}
+
+.portfolio-header tr.expandable table, tbody, tr, td{
+  vertical-align:top;
+}
+
+.portfolio-header table.point-data{
+  background: white;
+  td{
+    background: white;
+    border: 1px solid #dfd9c3
+  }
+}
+
+
+
 
 
 

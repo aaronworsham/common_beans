@@ -46,6 +46,10 @@ CommonBeans::Application.routes.draw do
   resources :fund_sells
   resources :etf_sells
 
+  resources :users do
+    get :autocomplete_user_screen_name, :on => :collection
+  end
+
   resources :invite_financial_advisers do
     get :gather, :on => :collection
     post :redeem, :on => :collection
@@ -56,6 +60,7 @@ CommonBeans::Application.routes.draw do
   match "/signout" => "sessions#destroy", :as => :signout
   match "/profiles/public/twitter/:screen_name" => "users#twitter", :as => :public_twitter_profile
   match "/profiles/public/facebook/:screen_name" => "users#twitter", :as => :public_twitter_profile
+  match "/profiles/user_id/:id" => "users#public_from_id", :as => :public_user_id_profile
   root :to => 'pages#index'
 
   # The priority is based upon order of creation:

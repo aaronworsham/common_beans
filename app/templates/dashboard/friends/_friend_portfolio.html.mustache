@@ -1,13 +1,20 @@
 <div class='security-module portfolio-header' id='friend-portfolio-{{id}}'>
   <table>
     <thead>
-    <tr>
-      <td><h3>{{name}}</h3>
-      <td>{{plan}}</td>
-      <td>{{strategy}}</td>
-      <td class='{{formatted_total_gain_ratio_class}} number'>{{total_gain_ratio}}%</td>
-      <td>since {{started_at}}</td>
-    </tr>
+      <tr class='small-table-header'>
+        <td></td>
+        <td>Plan</td>
+        <td>Strategy</td>
+        <td>Ratio</td>
+        <td>Started</td>
+      </tr>
+      <tr>
+        <td rowspan=2><h3>{{name}}</h3>
+        <td>{{plan}}</td>
+        <td>{{strategy}}</td>
+        <td class='{{formatted_total_gain_ratio_class}} number'>{{total_gain_ratio}}%</td>
+        <td>since {{started_at}}</td>
+      </tr>
     </thead>
     <tbody>
     <tr>

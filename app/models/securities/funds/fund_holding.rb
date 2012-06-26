@@ -16,6 +16,7 @@ class FundHolding < ActiveRecord::Base
   validates_presence_of :starting_price
 
 
+
   #after_create :notify_everyone
   before_create :populate_net_values
   attr_accessor :ticker_name, :ticker_symbol
@@ -24,6 +25,10 @@ class FundHolding < ActiveRecord::Base
 
   def ticker
     @ticker ||= fund_ticker
+  end
+
+  def name
+    "#{ticker.name.truncate(30)}(#{ticker.symbol})"
   end
 
   def notify_everyone

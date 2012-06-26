@@ -87,7 +87,7 @@ $ ->
 
 
 
-    $('#show-content').fadeIn('fast');
+    $('#show-content').fadeIn('slow');
   );
 
   $('#show-friends-portfolios-nav tr.selectable').live("click", ->
@@ -103,18 +103,23 @@ $ ->
     );
     $(@).addClass('selected');
     $('#show-friends-portfolios-content').show();
-    $('#show-content').fadeIn('fast');
+    $('#show-content').fadeIn('slow');
   );
 
+  $('#share-nav tr.selectable').live("click", ->
 
-
-
-  $('#nav #share tr.selectable').live("click", ->
-    $('#portfolio-compare').hide();
-    $('#portfolio-show').hide();
-    $('#portfolio-share .share-module').fadeIn('slow');
-
+    $('#compare-content .compare-module').hide();
+    $('#show-content .show-module').hide();
+    $('#share-content').hide();
+    $('#share-content .share-module').hide();
+    $('#nav li.selectable').each((i,v) ->
+      $(v).removeClass('selected');
+    );
+    $(@).addClass('selected');
+    $('#share-content .share-module').show();
+    $('#share-content').fadeIn('slow');
   );
+
 
 
 

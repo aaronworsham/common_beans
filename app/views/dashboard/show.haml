@@ -23,23 +23,28 @@
     #compare-others-content.compare-module
   #compare-friends-portfolios-content.compare-module
 #share-content
-  #share-with-content.share-module
-    #your-friends.share-module
-      #invites-from.share-module{:style => 'display:none'}
+  #share-with-content
+    #your-friends
+      #find-friend-content.share-module.security-module
+        %p Find A Friend's Profile on CommonBeans
+        %input{:class=>"autocomplete optional ui-autocomplete-input", 'data-autocomplete'=>"/users/autocomplete_user_screename", 'data-id-element'=>"#facebox #fund_holding_fund_ticker_id", :id=>"user_search", :size=>"30", :type=>"text", :autocomplete=>"off", :role=>"textbox", 'aria-autocomplete'=>"list", 'aria-haspopup'=>"true"}
+        =# select :user, :user_id, User.all.collect {|p| [ "#{p.screen_name || 'unknown'} from #{p.provider || 'unknown'} ID #{p.id}", p.id ] }
+        %button Find Profile
+      #invites-from-content.share-module.security-module
         Invites From
         %table
           %tbody
           - for i in @invites_from
             %tr
               %td= i.screen_name
-      #invites-to.share-module{:style => 'display:none'}
+      #invites-to-content.share-module.security-module
         Invites To
         %table
           %tbody
           - for i in @invites_to
             %tr
               %td= i.screen_name
-      #friends.share-module{:style => 'display:none'}
+      #friends-content.share-module.security-module
         Friends
         %table
           %tbody
