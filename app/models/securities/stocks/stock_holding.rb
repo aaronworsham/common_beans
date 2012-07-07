@@ -87,12 +87,12 @@ class StockHolding < ActiveRecord::Base
 
 
   def past_shares(date)
-    shares = net_shares
+    shares = starting_shares
     stock_buys.each do |buy|
-      shares - buy.shares if buy.executed_at > date
+      shares += buy.shares if buy.executed_at <= date
     end
     stock_sells.each do |sell|
-      shares + sell.shares if sell.executed_at > date
+      shares -= sell.shares if sell.executed_at <= date
     end
     shares
   end

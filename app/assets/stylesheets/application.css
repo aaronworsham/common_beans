@@ -51,3 +51,19 @@ table tr.selectable:hover td {
   font-size: 21px;
 }
 
+.stories tr.accepted td{
+  background: #e0f2d2;
+}
+.stories tr.started td{
+  background: #f9eabd;
+}
+.stories tr.finished td{
+  background: #f8f9a7;
+}
+.stories tr.delivered td{
+  background: #cdeef7;
+}
+.stories tr.release td{
+  background: #dfd9c3;
+}
+

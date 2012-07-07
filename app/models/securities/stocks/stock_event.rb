@@ -50,6 +50,8 @@ class StockEvent < ActiveRecord::Base
     result["action_letter"] = self.type[0].capitalize
     result["relative_day"] = days_since_holding_purchase
     result['executed_on'] = self.executed_at.strftime('%D')
+    result['shares_to_date'] = self.shares_to_date
+    result['value_to_date'] = self.value_to_date
     result
   end
 
@@ -64,6 +66,14 @@ class StockEvent < ActiveRecord::Base
 
   def todays_value
     self.shares * self.todays_price
+  end
+
+  def shares_to_date
+    self.holding.past_shares(self.executed_at)
+  end
+
+  def value_to_date
+    shares_to_date * price
   end
 
 end

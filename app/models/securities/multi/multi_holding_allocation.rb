@@ -29,6 +29,7 @@ class MultiHoldingAllocation < ActiveRecord::Base
   end
 
   def est_current_value
+    return 0 unless todays_price and est_units
     todays_price * est_units
   end
 

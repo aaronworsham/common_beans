@@ -26,10 +26,12 @@ class TrustController < ApplicationController
   end
 
   def create
-    trusting_user = User.find_by_id params[:user_id]
+    trusting_user = User.find_by_id params[:id]
     level = 5
     logger.info "TRUST: requesting user #{current_user.screen_name} trust #{trusting_user.screen_name} at level #{level} "
-    current_user.trust!(trusting_user, level )
+    if trusting_user
+      current_user.trust!(trusting_user, level )
+    end
     respond_with do |x|
       x.json {render :json => {:success => true}}
       x.html {render :text => 'success'}

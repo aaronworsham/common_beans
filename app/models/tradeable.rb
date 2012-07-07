@@ -26,45 +26,54 @@ module Tradeable
     ((total_value_gain/self.net_investment)*100).round(3)
   end
 
+
+
+  #### PAST POINTS ######
+
   def get_past_prices
-    hash = Hash.new
-    Point.names.each do |d|
-      hash[d] = self.send("#{d}_close")
+    get_past do |name|
+      self.send("#{name}_close")
     end
-    hash
   end
 
   def get_past_values
-    hash = Hash.new
-    Point.names.each do |d|
-      hash[d] = self.send("#{d}_calculated_value")
+    get_past do |name|
+      self.send("#{name}_calculated_value")
     end
-    hash
   end
 
   def get_past_price_gains
-    hash = Hash.new
-    Point.names.each do |d|
-      hash[d] = self.send("#{d}_calculated_price_gain")
+    get_past do |name|
+      self.send("#{name}_calculated_price_gain")
     end
-    hash
   end
 
   def get_past_value_gains
+    get_past do |name|
+      self.send("#{name}_calculated_value_gain")
+    end
+  end
+
+  def get_past_value_gain_ratios
+    get_past do |name|
+      self.send("#{name}_calculated_value_gain_ratio")
+    end
+  end
+
+  def get_past(&block)
     hash = Hash.new
-    Point.names.each do |d|
-      hash[d] = self.send("#{d}_calculated_value_gain")
+    Point.dates.each do |name, date|
+      if date.to_time > self.purchased_at
+        hash[name] =  block.call(name)
+      else
+        hash[name] = nil
+      end
     end
     hash
   end
 
-  def get_past_value_gain_ratios
-    hash = Hash.new
-    Point.names.each do |d|
-      hash[d] = self.send("#{d}_calculated_value_gain_ratio")
-    end
-    hash
-  end
+
+  ### END PAST POINTS #####
 
   def calculate_price_gain(pre)
     if Settings.offline

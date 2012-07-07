@@ -1,0 +1,18 @@
+#warmlist.threecol
+#content.ninecol.last
+  .security-module.stories
+    %h3=@story.name.capitalize
+    %table
+      %tr
+        %td Type
+        %td=@story.story_type
+
+      %tr
+        %td State
+        %td=@story.current_state
+
+      %tr
+        %td Description
+        %td=@story.description
+
+  = link_to '<< Back', stories_path

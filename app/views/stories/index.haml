@@ -1,0 +1,18 @@
+#warmlist.threecol
+#content.ninecol.last
+  .security-module.stories
+    %table
+      %thead
+        %th Name
+        %th Type
+        %th Section
+        %th State
+        %th
+      %tbody
+        - @stories.each do |s|
+          %tr{:class=>"#{s.current_state} #{s.story_type}"}
+            %td{:style=>'text-align:left'}=s.full_name
+            %td{:style=>'text-align:left'}=s.story_type
+            %td{:style=>'text-align:left'}=s.full_labels
+            %td{:style=>'text-align:left'}=s.current_state
+            %td=link_to 'more>>',story_path(s.id)

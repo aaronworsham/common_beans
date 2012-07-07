@@ -7,6 +7,7 @@ class Portfolio < ActiveRecord::Base
   has_many :etf_holdings, :dependent => :destroy
   has_many :bond_holdings, :dependent => :destroy
   has_many :cd_holdings, :dependent => :destroy
+  has_many :multi_holdings, :dependent => :destroy
   has_many :group_portfolios, :dependent => :destroy
   belongs_to  :portfolio_plan
   belongs_to  :portfolio_strategy
@@ -122,7 +123,8 @@ class Portfolio < ActiveRecord::Base
                   self.fund_holdings +
                   self.etf_holdings +
                   self.bond_holdings +
-                  self.cd_holdings
+                  self.cd_holdings +
+                  self.multi_holdings
   end
 
   def reload_cached_holdings
@@ -130,7 +132,8 @@ class Portfolio < ActiveRecord::Base
                   self.fund_holdings +
                   self.etf_holdings +
                   self.bond_holdings +
-                  self.cd_holdings
+                  self.cd_holdings +
+                  self.multi_holdings
   end
 
   def total_value
@@ -143,6 +146,9 @@ class Portfolio < ActiveRecord::Base
 
   def total_investment
     cached_holdings.inject(0){|x,y| x + y.net_investment}
+  end
+  def total_return
+    cached_holdings.inject(0){|x,y| x + y.net_return}
   end
 
   def total_gain_ratio
@@ -227,6 +233,8 @@ class Portfolio < ActiveRecord::Base
     result["total_value"] = self.total_value
     result["total_value_gain"] = self.total_value_gain
     result["total_gain_ratio"] = self.total_gain_ratio
+    result['total_investment'] = self.total_investment
+    result['total_return'] = self.total_return
     result['holding_ids'] = self.cached_holdings.map{|x| x.id}
     result
   end

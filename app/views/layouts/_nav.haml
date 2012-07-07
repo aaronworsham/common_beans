@@ -24,7 +24,7 @@
             %td= f.screen_name
             %td= "-%5 (5day)"
     #show-group-portfolios-nav
-      Groups (coming soon)
+      Groups (In Beta)
       %table
         %tbody
 
@@ -45,7 +45,7 @@
 
 
     #compare-friend-portfolios-nav
-      Your Groups (coming soon)
+      Your Groups (In Beta)
       %table
         %tbody
 
@@ -53,39 +53,29 @@
   #share-nav
     #share-with-nav
       %h4 Share with..
-      Your Financial Adviser
       %table
         %tbody
-          %tr.selectable
-            %td Invite your Adviser
-          %tr.selectable
-            %td Find an Adviser
 
-
-      Your Friends
-      %table
-        %tbody
           %tr.selectable#find-friend-nav
-            %td Find your friend on CB
-          %tr.selectable
-            %td Invite a friend to join CB
-          %tr.selectable
-            %td= "Accept a friend invite (#{@invites_from.count})"
-          %tr.selectable
-            %td= "Invites awaiting response (#{@invites_to.count})"
-          %tr.selectable
-            %td= "List of Friends (#{@friends.count})"
+            %td Your Friends
+            %td= "#{@friends.count}/#{@invites_from.count}/#{@invites_to.count}"
+          %tr
+            %td Your Adviser
+            %td In Alpha
 
-
-      Groups (coming soon)
-    %br
-    %br
+          %tr
+            %td Groups
+            %td In Beta
     #compete-with-nav
       %h4 Compete with..
-      Friends  (coming soon)
-      %br
-      Groups  (coming soon)
-
-
+      %table
+        %tbody
+          %tr
+            %td Friends
+            %td In Beta
+          %tr
+            %td Groups
+            %td In Beta
+      
 #advertising.security-module
   Advertising

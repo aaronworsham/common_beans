@@ -1,7 +1,7 @@
 CommonBeans::Application.routes.draw do
 
 
-
+  resources :stories
   resources :trackers
   resources :indices
   resources :fund_tickers
@@ -58,9 +58,6 @@ CommonBeans::Application.routes.draw do
 
   match "/auth/:provider/callback" => "sessions#create"
   match "/signout" => "sessions#destroy", :as => :signout
-  match "/profiles/public/twitter/:screen_name" => "users#twitter", :as => :public_twitter_profile
-  match "/profiles/public/facebook/:screen_name" => "users#twitter", :as => :public_twitter_profile
-  match "/profiles/user_id/:id" => "users#public_from_id", :as => :public_user_id_profile
   root :to => 'pages#index'
 
   # The priority is based upon order of creation:

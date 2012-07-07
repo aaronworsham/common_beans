@@ -27,18 +27,18 @@
     #your-friends
       #find-friend-content.share-module.security-module
         %p Find A Friend's Profile on CommonBeans
-        %input{:class=>"autocomplete optional ui-autocomplete-input", 'data-autocomplete'=>"/users/autocomplete_user_screename", 'data-id-element'=>"#facebox #fund_holding_fund_ticker_id", :id=>"user_search", :size=>"30", :type=>"text", :autocomplete=>"off", :role=>"textbox", 'aria-autocomplete'=>"list", 'aria-haspopup'=>"true"}
-        =# select :user, :user_id, User.all.collect {|p| [ "#{p.screen_name || 'unknown'} from #{p.provider || 'unknown'} ID #{p.id}", p.id ] }
-        %button Find Profile
+        %input{:class=>"promptable autocomplete optional ui-autocomplete-input", 'data-autocomplete'=>"/users/autocomplete_user_screename", 'data-id-element'=>"#send_friend_request_id", :id=>"user_search", :size=>"30", :type=>"text", :autocomplete=>"off", :role=>"textbox", 'aria-autocomplete'=>"list", 'aria-haspopup'=>"true", 'data-prompt' => 'Screen Name'}
+        %input{:type => 'hidden', :id => 'send_friend_request_id'}
+        %button#send_friend_request Send a Friend Request
       #invites-from-content.share-module.security-module
-        Invites From
+        Friend Requests From
         %table
           %tbody
           - for i in @invites_from
             %tr
               %td= i.screen_name
       #invites-to-content.share-module.security-module
-        Invites To
+        Friend Requests To
         %table
           %tbody
           - for i in @invites_to

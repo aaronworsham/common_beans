@@ -125,6 +125,18 @@ class MultiHolding < ActiveRecord::Base
     multi_statements.last.try('ending_balance')
   end
 
+  def todays_value
+    est_current_value
+  end
+
+  def total_value
+    est_current_value
+  end
+
+  def total_value_gain
+    est_current_gain
+  end
+
   def est_current_value
     sum = 0
     multi_holding_allocations.each do |mha|
@@ -135,6 +147,15 @@ class MultiHolding < ActiveRecord::Base
 
   def est_current_gain
     est_current_value - net_investment
+  end
+
+  def purchased_at
+    if self.multi_statements.size > 0
+      date = self.multi_statements.sort_by(&:started_on).first.started_on
+      return date.nil? ? Time.now : date.to_time
+    else
+      Time.now
+    end
   end
 
 
