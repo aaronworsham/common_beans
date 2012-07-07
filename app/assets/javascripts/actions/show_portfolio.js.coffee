@@ -4,8 +4,53 @@ class window.PortfolioView extends Backbone.View
 
   initialize: ->
     @model.view = this
-    @model.bind('change', @render, this);
+    @model.bind('add', @render, this);
+    @model.bind('change', @update, this);
     @model.bind('destroy', @remove, this);
+
+  update: ->
+    update = ich.update_portfolio_template(@model.formattedData());
+    elem = $('#portfolio-content-'+ @model.id + ' .portfolio-header')
+    $(elem).hide();
+    $(elem).html(update);
+    $(elem).fadeIn("slow");
+    options = {
+      chart: {
+           renderTo: 'portfolio-content-' + @model.id + '-dist-graph',
+           plotBackgroundColor: null,
+           plotBorderWidth: null,
+           plotShadow: false,
+           width:400,
+           height:400,
+           style: {
+            float: 'right'
+           }
+      },
+      title: {
+        text: 'Securities Distribution'
+      },
+
+      plotOptions: {
+        pie: {
+          allowPointSelect: true,
+          cursor: 'pointer',
+          dataLabels: {
+            enabled: false
+          },
+          showInLegend: false
+        }
+      },
+      series: [{
+        type: 'pie',
+        name: 'Holding Percentage',
+        data: []
+      }]
+    };
+
+    for v in @model.attributes.distribution
+      options.series[0].data.push([v['holding_name'],v['ratio']])
+    chart = new Highcharts.Chart(options);
+
 
   render: ->
     elem = $(@el).append(ich.portfolio_template(@model.formattedData()));

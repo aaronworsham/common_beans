@@ -4,7 +4,7 @@ class window.HotlistPortfolioView extends Backbone.View
 
   initialize: ->
     @model.view = this
-    @model.bind('change', @render, this);
+    @model.bind('add', @render, this);
     @model.bind('destroy', @remove, this);
 
   render: ->

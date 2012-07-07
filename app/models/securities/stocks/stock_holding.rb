@@ -7,8 +7,8 @@ class StockHolding < ActiveRecord::Base
   belongs_to :user
   belongs_to :stock_ticker
   belongs_to :portfolio
-  has_many :stock_buys
-  has_many :stock_sells
+  has_many :stock_buys, :dependent => :destroy
+  has_many :stock_sells, :dependent => :destroy
   has_many :stock_events, :dependent => :destroy
 
   validates_presence_of :stock_ticker_id, :message => 'Must select a ticker'

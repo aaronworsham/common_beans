@@ -6,6 +6,8 @@
       != "FriendPortfolios.add(#{ h.to_json});"
   != "IndexComparisons.add(#{@compare_indices.to_json});"
   != "ValueComparisons.add(#{@compare_values.to_json});"
+  $('#share-content').hide();
+  $('#compare-content').hide();
   $('#show-your-portfolios-nav tr.selectable').first().trigger('click');
   $('#show-content tr.holding-header').first().trigger('click');
   $('.accordion').accordion();

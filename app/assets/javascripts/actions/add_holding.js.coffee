@@ -9,7 +9,11 @@ class window.AddBondHoldingView extends Backbone.View
   submit: =>
     @model.save(this.serialize(),
         { success : (model, resp)->
+          p = Portfolios.find(model.get('portfolio_id'))
+          model.portfolio = p
+          p.fetch()
           BondHoldings.add(model)
+
         }
     );
 
@@ -43,6 +47,9 @@ class window.AddCdHoldingView extends Backbone.View
   submit: =>
     @model.save(this.serialize(),
         { success : (model, resp)->
+          p = Portfolios.find(model.get('portfolio_id'))
+          model.portfolio = p
+          p.fetch()
           CdHoldings.add(model)
         }
     );
@@ -74,6 +81,9 @@ class window.AddEtfHoldingView extends Backbone.View
   submit: =>
     @model.save(this.serialize(),
         { success : (model, resp)->
+          p = Portfolios.find(model.get('portfolio_id'))
+          model.portfolio = p
+          p.fetch()
           EtfHoldings.add(model)
         }
     );
@@ -102,6 +112,9 @@ class window.AddFundHoldingView extends Backbone.View
   submit: =>
     @model.save(this.serialize(),
         { success : (model, resp)->
+          p = Portfolios.find(model.get('portfolio_id'))
+          model.portfolio = p
+          p.fetch()
           FundHoldings.add(model)
         }
     );
@@ -127,9 +140,12 @@ class window.AddMultiHoldingView extends Backbone.View
 
     submit: =>
       @model.save(this.serialize(),
-          { success : (model, resp)->
-            MultiHoldings.add(model)
-          }
+        { success : (model, resp)->
+          p = Portfolios.find(model.get('portfolio_id'))
+          model.portfolio = p
+          p.fetch()
+          MultiHoldings.add(model)
+        }
       );
 
     serialize: =>
@@ -153,7 +169,14 @@ class window.AddStockHoldingView extends Backbone.View
   submit: =>
     @model.save(this.serialize(),
         { success : (model, resp)->
-          StockHoldings.add(model)
+          p = Portfolios.get(model.get('portfolio_id'))
+          model.portfolio = p
+          holding = model
+          p.fetch(
+            { success: (model, resp) ->
+              StockHoldings.add(holding)
+            }
+          )
         }
     );
 

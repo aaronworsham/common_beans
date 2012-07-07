@@ -1,0 +1,109 @@
+
+<table>
+  <tr class='small-table-header clickable'>
+    <td></td>
+    <td>Value</td>
+    <td>Gain</td>
+    <td>Ratio</td>
+  </tr>
+  <tr class='clickable'>
+    <td rowspan=2><h3>{{name}}</h3>
+    <td class='{{formatted_total_value_class}} number'>{{formatted_total_value}}</td>
+    <td class='{{formatted_total_value_gain_class}} number'>{{formatted_total_value_gain}}</td>
+    <td class='{{formatted_total_gain_ratio_class}} number'>{{total_gain_ratio}}%</td>
+  </tr>
+  <tr class='expandable' style='display:none'>
+    <td colspan=2 >
+      <table>
+        <tr>
+          <td>Started</td><td>{{started_at}}</td>
+        </tr>
+        <tr>
+          <td>Trust Level</td><td>{{trust}}</td>
+        </tr>
+        <tr>
+          <td>Plan</td><td>{{portfolio-plan}}</td>
+        </tr>
+        <tr>
+          <td>Strategy</td><td>{{portfolio-strategy}}</td>
+        </tr>
+        <tr>
+          <td>Total Investment</td><td>{{total_investment}}</td>
+        </tr>
+        <tr>
+          <td>Total Cash Out</td><td>{{total_return}}</td>
+        </tr>
+     </table>
+      <table class='point-data'>
+        <thead>
+        <tr>
+          <th></th>
+          <th>Value</th>
+          <th>Gain</th>
+          <th>Ratio</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>5 Days</td>
+            <td>{{d5_value}}</td>
+            <td>{{d5_gain}}</td>
+            <td>{{d5_gain_ratio}}</td>
+          <tr>              
+          <tr>
+            <td>30 Days </td>
+            <td>{{d30_value}}</td>
+            <td>{{d30_gain}}</td>
+            <td>{{d30_gain_ratio}}</td>
+          <tr>              
+          <tr>
+            <td>90 Days </td>
+            <td>{{d90_value}}</td>
+            <td>{{d90_gain}}</td>
+            <td>{{d90_gain_ratio}}</td>
+          <tr>              
+          <tr>
+            <td>180 Days </td>
+            <td>{{d180_value}}</td>
+            <td>{{d180_gain}}</td>
+            <td>{{d180_gain_ratio}}</td>
+          <tr>
+          <tr>
+            <td>1 Year </td>
+            <td>{{y1_value}}</td>
+            <td>{{y1_gain}}</td>
+            <td>{{y1_gain_ratio}}</td>
+          <tr>              
+          <tr>
+            <td>2 Years </td>
+            <td>{{y2_value}}</td>
+            <td>{{y2_gain}}</td>
+            <td>{{y2_gain_ratio}}</td>
+          <tr>              
+          <tr>
+            <td>3 Years </td>
+            <td>{{y3_value}}</td>
+            <td>{{y3_gain}}</td>
+            <td>{{y3_gain_ratio}}</td>
+          <tr>              
+          <tr>
+            <td>4 Years </td>
+            <td>{{y4_value}}</td>
+            <td>{{y4_gain}}</td>
+            <td>{{y4_gain_ratio}}</td>
+          <tr>              
+          <tr>
+            <td>5 Years </td>
+            <td>{{y5_value}}</td>
+            <td>{{y5_gain}}</td>
+            <td>{{y5_gain_ratio}}</td>
+          <tr>
+        </tbody>
+      </table>
+    </td>
+    <td colspan=2 id="portfolio-content-{{id}}-dist-graph">
+
+    </td>
+  <tr>
+</table>
+
