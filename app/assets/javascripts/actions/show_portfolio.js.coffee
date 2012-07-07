@@ -14,6 +14,11 @@ class window.PortfolioView extends Backbone.View
     $(elem).hide();
     $(elem).html(update);
     $(elem).fadeIn("slow");
+    nav_update = ich.update_hotlist_portfolio_show_template(@model.formattedData());
+    elem_show = $('#show-your-portfolios-nav tr[data-id='+@model.id+']')
+    $(elem_show).hide();
+    $(elem_show).html(nav_update)
+    $(elem_show).fadeIn("slow");
     options = {
       chart: {
            renderTo: 'portfolio-content-' + @model.id + '-dist-graph',

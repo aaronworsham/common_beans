@@ -9,10 +9,16 @@ class window.AddBondHoldingView extends Backbone.View
   submit: =>
     @model.save(this.serialize(),
         { success : (model, resp)->
-          p = Portfolios.find(model.get('portfolio_id'))
+          p = Portfolios.get(model.get('portfolio_id'))
           model.portfolio = p
-          p.fetch()
-          BondHoldings.add(model)
+          holding = model
+          p.fetch(
+            { success: (model, resp) ->
+              BondHoldings.add(holding)
+
+            }
+          )
+          
 
         }
     );
@@ -47,10 +53,16 @@ class window.AddCdHoldingView extends Backbone.View
   submit: =>
     @model.save(this.serialize(),
         { success : (model, resp)->
-          p = Portfolios.find(model.get('portfolio_id'))
+          p = Portfolios.get(model.get('portfolio_id'))
           model.portfolio = p
-          p.fetch()
-          CdHoldings.add(model)
+          holding = model
+          p.fetch(
+            { success: (model, resp) ->
+              CdHoldings.add(holding)
+
+            }
+          )
+          
         }
     );
 
@@ -81,10 +93,15 @@ class window.AddEtfHoldingView extends Backbone.View
   submit: =>
     @model.save(this.serialize(),
         { success : (model, resp)->
-          p = Portfolios.find(model.get('portfolio_id'))
+          p = Portfolios.get(model.get('portfolio_id'))
           model.portfolio = p
-          p.fetch()
-          EtfHoldings.add(model)
+          holding = model
+          p.fetch(
+            { success: (model, resp) ->
+              EtfHoldings.add(holding)
+
+            }
+          )
         }
     );
 
@@ -112,10 +129,14 @@ class window.AddFundHoldingView extends Backbone.View
   submit: =>
     @model.save(this.serialize(),
         { success : (model, resp)->
-          p = Portfolios.find(model.get('portfolio_id'))
+          p = Portfolios.get(model.get('portfolio_id'))
           model.portfolio = p
-          p.fetch()
-          FundHoldings.add(model)
+          holding = model
+          p.fetch(
+            { success: (model, resp) ->
+              FundHoldings.add(holding)
+            }
+          )
         }
     );
 
@@ -141,10 +162,15 @@ class window.AddMultiHoldingView extends Backbone.View
     submit: =>
       @model.save(this.serialize(),
         { success : (model, resp)->
-          p = Portfolios.find(model.get('portfolio_id'))
+          p = Portfolios.get(model.get('portfolio_id'))
           model.portfolio = p
-          p.fetch()
-          MultiHoldings.add(model)
+          holding = model
+          p.fetch(
+            { success: (model, resp) ->
+              MultiHoldings.add(holding)
+            }
+          )
+          
         }
       );
 
