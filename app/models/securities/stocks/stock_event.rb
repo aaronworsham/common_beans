@@ -44,14 +44,19 @@ class StockEvent < ActiveRecord::Base
     self.stock_ticker = t
   end
 
+  def action
+    self.type == 'StockBuy' ? 'Buy' : 'Sell'
+  end
+
   def as_json(options={})
     result = super(options)
-    result["action"] = self.type
+    result["action"] = self.action
     result["action_letter"] = self.type[0].capitalize
     result["relative_day"] = days_since_holding_purchase
     result['executed_on'] = self.executed_at.strftime('%D')
     result['shares_to_date'] = self.shares_to_date
     result['value_to_date'] = self.value_to_date
+    result['portfolio_id'] = self.holding.portfolio_id
     result
   end
 

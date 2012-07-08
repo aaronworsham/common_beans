@@ -6,13 +6,21 @@ class User < ActiveRecord::Base
   has_many :portfolios,       :dependent => :destroy
   has_many :stock_holdings,   :dependent => :destroy
   has_many :fund_holdings,    :dependent => :destroy
+  has_many :fund_buys,    :dependent => :destroy
+  has_many :fund_sells,    :dependent => :destroy
+  has_many :fund_events,    :dependent => :destroy
   has_many :etf_holdings,    :dependent => :destroy
+  has_many :etf_buys,    :dependent => :destroy
+  has_many :etf_sells,    :dependent => :destroy
+  has_many :etf_events,    :dependent => :destroy
   has_many :bond_holdings,    :dependent => :destroy
   has_many :cd_holdings,    :dependent => :destroy
   has_many :multi_holdings,    :dependent => :destroy
   has_many :multi_statements,    :dependent => :destroy
   has_many :stock_buys,        :dependent => :destroy
   has_many :stock_sells,        :dependent => :destroy
+  has_many :stock_events,        :dependent => :destroy
+
   has_many :financial_advice,  :foreign_key => :user_id
   has_many :financial_advisers, :through => :financial_advice
   has_many :financial_clients,  :through => :financial_advice
@@ -84,19 +92,28 @@ class User < ActiveRecord::Base
 
   def backbone_models
     hash = {}
-    %w( portfolios
-        stock_holdings
+    hash['portfolios'] = self.portfolios
+    %w( stock_holdings
         fund_holdings
         etf_holdings
         bond_holdings
-        cd_holdings
-        multi_holdings
-        multi_statements
-        stock_buys
-        stock_sells).each do |x|
-      hash[x] = self.send(x)
+        cd_holdings).each do |x|
+      hash[x] = self.send(x).order(:purchased_at)
     end
-    return hash
+        hash['multi_holdings'] = self.multi_holdings
+        hash['multi_statements'] = self.multi_statements.order(:started_on)
+    %w( fund_buys
+        fund_sells
+        fund_events
+        etf_buys
+        etf_sells
+        etf_events
+        stock_buys
+        stock_sells
+        stock_events).each do |x|
+      hash[x] = self.send(x).order(:executed_at)
+    end
+   return hash
   end
 
 

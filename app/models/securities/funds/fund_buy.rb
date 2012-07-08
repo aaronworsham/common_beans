@@ -26,6 +26,11 @@ class FundBuy< FundEvent
     0
   end
 
+  def action
+    'Buy'
+  end
+
+
   def total_value_gain
     todays_value - self.investment
   end

@@ -10,16 +10,20 @@ for security in securities
 
       submit: =>
         @model.save(this.serialize(),
-            { success : (model, resp)->
-              model.holding().fetch(
-                { success: ->
-                  model.holding().view.update()
-                  window[capSecurity+'Buys'].add(model)
-                }
-              )
+          { success : (model, resp)->
+            p = model.portfolio()
+            h = model.holding()
+            c = h.chart()
+            window[capSecurity+'Sells'].add(model)
+            window[capSecurity+'Events'].add(model)
+            p.fetch(
+              { success: ->
+                h.fetch(
 
-
-            }
+                )
+              }
+            )
+          }
         );
 
       serialize: =>
@@ -45,16 +49,18 @@ for security in securities
 
       submit: =>
         @model.save(this.serialize(),
-            { success : (model, resp)->
-              model.holding().fetch(
-                { success: ->
-                  model.holding().view.update()
-                  window[capSecurity+'Sells'].add(model)
-                }
-              )
-
-
-            }
+          { success : (model, resp)->
+            p = model.portfolio()
+            h = model.holding()
+            window[capSecurity+'Sells'].add(model)
+            window[capSecurity+'Events'].add(model)
+            p.fetch(
+              { success: ->
+                h.fetch(
+                )
+              }
+            )
+          }
         );
 
       serialize: =>

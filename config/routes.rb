@@ -1,6 +1,8 @@
 CommonBeans::Application.routes.draw do
 
 
+  get "stock_events/destroy"
+
   resources :stories
   resources :trackers
   resources :indices
@@ -45,6 +47,10 @@ CommonBeans::Application.routes.draw do
   resources :stock_sells
   resources :fund_sells
   resources :etf_sells
+
+  resources :stock_events
+  resources :fund_events
+  resources :etf_events
 
   resources :users do
     get :autocomplete_user_screen_name, :on => :collection

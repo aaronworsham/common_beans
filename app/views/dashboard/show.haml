@@ -1,9 +1,13 @@
 = content_for :on_ready do
   - @models.each do |k,v|
     != "#{k.classify.pluralize}.add(#{v.to_json});"
+  - @models.each do |k,v|
+    - if ['StockHolding','FundHolding','EtfHolding'].include?(k.classify)
+      != "#{k.classify}Charts.add(#{v.to_json});"
   - @friend_models.each do |k,v|
     - v.each do |h|
       != "FriendPortfolios.add(#{ h.to_json});"
+  
   != "IndexComparisons.add(#{@compare_indices.to_json});"
   != "ValueComparisons.add(#{@compare_values.to_json});"
   $('#share-content').hide();

@@ -23,6 +23,10 @@ class EtfSell < EtfEvent
     0
   end
 
+  def action
+    'Sell'
+  end
+
   def total_value_gain
     self.roi - self.todays_value
   end

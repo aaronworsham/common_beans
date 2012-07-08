@@ -10,6 +10,7 @@ for security in securities
       initialize: ->
         @model.view = this
         @model.bind('destroy', @remove, this);
+        @model.bind('change', @update, this);
 
       render: ->
         elem = $(@el).append(ich[security+"_holding_template"](@model.formattedData()));
@@ -17,41 +18,7 @@ for security in securities
         $("#portfolio-"+security+"-holding-" + @model.get('portfolio_id')).append(elem);
         $("#portfolio-"+security+"s-" + @model.get('portfolio_id')).fadeIn('fast');
         $(elem).fadeIn("slow");
-        options = {
-          chart: {
-             renderTo: (security+"-graph-for-holding-"+@model.id),
-             type: 'column',
-             width: 350,
-             height: 150
-          },
-          title: {
-             text: 'test'
-          },
-          xAxis: {
-             categories: ['a','b','c'],
-            labels: {
-              style: {
-                font: 'normal 10px Verdana, sans-serif'
-              }
-            }
-          },
-          yAxis: {
-             title: {
-                text: 'test'
-             }
-          },
-          legend: {
-            enabled: false
-          },
 
-          series: [{
-            color: '#459E00',
-            data: [10,20,30]
-          }]
-        };
-
-
-        chart = new Highcharts.Chart(options);
 
       remove: ->
         $(@el).fadeOut("slow", ->
@@ -59,7 +26,11 @@ for security in securities
         );
 
       update: ->
-        $(@el).html(ich[security+"_holding_template"](@model.toJSON()));
+        elem = $('#'+security+'-holding-'+@model.id)
+        console.log('#'+security+'-holding-'+@model.id)
+        $(elem).html(ich["update_"+security+"_holding_template"](@model.formattedData()));
+        $(elem).find('td').effect("highlight", {}, 3000);
+        @model.chart().view.render()
 
 
 

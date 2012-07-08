@@ -17,6 +17,7 @@ for security in securities
 
       addOneView: (h)->
         view = new window[capSecurity+'HoldingView']({model:h});
+        h.view = view
         view.render();
 
     window[capSecurity+'Holdings'] = new window[capSecurity+'HoldingCollection']
@@ -28,39 +29,52 @@ for security in securities
 
     class window[capSecurity+'BuyCollection'] extends Backbone.Collection
       model: window[capSecurity+'BuyModel']
-      initialize: ->
-        @bind('add', @addOneView, this);
-    
-      addOneView: (h)->
-        view = new window[capSecurity+'BuyView']({model:h});
-        view.render();
-    
-    
     
     window[capSecurity+'Buys'] = new window[capSecurity+'BuyCollection']
-    window[capSecurity+'Buys'].bind('reset', (events)->
-         events.each( (e)->
-           events.addOneView(e)
-         );
-    );    
-    
+ 
+     
     class window[capSecurity+'SellCollection'] extends Backbone.Collection
       model: window[capSecurity+'SellModel']
-      initialize: ->
-        @bind('add', @addOneView, this);
-    
-      addOneView: (h)->
-        view = new window[capSecurity+'SellView']({model:h});
-        view.render();
-    
     
     
     window[capSecurity+'Sells'] = new window[capSecurity+'SellCollection']
-    window[capSecurity+'Sells'].bind('reset', (events)->
+
+
+    class window[capSecurity+'EventCollection'] extends Backbone.Collection
+      model: window[capSecurity+'EventModel']
+      initialize: ->
+        @bind('add', @addOneView, this);
+    
+      addOneView: (h)->
+        view = new window[capSecurity+'EventView']({model:h});
+        h.view = view
+        view.render();
+
+    window[capSecurity+'Events'] = new window[capSecurity+'EventCollection']
+    window[capSecurity+'Events'].bind('reset', (events)->
          events.each( (e)->
            events.addOneView(e)
          );
     );
+
+    class window[capSecurity+'HoldingChartCollection'] extends Backbone.Collection
+      model: window[capSecurity+'HoldingModel']
+      initialize: ->
+        @bind('add', @addOneView, this);
+    
+      addOneView: (h)->
+        view = new window[capSecurity+'HoldingChartView']({model:h});
+        h.view = view
+        view.render();
+
+    window[capSecurity+'HoldingCharts'] = new window[capSecurity+'HoldingChartCollection']
+    window[capSecurity+'HoldingCharts'].bind('reset', (events)->
+         events.each( (e)->
+           events.addOneView(e)
+         );
+    );
+
+
 
 class window.PortfolioCollection extends Backbone.Collection
   model: PortfolioModel

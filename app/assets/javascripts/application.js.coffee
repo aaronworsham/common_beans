@@ -6,6 +6,7 @@
 = require jquery.facebox
 = require underscore-min
 = require backbone-min
+= require backbone_extend
 = require ICanHaz
 = require date_formatter
 ###

@@ -45,12 +45,18 @@ include DateMixin
     self.etf_ticker = t
   end
 
+  def action
+    self.type == 'EtfBuy' ? 'Buy' : 'Sell'
+  end
+
+
 
   def as_json(options={})
     result = super(options)
-    result["action"] = self.type
+    result["action"] = self.action
     result["action_letter"] = self.type[0].capitalize
     result["relative_day"] = days_since_holding_purchase
+    result['portfolio_id'] = self.holding.portfolio_id
     result
   end
 

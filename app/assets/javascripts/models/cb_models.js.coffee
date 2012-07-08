@@ -31,19 +31,32 @@ for security in securities
               else
                 data['formatted_' + data_point + '_class'] = 'negative'
         return data
+      chart: ->
+        window[capSecurity+'HoldingCharts'].get(@.id)
 
     class window[capSecurity+'BuyModel'] extends Backbone.Model
       urlRoot : "/"+security+"_buys"
 
       holding: =>
-       window[capSecurity+'Holdings'].get(@get(security+'_holding_id'))
+        window[capSecurity+'Holdings'].get(@get(security+'_holding_id'))
+      portfolio: =>
+        Portfolios.get(@get('portfolio_id')) 
 
     class window[capSecurity+'SellModel'] extends Backbone.Model
       urlRoot : "/"+security+"_sells"
 
       holding: =>
-       window[capSecurity+'Holdings'].get(@get(security+'_holding_id'))
+        window[capSecurity+'Holdings'].get(@get(security+'_holding_id'))   
+      portfolio: =>
+        Portfolios.get(@get('portfolio_id'))    
 
+    class window[capSecurity+'EventModel'] extends Backbone.Model
+      urlRoot : "/"+security+"_events"
+
+      holding: =>
+        window[capSecurity+'Holdings'].get(@get(security+'_holding_id'))
+      portfolio: =>
+        Portfolios.get(@get('portfolio_id')) 
 
 
 class window.PortfolioModel extends Backbone.Model
@@ -83,3 +96,7 @@ class window.CompareValuesModel extends Backbone.Model
 
 class window.FriendPortfolioModel extends Backbone.Model
   urlRoot : "/friends_portfolios"
+
+
+
+  
