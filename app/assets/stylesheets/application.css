@@ -66,4 +66,8 @@ table tr.selectable:hover td {
 .stories tr.release td{
   background: #dfd9c3;
 }
+.small_font {
+  font-size: 10px;
+}
+
 

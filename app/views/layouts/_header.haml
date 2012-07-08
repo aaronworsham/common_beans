@@ -7,19 +7,19 @@
       .grid_5
         %img#main-logo{:src=>"/images/common-beans-logo.gif", :alt=>"DesignPlus", :class=>"pngfix logo"}
         <!--end:logo -->
-      .grid_11
+      .grid_11.small_font
 
 
         <!--start:menu top-menu -->
         .login
           - if current_user
-            = "Hi #{current_user.screen_name}"
+            = "Hi #{current_user.screen_name} ->"
             = link_to "Sign Out", signout_path
           - else
             = render "layouts/login"
           .release
             PreAlpha v0.1.23
-            = link_to 'Stories Till Release', stories_path
+
       .clear
       .grid_16
         .subtitle
