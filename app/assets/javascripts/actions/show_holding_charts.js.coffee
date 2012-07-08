@@ -19,7 +19,7 @@ for security in securities
              height: 150
           },
           title: {
-             text: 'test'
+             text: ''
           },
           xAxis: {
              categories: [],
@@ -31,7 +31,7 @@ for security in securities
           },
           yAxis: {
              title: {
-                text: 'test'
+                text: ''
              }
           },
           legend: {
@@ -44,12 +44,18 @@ for security in securities
           }]
         };
 
-        options.xAxis.categories.push('S')
+        options.xAxis.categories.push('B')
         options.series[0].data.push(parseInt(@model.attributes['starting_investment']))
-
-        events = StockEvents.where({stock_holding_id:@model.id})
+        params = {}
+        params[security+'_holding_id'] = @model.id
+        events = window[capSecurity+'Events'].where(params)
         for e in events
-          options.xAxis.categories.push('E')
+          if e.attributes['action'] == 'Buy'
+            action = 'B'
+          else
+            action = 'S'
+          options.xAxis.categories.push(action)
+
           options.series[0].data.push(parseInt(e.attributes['value_to_date']))
         options.xAxis.categories.push('T')
         options.series[0].data.push(@model.attributes['todays_value'])

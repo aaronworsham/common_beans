@@ -58,6 +58,8 @@ class FundEvent < ActiveRecord::Base
     result["relative_day"] = days_since_holding_purchase
     result['executed_on'] = self.executed_at.strftime('%D')
     result['portfolio_id'] = self.holding.portfolio_id
+    result['units_to_date'] = self.units_to_date
+    result['value_to_date'] = self.value_to_date
     result
   end
 
@@ -65,6 +67,22 @@ class FundEvent < ActiveRecord::Base
     humanize_seconds(executed_at - self.holding.purchased_at)
   end
 
+
+  def todays_price
+    self.ticker.todays_close
+  end
+
+  def todays_value
+    self.units * self.todays_price
+  end
+
+  def units_to_date
+    self.holding.past_units(self.executed_at)
+  end
+
+  def value_to_date
+    units_to_date * price
+  end
 
 
 end

@@ -89,12 +89,12 @@ class FundHolding < ActiveRecord::Base
 
 
   def past_units(date)
-    units = net_units
+    units = starting_units
     fund_buys.each do |buy|
-      units - buy.units if buy.executed_at > date
+      units += buy.units if buy.executed_at <= date
     end
     fund_sells.each do |sell|
-      units + sell.units if sell.executed_at > date
+      units -= sell.units if sell.executed_at <= date
     end
     units
   end
