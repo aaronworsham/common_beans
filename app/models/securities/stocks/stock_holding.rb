@@ -11,9 +11,10 @@ class StockHolding < ActiveRecord::Base
   has_many :stock_sells, :dependent => :destroy
   has_many :stock_events, :dependent => :destroy
 
-  validates_presence_of :stock_ticker_id, :message => 'Must select a ticker'
-  validates_presence_of :starting_shares
-  validates_presence_of :starting_price
+  validates_presence_of :stock_ticker_id, :message => 'Please select a ticker from the autocomplete'
+  validates_presence_of :starting_shares, :message => 'Please select number of shares'
+  validates_presence_of :starting_price, :message => 'Please select a price'
+  validates_presence_of :purchased_at, :message => 'Please select a purchase date'
 
 
 

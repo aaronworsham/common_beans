@@ -11,10 +11,10 @@ class FundHolding < ActiveRecord::Base
   has_many :fund_sells
   has_many :fund_events, :dependent => :destroy
 
-  validates_presence_of :fund_ticker_id, :message => 'Must select a ticker'
-  validates_presence_of :starting_units
-  validates_presence_of :starting_price
-
+  validates_presence_of :fund_ticker_id, :message => 'Please select a ticker from the autocomplete'
+  validates_presence_of :starting_units, :message => 'Please select number of units'
+  validates_presence_of :starting_price, :message => 'Please select a price'
+  validates_presence_of :purchased_at, :message => 'Please select a purchase date'
 
 
   #after_create :notify_everyone

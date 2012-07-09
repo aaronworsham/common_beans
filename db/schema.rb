@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120621230127) do
+ActiveRecord::Schema.define(:version => 20120709172200) do
 
   create_table "bond_events", :force => true do |t|
     t.integer  "bond_ticker_id"
@@ -908,6 +908,9 @@ ActiveRecord::Schema.define(:version => 20120621230127) do
     t.text     "urls"
     t.string   "name"
     t.string   "current_state"
+    t.string   "last_login_version"
+    t.string   "last_login_state"
+    t.datetime "last_logged_in_at"
   end
 
 end

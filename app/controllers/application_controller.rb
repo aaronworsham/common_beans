@@ -1,6 +1,24 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :current_user
+  before_filter :needs_basic_auth
+
+  def needs_basic_auth
+    authenticate_or_request_with_http_basic do |u,p|
+      u == "prealpha" && p == "letme1ncb"
+    end
+  end
+
+  def needs_golden_ticket
+    unless has_golden_ticket
+      cookies[:cb_notify] = 'bob'
+      redirect_to root_path 
+    end
+  end
+
+  def has_golden_ticket
+    cookies[:cb_golden_ticket] 
+  end
 
   def setup_messages
     if current_user

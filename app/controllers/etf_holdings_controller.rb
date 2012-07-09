@@ -16,7 +16,6 @@ class EtfHoldingsController < ApplicationController
      render :template => 'edit_securities/etf/edit_etf', :layout => false
    end
   def update
-     params[:etf_holding][:purchased_at] = Date.strptime(params[:etf_holding][:purchased_at], '%m/%d/%Y')
      @holding = EtfHolding.find_by_id params[:id]
      @holding.update_attributes(params[:etf_holding].except(:id))
      puts @holding.errors.full_messages
@@ -24,7 +23,6 @@ class EtfHoldingsController < ApplicationController
 
    end
   def create
-    params[:etf_holding][:purchased_at] = Date.strptime(params[:etf_holding][:purchased_at], '%m/%d/%Y')
     @holding = EtfHolding.create(params[:etf_holding].merge(:user => current_user))
     respond_with(@holding)
   end

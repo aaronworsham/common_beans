@@ -12,8 +12,6 @@ class MultiStatementsController < ApplicationController
   end
 
   def create
-    params[:multi_statement][:started_on] = Date.strptime(params[:multi_statement][:started_on], '%m/%d/%Y')
-    params[:multi_statement][:ended_on] = Date.strptime(params[:multi_statement][:ended_on], '%m/%d/%Y')
     @statement = MultiStatement.create(params[:multi_statement].merge(:user => current_user))
     respond_with(@statement)
   end

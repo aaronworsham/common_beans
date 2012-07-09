@@ -9,15 +9,19 @@ class window.AddBondHoldingView extends Backbone.View
   submit: =>
     @model.save(this.serialize(),
         { success : (model, resp)->
-          p = Portfolios.get(model.get('portfolio_id'))
-          model.portfolio = p
-          holding = model
-          p.fetch(
-            { success: (model, resp) ->
-              BondHoldings.add(holding)
+            $(document).trigger('close.facebox')
+            p = Portfolios.get(model.get('portfolio_id'))
+            model.portfolio = p
+            holding = model
+            p.fetch(
+              { success: (model, resp) ->
+                BondHoldings.add(holding)
 
-            }
-          )
+              }
+            )
+         error : (model, resp) ->
+          response = JSON.parse(resp.responseText)
+          humane.log(HumaneFormatValidation(resp))
           
 
         }
@@ -53,16 +57,19 @@ class window.AddCdHoldingView extends Backbone.View
   submit: =>
     @model.save(this.serialize(),
         { success : (model, resp)->
-          p = Portfolios.get(model.get('portfolio_id'))
-          model.portfolio = p
-          holding = model
-          p.fetch(
-            { success: (model, resp) ->
-              CdHoldings.add(holding)
+            $(document).trigger('close.facebox')
+            p = Portfolios.get(model.get('portfolio_id'))
+            model.portfolio = p
+            holding = model
+            p.fetch(
+              { success: (model, resp) ->
+                CdHoldings.add(holding)
 
-            }
-          )
-          
+              }
+            )
+         error : (model, resp) ->
+          response = JSON.parse(resp.responseText)
+          humane.log(HumaneFormatValidation(resp))
         }
     );
 
@@ -93,15 +100,19 @@ class window.AddEtfHoldingView extends Backbone.View
   submit: =>
     @model.save(this.serialize(),
         { success : (model, resp)->
-          p = Portfolios.get(model.get('portfolio_id'))
-          model.portfolio = p
-          holding = model
-          p.fetch(
-            { success: (model, resp) ->
-              EtfHoldings.add(holding)
+            $(document).trigger('close.facebox')
+            p = Portfolios.get(model.get('portfolio_id'))
+            model.portfolio = p
+            holding = model
+            p.fetch(
+              { success: (model, resp) ->
+                EtfHoldings.add(holding)
 
-            }
-          )
+              }
+            )
+         error : (model, resp) ->
+          response = JSON.parse(resp.responseText)
+          humane.log(HumaneFormatValidation(resp))
         }
     );
 
@@ -129,14 +140,18 @@ class window.AddFundHoldingView extends Backbone.View
   submit: =>
     @model.save(this.serialize(),
         { success : (model, resp)->
-          p = Portfolios.get(model.get('portfolio_id'))
-          model.portfolio = p
-          holding = model
-          p.fetch(
-            { success: (model, resp) ->
-              FundHoldings.add(holding)
-            }
-          )
+            $(document).trigger('close.facebox')
+            p = Portfolios.get(model.get('portfolio_id'))
+            model.portfolio = p
+            holding = model
+            p.fetch(
+              { success: (model, resp) ->
+                FundHoldings.add(holding)
+              }
+            )
+         error : (model, resp) ->
+          response = JSON.parse(resp.responseText)
+          humane.log(HumaneFormatValidation(resp))
         }
     );
 
@@ -162,15 +177,18 @@ class window.AddMultiHoldingView extends Backbone.View
     submit: =>
       @model.save(this.serialize(),
         { success : (model, resp)->
-          p = Portfolios.get(model.get('portfolio_id'))
-          model.portfolio = p
-          holding = model
-          p.fetch(
-            { success: (model, resp) ->
-              MultiHoldings.add(holding)
-            }
-          )
-          
+            $(document).trigger('close.facebox')
+            p = Portfolios.get(model.get('portfolio_id'))
+            model.portfolio = p
+            holding = model
+            p.fetch(
+              { success: (model, resp) ->
+                MultiHoldings.add(holding)
+              }
+            )
+         error : (model, resp) ->
+          response = JSON.parse(resp.responseText)
+          humane.log(HumaneFormatValidation(resp))
         }
       );
 
@@ -195,14 +213,18 @@ class window.AddStockHoldingView extends Backbone.View
   submit: =>
     @model.save(this.serialize(),
         { success : (model, resp)->
-          p = Portfolios.get(model.get('portfolio_id'))
-          model.portfolio = p
-          holding = model
-          p.fetch(
-            { success: (model, resp) ->
-              StockHoldings.add(holding)
-            }
-          )
+            $(document).trigger('close.facebox')
+            p = Portfolios.get(model.get('portfolio_id'))
+            model.portfolio = p
+            holding = model
+            p.fetch(
+              { success: (model, resp) ->
+                StockHoldings.add(holding)
+              }
+            )
+        error : (model, resp) ->
+          response = JSON.parse(resp.responseText)
+          humane.log(HumaneFormatValidation(resp))
         }
     );
 
@@ -235,14 +257,14 @@ $ ->
       holding = new window[className]({portfolio_id:portfolio.id});
       view = new window[viewName]({model:holding});
       view.submit();
-      $(document).trigger('close.facebox')
+
     );
     $('#facebox form').submit((e)->
       e.stopPropegation
       holding = new window[className]({portfolio_id:portfolio.id});
       view = new window[viewName]({model:holding});
       view.submit();
-      $(document).trigger('close.facebox')
+      
       return false
     );
 

@@ -2,6 +2,7 @@
 = require jquery
 = require jquery-ui
 = require jquery.ba-serializeobject
+= require jquery.cookie
 = require autocomplete-rails
 = require jquery.facebox
 = require underscore-min
@@ -9,6 +10,8 @@
 = require backbone_extend
 = require ICanHaz
 = require date_formatter
+= require humane
+= require humane_extend
 ###
 
 #class HotList
@@ -34,8 +37,10 @@ $ ->
     window.location = "/"
   );
 
-
-
+  humane.timeout = 5000
+  if ($.cookie('cb_notify'))
+    humane.log($.cookie('cb_notify'))
+    $.cookie('cb_notify', null)
 
   $('#compare-nav tr.selectable').live("click", ->
     module = $(@).attr('data-module');

@@ -11,9 +11,10 @@ class EtfHolding < ActiveRecord::Base
   has_many :etf_sells
   has_many :etf_events, :dependent => :destroy
 
-  validates_presence_of :etf_ticker_id, :message => 'Must select a ticker'
-  validates_presence_of :starting_units
-  validates_presence_of :starting_price
+  validates_presence_of :etf_ticker_id, :message => 'Please select a ticker from the autocomplete'
+  validates_presence_of :starting_units, :message => 'Please select number of units'
+  validates_presence_of :starting_price, :message => 'Please select a price'
+  validates_presence_of :purchased_at, :message => 'Please select a purchase date'
 
   delegate  :name,
           :symbol,
