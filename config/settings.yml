@@ -7,5 +7,5 @@ securities:
   - multi
 version: 
   state: PreAlpha
-  number: 0.1.24
+  number: '0.1.24'
   
