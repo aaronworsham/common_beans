@@ -24,4 +24,10 @@ class SessionsController < ApplicationController
     session[:user_id] = nil  
     redirect_to root_url, :notice => "Signed out!"
   end
+
+  def failure
+    session[:user_id] = nil  
+    cookies[:cb_notify] = "We were unable to authorized you using your Social Network"
+    redirect_to root_path
+  end
 end
