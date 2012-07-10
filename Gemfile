@@ -22,7 +22,7 @@ gem 'jasmine', "1.1.0"
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
-gem 'omniauth-google'
+#gem 'omniauth-google'
 gem "rails3-jquery-autocomplete"
 gem 'mustache'
 gem "stache", "~> 0.0.2"
