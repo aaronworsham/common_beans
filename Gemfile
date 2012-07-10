@@ -23,7 +23,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-google'
-#gem "rails3-jquery-autocomplete"
+gem "rails3-jquery-autocomplete"
 gem 'mustache'
 gem "stache", "~> 0.0.2"
 gem "valuable"
