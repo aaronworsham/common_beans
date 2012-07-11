@@ -1,4 +1,4 @@
-securities = ['stock', 'fund', 'bond', 'etf', 'cd', 'multi']
+securities = ['stock', 'fund', 'etf', 'multi']
 
 for security in securities
   do (security) ->

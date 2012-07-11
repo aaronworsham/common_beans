@@ -1,96 +1,5 @@
 
 
-#bond
-
-class window.AddBondHoldingView extends Backbone.View
-
-  el: '#facebox'
-
-  submit: =>
-    @model.save(this.serialize(),
-        { success : (model, resp)->
-            $(document).trigger('close.facebox')
-            p = Portfolios.get(model.get('portfolio_id'))
-            model.portfolio = p
-            holding = model
-            p.fetch(
-              { success: (model, resp) ->
-                BondHoldings.add(holding)
-
-              }
-            )
-         error : (model, resp) ->
-          response = JSON.parse(resp.responseText)
-          humane.log(HumaneFormatValidation(resp))
-          
-
-        }
-    );
-
-  serialize: =>
-    return {
-        authenticity_token: this.$("input[name=authenticity_token]").val(),
-        bond_holding: {
-          name: this.$("#bond_holding_name").val(),
-          cusip: this.$("#bond_holding_cusip").val(),
-          purchase_price: this.$("#bond_holding_purchase_price").val(),
-          coupon: this.$("#bond_holding_coupon").val(),
-          starting_quantity: this.$("#bond_holding_starting_quantity").val(),
-          frequency: this.$("#bond_holding_frequency").val(),
-          face_value: this.$("#bond_holding_face_value").val(),
-          expected_yield: this.$("#bond_holding_expected_yield").val(),
-          purchased_at: this.$("input[name=purchased_at]").val(),
-          matures_at: this.$("input[name=purchased_at]").val(),
-          portfolio_id: @model.get('portfolio_id')
-        }
-      }
-
-
-
-
-  #CD
-
-class window.AddCdHoldingView extends Backbone.View
-
-  el: '#facebox'
-
-  submit: =>
-    @model.save(this.serialize(),
-        { success : (model, resp)->
-            $(document).trigger('close.facebox')
-            p = Portfolios.get(model.get('portfolio_id'))
-            model.portfolio = p
-            holding = model
-            p.fetch(
-              { success: (model, resp) ->
-                CdHoldings.add(holding)
-
-              }
-            )
-         error : (model, resp) ->
-          response = JSON.parse(resp.responseText)
-          humane.log(HumaneFormatValidation(resp))
-        }
-    );
-
-  serialize: =>
-    return {
-        authenticity_token: this.$("input[name=authenticity_token]").val(),
-        cd_holding: {
-          name: this.$("#cd_holding_name").val(),
-          cusip: this.$("#cd_holding_cusip").val(),
-          purchase_price: this.$("#cd_holding_purchase_price").val(),
-          coupon: this.$("#cd_holding_coupon").val(),
-          starting_quantity: this.$("#cd_holding_starting_quantity").val(),
-          frequency: this.$("#cd_holding_frequency").val(),
-          face_value: this.$("#cd_holding_face_value").val(),
-          expected_yield: this.$("#cd_holding_expected_yield").val(),
-          purchased_at: this.$("input[name=purchased_at]").val(),
-          matures_at: this.$("input[name=purchased_at]").val(),
-          portfolio_id: @model.get('portfolio_id')
-        }
-      }
-
   #ETF
 
 class window.AddEtfHoldingView extends Backbone.View
@@ -107,6 +16,7 @@ class window.AddEtfHoldingView extends Backbone.View
             p.fetch(
               { success: (model, resp) ->
                 EtfHoldings.add(holding)
+                EtfHoldingCharts.add(holding)
 
               }
             )
@@ -147,6 +57,7 @@ class window.AddFundHoldingView extends Backbone.View
             p.fetch(
               { success: (model, resp) ->
                 FundHoldings.add(holding)
+                FundHoldingCharts.add(holding)
               }
             )
          error : (model, resp) ->
@@ -184,6 +95,7 @@ class window.AddMultiHoldingView extends Backbone.View
             p.fetch(
               { success: (model, resp) ->
                 MultiHoldings.add(holding)
+                MultiHoldingCharts.add(holding)
               }
             )
          error : (model, resp) ->
@@ -220,6 +132,7 @@ class window.AddStockHoldingView extends Backbone.View
             p.fetch(
               { success: (model, resp) ->
                 StockHoldings.add(holding)
+                StockHoldingCharts.add(holding)
               }
             )
         error : (model, resp) ->

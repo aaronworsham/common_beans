@@ -13,8 +13,6 @@ class User < ActiveRecord::Base
   has_many :etf_buys,    :dependent => :destroy
   has_many :etf_sells,    :dependent => :destroy
   has_many :etf_events,    :dependent => :destroy
-  has_many :bond_holdings,    :dependent => :destroy
-  has_many :cd_holdings,    :dependent => :destroy
   has_many :multi_holdings,    :dependent => :destroy
   has_many :multi_statements,    :dependent => :destroy
   has_many :stock_buys,        :dependent => :destroy
@@ -95,9 +93,7 @@ class User < ActiveRecord::Base
     hash['portfolios'] = self.portfolios
     %w( stock_holdings
         fund_holdings
-        etf_holdings
-        bond_holdings
-        cd_holdings).each do |x|
+        etf_holdings).each do |x|
       hash[x] = self.send(x).order(:purchased_at)
     end
         hash['multi_holdings'] = self.multi_holdings
