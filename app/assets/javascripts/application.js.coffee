@@ -64,8 +64,6 @@ $ ->
     stocks = StockHoldings.where({portfolio_id:parseInt(id)});
     funds = FundHoldings.where({portfolio_id:parseInt(id)});
     etfs = EtfHoldings.where({portfolio_id:parseInt(id)});
-    bonds = BondHoldings.where({portfolio_id:parseInt(id)});
-    cds = CdHoldings.where({portfolio_id:parseInt(id)});
     multis = MultiHoldings.where({portfolio_id:parseInt(id)});
 
     $('#compare-content .compare-module').hide();
@@ -82,12 +80,8 @@ $ ->
       $('#show-your-portfolios-content #portfolio-stocks-'+id).show();
     if(funds.length > 0)
       $('#show-your-portfolios-content #portfolio-funds-'+id).show();
-    if(bonds.length > 0)
-      $('#show-your-portfolios-content #portfolio-bonds-'+id).show();
     if(etfs.length > 0)
       $('#show-your-portfolios-content #portfolio-etfs-'+id).show();
-    if(cds.length > 0)
-      $('#show-your-portfolios-content #portfolio-cds-'+id).show();
     if(multis.length > 0)
       $('#show-your-portfolios-content #portfolio-multis-'+id).show();
 
