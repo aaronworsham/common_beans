@@ -31,6 +31,10 @@ class StockHolding < ActiveRecord::Base
     @ticker ||= stock_ticker
   end
 
+  def events
+    stock_events
+  end
+
   def name
     "#{ticker.name.truncate(30)}(#{ticker.symbol})"
   end

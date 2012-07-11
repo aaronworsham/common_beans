@@ -34,6 +34,10 @@ class EtfHolding < ActiveRecord::Base
     "#{ticker.name.truncate(30)}(#{ticker.symbol})"
   end
 
+  def events
+    etf_events
+  end
+
   def notify_everyone
     MessageEveryone.new(
       :text           => standard_message,

@@ -101,7 +101,8 @@ class Portfolio < ActiveRecord::Base
       :plan => self.portfolio_plan.name,
       :strategy => self.portfolio_strategy.name,
       :distribution => self.distribution_array,
-      :started_at => self.started_at.strftime('%D')
+      :started_at => self.started_at.strftime('%D'),
+      :events => self.safe_events
     }
   end
 
@@ -122,18 +123,43 @@ class Portfolio < ActiveRecord::Base
     @holdings ||= self.stock_holdings +
                   self.fund_holdings +
                   self.etf_holdings +
-                  self.bond_holdings +
-                  self.cd_holdings +
                   self.multi_holdings
+  end
+
+  def tradeable_holdings
+    @tradeable_holdings ||= self.stock_holdings +
+                  self.fund_holdings +
+                  self.etf_holdings 
   end
 
   def reload_cached_holdings
     @holdings = self.stock_holdings +
                   self.fund_holdings +
                   self.etf_holdings +
-                  self.bond_holdings +
-                  self.cd_holdings +
                   self.multi_holdings
+  end
+
+  def safe_events
+    events = []
+    tradeable_holdings.each do |h|
+      events << {
+        :action => 'Buy', 
+        :name => h.ticker.name, 
+        :symbol => h.ticker.symbol, 
+        :date => h.purchased_at.strftime('%D'), 
+        :price => h.starting_price
+      }
+      h.events.each do |e|
+        events << {
+          :action => e.action, 
+          :name => e.ticker.name, 
+          :symbol => e.ticker.symbol, 
+          :date => e.executed_at.strftime('%D'), 
+          :price => e.price
+        }
+      end
+    end
+    events
   end
 
   def total_value

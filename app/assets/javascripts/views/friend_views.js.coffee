@@ -10,6 +10,12 @@ class window.FriendPortfolioView extends Backbone.View
   render: ->
     elem_show = ich.friend_portfolio_template(@model.toJSON());
     $(elem_show).hide();
+    events_table = $(elem_show).find("table#friend-events-for-portfolio-"+@model.id+" tbody")
+    
+    for e in @model.attributes['events']
+      do (e) ->
+        $(events_table).append(ich.friend_event_template(e))
+    
     $('#show-friends-portfolios-content').append(elem_show);
     $(elem_show).fadeIn("slow");
 
