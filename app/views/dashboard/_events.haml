@@ -1,0 +1,13 @@
+.security_module
+  %table
+    %thead
+      %th Member
+      %th Date
+      %th Action
+      %th Symbol
+      %th Price
+      %th Current
+      %th Up/Down
+      %th Movement
+    %tbody
+      = render :partial => 'event', :collection => @actions

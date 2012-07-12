@@ -1,0 +1,10 @@
+%tr
+  %td= current_user.mutual_trust?(event[:user]) ? event[:user].screen_name : Someone
+  %td= event[:date]
+  %td= event[:reaction]
+  %td= event[:symbol]
+  %td= event[:price]
+  %td= event[:todays_price]
+  %td= event[:up_down]
+  %td= event[:movement]
+  
