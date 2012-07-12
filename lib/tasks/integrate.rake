@@ -155,7 +155,7 @@ namespace :cb do
       csv.each do |row|
         s = StockTicker.find_by_symbol(row["Stock Symbol"])
         p s.symbol
-        s.business_summary  = row["Business Summary"]
+        s.summary  = row["Business Summary"]
         s.sector            = row["Sector"]
         s.industry          = row["Industry"]
         s.url               = row["URL"]
