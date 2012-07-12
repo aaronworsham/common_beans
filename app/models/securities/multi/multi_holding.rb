@@ -137,6 +137,13 @@ class MultiHolding < ActiveRecord::Base
     est_current_gain
   end
 
+  def net_return
+    (read_attribute :net_return) || 0
+  end
+  def net_investment
+    (read_attribute :net_investment) || 0
+  end
+
   def est_current_value
     sum = 0
     multi_holding_allocations.each do |mha|
