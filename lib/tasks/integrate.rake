@@ -162,5 +162,19 @@ namespace :cb do
         s.save
       end
     end
+
+    task :fund => :environment do
+      csv_text = File.read('db/data/fund_profiles.csv')
+      csv = CSV.parse(csv_text, :headers => true)
+      csv.each do |row|
+        f = FundTicker.find_by_symbol(row["Symbol"])
+        p f.symbol
+        f.category          = row["Category"]
+        f.family            = row["Family"]
+        f.inception_date    = row["Inception Date"]
+        f.summary           = row["Summary"]
+        f.save
+      end
+    end
   end
 end

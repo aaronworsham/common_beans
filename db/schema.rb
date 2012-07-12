@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120712140057) do
+ActiveRecord::Schema.define(:version => 20120712151722) do
 
   create_table "bond_events", :force => true do |t|
     t.integer  "bond_ticker_id"
@@ -386,6 +386,10 @@ ActiveRecord::Schema.define(:version => 20120712140057) do
     t.integer  "exchange_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "category"
+    t.string   "family"
+    t.string   "inception_date"
+    t.text     "summary"
   end
 
   create_table "group_portfolios", :force => true do |t|
