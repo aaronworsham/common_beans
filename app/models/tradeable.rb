@@ -26,6 +26,18 @@ module Tradeable
     ((total_value_gain/self.net_investment)*100).round(3)
   end
 
+   def movement
+    (todays_price - starting_price).round(2)
+  end
+
+  def up_down
+    if movement > 0
+      'Up'
+    else
+      'Down'
+    end
+  end 
+
 
 
   #### PAST POINTS ######

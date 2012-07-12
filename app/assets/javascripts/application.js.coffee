@@ -42,6 +42,7 @@ $ ->
     humane.log($.cookie('cb_notify'))
     $.cookie('cb_notify', null)
 
+#Compare Tab
   $('#compare-nav tr.selectable').live("click", ->
     module = $(@).attr('data-module');
     $('#compare-content').hide();
@@ -57,6 +58,8 @@ $ ->
     $('#compare-content').fadeIn('fast');
   );
 
+
+#Show Your Portfolio
 
   $('#show-your-portfolios-nav tr.selectable').live("click", ->
     id = $(@).attr('data-id');
@@ -90,9 +93,11 @@ $ ->
     $('#show-content').fadeIn('slow');
   );
 
+
+#Show Friend Portfolio
+
   $('#show-friends-portfolios-nav tr.selectable').live("click", ->
     user_id = $(@).attr('data-user-id');
-
 
     $('#compare-content .compare-module').hide();
     $('#show-content').hide();
@@ -106,6 +111,24 @@ $ ->
     $('#show-content').fadeIn('slow');
   );
 
+#Show Everyone Events
+
+  $('#show-everyone-events-nav tr.selectable').live("click", ->
+
+    $('#compare-content .compare-module').hide();
+    $('#show-content').hide();
+    $('#show-content .show-module').hide();
+    $('#share-content .share-module').hide();
+    $('#nav li.selectable').each((i,v) ->
+      $(v).removeClass('selected');
+    );
+    $(@).addClass('selected');
+    $('#show-everyone-events-content').show();
+    $('#show-content').fadeIn('slow');
+  );
+
+
+#Share Tab
   $('#share-nav tr.selectable').live("click", ->
 
     $('#compare-content .compare-module').hide();

@@ -10,5 +10,6 @@ class DashboardController < ApplicationController
     @invites_to = current_user.invites_to
     @friends = current_user.friends
     @friend_models = current_user.friend_backbone_models
+    @actions = Action.all.reject{|x| x[:user] == current_user}
   end
 end

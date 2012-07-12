@@ -1,6 +1,6 @@
 class StockEvent < ActiveRecord::Base
   include DateMixin
-
+  include Eventable
 
   belongs_to :user
   belongs_to :stock_holding
@@ -57,6 +57,7 @@ class StockEvent < ActiveRecord::Base
     result['shares_to_date'] = self.shares_to_date
     result['value_to_date'] = self.value_to_date
     result['portfolio_id'] = self.holding.portfolio_id
+    result['symbol']= self.ticker.symbol
     result
   end
 
@@ -66,7 +67,7 @@ class StockEvent < ActiveRecord::Base
 
 
   def todays_price
-    self.stock_ticker.todays_close
+    self.stock_ticker.current_price
   end
 
   def todays_value
