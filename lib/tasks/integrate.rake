@@ -105,7 +105,6 @@ namespace :cb do
             csv << [stock_symbol, business_summary, sector, industry, url]
           end
         end
-
       end
 
       task :fund => :environment do
@@ -146,6 +145,22 @@ namespace :cb do
         end
       end
     end
+  end
 
+  namespace :populate do
+    desc "Populate db"
+    task :stock => :environment do
+      csv_text = File.read('db/data/stock_profiles.csv')
+      csv = CSV.parse(csv_text, :headers => true)
+      csv.each do |row|
+        s = StockTicker.find_by_symbol(row["Stock Symbol"])
+        p s.symbol
+        s.business_summary  = row["Business Summary"]
+        s.sector            = row["Sector"]
+        s.industry          = row["Industry"]
+        s.url               = row["URL"]
+        s.save
+      end
+    end
   end
 end
