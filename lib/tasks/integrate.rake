@@ -70,22 +70,111 @@ namespace :cb do
     namespace :yahoo_finance do
       desc 'add data from yahoo finance'
       task :stock => :environment do
-        stock = [StockTicker.find_by_symbol("AAPL"),StockTicker.find_by_symbol("MSFT"),StockTicker.find_by_symbol("GOOG")]
+        stock = StockTicker.all
         CSV.open('db/data/stock_profiles.csv', 'wb') do |csv|
           csv << ["Stock Symbol","Business Summary","Sector","Industry","URL"]
           stock.each do |s|
+            business_summary = "N/A"
+            sector = "N/A"
+            industry = "N/A"
+            url = "N/A"
+            p s.inspect
             stock_symbol = s.symbol
-            first_page = Nokogiri::HTML(open("http://finance.yahoo.com/q/pr?s=#{stock_symbol}"))
-            business_summary = first_page.at_css("body div#rightcol table#yfncsumtab tr td p").text
-            sector = first_page.at_css("body div#rightcol table#yfncsumtab tr td table.yfnc_datamodoutline1 tr:nth-child(2) td.yfnc_tabledata1 a").children.text
-            industry = first_page.at_css("body div#rightcol table#yfncsumtab tr td table.yfnc_datamodoutline1 tr:nth-child(3) td.yfnc_tabledata1 a").children.text
-            url = first_page.css("body div#rightcol table#yfncsumtab tr td.yfnc_modtitlew1 table")[5].css("tr td a")[0].first[1]
+            p "gathering data for symbol #{stock_symbol}"
+            retry_count = 0
+            begin
+              first_page = Nokogiri::HTML(open("http://finance.yahoo.com/q/pr?s=#{stock_symbol}"))
+              if first_page.at_css("body div#rightcol table#yfncsumtab tr td p") != nil
+                business_summary = first_page.at_css("body div#rightcol table#yfncsumtab tr td p").text
+              end
+              if first_page.at_css("body div#rightcol table#yfncsumtab tr td table.yfnc_datamodoutline1 tr:nth-child(2) td.yfnc_tabledata1 a") !=nil
+                sector = first_page.at_css("body div#rightcol table#yfncsumtab tr td table.yfnc_datamodoutline1 tr:nth-child(2) td.yfnc_tabledata1 a").children.text
+              end
+              if first_page.at_css("body div#rightcol table#yfncsumtab tr td table.yfnc_datamodoutline1 tr:nth-child(3) td.yfnc_tabledata1 a") !=nil
+                industry = first_page.at_css("body div#rightcol table#yfncsumtab tr td table.yfnc_datamodoutline1 tr:nth-child(3) td.yfnc_tabledata1 a").children.text
+              end
+              if first_page.css("body div#rightcol table#yfncsumtab tr td.yfnc_modtitlew1 table")[5] !=nil
+                url = first_page.css("body div#rightcol table#yfncsumtab tr td.yfnc_modtitlew1 table")[5].css("tr td a")[0].first[1]
+              end
+            rescue
+              puts "Something timed out, waiting a few seconds"
+              sleep(3.seconds)
+              retry_count +=1
+              retry if retry_count < 5
+            end
             csv << [stock_symbol, business_summary, sector, industry, url]
           end
         end
-
       end
 
+      task :fund => :environment do
+        fund = FundTicker.all
+        CSV.open('db/data/fund_profiles.csv', 'wb') do |csv|
+          csv << ["Symbol","Category","Family","Inception Date","Summary"]
+          fund.each do |f|
+            fund_symbol = f.symbol
+            category = "N/A"
+            family = "N/A"
+            inception_date = "N/A"
+            summary = "N/A"
+            p f.inspect
+            p "gathering data for fund symbol #{fund_symbol}"
+            retry_count = 0
+            begin
+              first_page = Nokogiri::HTML(open("http://finance.yahoo.com/q/pr?s=#{fund_symbol}"))
+              if first_page.css("body div#rightcol table#yfncsumtab td.yfnc_modtitlew1 table.yfnc_datamodoutline1 td.yfnc_datamoddata1")[0] != nil
+                category = first_page.css("body div#rightcol table#yfncsumtab td.yfnc_modtitlew1 table.yfnc_datamodoutline1 td.yfnc_datamoddata1")[0].text
+              end
+              if first_page.css("body div#rightcol table#yfncsumtab td.yfnc_modtitlew1 table.yfnc_datamodoutline1 td.yfnc_datamoddata1")[1] !=nil
+                family = first_page.css("body div#rightcol table#yfncsumtab td.yfnc_modtitlew1 table.yfnc_datamodoutline1 td.yfnc_datamoddata1")[1].text
+              end
+              if first_page.css("body div#rightcol table#yfncsumtab td.yfnc_modtitlew1 table.yfnc_datamodoutline1 td.yfnc_datamoddata1")[6] !=nil
+                inception_date = first_page.css("body div#rightcol table#yfncsumtab td.yfnc_modtitlew1 table.yfnc_datamodoutline1 td.yfnc_datamoddata1")[6].text
+              end
+              if first_page.css("body div#rightcol table#yfncsumtab td.yfnc_modtitlew2 table")[2] !=nil
+                summary = first_page.css("body div#rightcol table#yfncsumtab td.yfnc_modtitlew2 table")[2].text
+              end
+            rescue
+              puts "Something timed out, waiting a few seconds"
+              sleep(3.seconds)
+              retry_count +=1
+              retry if retry_count < 5
+            end
+            csv << [fund_symbol, category, family, inception_date, summary]
+          end
+        end
+      end
+    end
+  end
+
+  namespace :populate do
+    desc "Populate db"
+    task :stock => :environment do
+      csv_text = File.read('db/data/stock_profiles.csv')
+      csv = CSV.parse(csv_text, :headers => true)
+      csv.each do |row|
+        s = StockTicker.find_by_symbol(row["Stock Symbol"])
+        p s.symbol
+        s.business_summary  = row["Business Summary"]
+        s.sector            = row["Sector"]
+        s.industry          = row["Industry"]
+        s.url               = row["URL"]
+        s.save
+      end
+    end
+
+    task :fund => :environment do
+      csv_text = File.read('db/data/fund_profiles.csv')
+      csv = CSV.parse(csv_text, :headers => true)
+      csv.each do |row|
+        f = FundTicker.find_by_symbol(row["Symbol"])
+        p f.symbol
+        f.category          = row["Category"]
+        f.family            = row["Family"]
+        f.inception_date    = row["Inception Date"]
+        f.summary           = row["Summary"]
+        f.save
+      end
     end
   end
 end
