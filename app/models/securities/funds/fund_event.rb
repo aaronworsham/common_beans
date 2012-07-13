@@ -1,6 +1,6 @@
 class FundEvent < ActiveRecord::Base
   include DateMixin
-
+  include Eventable
 
   belongs_to :user
   belongs_to :fund_holding
@@ -60,6 +60,8 @@ class FundEvent < ActiveRecord::Base
     result['portfolio_id'] = self.holding.portfolio_id
     result['units_to_date'] = self.units_to_date
     result['value_to_date'] = self.value_to_date
+    result['symbol']= self.ticker.symbol
+
     result
   end
 
@@ -68,13 +70,6 @@ class FundEvent < ActiveRecord::Base
   end
 
 
-  def todays_price
-    self.ticker.todays_close
-  end
-
-  def todays_value
-    self.units * self.todays_price
-  end
 
   def units_to_date
     self.holding.past_units(self.executed_at)

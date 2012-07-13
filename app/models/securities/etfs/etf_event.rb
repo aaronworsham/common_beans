@@ -1,6 +1,6 @@
 class EtfEvent < ActiveRecord::Base
-include DateMixin
-
+  include DateMixin
+  include Eventable
 
   belongs_to :user
   belongs_to :etf_holding
@@ -57,6 +57,8 @@ include DateMixin
     result["action_letter"] = self.type[0].capitalize
     result["relative_day"] = days_since_holding_purchase
     result['portfolio_id'] = self.holding.portfolio_id
+    result['symbol']= self.ticker.symbol
+
     result
   end
 
