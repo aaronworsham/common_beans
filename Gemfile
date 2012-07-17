@@ -20,7 +20,7 @@ gem 'simple_form'
 gem 'redis'
 gem 'fastercsv'
 gem 'factory_girl'
-gem 'factory_girl_rails'
+gem 'factory_girl_rails', '3.5.0'
 gem 'facebox-rails'
 gem 'faker'
 gem 'ejs'
@@ -47,7 +47,7 @@ gem "meta_search", '>= 1.1.3'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails', "~> 3.1.0"
+  gem 'sass-rails', "~> 3.1.6"
   gem 'coffee-rails', "~> 3.1.0"
   gem 'uglifier'
 end
