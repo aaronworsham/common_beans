@@ -1,5 +1,8 @@
-LANG="en_US.UTF-8"
-LC_ALL="en_US.UTF-8"
+if RUBY_VERSION =~ /1.9/
+Encoding.default_external = Encoding::UTF_8
+Encoding.default_internal = Encoding::UTF_8
+end
+
 
 source 'http://rubygems.org'
 
@@ -38,7 +41,7 @@ gem 'rspec',       "~> 2.6.0"
 gem 'rspec-rails', "~> 2.6.1"
 gem 'nokogiri'
 gem 'activeadmin'
-gem "meta_search", '~> 1.1.0.pre'
+gem "meta_search", '>= 1.1.0.pre'
 
 
 # Gems used only for assets and not required
