@@ -1,3 +1,6 @@
+LANG="en_US.UTF-8"
+LC_ALL="en_US.UTF-8"
+
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.1'
@@ -34,8 +37,8 @@ gem "rails_config"
 gem 'rspec',       "~> 2.6.0"
 gem 'rspec-rails', "~> 2.6.1"
 gem 'nokogiri'
-#gem 'activeadmin'
-#gem "meta_search", '~> 1.1.0.pre'
+gem 'activeadmin'
+gem "meta_search", '~> 1.1.0.pre'
 
 
 # Gems used only for assets and not required
