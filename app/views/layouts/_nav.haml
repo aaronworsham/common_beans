@@ -23,6 +23,10 @@
           %tr.selectable{"data-friend-id" => f.id}
             %td= f.screen_name
             %td= "-%5 (5day)"
+    #show-group-portfolios-nav
+      Groups (In Beta)
+      %table
+        %tbody
     #show-everyone-events-nav
       Everyone
       %table
@@ -30,10 +34,7 @@
           %tr.selectable
             %td Buy/Sell Events
             %td= @actions.count
-    #show-group-portfolios-nav
-      Groups (In Beta)
-      %table
-        %tbody
+
 
 
   #compare-nav

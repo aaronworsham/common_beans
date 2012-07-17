@@ -165,7 +165,10 @@ $ ->
     viewName = 'Add'+capitaliseFirstLetter(securityName)+'HoldingView'
 
     $.facebox({div:'#add-'+securityName+'-form'});
-    $("#facebox .date_picker").datepicker();
+    $("#facebox .date_picker").datepicker({
+      changeMonth: true,
+      changeYear: true
+    });
     $('#facebox .create_link').click( ->
       holding = new window[className]({portfolio_id:portfolio.id});
       view = new window[viewName]({model:holding});

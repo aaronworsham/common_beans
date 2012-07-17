@@ -61,7 +61,10 @@ CommonBeans::Application.routes.draw do
     post :redeem, :on => :collection
   end
 
-
+  resources :friends do
+    get :accept, :on => :member
+    get :decline, :on => :member
+  end
   match "/auth/:provider/callback" => "sessions#create"
   match "/oauth2callback" => "sessions#create"
   match "/signout" => "sessions#destroy", :as => :signout

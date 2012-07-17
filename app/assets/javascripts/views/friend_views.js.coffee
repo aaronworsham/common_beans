@@ -30,7 +30,7 @@ class window.FriendPortfolioView extends Backbone.View
         text: 'Securities Distribution'
       },
 
-      plotOptions: {
+      lotOptions: {
         pie: {
           allowPointSelect: true,
           cursor: 'pointer',
@@ -51,3 +51,83 @@ class window.FriendPortfolioView extends Backbone.View
     for v in @model.attributes.distribution
       options.series[0].data.push([v['holding_name'],v['ratio']])
     chart = new Highcharts.Chart(options);
+
+
+
+class window.FriendView extends Backbone.View
+
+  tagName: "td"
+
+  initialize: ->
+    @model.view = this
+    @model.bind('change', @render, this);
+    @model.bind('destroy', @remove, this);
+
+  render: ->
+    elem_show = $(@el).append(ich.friend_share_template(@model.toJSON()));
+    $(elem_show).hide();
+    
+    $('#friends-content table tbody tr').append(elem_show);
+    $(elem_show).fadeIn("slow");
+  
+  remove: ->
+    console.log('Attempting to remove friendship')
+    console.log(@el)
+    $(@el).fadeOut("slow", ->
+      $(this).remove();
+    );
+    FromInvites.add(new InviteFromModel(@model.toJSON()))
+
+
+class window.InviteToView extends Backbone.View
+
+  tagName: "td"
+
+  initialize: ->
+    @model.view = this
+    @model.bind('change', @render, this);
+    @model.bind('destroy', @remove, this);
+
+  render: ->
+    elem_show = $(@el).append(ich.friend_share_template(@model.toJSON()));
+    $(elem_show).hide();
+    
+    $('#invites-to-content table tbody tr').append(elem_show);
+    $(elem_show).fadeIn("slow");
+  
+  remove: ->
+    $(@el).fadeOut("slow", ->
+      $(this).remove();
+    );
+
+
+class window.InviteFromView extends Backbone.View
+
+  tagName: "td"
+
+  initialize: ->
+    @model.view = this
+    @model.bind('change', @render, this);
+    @model.bind('destroy', @remove, this);
+    @model.bind('accept', @accept, this);
+
+  render: ->
+    elem_show = $(@el).append(ich.invite_from_template(@model.toJSON()));
+    $(elem_show).hide();
+    
+    $('#invites-from-content table tbody tr').append(elem_show);
+    $(elem_show).fadeIn("slow");
+
+  remove: ->
+    $(@el).fadeOut("slow", ->
+      $(this).remove();
+    );
+
+  accept: ->
+    console.log('got event')
+    $(@el).fadeOut("slow", ->
+      $(this).remove();
+    );
+    Friends.add(new FriendModel(@model.toJSON()))
+
+  

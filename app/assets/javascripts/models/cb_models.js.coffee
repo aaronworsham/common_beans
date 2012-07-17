@@ -93,10 +93,27 @@ class window.CompareIndicesModel extends Backbone.Model
   urlRoot : "/compare_indices"
 class window.CompareValuesModel extends Backbone.Model
   urlRoot : "/compare_values"
-
 class window.FriendPortfolioModel extends Backbone.Model
   urlRoot : "/friends_portfolios"
+class window.FriendModel extends Backbone.Model
+  urlRoot : "/friends"
+class window.InviteToModel extends Backbone.Model
+  urlRoot : "/friends"
+class window.InviteFromModel extends Backbone.Model
+  urlRoot : "/friends"
 
+  accept: (opts) ->
+    model = this
+    url = model.url() + '/accept'
+    options = {
+        url: url,
+        type: 'GET',
+        dataType: 'json'
+    };
 
+    _.extend(options, opts);
+    model.trigger('accept')
+    return (this.sync || Backbone.sync).call(this, null, this, options);
+  
 
   

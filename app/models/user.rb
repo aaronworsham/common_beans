@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
 
   serialize :urls
   def self.create_with_omniauth(auth)  
-    create! do |user|
+    user = create! do |user|
       provider = Provider.new(auth)
       user.provider = provider.source
       user.uid = provider.uid
@@ -49,6 +49,12 @@ class User < ActiveRecord::Base
       user.description = auth['info']['description']
       user.urls = auth['info']['urls']
     end  
+    first_friend = User.find_by_screen_name('aaronworsham')
+    if first_friend 
+      user.trust!(first_friend, 5)
+      first_friend.trust!(user, 5)
+    end
+    user
   rescue => e
     p 'INSIDE USER CREATE'
     p e.message

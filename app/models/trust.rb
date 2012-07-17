@@ -16,7 +16,7 @@ module Trust
       $redis.srem(self.redis_key(:trusting), user.id)
       $redis.srem(user.redis_key(:trusted_by), self.id)
     end
-    self.clear_user_trust_level(user)
+    clear_user_trust_level(user)
   end
 
   # users that self follows

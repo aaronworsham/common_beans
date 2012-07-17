@@ -7,7 +7,12 @@
   - @friend_models.each do |k,v|
     - v.each do |h|
       != "FriendPortfolios.add(#{ h.to_json});"
-  
+  - @friends.each do |f|
+    != "Friends.add(#{ f.to_json});" 
+  - @invites_to.each do |f|
+    != "ToInvites.add(#{ f.to_json});" 
+  - @invites_from.each do |f|
+    != "FromInvites.add(#{ f.to_json});" 
   != "IndexComparisons.add(#{@compare_indices.to_json});"
   != "ValueComparisons.add(#{@compare_values.to_json});"
   $('#share-content').hide();
@@ -39,27 +44,52 @@
         %input{:class=>"promptable autocomplete optional ui-autocomplete-input", 'data-autocomplete'=>"/users/autocomplete_user_screename", 'data-id-element'=>"#send_friend_request_id", :id=>"user_search", :size=>"30", :type=>"text", :autocomplete=>"off", :role=>"textbox", 'aria-autocomplete'=>"list", 'aria-haspopup'=>"true", 'data-prompt' => 'Screen Name'}
         %input{:type => 'hidden', :id => 'send_friend_request_id'}
         %button#send_friend_request Send a Friend Request
-      #invites-from-content.share-module.security-module
+      #invites-from-content.share-module.security-module.fixed-width-table1
         Friend Requests From
         %table
           %tbody
-          - for i in @invites_from
             %tr
-              %td= i.screen_name
-      #invites-to-content.share-module.security-module
+          -# - for a in @invites_from_group
+          -#   %tr
+          -#     - for i in a
+          -#       - if i
+          -#         %td
+          -#           %span.table-button= i.screen_name
+          -#           %br
+          -#           = link_to 'accept', '#'
+          -#           = link_to 'decline', '#'
+          -#       -else
+          -#         %td
+      #invites-to-content.share-module.security-module.fixed-width-table1
+
         Friend Requests To
         %table
           %tbody
-          - for i in @invites_to
-            %tr
-              %td= i.screen_name
-      #friends-content.share-module.security-module
+            %tr 
+          -# - for a in @invites_to_group
+          -#   %tr
+          -#     - for i in a
+          -#       - if i
+          -#         %td
+          -#           %span.table-button= i.screen_name
+          -#           = link_to 'x', '#'
+          -#       -else
+          -#         %td
+      #friends-content.share-module.security-module.fixed-width-table1
+
         Friends
         %table
           %tbody
-          - for i in @friends
             %tr
-              %td= i.screen_name
+          -# - for a in @friends_group
+          -#   %tr
+          -#     - for i in a
+          -#       - if i
+          -#         %td
+          -#           %span.table-button= i.screen_name
+          -#           = link_to 'x', '#'
+          -#       -else
+          -#         %td
 
 
 #forms

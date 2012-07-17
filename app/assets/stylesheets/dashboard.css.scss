@@ -232,6 +232,20 @@ tr.small-table-header {
   margin: 0.2em 0 0 0.5em;
 }
 
+.fixed-width-table1 td {
+  color: #53a514;
+  width: 100px;
+  padding-bottom: 10px; 
+  .table-button {
+    padding: 5px;
+    background: #e0f2d2;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px; /* future proofing */
+    -khtml-border-radius: 10px; /* for old Konqueror browsers */
+  }
+}
+
 
 
 

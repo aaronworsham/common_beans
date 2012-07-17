@@ -195,4 +195,59 @@ class window.FriendPortfolioCollection extends Backbone.Collection
 
 window.FriendPortfolios = new FriendPortfolioCollection
 
+class window.FriendsCollection extends Backbone.Collection
+  model: FriendModel
 
+  initialize: ->
+     @bind('add', (statement)->
+       @addOneView(statement)
+     );
+     @bind('reset', (statements)->
+       statements.each( (p)->
+         statements.addOneView(p)
+       );
+     );
+
+
+  addOneView: (p)->
+    new FriendView({model:p}).render();
+
+window.Friends = new FriendsCollection
+
+class window.ToInvitesCollection extends Backbone.Collection
+  model: InviteToModel
+
+  initialize: ->
+     @bind('add', (statement)->
+       @addOneView(statement)
+     );
+     @bind('reset', (statements)->
+       statements.each( (p)->
+         statements.addOneView(p)
+       );
+     );
+
+
+  addOneView: (p)->
+    new InviteToView({model:p}).render();
+
+window.ToInvites = new ToInvitesCollection
+
+class window.FromInvitesCollection extends Backbone.Collection
+  model: InviteFromModel
+
+  initialize: ->
+     @bind('add', (statement)->
+       @addOneView(statement)
+     );
+     @bind('reset', (statements)->
+       statements.each( (p)->
+         statements.addOneView(p)
+       );
+     );
+
+
+  addOneView: (p)->
+    new InviteFromView({model:p}).render();
+
+window.FromInvites = new FromInvitesCollection
