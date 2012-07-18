@@ -93,6 +93,10 @@ class window.CompareIndicesModel extends Backbone.Model
   urlRoot : "/compare_indices"
 class window.CompareValuesModel extends Backbone.Model
   urlRoot : "/compare_values"
+class window.CompareFriendsModel extends Backbone.Model
+  urlRoot : "/compare_values"
+class window.CompareOthersModel extends Backbone.Model
+  urlRoot : "/compare_values"
 class window.FriendPortfolioModel extends Backbone.Model
   urlRoot : "/friends_portfolios"
 class window.FriendModel extends Backbone.Model

@@ -156,7 +156,6 @@ class window.CompareIndicesCollection extends Backbone.Collection
     new CompareIndicesView({model:p}).render();
 
 window.IndexComparisons = new CompareIndicesCollection
-
 class window.CompareValuesCollection extends Backbone.Collection
   model: CompareValuesModel
 
@@ -175,6 +174,44 @@ class window.CompareValuesCollection extends Backbone.Collection
     new CompareValuesView({model:p}).render();
 
 window.ValueComparisons = new CompareValuesCollection
+
+class window.CompareFriendsCollection extends Backbone.Collection
+  model: CompareFriendsModel
+
+  initialize: ->
+     @bind('add', (statement)->
+       @addOneView(statement)
+     );
+     @bind('reset', (statements)->
+       statements.each( (p)->
+         statements.addOneView(p)
+       );
+     );
+
+
+  addOneView: (p)->
+    new CompareFriendsView({model:p}).render();
+
+window.FriendComparisons = new CompareFriendsCollection
+
+class window.CompareOthersCollection extends Backbone.Collection
+  model: CompareOthersModel
+
+  initialize: ->
+     @bind('add', (statement)->
+       @addOneView(statement)
+     );
+     @bind('reset', (statements)->
+       statements.each( (p)->
+         statements.addOneView(p)
+       );
+     );
+
+
+  addOneView: (p)->
+    new CompareOthersView({model:p}).render();
+
+window.OtherComparisons = new CompareOthersCollection
 
 class window.FriendPortfolioCollection extends Backbone.Collection
   model: FriendPortfolioModel
@@ -248,6 +285,6 @@ class window.FromInvitesCollection extends Backbone.Collection
 
 
   addOneView: (p)->
-    new InviteFromView({model:p}).render();
+    new InviteView({model:p}).render();
 
 window.FromInvites = new FromInvitesCollection

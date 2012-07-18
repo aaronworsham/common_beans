@@ -137,3 +137,217 @@ class window.CompareValuesView extends Backbone.View
 #      console.log(options)
 #      Highcharts.Chart(options);
 #    );
+
+
+class window.CompareFriendsView extends Backbone.View
+
+  tagName: "li"
+
+  initialize: ->
+    @model.view = this
+    @model.bind('change', @render, this);
+    @model.bind('destroy', @remove, this);
+
+  render: ->
+    elem = ich.compare_friends_template(@model.toJSON());
+    $(elem).hide();
+    $("#compare-your-portfolios-content #compare-friends-content").append(elem);
+    $(elem).fadeIn("slow");
+
+
+    options = {
+      chart: {
+        renderTo: ("compare-friends-portfolio-" + @model.id),
+        type: 'column'
+      },
+      title: {
+        text: 'Compare Friends'
+      },
+      xAxis: {
+        categories: ['D5','D30', 'D60', 'D90', 'D180', 'Y1']
+      },
+      yAxis: {
+        min: 0,
+        title: {
+          text: 'Compare Friends on CB'
+        },
+        stackLabels: {
+          enabled: true,
+          style: {
+            fontWeight: 'bold',
+            color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+          }
+        }
+      },
+      legend: {
+        align: 'right',
+        x: -100,
+        verticalAlign: 'top',
+        y: 20,
+        floating: true,
+        backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColorSolid) || 'white',
+        borderColor: '#CCC',
+        borderWidth: 1,
+        shadow: false
+      },
+      tooltip: {
+        formatter: ->
+          return '<b>'+ this.x +'</b><br/>'+
+            this.series.name +': '+ this.y +'<br/>'+
+            'Total: '+ this.point.stackTotal;
+        
+      },
+      plotOptions: {
+        column: {
+          stacking: 'normal',
+          dataLabels: {
+            enabled: true,
+            color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+          }
+        }
+      },
+      series: [
+        {
+          name: 'Above',
+          data: [20, 80, 70, 60, 30, 50]
+        }, {
+          name: 'Below',
+          data: [80, 20, 30, 40, 70, 50]
+        }
+      ]
+    };
+
+
+#    options.xAxis.categories.push('start')
+#    options.series[0].data.push(@model.attributes['starting_value'])
+#    for k,v of @model.attributes.past_values
+#      options.xAxis.categories.push(k)
+#      options.series[0].data.push(v)
+#    options.xAxis.categories.push('current')
+#    options.series[0].data.push(@model.attributes['current_value'])
+    chart = new Highcharts.Chart(options);
+
+
+#    $.getJSON("/portfolios/1/compare.json", (data)->
+#      console.log(data)
+#      for k,v of data.indices_gain
+#        options.series[0].data.push(v)
+#      console.log(options)
+#      Highcharts.Chart(options);
+#
+
+
+class window.CompareOthersView extends Backbone.View
+
+  tagName: "li"
+
+  initialize: ->
+    @model.view = this
+    @model.bind('change', @render, this);
+    @model.bind('destroy', @remove, this);
+
+  render: ->
+    elem = ich.compare_others_template(@model.toJSON());
+    $(elem).hide();
+    $("#compare-your-portfolios-content #compare-others-content").append(elem);
+    $(elem).fadeIn("slow");
+
+
+    options = {
+      chart: {
+        renderTo: ("compare-others-portfolio-" + @model.id),
+        type: 'column'
+      },
+      title: {
+        text: 'Compare Others'
+      },
+      xAxis: {
+        categories: ['D5','D30', 'D60', 'D90', 'D180', 'Y1']
+      },
+      yAxis: {
+        min: 0,
+        title: {
+          text: 'Compare Friends on CB'
+        },
+        stackLabels: {
+          enabled: true,
+          style: {
+            fontWeight: 'bold',
+            color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+          }
+        }
+      },
+      legend: {
+        align: 'right',
+        x: -100,
+        verticalAlign: 'top',
+        y: 20,
+        floating: true,
+        backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColorSolid) || 'white',
+        borderColor: '#CCC',
+        borderWidth: 1,
+        shadow: false
+      },
+      tooltip: {
+        formatter: ->
+          return '<b>'+ this.x +'</b><br/>'+
+            this.series.name +': '+ this.y +'<br/>'+
+            'Total: '+ this.point.stackTotal;
+        
+      },
+      plotOptions: {
+        column: {
+          stacking: 'normal',
+          dataLabels: {
+            enabled: true,
+            color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+          }
+        }
+      },
+      series: [
+        {
+          name: 'Above',
+          data: [20, 80, 70, 60, 30, 50],
+          stack: 'Plan'
+        },{
+          name: 'Above',
+          data: [20, 80, 70, 60, 30, 50],
+          stack: 'Strategy'
+        },{
+          name: 'Above',
+          data: [20, 80, 70, 60, 30, 50],
+          stack: 'Plan and Strategy'
+        }, {
+          name: 'Below',
+          data: [80, 20, 30, 40, 70, 50],
+          stack: 'Plan'
+        }, {
+          name: 'Below',
+          data: [80, 20, 30, 40, 70, 50],
+          stack: 'Strategy'
+        }, {
+          name: 'Below',
+          data: [80, 20, 30, 40, 70, 50],
+          stack: 'Plan and Strategy'
+        }
+
+      ]
+    };
+
+#    options.xAxis.categories.push('start')
+#    options.series[0].data.push(@model.attributes['starting_value'])
+#    for k,v of @model.attributes.past_values
+#      options.xAxis.categories.push(k)
+#      options.series[0].data.push(v)
+#    options.xAxis.categories.push('current')
+#    options.series[0].data.push(@model.attributes['current_value'])
+    chart = new Highcharts.Chart(options);
+
+
+#    $.getJSON("/portfolios/1/compare.json", (data)->
+#      console.log(data)
+#      for k,v of data.indices_gain
+#        options.series[0].data.push(v)
+#      console.log(options)
+#      Highcharts.Chart(options);
+#

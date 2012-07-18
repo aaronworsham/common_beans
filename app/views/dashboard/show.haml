@@ -15,6 +15,8 @@
     != "FromInvites.add(#{ f.to_json});" 
   != "IndexComparisons.add(#{@compare_indices.to_json});"
   != "ValueComparisons.add(#{@compare_values.to_json});"
+  != "FriendComparisons.add(#{@compare_values.to_json});"
+  != "OtherComparisons.add(#{@compare_values.to_json});"
   $('#share-content').hide();
   $('#compare-content').hide();
   $('#show-your-portfolios-nav tr.selectable').first().trigger('click');
@@ -34,6 +36,7 @@
   #compare-your-portfolios-content.compare-module
     #compare-indices-content.compare-module
     #compare-values-content.compare-module
+    #compare-friends-content.compare-module
     #compare-others-content.compare-module
   #compare-friends-portfolios-content.compare-module
 #share-content
@@ -49,32 +52,14 @@
         %table
           %tbody
             %tr
-          -# - for a in @invites_from_group
-          -#   %tr
-          -#     - for i in a
-          -#       - if i
-          -#         %td
-          -#           %span.table-button= i.screen_name
-          -#           %br
-          -#           = link_to 'accept', '#'
-          -#           = link_to 'decline', '#'
-          -#       -else
-          -#         %td
+
       #invites-to-content.share-module.security-module.fixed-width-table1
 
         Friend Requests To
         %table
           %tbody
             %tr 
-          -# - for a in @invites_to_group
-          -#   %tr
-          -#     - for i in a
-          -#       - if i
-          -#         %td
-          -#           %span.table-button= i.screen_name
-          -#           = link_to 'x', '#'
-          -#       -else
-          -#         %td
+
       #friends-content.share-module.security-module.fixed-width-table1
 
         Friends
@@ -82,14 +67,7 @@
           %tbody
             %tr
           -# - for a in @friends_group
-          -#   %tr
-          -#     - for i in a
-          -#       - if i
-          -#         %td
-          -#           %span.table-button= i.screen_name
-          -#           = link_to 'x', '#'
-          -#       -else
-          -#         %td
+
 
 
 #forms
