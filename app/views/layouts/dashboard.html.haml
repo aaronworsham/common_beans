@@ -1,24 +1,25 @@
 !!!
 %html
-%head
-  %titleCommonBeans
-  = stylesheet_link_tag    "application"
-  = javascript_include_tag "dashboard"
-  = csrf_meta_tags
-  = yield :templates
+  %head
+
+    %titleCommonBeans
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "dashboard"
+    = csrf_meta_tags
+    = yield :templates
 
 
-  %script{:type => 'text/javascript', :charset => 'utf-8'}
-    $(document).ready(function() {
-    = yield :on_ready
-    });
-%body
-  
-  .container
-    .row
-      =render "layouts/header"
-    .row
-      #warmlist.threecol
-        =render 'layouts/nav'
-      #content.ninecol.last
-        = yield
+    %script{:type => 'text/javascript', :charset => 'utf-8'}
+      $(document).ready(function() {
+      = yield :on_ready
+      });
+  %body
+    
+    .container
+      .row
+        =render "layouts/header"
+      .row
+        #warmlist.threecol
+          =render 'layouts/nav'
+        #content.ninecol.last
+          = yield

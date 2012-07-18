@@ -4,7 +4,7 @@
 = require_tree ./views
 = require_tree ./collections
 = require_tree ./actions
-= require highcharts.src
+= require highcharts
 = require highcharts-theme
 = require currency_formatter
 

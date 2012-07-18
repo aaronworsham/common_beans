@@ -24,7 +24,16 @@ class window.CompareIndicesView extends Backbone.View
          text: 'Compare Indices to Portfolio since first purchase (' + @model.get('since') + ')'
       },
       xAxis: {
-         categories: [],
+        categories: [
+          "Holding",
+          "Dow",
+          "Sp500",
+          "SpMidcap",
+          "NasdaqComposite",
+          "AmexComposite",
+          "NyseUs100",
+          "Russell2000"
+        ],
         labels: {
           align: 'right',
           style: {
@@ -43,15 +52,27 @@ class window.CompareIndicesView extends Backbone.View
 
       series: [{
         color: '#459E00',
-        data: []
+        data: [
+          10,
+          5.6,
+          6,
+          {color:'#ff0000',y:-3},
+          2.5,
+          3.4,
+          1.9,
+          {color:'#ff0000',y:-1.8}
+        ]
       }]
     };
 
-    options.xAxis.categories.push('Holding')
-    options.series[0].data.push(@.redGreen(parseInt(@model.attributes['gain_ratio'])))
-    for k,v of @model.attributes.indices_gain
-      options.xAxis.categories.push(k)
-      options.series[0].data.push(@.redGreen(v))
+#    options.xAxis.categories.push('Holding')
+#    console.log(parseInt(@model.attributes['gain_ratio']))
+#    options.series[0].data.push(@.redGreen(parseInt(@model.attributes['gain_ratio'])))
+#    for k,v of @model.attributes.indices_gain
+#      if v != null
+#        options.xAxis.categories.push(k)
+#        options.series[0].data.push(@.redGreen(v))
+#    console.log(options)
     chart = new Highcharts.Chart(options);
 #    $.extend(this, Highcharts.Chart(options))
 
@@ -190,13 +211,7 @@ class window.CompareFriendsView extends Backbone.View
         borderWidth: 1,
         shadow: false
       },
-      tooltip: {
-        formatter: ->
-          return '<b>'+ this.x +'</b><br/>'+
-            this.series.name +': '+ this.y +'<br/>'+
-            'Total: '+ this.point.stackTotal;
-        
-      },
+
       plotOptions: {
         column: {
           stacking: 'normal',
@@ -252,8 +267,7 @@ class window.CompareOthersView extends Backbone.View
     $("#compare-your-portfolios-content #compare-others-content").append(elem);
     $(elem).fadeIn("slow");
 
-
-    options = {
+    chart = new Highcharts.Chart({
       chart: {
         renderTo: ("compare-others-portfolio-" + @model.id),
         type: 'column'
@@ -288,13 +302,7 @@ class window.CompareOthersView extends Backbone.View
         borderWidth: 1,
         shadow: false
       },
-      tooltip: {
-        formatter: ->
-          return '<b>'+ this.x +'</b><br/>'+
-            this.series.name +': '+ this.y +'<br/>'+
-            'Total: '+ this.point.stackTotal;
-        
-      },
+
       plotOptions: {
         column: {
           stacking: 'normal',
@@ -306,33 +314,33 @@ class window.CompareOthersView extends Backbone.View
       },
       series: [
         {
-          name: 'Above',
-          data: [20, 80, 70, 60, 30, 50],
+          name: 'Plan Above',
+          data: [10, 80, 70, 60, 30, 50],
           stack: 'Plan'
         },{
-          name: 'Above',
-          data: [20, 80, 70, 60, 30, 50],
+          name: 'Strat. Above',
+          data: [30, 60, 40, 90, 10, 60],
           stack: 'Strategy'
         },{
-          name: 'Above',
-          data: [20, 80, 70, 60, 30, 50],
+          name: 'Plan & Strat. Above',
+          data: [60, 30, 50, 50, 90, 20],
           stack: 'Plan and Strategy'
         }, {
-          name: 'Below',
-          data: [80, 20, 30, 40, 70, 50],
+          name: 'Plan Below',
+          data: [90, 20, 30, 40, 70, 50],
           stack: 'Plan'
         }, {
-          name: 'Below',
-          data: [80, 20, 30, 40, 70, 50],
+          name: 'Strat. Below',
+          data: [70, 40, 60, 10, 90, 40],
           stack: 'Strategy'
         }, {
-          name: 'Below',
-          data: [80, 20, 30, 40, 70, 50],
+          name: 'Plan & Strat. Below',
+          data: [40, 70, 50, 50, 10, 80],
           stack: 'Plan and Strategy'
         }
 
       ]
-    };
+    });
 
 #    options.xAxis.categories.push('start')
 #    options.series[0].data.push(@model.attributes['starting_value'])
@@ -341,7 +349,7 @@ class window.CompareOthersView extends Backbone.View
 #      options.series[0].data.push(v)
 #    options.xAxis.categories.push('current')
 #    options.series[0].data.push(@model.attributes['current_value'])
-    chart = new Highcharts.Chart(options);
+    
 
 
 #    $.getJSON("/portfolios/1/compare.json", (data)->
