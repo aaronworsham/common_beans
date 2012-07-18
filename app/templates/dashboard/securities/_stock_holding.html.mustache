@@ -21,13 +21,31 @@
           <div id='stock-graph-for-holding-{{id}}'></div>
         </div>
         <div style='width:50%;float:left'>
-          <p>{{name}} ({{symbol}})</p>
-          <p>{{summary}}</p>
+          <p><strong>{{name}} ({{symbol}})</strong><br/>
+          Sector: {{sector}}<br/>
+          Industry: {{industry}}<br/>
+          <a href={{url}}>Website</a>
+          <a href='http://finance.yahoo.com/q?s={{symbol}}&ql=0' target='_blank'>Yahoo</a>
+          <a href='http://www.google.com/finance?q={{symbol}}' target='_blank'>Google</a>
+          </p>
         </div>
       </div>
       <div>
-        <p>History</p>
-        <table id="stock-events-for-holding-{{ id }}" data-stock-holding-id={{id}}>
+        {{summary}}
+        <a href='http://finance.yahoo.com/q/pr?s={{symbol}}' target='_blank'>more</a>
+      </div>
+      <div>
+        <p>
+        <table>
+          <tr>
+            <td>0 {{symbol}} Messages</td>
+            <td><a href='#'>Send message to {{symbol}} Holders on CB</a> </td>
+          </tr>
+        </table>
+        </p>
+      </div>
+      <div>
+        <p><table id="stock-events-for-holding-{{ id }}" data-stock-holding-id={{id}}>
           <thead>
             <tr>
               <th>Action</th>
@@ -55,6 +73,7 @@
             </tr>
           </tbody>
         </table>
+        </p>
       </div>
     </div>
 

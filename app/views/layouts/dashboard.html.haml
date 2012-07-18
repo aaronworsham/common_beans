@@ -13,8 +13,10 @@
     = yield :on_ready
     });
 %body
-  =render "layouts/header"
+  
   .container
+    .row
+      =render "layouts/header"
     .row
       #warmlist.threecol
         =render 'layouts/nav'

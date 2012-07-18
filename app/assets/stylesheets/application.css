@@ -6,8 +6,19 @@
  *= require jquery.facebox
  *= require jquery-ui-1.8.16.custom
  *= require 1140.css
- *= require_tree .
  *= require jackedup
+ *= require style
+ *= require dashboard
+ *= require trackers
+ *= require hotlist
+ *= require menu
+ *= require messages
+ *= require portfolios
+ *= require reset
+ *= require superfish
+ *= require text
+ *= require trackers
+ *= require warmlist 
 */
 
 body {

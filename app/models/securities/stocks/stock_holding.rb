@@ -118,7 +118,10 @@ class StockHolding < ActiveRecord::Base
     result["total_value_gain"] = self.total_value_gain.round(2)
     result["name"] = self.ticker.name
     result["symbol"] = self.ticker.symbol
-    result["summary"] = self.ticker.summary.truncate(400)
+    result["summary"] = self.ticker.summary.truncate(180)
+    result["sector"] = self.ticker.sector
+    result["industry"] = self.ticker.industry
+    result["url"] = self.ticker.url
     result["purchased_on"] = self.purchased_at.strftime('%D')
     result
   end
