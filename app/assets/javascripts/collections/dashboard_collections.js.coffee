@@ -285,6 +285,6 @@ class window.FromInvitesCollection extends Backbone.Collection
 
 
   addOneView: (p)->
-    new InviteView({model:p}).render();
+    new InviteFromView({model:p}).render();
 
 window.FromInvites = new FromInvitesCollection
