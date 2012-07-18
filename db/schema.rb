@@ -913,7 +913,7 @@ ActiveRecord::Schema.define(:version => 20120717190532) do
     t.integer  "exchange_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "business_summary"
+    t.text     "summary"
     t.string   "sector"
     t.string   "industry"
     t.string   "url"
