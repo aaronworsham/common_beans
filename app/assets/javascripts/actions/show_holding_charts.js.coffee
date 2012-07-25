@@ -59,7 +59,7 @@ for security in securities
           options.series[0].data.push(parseInt(e.attributes['value_to_date']))
         options.xAxis.categories.push('T')
         options.series[0].data.push(@model.attributes['todays_value'])
-        chart = new Highcharts.Chart(options);
+        #chart = new Highcharts.Chart(options);
 
 
 

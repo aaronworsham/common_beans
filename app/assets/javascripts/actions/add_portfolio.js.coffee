@@ -3,21 +3,19 @@ class window.AddPortfolioView extends Backbone.View
   el: '#facebox'
 
   submit: =>
-    @model.save(this.serialize(),
+    this.set_form_attributes()
+    @model.save({},
         { success : (model, resp)->
           Portfolios.add(model)
         }
     );
 
-  serialize: =>
-    return {
-        authenticity_token: this.$("input[name=authenticity_token]").val(),
-        portfolio: {
-          name: this.$("#portfolio_name").val(),
-          portfolio_plan_id: this.$("#portfolio_portfolio_plan").val(),
-          portfolio_strategy_id: this.$("#portfolio_portfolio_strategy").val()
-        }
-      }
+  set_form_attributes: =>
+    @model.set({
+      name: this.$("#portfolio_name").val(),
+      portfolio_plan_id: this.$("#portfolio_portfolio_plan").val(),
+      portfolio_strategy_id: this.$("#portfolio_portfolio_strategy").val()
+    });
 
 
 

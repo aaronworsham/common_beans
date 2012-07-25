@@ -1,18 +1,11 @@
 class StockTickersController < ApplicationController
-  autocomplete :stock_ticker, :name, :full => true
-  autocomplete :stock_ticker, :symbol
-
   respond_to :json
-  def show
-    case params[:id]
-    when 'autocomplete_ticker_name'
-      @tickers = StockTicker.where("name like ?", "%#{params[:term]}%").all
-      respond_with(@tickers.map{|x| {:id => x.id, :label => x.name, :value => x.name}})
-    when 'autocomplete_ticker_symbol'
-      @tickers = StockTicker.where("symbol like ?", "%#{params[:term]}%").all
-      respond_with(@tickers.map{|x| {:id => x.id, :label => x.symbol, :value => x.symbol}})
-    end
-
-
+  def autocomplete_stock_ticker_name
+      @tickers = StockTicker.search_name(params[:term])
+      respond_with(@tickers)
+  end
+  def autocomplete_stock_ticker_symbol
+      @tickers = StockTicker.search_symbol(params[:term])
+      respond_with(@tickers)
   end
 end

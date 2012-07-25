@@ -19,6 +19,46 @@ class CbApiResource < ActiveResource::Base
   def self.resource?
     true
   end
+  def self.find_by_id(id)
+    json = self.find_by_id_as_json(id)
+    if json.present?
+      self.new(json)
+    else
+      nil
+    end
+  end
+  def self.find_by_id_as_json(id)
+    self.get_as_json("http://localhost:4567/#{self.name.underscore.pluralize}/#{id}.json?")
+  end 
+  
+  def self.find_by_id_and_user(id, user)
+    json = self.find_by_id_and_user_as_json(id, user)
+    self.new(json)
+  end
+
+  def self.find_by_id_and_user_as_json(id, user)
+    self.get_as_json("http://localhost:4567/#{self.name.underscore.pluralize}/#{id}.json?user=#{user.screen_name}&provider=#{user.provider}&token=#{user.get_auth_token}")
+  end
+  
+  def self.get_as_json(url)
+    uri = URI(url)
+    data = Net::HTTP.get(uri)
+    if data != 'null'
+      JSON.parse(data)
+    else
+      nil
+    end
+  end
+
+  def user
+    User.find_by_id(self.user_id)
+  end
+  def destroy
+    url = URI("http://localhost:4567")
+    net = Net::HTTP.new('localhost',4567)
+    data = net.delete("/#{self.class.name.underscore.pluralize}/#{id}.json?user=#{user.screen_name}&provider=#{user.provider}&token=#{user.get_auth_token}")
+    data
+  end
 end
 
   
