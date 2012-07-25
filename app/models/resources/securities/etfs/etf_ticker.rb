@@ -1,0 +1,2 @@
+class EtfTicker < CbApiResource
+end

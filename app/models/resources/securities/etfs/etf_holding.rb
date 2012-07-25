@@ -1,0 +1,2 @@
+class EtfHolding < CbApiResource
+end

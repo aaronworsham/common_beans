@@ -1,7 +1,6 @@
 securities = ['stock', 'fund', 'bond', 'etf', 'cd', 'multi']
 data_points = [
           'starting_price',
-          'starting_price',
           'starting_investment',
           'net_investment',
           'net_return',
@@ -19,7 +18,7 @@ for security in securities
   do (security) ->
     capSecurity = window.capitaliseFirstLetter(security)
     class window[capSecurity+'HoldingModel'] extends Backbone.Model
-      urlRoot : "/"+security+"_holdings"
+      urlRoot : "/backbone"
       formattedData : ->
         data = @.toJSON()
         for data_point in data_points
@@ -35,7 +34,7 @@ for security in securities
         window[capSecurity+'HoldingCharts'].get(@.id)
 
     class window[capSecurity+'BuyModel'] extends Backbone.Model
-      urlRoot : "/"+security+"_buys"
+      urlRoot : "/backbone"
 
       holding: =>
         window[capSecurity+'Holdings'].get(@get(security+'_holding_id'))
@@ -43,7 +42,7 @@ for security in securities
         Portfolios.get(@get('portfolio_id')) 
 
     class window[capSecurity+'SellModel'] extends Backbone.Model
-      urlRoot : "/"+security+"_sells"
+      urlRoot : "/backbone"
 
       holding: =>
         window[capSecurity+'Holdings'].get(@get(security+'_holding_id'))   
@@ -51,7 +50,7 @@ for security in securities
         Portfolios.get(@get('portfolio_id'))    
 
     class window[capSecurity+'EventModel'] extends Backbone.Model
-      urlRoot : "/"+security+"_events"
+      urlRoot : "/backbone"
 
       holding: =>
         window[capSecurity+'Holdings'].get(@get(security+'_holding_id'))
@@ -60,7 +59,10 @@ for security in securities
 
 
 class window.PortfolioModel extends Backbone.Model
-  urlRoot : "/portfolios"
+  urlRoot : "/backbone"
+  defaults : {
+    model_name : 'Portfolio'
+  }
   formattedData : ->
     data = @.toJSON()
     for data_point in ['total_value', 'total_value_gain', 'total_gain_ratio']
@@ -74,7 +76,7 @@ class window.PortfolioModel extends Backbone.Model
     return data
 
 class window.MultiStatementModel extends Backbone.Model
-  urlRoot : "/multi_statements"
+  urlRoot : "/backbone"
   formattedData : ->
     data = @.toJSON()
     for data_point in data_points
@@ -88,9 +90,9 @@ class window.MultiStatementModel extends Backbone.Model
 
     return data
 class window.MultiAllocationModel extends Backbone.Model
-  urlRoot : "/multi_allocations"
+  urlRoot : "/backbone"
 class window.CompareIndicesModel extends Backbone.Model
-  urlRoot : "/compare_indices"
+  urlRoot : "/backbone"
 class window.CompareValuesModel extends Backbone.Model
   urlRoot : "/compare_values"
 class window.CompareFriendsModel extends Backbone.Model

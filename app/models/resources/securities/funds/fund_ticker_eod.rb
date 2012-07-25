@@ -1,0 +1,2 @@
+class FundTickerEod < CbApiResource
+end

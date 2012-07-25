@@ -1,0 +1,2 @@
+class EtfEvent < CbApiResource
+end

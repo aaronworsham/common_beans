@@ -1,3 +1,4 @@
+require 'securerandom'
 class SessionsController < ApplicationController
   def create 
     auth = request.env["omniauth.auth"]  
@@ -11,7 +12,8 @@ class SessionsController < ApplicationController
         :last_login_state => Settings.version.state,
         :last_logged_in_at => Time.now
       )
-      
+
+      user.set_auth_token      
       
     end
     session[:user_id] = user.id

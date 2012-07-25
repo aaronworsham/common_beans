@@ -1,0 +1,2 @@
+class FundHolding < CbApiResource
+end

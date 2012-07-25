@@ -15,25 +15,25 @@
       You
       %table
         %tbody
-    #show-friends-portfolios-nav
-      Friends
-      %table
-        %tbody
-        - for f in @friends
-          %tr.selectable{"data-friend-id" => f.id}
-            %td= f.screen_name
-            %td= "-%5 (5day)"
-    #show-group-portfolios-nav
-      Groups (In Beta)
-      %table
-        %tbody
-    #show-everyone-events-nav
-      Everyone
-      %table
-        %tbody
-          %tr.selectable
-            %td Buy/Sell Events
-            %td= @actions.count
+    -# #show-friends-portfolios-nav
+    -#   Friends
+    -#   %table
+    -#     %tbody
+    -#     - for f in @friends
+    -#       %tr.selectable{"data-friend-id" => f.id}
+    -#         %td= f.screen_name
+    -#         %td= "-%5 (5day)"
+    -# #show-group-portfolios-nav
+    -#   Groups (In Beta)
+    -#   %table
+    -#     %tbody
+    -# #show-everyone-events-nav
+    -#   Everyone
+    -#   %table
+    -#     %tbody
+    -#       %tr.selectable
+    -#         %td Buy/Sell Events
+    -#         %td= @actions.count
 
 
 
@@ -64,9 +64,9 @@
       %table
         %tbody
 
-          %tr.selectable#find-friend-nav
-            %td Your Friends
-            %td= "#{@friends.count}/#{@invites_from.count}/#{@invites_to.count}"
+          -# %tr.selectable#find-friend-nav
+          -#   %td Your Friends
+          -#   %td= "#{@friends.count}/#{@invites_from.count}/#{@invites_to.count}"
           %tr
             %td Your Adviser
             %td In Alpha

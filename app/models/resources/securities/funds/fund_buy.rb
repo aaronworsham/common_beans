@@ -1,0 +1,2 @@
+class FundBuy< CbApiResource
+end

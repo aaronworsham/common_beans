@@ -1,0 +1,2 @@
+class MultiStatement < CbApiResource
+end

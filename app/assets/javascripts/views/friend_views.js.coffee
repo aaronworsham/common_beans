@@ -50,7 +50,7 @@ class window.FriendPortfolioView extends Backbone.View
 
     for v in @model.attributes.distribution
       options.series[0].data.push([v['holding_name'],v['ratio']])
-    chart = new Highcharts.Chart(options);
+    #chart = new Highcharts.Chart(options);
 
 
 

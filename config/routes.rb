@@ -6,76 +6,17 @@ CommonBeans::Application.routes.draw do
   ActiveAdmin.routes(self)
 
 
-  get "stock_events/destroy"
+
+  resource :dashboard, :controller => 'dashboard'
+
 
   resources :stories
-  resources :trackers
-  resources :indices
-  resources :fund_tickers
-  resources :messages
-  resources :buys
-  resources :sells
-  resources :portfolios do
-    get :compare
-  end
-  resources :holdings
-  resources :events
-  resources :pages
-  resources :sessions
-  resource  :trust, :controller => 'Trust'
-  resources :profiles
-  resources :stock_tickers do
-    get :autocomplete_stock_ticker_name, :on => :collection
-    get :autocomplete_stock_ticker_symbol, :on => :collection
-  end
-  resources :fund_tickers do
-    get :autocomplete_fund_ticker_name, :on => :collection
-    get :autocomplete_fund_ticker_symbol, :on => :collection
-  end
-  resources :etf_tickers do
-    get :autocomplete_etf_ticker_name, :on => :collection
-    get :autocomplete_etf_ticker_symbol, :on => :collection
-  end
-  resource :dashboard, :controller => 'dashboard'
-  resource :social, :controller => 'Social'
-
-  resources :stock_holdings
-  resources :fund_holdings
-  resources :etf_holdings
-  resources :cd_holdings
-  resources :bond_holdings
-  resources :multi_holdings
-  resources :multi_statements
-  resources :stock_buys
-  resources :fund_buys
-  resources :etf_buys
-  resources :stock_sells
-  resources :fund_sells
-  resources :etf_sells
-
-  resources :stock_events
-  resources :fund_events
-  resources :etf_events
-
-  resources :users do
-    get :autocomplete_user_screen_name, :on => :collection
-  end
-
-  resources :invite_financial_advisers do
-    get :gather, :on => :collection
-    post :redeem, :on => :collection
-  end
-
-  resources :friends do
-    get :accept, :on => :member
-    get :decline, :on => :member
-  end
+  resource :backbone, :controller => 'backbone'
   match "/auth/:provider/callback" => "sessions#create"
   match "/oauth2callback" => "sessions#create"
   match "/signout" => "sessions#destroy", :as => :signout
   match "/auth/failure" => "sessions#failure"
   root :to => 'pages#index'
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,0 +1,2 @@
+class StockSell< CbApiResource
+end

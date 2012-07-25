@@ -2,26 +2,7 @@ class User < ActiveRecord::Base
   include AASM
   include Trust
 
-  has_many :group_portfolios, :dependent => :destroy
-  has_many :portfolios,       :dependent => :destroy
-  has_many :stock_holdings,   :dependent => :destroy
-  has_many :fund_holdings,    :dependent => :destroy
-  has_many :fund_buys,    :dependent => :destroy
-  has_many :fund_sells,    :dependent => :destroy
-  has_many :fund_events,    :dependent => :destroy
-  has_many :etf_holdings,    :dependent => :destroy
-  has_many :etf_buys,    :dependent => :destroy
-  has_many :etf_sells,    :dependent => :destroy
-  has_many :etf_events,    :dependent => :destroy
-  has_many :multi_holdings,    :dependent => :destroy
-  has_many :multi_statements,    :dependent => :destroy
-  has_many :stock_buys,        :dependent => :destroy
-  has_many :stock_sells,        :dependent => :destroy
-  has_many :stock_events,        :dependent => :destroy
 
-  has_many :financial_advice,  :foreign_key => :user_id
-  has_many :financial_advisers, :through => :financial_advice
-  has_many :financial_clients,  :through => :financial_advice
   has_many :user_roles
   has_many :roles,              :through => :user_roles
   has_many :financial_adviser_invites
@@ -37,6 +18,17 @@ class User < ActiveRecord::Base
 
 
   serialize :urls
+
+  %w(portfolios stock_holdings stock_events fund_holdings fund_events etf_holdings etf_events multi_holdings multi_statements).each do |m|
+    define_method m do
+      Object.const_get(m.classify).all_for_user(self)
+    end
+    define_method "#{m}_as_json" do
+      Object.const_get(m.classify).json_for_user(self)
+    end
+  end
+
+
   def self.create_with_omniauth(auth)  
     user = create! do |user|
       provider = Provider.new(auth)
@@ -96,26 +88,27 @@ class User < ActiveRecord::Base
 
   def backbone_models
     hash = {}
-    hash['portfolios'] = self.portfolios
+    hash['portfolios'] = self.portfolios_as_json
     %w( stock_holdings
         fund_holdings
         etf_holdings).each do |x|
-      hash[x] = self.send(x).order(:purchased_at)
+      hash[x] = self.send("#{x}_as_json")
     end
-        hash['multi_holdings'] = self.multi_holdings
-        hash['multi_statements'] = self.multi_statements.order(:started_on)
-    %w( fund_buys
-        fund_sells
-        fund_events
-        etf_buys
-        etf_sells
+        hash['multi_holdings'] = self.multi_holdings_as_json
+        hash['multi_statements'] = self.multi_statements_as_json
+    %w( fund_events
         etf_events
-        stock_buys
-        stock_sells
         stock_events).each do |x|
-      hash[x] = self.send(x).order(:executed_at)
+      hash[x] = self.send("#{x}_as_json")
     end
    return hash
+  end
+
+  def all_as_json
+    url = URI("http://localhost:4567/all.json?user=#{self.screen_name}&provider=#{self.provider}&token=#{self.get_auth_token}")
+    data = Net::HTTP.get(url)
+    json = JSON.parse(data)
+
   end
 
 
@@ -127,6 +120,14 @@ class User < ActiveRecord::Base
       hash[f.id] = Portfolio.safe_backbone_models(f, self)
     end
     hash
+  end
+
+  def get_auth_token
+    $redis.get("token:#{self.provider}:#{self.screen_name}")
+  end
+
+  def set_auth_token
+    $redis.set("token:#{self.provider}:#{self.screen_name}", SecureRandom.urlsafe_base64(10))
   end
 
 

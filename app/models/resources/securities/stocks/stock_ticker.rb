@@ -1,0 +1,2 @@
+class StockTicker < CbApiResource
+end

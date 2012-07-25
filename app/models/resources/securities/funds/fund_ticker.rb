@@ -1,0 +1,2 @@
+class FundTicker < CbApiResource
+end

@@ -1,2 +1,0 @@
-class InviteUsersController < ApplicationController
-end

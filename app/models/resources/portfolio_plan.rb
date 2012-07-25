@@ -1,0 +1,2 @@
+class PortfolioPlan < CbApiResource
+end
