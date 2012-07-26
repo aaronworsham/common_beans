@@ -1,0 +1,2 @@
+class StockEvent < CbApiResource
+end

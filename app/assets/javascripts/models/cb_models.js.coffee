@@ -1,7 +1,6 @@
 securities = ['stock', 'fund', 'bond', 'etf', 'cd', 'multi']
 data_points = [
           'starting_price',
-          'starting_price',
           'starting_investment',
           'net_investment',
           'net_return',
@@ -36,7 +35,6 @@ for security in securities
 
     class window[capSecurity+'BuyModel'] extends Backbone.Model
       urlRoot : "/"+security+"_buys"
-
       holding: =>
         window[capSecurity+'Holdings'].get(@get(security+'_holding_id'))
       portfolio: =>
@@ -44,7 +42,6 @@ for security in securities
 
     class window[capSecurity+'SellModel'] extends Backbone.Model
       urlRoot : "/"+security+"_sells"
-
       holding: =>
         window[capSecurity+'Holdings'].get(@get(security+'_holding_id'))   
       portfolio: =>
@@ -52,7 +49,6 @@ for security in securities
 
     class window[capSecurity+'EventModel'] extends Backbone.Model
       urlRoot : "/"+security+"_events"
-
       holding: =>
         window[capSecurity+'Holdings'].get(@get(security+'_holding_id'))
       portfolio: =>
@@ -61,6 +57,9 @@ for security in securities
 
 class window.PortfolioModel extends Backbone.Model
   urlRoot : "/portfolios"
+  defaults : {
+    model_name : 'Portfolio'
+  }
   formattedData : ->
     data = @.toJSON()
     for data_point in ['total_value', 'total_value_gain', 'total_gain_ratio']
@@ -75,6 +74,9 @@ class window.PortfolioModel extends Backbone.Model
 
 class window.MultiStatementModel extends Backbone.Model
   urlRoot : "/multi_statements"
+  defaults : {
+    model_name : 'MultiStatement'
+  }
   formattedData : ->
     data = @.toJSON()
     for data_point in data_points
@@ -88,24 +90,23 @@ class window.MultiStatementModel extends Backbone.Model
 
     return data
 class window.MultiAllocationModel extends Backbone.Model
-  urlRoot : "/multi_allocations"
+  urlRoot : "/multi_statement_allocations"
 class window.CompareIndicesModel extends Backbone.Model
   urlRoot : "/compare_indices"
 class window.CompareValuesModel extends Backbone.Model
   urlRoot : "/compare_values"
 class window.CompareFriendsModel extends Backbone.Model
-  urlRoot : "/compare_values"
+  urlRoot : "/compare_friends"
 class window.CompareOthersModel extends Backbone.Model
-  urlRoot : "/compare_values"
+  urlRoot : "/compare_others"
 class window.FriendPortfolioModel extends Backbone.Model
-  urlRoot : "/friends_portfolios"
+  urlRoot : "/friend_portfolios"
 class window.FriendModel extends Backbone.Model
   urlRoot : "/friends"
 class window.InviteToModel extends Backbone.Model
-  urlRoot : "/friends"
+  urlRoot : "/to_invites"
 class window.InviteFromModel extends Backbone.Model
-  urlRoot : "/friends"
-
+  urlRoot : "/from_invites"
   accept: (opts) ->
     model = this
     url = model.url() + '/accept'

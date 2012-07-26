@@ -6,24 +6,6 @@ CommonBeans::Application.routes.draw do
   ActiveAdmin.routes(self)
 
 
-  get "stock_events/destroy"
-
-  resources :stories
-  resources :trackers
-  resources :indices
-  resources :fund_tickers
-  resources :messages
-  resources :buys
-  resources :sells
-  resources :portfolios do
-    get :compare
-  end
-  resources :holdings
-  resources :events
-  resources :pages
-  resources :sessions
-  resource  :trust, :controller => 'Trust'
-  resources :profiles
   resources :stock_tickers do
     get :autocomplete_stock_ticker_name, :on => :collection
     get :autocomplete_stock_ticker_symbol, :on => :collection
@@ -36,46 +18,33 @@ CommonBeans::Application.routes.draw do
     get :autocomplete_etf_ticker_name, :on => :collection
     get :autocomplete_etf_ticker_symbol, :on => :collection
   end
+  
+
   resource :dashboard, :controller => 'dashboard'
-  resource :social, :controller => 'Social'
 
-  resources :stock_holdings
-  resources :fund_holdings
-  resources :etf_holdings
-  resources :cd_holdings
-  resources :bond_holdings
-  resources :multi_holdings
-  resources :multi_statements
-  resources :stock_buys
-  resources :fund_buys
-  resources :etf_buys
-  resources :stock_sells
-  resources :fund_sells
-  resources :etf_sells
 
-  resources :stock_events
-  resources :fund_events
-  resources :etf_events
+  resources :stories
+  resource :backbone, :controller => 'backbone'
+  
+  
+  %w(
+    portfolio 
+    stock_holding stock_event stock_buy stock_sell 
+    fund_holding fund_event fund_buy fund_sell
+    etf_holding etf_event etf_buy etf_sell
+    multi_holding multi_statement multi_statement_allocation
+  ).each do |x|
+    match "/#{x.pluralize}/:id" => 'backbone#show', :via => :get, :defaults => { :model_name => x.classify }
+    match "/#{x.pluralize}/:id" => 'backbone#destroy', :via => :delete, :defaults => { :model_name => x.classify }
+    match "/#{x.pluralize}" => 'backbone#create', :via => :post, :defaults => { :model_name => x.classify }
 
-  resources :users do
-    get :autocomplete_user_screen_name, :on => :collection
   end
 
-  resources :invite_financial_advisers do
-    get :gather, :on => :collection
-    post :redeem, :on => :collection
-  end
-
-  resources :friends do
-    get :accept, :on => :member
-    get :decline, :on => :member
-  end
   match "/auth/:provider/callback" => "sessions#create"
   match "/oauth2callback" => "sessions#create"
   match "/signout" => "sessions#destroy", :as => :signout
   match "/auth/failure" => "sessions#failure"
   root :to => 'pages#index'
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

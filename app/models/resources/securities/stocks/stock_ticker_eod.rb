@@ -1,0 +1,2 @@
+class StockTickerEod < CbApiResource
+end

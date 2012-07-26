@@ -1,0 +1,2 @@
+class StockHolding < CbApiResource
+end

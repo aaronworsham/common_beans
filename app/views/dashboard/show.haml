@@ -1,22 +1,29 @@
 = content_for :on_ready do
+
+
   - @models.each do |k,v|
     != "#{k.classify.pluralize}.add(#{v.to_json});"
-  - @models.each do |k,v|
-    - if ['StockHolding','FundHolding','EtfHolding'].include?(k.classify)
+    - if(k == 'stock_holdings' || k == 'fund_holdings' || k == 'etf_holdings')
       != "#{k.classify}Charts.add(#{v.to_json});"
-  - @friend_models.each do |k,v|
-    - v.each do |h|
-      != "FriendPortfolios.add(#{ h.to_json});"
-  - @friends.each do |f|
-    != "Friends.add(#{ f.to_json});" 
-  - @invites_to.each do |f|
-    != "ToInvites.add(#{ f.to_json});" 
-  - @invites_from.each do |f|
-    != "FromInvites.add(#{ f.to_json});" 
-  != "IndexComparisons.add(#{@compare_indices.to_json});"
-  != "ValueComparisons.add(#{@compare_values.to_json});"
-  != "FriendComparisons.add(#{@compare_values.to_json});"
-  != "OtherComparisons.add(#{@compare_values.to_json});"
+  -#     - else 
+  -#       != "#{k.classify.pluralize}.add(#{x.to_json});"
+
+  -# - @models.each do |k,v|
+  -#   - if ['StockHolding','FundHolding','EtfHolding'].include?(k.classify)
+  -#     != "#{k.classify}Charts.add(#{v.to_json});"
+  -# - @friend_models.each do |k,v|
+  -#   - v.each do |h|
+  -#     != "FriendPortfolios.add(#{ h.to_json});"
+  -# -# - @friends.each do |f|
+  -# -#   != "Friends.add(#{ f.to_json});" 
+  -# - @invites_to.each do |f|
+  -#   != "ToInvites.add(#{ f.to_json});" 
+  -# - @invites_from.each do |f|
+  -#   != "FromInvites.add(#{ f.to_json});" 
+  -# != "IndexComparisons.add(#{@compare_indices.to_json});"
+  -# != "ValueComparisons.add(#{@compare_values.to_json});"
+  -# != "FriendComparisons.add(#{@compare_values.to_json});"
+  -# != "OtherComparisons.add(#{@compare_values.to_json});"
   $('#share-content').hide();
   $('#compare-content').hide();
   $('#show-your-portfolios-nav tr.selectable').first().trigger('click');
@@ -24,8 +31,10 @@
   $('.accordion').accordion();
   
 
+
 = content_for :templates do
   = template_include_path_helper(['dashboard', 'hotlist'])
+
 
 #show-content
   #show-your-portfolios-content.show-module
@@ -71,5 +80,5 @@
 
 
 #forms
-  = render :partial => "portfolios/add_portfolio"
-  = securities_form_loader_helper
+  = render :partial => "forms"
+

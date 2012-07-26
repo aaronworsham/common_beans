@@ -1,0 +1,2 @@
+class MultiStatementAllocation < CbApiResource
+end

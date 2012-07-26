@@ -9,7 +9,8 @@ for security in securities
       el: '#facebox'
 
       submit: =>
-        @model.save(this.serialize(),
+        this.set_form_attributes()
+        @model.save({},
           { success : (model, resp)->
             p = model.portfolio()
             h = model.holding()
@@ -26,29 +27,23 @@ for security in securities
           }
         );
 
-      serialize: =>
-        obj = new Object
-        obj['authenticity_token'] = this.$("input[name=authenticity_token]").val()
-
+      set_form_attributes: =>
         sec = new Object
         sec[denom]= this.$("#"+security+"_buy_"+denom).val()
         sec['price']= this.$("#"+security+"_buy_price").val()
-        sec['executed_at(1i)']= this.$("#"+security+"_buy_executed_at_1i").val()
-        sec['executed_at(2i)']= this.$("#"+security+"_buy_executed_at_2i").val()
-        sec['executed_at(3i)']= this.$("#"+security+"_buy_executed_at_3i").val()
-        sec['executed_at(4i)']= this.$("#"+security+"_buy_executed_at_4i").val()
-        sec['executed_at(5i)']= this.$("#"+security+"_buy_executed_at_5i").val()
+        sec['executed_at']= this.$("#"+security+"_buy_executed_at").val()
         sec[security+'_holding_id'] = @model.get('holding_id')
         sec[security+'_ticker_id'] = @model.get('ticker_id')
+        @model.set(sec);
 
-        obj[security+'_buy'] = sec
-        return obj
+
     class window['Add'+capSecurity+'SellView'] extends Backbone.View
 
       el: '#facebox'
 
       submit: =>
-        @model.save(this.serialize(),
+        this.set_form_attributes()
+        @model.save({},
           { success : (model, resp)->
             p = model.portfolio()
             h = model.holding()
@@ -63,26 +58,14 @@ for security in securities
           }
         );
 
-      serialize: =>
-        obj = new Object
-        obj['authenticity_token'] = this.$("input[name=authenticity_token]").val()
-
+      set_form_attributes: =>
         sec = new Object
         sec[denom]= this.$("#"+security+"_sell_"+denom).val()
         sec['price']= this.$("#"+security+"_sell_price").val()
-        sec['executed_at(1i)']= this.$("#"+security+"_sell_executed_at_1i").val()
-        sec['executed_at(2i)']= this.$("#"+security+"_sell_executed_at_2i").val()
-        sec['executed_at(3i)']= this.$("#"+security+"_sell_executed_at_3i").val()
-        sec['executed_at(4i)']= this.$("#"+security+"_sell_executed_at_4i").val()
-        sec['executed_at(5i)']= this.$("#"+security+"_sell_executed_at_5i").val()
+        sec['executed_at']= this.$("#"+security+"_sell_executed_at").val()
         sec[security+'_holding_id'] = @model.get('holding_id')
         sec[security+'_ticker_id'] = @model.get('ticker_id')
-
-        obj[security+'_sell'] = sec
-        return obj
-
-
-
+        @model.set(sec);
 
 $ ->
 

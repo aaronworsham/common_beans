@@ -1,0 +1,2 @@
+class EtfSell < CbApiResource
+end

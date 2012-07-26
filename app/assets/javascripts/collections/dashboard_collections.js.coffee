@@ -251,6 +251,11 @@ class window.FriendsCollection extends Backbone.Collection
 
 window.Friends = new FriendsCollection
 
+window.addFriends = (friends)->
+  for f in friends
+    do (f)->
+      Friends.add(f.user)
+
 class window.ToInvitesCollection extends Backbone.Collection
   model: InviteToModel
 

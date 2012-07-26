@@ -1,0 +1,2 @@
+class EtfBuy < CbApiResource
+end

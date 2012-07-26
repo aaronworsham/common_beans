@@ -1,0 +1,2 @@
+class MultiHoldingAllocation < CbApiResource
+end

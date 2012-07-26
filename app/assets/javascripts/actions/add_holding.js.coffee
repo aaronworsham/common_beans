@@ -7,7 +7,8 @@ class window.AddEtfHoldingView extends Backbone.View
   el: '#facebox'
 
   submit: =>
-    @model.save(this.serialize(),
+    this.set_form_attributes()
+    @model.save({},
         { success : (model, resp)->
             $(document).trigger('close.facebox')
             p = Portfolios.get(model.get('portfolio_id'))
@@ -26,17 +27,14 @@ class window.AddEtfHoldingView extends Backbone.View
         }
     );
 
-  serialize: =>
-    return {
-        authenticity_token: this.$("input[name=authenticity_token]").val(),
-        etf_holding: {
-          etf_ticker_id: this.$("#etf_holding_etf_ticker_id").val(),
-          starting_units: this.$("#etf_holding_starting_units").val(),
-          starting_price: this.$("#etf_holding_starting_price").val(),
-          purchased_at: this.$("input[name=purchased_at]").val(),
-          portfolio_id: @model.get('portfolio_id')
-        }
-      }
+  set_form_attributes: =>
+    @model.set({
+      etf_ticker_id: this.$("#etf_holding_etf_ticker_id").val(),
+      starting_units: this.$("#etf_holding_starting_units").val(),
+      starting_price: this.$("#etf_holding_starting_price").val(),
+      purchased_at: this.$("input[name=purchased_at]").val(),
+      portfolio_id: @model.get('portfolio_id')
+    });
 
 
 
@@ -48,7 +46,8 @@ class window.AddFundHoldingView extends Backbone.View
   el: '#facebox'
 
   submit: =>
-    @model.save(this.serialize(),
+    this.set_form_attributes()
+    @model.save({},
         { success : (model, resp)->
             $(document).trigger('close.facebox')
             p = Portfolios.get(model.get('portfolio_id'))
@@ -66,52 +65,46 @@ class window.AddFundHoldingView extends Backbone.View
         }
     );
 
-  serialize: =>
-    return {
-        authenticity_token: this.$("input[name=authenticity_token]").val(),
-        fund_holding: {
-          fund_ticker_id: this.$("#fund_holding_fund_ticker_id").val(),
-          starting_units: this.$("#fund_holding_starting_units").val(),
-          starting_price: this.$("#fund_holding_starting_price").val(),
-          purchased_at: this.$("input[name=purchased_at]").val(),
-          portfolio_id: @model.get('portfolio_id')
-        }
-      }
+  set_form_attributes: =>
+    @model.set({
+      fund_ticker_id: this.$("#fund_holding_fund_ticker_id").val(),
+      starting_units: this.$("#fund_holding_starting_units").val(),
+      starting_price: this.$("#fund_holding_starting_price").val(),
+      purchased_at: this.$("input[name=purchased_at]").val(),
+      portfolio_id: @model.get('portfolio_id')
+    });
 
 
   #multi
 
 class window.AddMultiHoldingView extends Backbone.View
 
-    el: '#facebox'
+  el: '#facebox'
 
-    submit: =>
-      @model.save(this.serialize(),
-        { success : (model, resp)->
-            $(document).trigger('close.facebox')
-            p = Portfolios.get(model.get('portfolio_id'))
-            model.portfolio = p
-            holding = model
-            p.fetch(
-              { success: (model, resp) ->
-                MultiHoldings.add(holding)
-                MultiHoldingCharts.add(holding)
-              }
-            )
-         error : (model, resp) ->
-          response = JSON.parse(resp.responseText)
-          humane.log(HumaneFormatValidation(resp))
-        }
-      );
-
-    serialize: =>
-      return {
-          authenticity_token: this.$("input[name=authenticity_token]").val(),
-          multi_holding: {
-            name: this.$("#multi_holding_name").val(),
-            portfolio_id: @model.get('portfolio_id')
-          }
-        }
+  submit: =>
+    this.set_form_attributes()
+    @model.save({},
+      { success : (model, resp)->
+          $(document).trigger('close.facebox')
+          p = Portfolios.get(model.get('portfolio_id'))
+          model.portfolio = p
+          holding = model
+          p.fetch(
+            { success: (model, resp) ->
+              MultiHoldings.add(holding)
+              MultiHoldingCharts.add(holding)
+            }
+          )
+       error : (model, resp) ->
+        response = JSON.parse(resp.responseText)
+        humane.log(HumaneFormatValidation(resp))
+      }
+    );
+  set_form_attributes: =>
+    @model.set({
+      name: this.$("#multi_holding_name").val(),
+      portfolio_id: @model.get('portfolio_id')
+    });
 
 
 
@@ -123,7 +116,8 @@ class window.AddStockHoldingView extends Backbone.View
   el: '#facebox'
 
   submit: =>
-    @model.save(this.serialize(),
+    this.set_form_attributes()
+    @model.save({},
         { success : (model, resp)->
             $(document).trigger('close.facebox')
             p = Portfolios.get(model.get('portfolio_id'))
@@ -141,17 +135,14 @@ class window.AddStockHoldingView extends Backbone.View
         }
     );
 
-  serialize: =>
-    return {
-        authenticity_token: this.$("input[name=authenticity_token]").val(),
-        stock_holding: {
-          stock_ticker_id: this.$("#stock_holding_stock_ticker_id").val(),
-          starting_shares: this.$("#stock_holding_starting_shares").val(),
-          starting_price: this.$("#stock_holding_starting_price").val(),
-          purchased_at: this.$("input[name=purchased_at]").val(),
-          portfolio_id: @model.get('portfolio_id')
-        }
-      }
+  set_form_attributes: =>
+    @model.set({
+      stock_ticker_id: this.$("#stock_holding_stock_ticker_id").val(),
+      starting_shares: this.$("#stock_holding_starting_shares").val(),
+      starting_price: this.$("#stock_holding_starting_price").val(),
+      purchased_at: this.$("input[name=purchased_at]").val(),
+      portfolio_id: @model.get('portfolio_id')
+    });
 
 
 

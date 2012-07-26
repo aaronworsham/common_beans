@@ -1,0 +1,2 @@
+class PortfolioStrategy < CbApiResource
+end

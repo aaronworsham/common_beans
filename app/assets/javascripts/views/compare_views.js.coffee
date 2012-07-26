@@ -73,7 +73,7 @@ class window.CompareIndicesView extends Backbone.View
 #        options.xAxis.categories.push(k)
 #        options.series[0].data.push(@.redGreen(v))
 #    console.log(options)
-    chart = new Highcharts.Chart(options);
+#    chart = new Highcharts.Chart(options);
 #    $.extend(this, Highcharts.Chart(options))
 
 #    $.getJSON("/portfolios/1/compare.json", (data)->
@@ -148,7 +148,7 @@ class window.CompareValuesView extends Backbone.View
 #      options.series[0].data.push(v)
 #    options.xAxis.categories.push('current')
 #    options.series[0].data.push(@model.attributes['current_value'])
-    chart = new Highcharts.Chart(options);
+#    chart = new Highcharts.Chart(options);
 
 
 #    $.getJSON("/portfolios/1/compare.json", (data)->
@@ -240,7 +240,7 @@ class window.CompareFriendsView extends Backbone.View
 #      options.series[0].data.push(v)
 #    options.xAxis.categories.push('current')
 #    options.series[0].data.push(@model.attributes['current_value'])
-    chart = new Highcharts.Chart(options);
+#    chart = new Highcharts.Chart(options);
 
 
 #    $.getJSON("/portfolios/1/compare.json", (data)->
